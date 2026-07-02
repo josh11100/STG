@@ -1,11 +1,514 @@
-async function loadDashboardData() {
-  const res = await fetch('data/connectors_data.json?t=' + Date.now());
-  const data = await res.json();
-  
-  document.getElementById('cash-balance').textContent = 
-    '$' + data.quickbooks.cash_balance.toLocaleString();
-  document.getElementById('weeks-runway').textContent = 
-    data.quickbooks.weeks_runway + ' weeks';
-  // ...populate every KPI card the same way
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skip the Groomer — Business Performance Snapshot</title>
+<style>
+  :root{
+    --ink:#16242e; --ink2:#41525e; --muted:#7c8b95;
+    --bg:#eef1ee; --card:#ffffff; --line:#e4e9e6;
+    --brand:#127a5b; --brand2:#1aa074; --brandSoft:#e3f3ec;
+    --navy:#13384a; --navy2:#1d566f;
+    --good:#1f9d6b; --goodSoft:#e2f4ec;
+    --amber:#e8932b; --amberSoft:#fcefdc;
+    --red:#d6503c; --redSoft:#fbe6e1;
+    --units:#88a7b4;
+    --shadow:0 1px 2px rgba(16,36,46,.04), 0 8px 24px rgba(16,36,46,.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.45;
+    -webkit-font-smoothing:antialiased; padding:28px 16px 60px;
+  }
+  .wrap{max-width:1080px;margin:0 auto}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+  /* HEADER */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#0f2f3f 55%,#0d4a3a 130%);
+    color:#fff;border-radius:20px;padding:30px 34px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--brand2)}
+  .hero h1{font-size:30px;font-weight:800;letter-spacing:-.5px;margin:6px 0 4px}
+  .hero .sub{color:#c9d8de;font-size:14.5px;max-width:680px}
+  .hero-row{display:flex;align-items:center;justify-content:space-between;gap:22px;position:relative;z-index:2;flex-wrap:wrap}
+
+  /* LIVE / SNAPSHOT status pill */
+  .status-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 13px 6px 10px;font-size:12px;font-weight:700;color:#eaf2f4}
+  .status-dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+  .status-dot.live{background:#37e39a;box-shadow:0 0 0 3px rgba(55,227,154,.25);animation:pulse 2s infinite}
+  .status-dot.snapshot{background:#e8932b}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+  /* KPI STRIP */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:14px 0 6px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 13px;box-shadow:var(--shadow)}
+  .kpi .lab{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+  .kpi .val{font-size:23px;font-weight:800;letter-spacing:-.5px;margin-top:5px;color:var(--navy)}
+  .kpi .foot{font-size:11.5px;color:var(--ink2);margin-top:3px}
+  .kpi.accent .val{color:var(--brand)}
+  .kpi.loading .val{color:var(--muted);font-size:15px}
+
+  /* SECTIONS */
+  .section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin-top:18px;box-shadow:var(--shadow)}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+  .sec-head-left{display:flex;align-items:baseline;gap:12px}
+  .sec-no{font-size:13px;font-weight:800;color:#fff;background:var(--brand);width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .sec-head h2{font-size:19.5px;font-weight:800;letter-spacing:-.3px;color:var(--navy)}
+  .sec-sub{font-size:13px;color:var(--muted);margin:2px 0 18px 38px}
+
+  /* section-level data badge */
+  .databadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+    padding:4px 10px;border-radius:999px;white-space:nowrap}
+  .databadge.live{background:var(--goodSoft);color:#0c6b46}
+  .databadge.live .dot{width:6px;height:6px;border-radius:50%;background:var(--good)}
+  .databadge.snapshot{background:var(--amberSoft);color:#8a5410}
+  .databadge.snapshot .dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+  .databadge.error{background:var(--redSoft);color:#9e3322}
+
+  /* insight + gap */
+  .insight{margin-top:8px;background:var(--brandSoft);border-left:4px solid var(--brand);border-radius:0 10px 10px 0;padding:11px 15px;font-size:13.5px;color:#0e3b2c}
+  .insight b{color:#0a4d39}
+  .insight.warn{background:var(--amberSoft);border-color:var(--amber);color:#6b4410}
+  .insight.warn b{color:#7a4906}
+  .gap{margin-top:14px;border:1px dashed #c3cdd6;background:#f7f9fa;border-radius:10px;padding:11px 14px;font-size:12.5px;color:var(--ink2)}
+  .gap b{color:var(--navy)}
+  .gap .lab{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#8b97a0;display:block;margin-bottom:3px}
+
+  /* SALES TABLE-BARS */
+  .s-head,.s-row{display:grid;grid-template-columns:165px 1fr 92px 60px 66px;gap:12px;align-items:center}
+  .s-head{margin-bottom:6px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  .s-head div{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700}
+  .s-head .r{text-align:right}
+  .s-row{padding:8px 0;border-bottom:1px solid var(--line)}
+  .s-name{font-size:13px;font-weight:700;color:var(--ink)}
+  .s-name span{display:block;font-size:10.5px;font-weight:500;color:var(--muted)}
+  .s-bar{background:#eef2f0;border-radius:7px;height:22px;overflow:hidden}
+  .s-fill{height:100%;background:var(--brand);border-radius:7px;min-width:4px;transition:width .6s ease}
+  .s-rev{text-align:right;font-weight:800;font-size:13px;color:var(--navy)}
+  .s-pct{text-align:right;font-weight:800;font-size:13px;color:var(--brand)}
+  .s-units{text-align:right;font-weight:600;font-size:12.5px;color:var(--ink2)}
+  .s-row.tot{border-bottom:none;border-top:2px solid var(--line);padding-top:10px;margin-top:2px}
+  .s-row.tot .s-name{color:var(--navy);font-weight:800}
+
+  /* generic bars (profit/inventory) */
+  .bar-row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;margin-bottom:11px}
+  .bar-name{font-size:13.5px;font-weight:700;color:var(--ink)}
+  .bar-name span{display:block;font-size:11px;font-weight:500;color:var(--muted)}
+  .track{background:#eef2f0;border-radius:8px;height:30px;position:relative;overflow:hidden}
+  .fill{height:100%;border-radius:8px;background:var(--brand);min-width:3px;transition:width .6s ease}
+  .val-in{position:absolute;left:12px;top:0;height:30px;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap}
+  .val-in .pct{color:var(--muted);font-weight:600}
+
+  /* chips */
+  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:6px}
+  .chip{border-radius:13px;padding:14px 15px;border:1px solid var(--line);background:#fff}
+  .chip .cname{font-size:13px;font-weight:700;color:var(--ink2)}
+  .chip .cval{font-size:27px;font-weight:800;letter-spacing:-.5px;margin-top:3px}
+  .chip .cmar{font-size:12px;font-weight:700;display:inline-block;margin-top:6px;padding:3px 9px;border-radius:999px}
+  .chip .cunit{font-size:11px;color:var(--muted);margin-top:6px}
+  .g{background:var(--goodSoft);border-color:#bfe6d3}.g .cval{color:var(--good)}.g .cmar{background:#cdeede;color:#0c6b46}
+  .a{background:var(--amberSoft);border-color:#f3ddb5}.a .cval{color:#b9711a}.a .cmar{background:#f7e4c0;color:#8a5410}
+  .r2{background:var(--redSoft);border-color:#f3cabf}.r2 .cval{color:var(--red)}.r2 .cmar{background:#f7d2c8;color:#9e3322}
+
+  .footer{text-align:center;margin-top:26px;padding:18px;color:var(--muted);font-size:11.5px;line-height:1.6}
+  .footer .tag{font-weight:800;color:var(--navy);font-size:13px;margin-bottom:2px}
+  .conf{display:inline-block;margin-top:8px;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--units)}
+
+  .skel{background:linear-gradient(90deg,#eef2f0 25%,#f6f8f7 50%,#eef2f0 75%);
+    background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:6px;color:transparent!important}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+  @media(max-width:860px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .chips{grid-template-columns:1fr}
+    .s-head,.s-row{grid-template-columns:120px 1fr 70px}
+    .s-head .r:nth-child(4),.s-head .r:nth-child(5),.s-row .s-pct,.s-row .s-units{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="hero">
+    <div class="hero-row">
+      <div>
+        <div class="kicker">Live Team Snapshot</div>
+        <h1>Business Performance Dashboard</h1>
+        <div class="sub">Sections marked <b>Live</b> update automatically every morning. Sections marked <b>Snapshot</b> reflect the last manual update from Will or Patrick.</div>
+      </div>
+      <div class="status-pill">
+        <span class="status-dot live"></span>
+        <span id="global-updated">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpis" id="kpi-strip">
+    <div class="kpi loading"><div class="lab">Cash Balance</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
+    <div class="kpi loading"><div class="lab">Weeks Runway</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
+    <div class="kpi loading"><div class="lab">Sales — Yesterday</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
+    <div class="kpi loading"><div class="lab">AOV</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
+    <div class="kpi loading"><div class="lab">Return Rate</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
+    <div class="kpi loading"><div class="lab">Cash in Inventory</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
+  </div>
+
+  <!-- SECTION 1: SALES BY SKU — LIVE (Amazon via Supermetrics/Helium10 -> JARVIS) -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-head-left"><div class="sec-no">1</div><h2>Sales by SKU — revenue, share &amp; units</h2></div>
+      <span class="databadge live" id="badge-sales"><span class="dot"></span>Live</span>
+    </div>
+    <div class="sec-sub">Amazon Seller Central, updated every morning via JARVIS.</div>
+    <div class="s-head"><div>Product</div><div>Share of revenue</div><div class="r">Revenue</div><div class="r">% of rev</div><div class="r">Units</div></div>
+    <div id="sales-rows">
+      <div class="s-row"><div class="s-name skel">Loading product data</div><div class="s-bar"></div><div class="s-rev"></div><div class="s-pct"></div><div class="s-units"></div></div>
+    </div>
+    <div class="insight" id="sales-insight" style="display:none"></div>
+  </div>
+
+  <!-- SECTION 2: CASH — LIVE (QuickBooks via Routine) -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-head-left"><div class="sec-no">2</div><h2>Cash position</h2></div>
+      <span class="databadge live" id="badge-cash"><span class="dot"></span>Live</span>
+    </div>
+    <div class="sec-sub">QuickBooks, via Claude Routine — updated every morning.</div>
+    <div class="chips" id="cash-chips">
+      <div class="chip"><div class="cname">Cash Balance</div><div class="cval skel" id="cash-balance">Loading</div><div class="cunit">checking + money market</div></div>
+      <div class="chip"><div class="cname">Weeks of Runway</div><div class="cval skel" id="cash-runway">Loading</div><div class="cunit">at current burn rate</div></div>
+      <div class="chip"><div class="cname">Status</div><div class="cval skel" id="cash-status">Loading</div><div class="cunit">vs $25K floor</div></div>
+    </div>
+    <div class="insight" id="cash-insight" style="display:none"></div>
+  </div>
+
+  <!-- SECTION 3: RETURNS — LIVE (Reviews sheet + Amazon Returns, once wired) -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-head-left"><div class="sec-no">3</div><h2>Returns &amp; reviews</h2></div>
+      <span class="databadge live" id="badge-returns"><span class="dot"></span>Live</span>
+    </div>
+    <div class="sec-sub">Amazon reviews sheet + returns data, updated every morning.</div>
+    <div class="chips" id="returns-chips">
+      <div class="chip"><div class="cname">Return Rate</div><div class="cval skel" id="return-rate">Loading</div><div class="cunit">365-day window</div></div>
+      <div class="chip"><div class="cname">Critical Review Rate</div><div class="cval skel" id="critical-review-rate">Loading</div><div class="cunit">1-2 star reviews</div></div>
+      <div class="chip"><div class="cname">Avg Rating</div><div class="cval skel" id="avg-rating">Loading</div><div class="cunit">across all SKUs</div></div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: PROFIT & MARGIN — SNAPSHOT (needs COGS sheet, not live-connectable) -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-head-left"><div class="sec-no">4</div><h2>Profit &amp; margin per SKU</h2></div>
+      <span class="databadge snapshot" id="badge-margin"><span class="dot"></span>Snapshot</span>
+    </div>
+    <div class="sec-sub" id="margin-updated-note">Requires the COGS &amp; Margins sheet — updated manually by Patrick.</div>
+    <div class="chips" id="margin-chips"></div>
+    <div class="gap"><span class="lab">Why this isn't live</span>Margin per SKU depends on the COGS &amp; Margins spreadsheet Patrick maintains — landed cost, packaging, tariffs, and freight aren't available through any connected data source. Updating this section means editing <code>data/manual_snapshot.json</code> directly, or asking Josh to update it after a fresh COGS export.</div>
+  </div>
+
+  <!-- SECTION 5: CASH — PRODUCTION SCHEDULE — SNAPSHOT -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-head-left"><div class="sec-no">5</div><h2>Owed &amp; planned production</h2></div>
+      <span class="databadge snapshot" id="badge-production"><span class="dot"></span>Snapshot</span>
+    </div>
+    <div class="sec-sub" id="production-updated-note">Requires the production plan — updated manually by Will/Patrick.</div>
+    <div id="production-content"></div>
+    <div class="gap"><span class="lab">Why this isn't live</span>Production schedule and vendor payment plans live in planning spreadsheets, not any connected system. Same update path as the margin section above.</div>
+  </div>
+
+  <!-- SECTION 6: INVENTORY FORECAST — SNAPSHOT -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-head-left"><div class="sec-no">6</div><h2>Estimated inventory through year-end</h2></div>
+      <span class="databadge snapshot" id="badge-inventory-forecast"><span class="dot"></span>Snapshot</span>
+    </div>
+    <div class="sec-sub" id="inventory-forecast-updated-note">Projection model — updated manually.</div>
+    <div id="inventory-forecast-content"></div>
+  </div>
+
+  <!-- SECTION 7: SUBSCRIBE & SAVE — SNAPSHOT -->
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-head-left"><div class="sec-no">7</div><h2>Subscribe &amp; Save performance</h2></div>
+      <span class="databadge snapshot" id="badge-sns"><span class="dot"></span>Snapshot</span>
+    </div>
+    <div class="sec-sub" id="sns-updated-note">S&amp;S Performance report — updated manually (no live connector yet).</div>
+    <div id="sns-content"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="tag">Skip the Groomer. Keep the Love.</div>
+    <div>Demat. Detangle. Clean.</div>
+    <div style="margin-top:8px" id="footer-note">Live sections refresh automatically each morning. Snapshot sections reflect the last manual data update.</div>
+    <span class="conf">Internal — Team Use</span>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// DATA LOADING
+// ============================================================
+// Live data: written daily by the Claude Routine (QuickBooks/
+// Klaviyo/Shopify) and by JARVIS/Apps Script (Amazon/Supermetrics).
+// Snapshot data: edited manually in data/manual_snapshot.json
+// whenever Will or Patrick provides updated COGS/production/S&S
+// numbers.
+
+const DATA_URLS = {
+  connectors: 'data/connectors_data.json',   // Routine: QuickBooks/Klaviyo/Shopify
+  amazon:     'data/amazon_data.json',       // JARVIS: Amazon sales/returns/reviews
+  manual:     'data/manual_snapshot.json'    // Manual: COGS/production/S&S/inventory forecast
+};
+
+function fmtMoney(n, decimals=0){
+  if (n === null || n === undefined || isNaN(n)) return '—';
+  return '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits:decimals, maximumFractionDigits:decimals});
 }
-loadDashboardData();
+function fmtPct(n, decimals=1){
+  if (n === null || n === undefined || isNaN(n)) return '—';
+  return Number(n).toFixed(decimals) + '%';
+}
+function timeAgo(isoString){
+  if (!isoString) return 'unknown';
+  const then = new Date(isoString);
+  const now = new Date();
+  const diffHrs = Math.round((now - then) / 36e5);
+  if (diffHrs < 1) return 'just now';
+  if (diffHrs === 1) return '1 hour ago';
+  if (diffHrs < 24) return diffHrs + ' hours ago';
+  const days = Math.round(diffHrs / 24);
+  return days === 1 ? '1 day ago' : days + ' days ago';
+}
+
+async function fetchJSON(url){
+  try {
+    const res = await fetch(url + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return await res.json();
+  } catch(e) {
+    console.warn('Failed to load', url, e);
+    return null;
+  }
+}
+
+function setBadgeError(id, label){
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.className = 'databadge error';
+  el.innerHTML = '<span class="dot"></span>' + label;
+}
+
+// ------------------------------------------------------------
+// KPI STRIP — pulls from whichever sources are available
+// ------------------------------------------------------------
+function renderKPIStrip(connectors, amazon){
+  const strip = document.getElementById('kpi-strip');
+  const cash = connectors && connectors.quickbooks;
+  const sales = amazon && amazon.sales_yesterday;
+  const returns = amazon && amazon.returns;
+
+  strip.innerHTML = `
+    <div class="kpi ${cash ? 'accent' : ''}">
+      <div class="lab">Cash Balance</div>
+      <div class="val">${cash ? fmtMoney(cash.cash_balance) : '—'}</div>
+      <div class="foot">${cash ? cash.weeks_runway + ' weeks runway' : 'awaiting data'}</div>
+    </div>
+    <div class="kpi">
+      <div class="lab">Sales — Yesterday</div>
+      <div class="val">${sales ? fmtMoney(sales.total) : '—'}</div>
+      <div class="foot">${sales && sales.vs_7day_pct !== undefined ? (sales.vs_7day_pct >= 0 ? '+' : '') + fmtPct(sales.vs_7day_pct) + ' vs 7-day avg' : 'awaiting data'}</div>
+    </div>
+    <div class="kpi">
+      <div class="lab">AOV</div>
+      <div class="val">${sales ? fmtMoney(sales.aov, 2) : '—'}</div>
+      <div class="foot">target $35+</div>
+    </div>
+    <div class="kpi ${returns ? 'accent' : ''}">
+      <div class="lab">Return Rate</div>
+      <div class="val">${returns ? fmtPct(returns.rate) : '—'}</div>
+      <div class="foot">365-day window</div>
+    </div>
+    <div class="kpi">
+      <div class="lab">Weeks Runway</div>
+      <div class="val">${cash ? cash.weeks_runway : '—'}</div>
+      <div class="foot">${cash ? cash.status : 'awaiting data'}</div>
+    </div>
+    <div class="kpi">
+      <div class="lab">Klaviyo Open Rate</div>
+      <div class="val">${connectors && connectors.klaviyo ? fmtPct(connectors.klaviyo.avg_open_rate) : '—'}</div>
+      <div class="foot">7-day average</div>
+    </div>
+  `;
+}
+
+// ------------------------------------------------------------
+// SECTION 1 — SALES BY SKU (live, from amazon_data.json)
+// ------------------------------------------------------------
+function renderSales(amazon){
+  const container = document.getElementById('sales-rows');
+  if (!amazon || !amazon.sales_by_sku || !amazon.sales_by_sku.length){
+    setBadgeError('badge-sales', 'No data');
+    container.innerHTML = '<div class="gap">Sales-by-SKU data not available yet. This populates once JARVIS pushes amazon_data.json.</div>';
+    return;
+  }
+  const rows = amazon.sales_by_sku;
+  const total = rows.reduce((s,r) => s + r.revenue, 0);
+  let html = '';
+  rows.forEach(r => {
+    const pct = total > 0 ? (r.revenue / total * 100) : 0;
+    html += `<div class="s-row">
+      <div class="s-name">${r.name}<span>${r.tag || ''}</span></div>
+      <div class="s-bar"><div class="s-fill" style="width:${pct}%"></div></div>
+      <div class="s-rev num">${fmtMoney(r.revenue)}</div>
+      <div class="s-pct num">${fmtPct(pct)}</div>
+      <div class="s-units num">${r.units.toLocaleString()}</div>
+    </div>`;
+  });
+  html += `<div class="s-row tot">
+    <div class="s-name">TOTAL</div><div class="s-bar"><div class="s-fill" style="width:100%"></div></div>
+    <div class="s-rev num">${fmtMoney(total)}</div><div class="s-pct num">100%</div>
+    <div class="s-units num">${rows.reduce((s,r)=>s+r.units,0).toLocaleString()}</div>
+  </div>`;
+  container.innerHTML = html;
+
+  if (amazon.sales_insight){
+    const insightEl = document.getElementById('sales-insight');
+    insightEl.style.display = 'block';
+    insightEl.innerHTML = amazon.sales_insight;
+  }
+}
+
+// ------------------------------------------------------------
+// SECTION 2 — CASH (live, from connectors_data.json)
+// ------------------------------------------------------------
+function renderCash(connectors){
+  if (!connectors || !connectors.quickbooks){
+    setBadgeError('badge-cash', 'No data');
+    return;
+  }
+  const qb = connectors.quickbooks;
+  document.getElementById('cash-balance').textContent = fmtMoney(qb.cash_balance);
+  document.getElementById('cash-balance').classList.remove('skel');
+  document.getElementById('cash-runway').textContent = qb.weeks_runway + ' wks';
+  document.getElementById('cash-runway').classList.remove('skel');
+
+  const statusEl = document.getElementById('cash-status');
+  statusEl.textContent = qb.status;
+  statusEl.classList.remove('skel');
+  const chipParent = statusEl.closest('.chip');
+  chipParent.className = 'chip ' + (qb.status === 'RED' ? 'r2' : qb.status === 'YELLOW' ? 'a' : 'g');
+
+  if (qb.status === 'RED'){
+    const insightEl = document.getElementById('cash-insight');
+    insightEl.style.display = 'block';
+    insightEl.className = 'insight warn';
+    insightEl.innerHTML = `<b>Cash below the $25K floor.</b> Review marketing spend and upcoming production commitments.`;
+  }
+}
+
+// ------------------------------------------------------------
+// SECTION 3 — RETURNS (live, from amazon_data.json)
+// ------------------------------------------------------------
+function renderReturns(amazon){
+  if (!amazon || !amazon.returns){
+    setBadgeError('badge-returns', 'No data');
+    return;
+  }
+  const r = amazon.returns;
+  document.getElementById('return-rate').textContent = fmtPct(r.rate);
+  document.getElementById('return-rate').classList.remove('skel');
+  document.getElementById('critical-review-rate').textContent = fmtPct(r.critical_review_rate);
+  document.getElementById('critical-review-rate').classList.remove('skel');
+  document.getElementById('avg-rating').textContent = r.avg_rating ? r.avg_rating.toFixed(1) + ' ★' : '—';
+  document.getElementById('avg-rating').classList.remove('skel');
+}
+
+// ------------------------------------------------------------
+// SECTIONS 4-7 — MANUAL SNAPSHOT (from manual_snapshot.json)
+// ------------------------------------------------------------
+function renderSnapshotSections(manual){
+  if (!manual){
+    ['badge-margin','badge-production','badge-inventory-forecast','badge-sns'].forEach(id => setBadgeError(id, 'No data yet'));
+    return;
+  }
+
+  const updatedNote = (section) => {
+    const info = manual[section] && manual[section]._meta;
+    return info ? `Last updated by ${info.updated_by} on ${info.updated_date}` : 'Not yet set';
+  };
+
+  // Section 4: Margin chips
+  if (manual.margin && manual.margin.skus){
+    document.getElementById('margin-updated-note').textContent = updatedNote('margin');
+    const chipsHtml = manual.margin.skus.map(s => {
+      const cls = s.margin_pct >= 40 ? 'g' : s.margin_pct >= 25 ? 'a' : 'r2';
+      return `<div class="chip ${cls}"><div class="cname">${s.name}</div>
+        <div class="cval num">${fmtMoney(s.profit_per_unit, 2)}</div>
+        <div><span class="cmar num">${fmtPct(s.margin_pct,0)} margin</span></div>
+        <div class="cunit">on ${fmtMoney(s.price,2)} price</div></div>`;
+    }).join('');
+    document.getElementById('margin-chips').innerHTML = chipsHtml;
+  }
+
+  // Section 5: Production
+  if (manual.production){
+    document.getElementById('production-updated-note').textContent = updatedNote('production');
+    document.getElementById('production-content').innerHTML =
+      `<div class="stacklabel" style="font-size:12.5px;color:var(--ink2);margin-bottom:10px">
+        Still owed: <b class="num">${fmtMoney(manual.production.total_owed)}</b>
+        (${fmtMoney(manual.production.due_now)} due now)
+      </div>`;
+  }
+
+  // Section 6: Inventory forecast
+  if (manual.inventory_forecast){
+    document.getElementById('inventory-forecast-updated-note').textContent = updatedNote('inventory_forecast');
+    document.getElementById('inventory-forecast-content').innerHTML =
+      `<div class="stacklabel" style="font-size:12.5px;color:var(--ink2)">
+        Total units on hand climbs to <b class="num">${manual.inventory_forecast.year_end_units ? manual.inventory_forecast.year_end_units.toLocaleString() : '—'}</b> by December.
+      </div>`;
+  }
+
+  // Section 7: S&S
+  if (manual.subscribe_save){
+    document.getElementById('sns-updated-note').textContent = updatedNote('subscribe_save');
+    document.getElementById('sns-content').innerHTML =
+      `<div class="chips">
+        <div class="chip"><div class="cname">S&amp;S % of Sales</div><div class="cval num">${fmtPct(manual.subscribe_save.pct_of_sales)}</div><div class="cunit">target 5-10%</div></div>
+      </div>`;
+  }
+}
+
+// ------------------------------------------------------------
+// MAIN
+// ------------------------------------------------------------
+async function loadDashboard(){
+  const [connectors, amazon, manual] = await Promise.all([
+    fetchJSON(DATA_URLS.connectors),
+    fetchJSON(DATA_URLS.amazon),
+    fetchJSON(DATA_URLS.manual)
+  ]);
+
+  renderKPIStrip(connectors, amazon);
+  renderSales(amazon);
+  renderCash(connectors);
+  renderReturns(amazon);
+  renderSnapshotSections(manual);
+
+  const timestamps = [connectors && connectors.last_updated, amazon && amazon.last_updated]
+    .filter(Boolean).sort().reverse();
+  document.getElementById('global-updated').textContent =
+    timestamps.length ? 'Updated ' + timeAgo(timestamps[0]) : 'Waiting for first data push';
+}
+
+loadDashboard();
+</script>
+</body>
+</html>
