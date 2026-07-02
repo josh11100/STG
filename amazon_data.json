@@ -1,0 +1,52 @@
+{
+  "last_updated": "2026-07-02T07:00:00-07:00",
+  "sales_yesterday": {
+    "total": 908.93,
+    "aov": 19.34,
+    "vs_7day_pct": -56
+  },
+  "sales_by_sku": [
+    {
+      "name": "8oz Emergency Dematter",
+      "tag": "RESCUE · hero",
+      "revenue": 197240,
+      "units": 8690
+    },
+    {
+      "name": "Rake Brush",
+      "tag": "companion tool",
+      "revenue": 20346,
+      "units": 1389
+    },
+    {
+      "name": "12oz Detangling Treatment",
+      "tag": "ROUTINE",
+      "revenue": 9929,
+      "units": 556
+    },
+    {
+      "name": "16oz 4-in-1 Shampoo",
+      "tag": "BATH DAY",
+      "revenue": 8382,
+      "units": 425
+    },
+    {
+      "name": "Pin Brush",
+      "tag": "companion tool",
+      "revenue": 8008,
+      "units": 420
+    },
+    {
+      "name": "Slicker Brush",
+      "tag": "companion tool",
+      "revenue": 3609,
+      "units": 205
+    }
+  ],
+  "sales_insight": "One product carries the store — <b>Dematter is 74.2% of revenue</b>. Growing the next tier (Rake, Detangling) is the way to cut single-product concentration risk.",
+  "returns": {
+    "rate": 3.47,
+    "critical_review_rate": 14.1,
+    "avg_rating": 4.3
+  }
+}
