@@ -1,0 +1,18 @@
+{
+  "last_updated": "2026-07-02T14:00:00-07:00",
+  "quickbooks": {
+    "cash_balance": 45230,
+    "weeks_runway": 18,
+    "status": "GREEN"
+  },
+  "klaviyo": {
+    "avg_open_rate": 22.4,
+    "avg_click_rate": 3.1,
+    "flows_flagged": []
+  },
+  "shopify": {
+    "yesterday_sales": 150.92,
+    "aov": 37.73,
+    "vs_7day_avg_pct": -12
+  }
+}
