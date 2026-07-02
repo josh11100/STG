@@ -1,0 +1,11 @@
+async function loadDashboardData() {
+  const res = await fetch('data/connectors_data.json?t=' + Date.now());
+  const data = await res.json();
+  
+  document.getElementById('cash-balance').textContent = 
+    '$' + data.quickbooks.cash_balance.toLocaleString();
+  document.getElementById('weeks-runway').textContent = 
+    data.quickbooks.weeks_runway + ' weeks';
+  // ...populate every KPI card the same way
+}
+loadDashboardData();
