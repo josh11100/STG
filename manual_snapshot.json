@@ -1,0 +1,69 @@
+{
+  "_instructions": "This file is edited manually — not by any automated pipeline. Update the values below whenever there's a fresh COGS export, production schedule, or S&S report. Update the _meta block for each section (updated_by, updated_date) whenever you change its numbers, so the dashboard shows an accurate 'last updated' note.",
+  "margin": {
+    "_meta": {
+      "updated_by": "Patrick",
+      "updated_date": "2026-06-19"
+    },
+    "skus": [
+      {
+        "name": "8oz Emergency Dematter",
+        "profit_per_unit": 11.11,
+        "margin_pct": 48,
+        "price": 22.99
+      },
+      {
+        "name": "Pin Brush",
+        "profit_per_unit": 7.67,
+        "margin_pct": 38,
+        "price": 19.99
+      },
+      {
+        "name": "12oz Detangling Treatment",
+        "profit_per_unit": 6.64,
+        "margin_pct": 35,
+        "price": 18.99
+      },
+      {
+        "name": "16oz 4-in-1 Shampoo",
+        "profit_per_unit": 5.33,
+        "margin_pct": 27,
+        "price": 19.99
+      },
+      {
+        "name": "Rake Brush",
+        "profit_per_unit": 4.81,
+        "margin_pct": 32,
+        "price": 14.99
+      },
+      {
+        "name": "Slicker Brush",
+        "profit_per_unit": 4.45,
+        "margin_pct": 25,
+        "price": 17.99
+      }
+    ]
+  },
+  "production": {
+    "_meta": {
+      "updated_by": "Will",
+      "updated_date": "2026-06-19"
+    },
+    "total_owed": 230000,
+    "due_now": 7500
+  },
+  "inventory_forecast": {
+    "_meta": {
+      "updated_by": "Josh",
+      "updated_date": "2026-06-19"
+    },
+    "year_end_units": 115812
+  },
+  "subscribe_save": {
+    "_meta": {
+      "updated_by": "Will",
+      "updated_date": "2026-06-20"
+    },
+    "pct_of_sales": 1.8
+  }
+}
