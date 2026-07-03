@@ -2,513 +2,608 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Skip the Groomer — Business Performance Snapshot</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>STG · JARVIS Morning Dashboard</title>
 <style>
-  :root{
-    --ink:#16242e; --ink2:#41525e; --muted:#7c8b95;
-    --bg:#eef1ee; --card:#ffffff; --line:#e4e9e6;
-    --brand:#127a5b; --brand2:#1aa074; --brandSoft:#e3f3ec;
-    --navy:#13384a; --navy2:#1d566f;
-    --good:#1f9d6b; --goodSoft:#e2f4ec;
-    --amber:#e8932b; --amberSoft:#fcefdc;
-    --red:#d6503c; --redSoft:#fbe6e1;
-    --units:#88a7b4;
-    --shadow:0 1px 2px rgba(16,36,46,.04), 0 8px 24px rgba(16,36,46,.07);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.45;
-    -webkit-font-smoothing:antialiased; padding:28px 16px 60px;
-  }
-  .wrap{max-width:1080px;margin:0 auto}
-  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#0f1822;color:#cfdae3;min-height:100vh;}
 
-  /* HEADER */
-  .hero{background:linear-gradient(135deg,var(--navy) 0%,#0f2f3f 55%,#0d4a3a 130%);
-    color:#fff;border-radius:20px;padding:30px 34px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
-  .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--brand2)}
-  .hero h1{font-size:30px;font-weight:800;letter-spacing:-.5px;margin:6px 0 4px}
-  .hero .sub{color:#c9d8de;font-size:14.5px;max-width:680px}
-  .hero-row{display:flex;align-items:center;justify-content:space-between;gap:22px;position:relative;z-index:2;flex-wrap:wrap}
+/* ── TOPBAR ── */
+.topbar{background:#15212E;padding:14px 22px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.4);}
+.logo-box{background:#F57E26;color:#fff;font-size:13px;font-weight:800;letter-spacing:.5px;padding:7px 13px;border-radius:7px;flex-shrink:0;}
+.topbar-titles{display:flex;flex-direction:column;gap:2px;}
+.topbar-sub{font-size:11px;color:#7fd1c4;text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+.topbar-title{font-size:16px;font-weight:700;color:#fff;letter-spacing:.3px;}
+.topbar-meta{margin-left:auto;font-size:11px;color:#9fb0bf;text-align:right;line-height:1.7;}
+.topbar-updated{color:#7fd1c4;font-weight:600;}
+.menu-btn{background:#F57E26;color:#fff;border:none;border-radius:7px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.5px;margin-left:auto;display:none;}
+.refresh-btn{background:transparent;color:#7fd1c4;border:1px solid #2f4150;border-radius:7px;padding:7px 12px;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:background .15s;}
+.refresh-btn:hover{background:#243341;}
 
-  /* LIVE / SNAPSHOT status pill */
-  .status-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 13px 6px 10px;font-size:12px;font-weight:700;color:#eaf2f4}
-  .status-dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
-  .status-dot.live{background:#37e39a;box-shadow:0 0 0 3px rgba(55,227,154,.25);animation:pulse 2s infinite}
-  .status-dot.snapshot{background:#e8932b}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+/* ── LAYOUT ── */
+.layout{display:flex;min-height:calc(100vh - 71px);}
 
-  /* KPI STRIP */
-  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:14px 0 6px}
-  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 13px;box-shadow:var(--shadow)}
-  .kpi .lab{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
-  .kpi .val{font-size:23px;font-weight:800;letter-spacing:-.5px;margin-top:5px;color:var(--navy)}
-  .kpi .foot{font-size:11.5px;color:var(--ink2);margin-top:3px}
-  .kpi.accent .val{color:var(--brand)}
-  .kpi.loading .val{color:var(--muted);font-size:15px}
+/* ── SIDEBAR ── */
+.sidebar{width:230px;flex-shrink:0;background:#1a2733;overflow-y:auto;position:sticky;top:71px;max-height:calc(100vh - 71px);padding:14px 10px;transition:margin-left .25s;}
+.sidebar.hidden{margin-left:-230px;}
+.sb-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#5e7286;padding:8px 10px 5px;}
+.nav-card{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:transparent;border:none;border-radius:8px;padding:9px 11px;cursor:pointer;margin-bottom:2px;color:#cfdae3;transition:background .15s;}
+.nav-card:hover{background:#243341;}
+.nav-card.active{background:#F57E26;}
+.nav-card.active .nav-title{color:#fff;}
+.nav-card.active .nav-dot{background:rgba(255,255,255,.5)!important;box-shadow:none!important;}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:#2f4150;flex-shrink:0;transition:background .3s;}
+.nav-dot.green{background:#27ae60;}
+.nav-dot.yellow{background:#f39c12;}
+.nav-dot.red{background:#e74c3c;box-shadow:0 0 7px rgba(231,76,60,.6);animation:pulse-dot 1.5s infinite;}
+.nav-dot.grey{background:#3a5060;}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.4;}}
+.nav-title{font-size:13px;font-weight:600;line-height:1.2;}
 
-  /* SECTIONS */
-  .section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin-top:18px;box-shadow:var(--shadow)}
-  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px;flex-wrap:wrap}
-  .sec-head-left{display:flex;align-items:baseline;gap:12px}
-  .sec-no{font-size:13px;font-weight:800;color:#fff;background:var(--brand);width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-  .sec-head h2{font-size:19.5px;font-weight:800;letter-spacing:-.3px;color:var(--navy)}
-  .sec-sub{font-size:13px;color:var(--muted);margin:2px 0 18px 38px}
+/* ── CONTENT ── */
+.content{flex:1;padding:26px;min-width:0;max-width:900px;}
 
-  /* section-level data badge */
-  .databadge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
-    padding:4px 10px;border-radius:999px;white-space:nowrap}
-  .databadge.live{background:var(--goodSoft);color:#0c6b46}
-  .databadge.live .dot{width:6px;height:6px;border-radius:50%;background:var(--good)}
-  .databadge.snapshot{background:var(--amberSoft);color:#8a5410}
-  .databadge.snapshot .dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
-  .databadge.error{background:var(--redSoft);color:#9e3322}
+/* ── SECTIONS ── */
+.section{display:none;}
+.section.active{display:block;}
+.section-header{margin-bottom:20px;}
+.section-title{font-size:22px;font-weight:700;color:#e8eef3;margin-bottom:3px;}
+.section-sub{font-size:12px;color:#8499a8;}
 
-  /* insight + gap */
-  .insight{margin-top:8px;background:var(--brandSoft);border-left:4px solid var(--brand);border-radius:0 10px 10px 0;padding:11px 15px;font-size:13.5px;color:#0e3b2c}
-  .insight b{color:#0a4d39}
-  .insight.warn{background:var(--amberSoft);border-color:var(--amber);color:#6b4410}
-  .insight.warn b{color:#7a4906}
-  .gap{margin-top:14px;border:1px dashed #c3cdd6;background:#f7f9fa;border-radius:10px;padding:11px 14px;font-size:12.5px;color:var(--ink2)}
-  .gap b{color:var(--navy)}
-  .gap .lab{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#8b97a0;display:block;margin-bottom:3px}
+/* ── CARDS ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-bottom:20px;}
+.card{background:#1a2733;border-radius:12px;padding:18px 20px;border:1px solid #243341;}
+.card.wide{grid-column:1/-1;}
+.card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#5e7286;margin-bottom:8px;}
+.card-value{font-size:26px;font-weight:700;color:#e8eef3;line-height:1.2;margin-bottom:3px;}
+.card-sub{font-size:12px;color:#8499a8;margin-top:2px;}
 
-  /* SALES TABLE-BARS */
-  .s-head,.s-row{display:grid;grid-template-columns:165px 1fr 92px 60px 66px;gap:12px;align-items:center}
-  .s-head{margin-bottom:6px;padding-bottom:6px;border-bottom:2px solid var(--line)}
-  .s-head div{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700}
-  .s-head .r{text-align:right}
-  .s-row{padding:8px 0;border-bottom:1px solid var(--line)}
-  .s-name{font-size:13px;font-weight:700;color:var(--ink)}
-  .s-name span{display:block;font-size:10.5px;font-weight:500;color:var(--muted)}
-  .s-bar{background:#eef2f0;border-radius:7px;height:22px;overflow:hidden}
-  .s-fill{height:100%;background:var(--brand);border-radius:7px;min-width:4px;transition:width .6s ease}
-  .s-rev{text-align:right;font-weight:800;font-size:13px;color:var(--navy)}
-  .s-pct{text-align:right;font-weight:800;font-size:13px;color:var(--brand)}
-  .s-units{text-align:right;font-weight:600;font-size:12.5px;color:var(--ink2)}
-  .s-row.tot{border-bottom:none;border-top:2px solid var(--line);padding-top:10px;margin-top:2px}
-  .s-row.tot .s-name{color:var(--navy);font-weight:800}
+/* ── BADGES ── */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px;margin-top:10px;}
+.badge-green{background:rgba(39,174,96,.12);color:#2ecc71;border:1px solid rgba(39,174,96,.25);}
+.badge-yellow{background:rgba(243,156,18,.12);color:#f39c12;border:1px solid rgba(243,156,18,.25);}
+.badge-red{background:rgba(231,76,60,.12);color:#e74c3c;border:1px solid rgba(231,76,60,.25);animation:pulse-badge 2s infinite;}
+.badge-grey{background:rgba(74,95,112,.18);color:#8499a8;border:1px solid rgba(74,95,112,.25);}
+@keyframes pulse-badge{0%,100%{opacity:1;}50%{opacity:.6;}}
 
-  /* generic bars (profit/inventory) */
-  .bar-row{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;margin-bottom:11px}
-  .bar-name{font-size:13.5px;font-weight:700;color:var(--ink)}
-  .bar-name span{display:block;font-size:11px;font-weight:500;color:var(--muted)}
-  .track{background:#eef2f0;border-radius:8px;height:30px;position:relative;overflow:hidden}
-  .fill{height:100%;border-radius:8px;background:var(--brand);min-width:3px;transition:width .6s ease}
-  .val-in{position:absolute;left:12px;top:0;height:30px;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--ink);white-space:nowrap}
-  .val-in .pct{color:var(--muted);font-weight:600}
+/* ── FLAG LISTS ── */
+.flag-list{list-style:none;margin-top:10px;}
+.flag-list li{font-size:12px;color:#cfdae3;padding:7px 11px;background:#243341;border-radius:7px;margin-bottom:4px;line-height:1.4;}
+.flag-list li.empty{color:#5e7286;font-style:italic;background:transparent;padding-left:0;}
 
-  /* chips */
-  .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:6px}
-  .chip{border-radius:13px;padding:14px 15px;border:1px solid var(--line);background:#fff}
-  .chip .cname{font-size:13px;font-weight:700;color:var(--ink2)}
-  .chip .cval{font-size:27px;font-weight:800;letter-spacing:-.5px;margin-top:3px}
-  .chip .cmar{font-size:12px;font-weight:700;display:inline-block;margin-top:6px;padding:3px 9px;border-radius:999px}
-  .chip .cunit{font-size:11px;color:var(--muted);margin-top:6px}
-  .g{background:var(--goodSoft);border-color:#bfe6d3}.g .cval{color:var(--good)}.g .cmar{background:#cdeede;color:#0c6b46}
-  .a{background:var(--amberSoft);border-color:#f3ddb5}.a .cval{color:#b9711a}.a .cmar{background:#f7e4c0;color:#8a5410}
-  .r2{background:var(--redSoft);border-color:#f3cabf}.r2 .cval{color:var(--red)}.r2 .cmar{background:#f7d2c8;color:#9e3322}
+/* ── ALERTS ── */
+.alert{background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.25);border-left:3px solid #e74c3c;border-radius:10px;padding:13px 16px;margin-bottom:12px;font-size:13px;color:#e8eef3;line-height:1.5;}
+.alert strong{color:#e74c3c;display:block;margin-bottom:3px;font-size:12px;text-transform:uppercase;letter-spacing:.5px;}
+.alert-note{font-size:11px;color:#8499a8;margin-top:5px;}
 
-  .footer{text-align:center;margin-top:26px;padding:18px;color:var(--muted);font-size:11.5px;line-height:1.6}
-  .footer .tag{font-weight:800;color:var(--navy);font-size:13px;margin-bottom:2px}
-  .conf{display:inline-block;margin-top:8px;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--units)}
+/* ── OVERVIEW GRID ── */
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:20px;}
+.ov-card{background:#1a2733;border-radius:10px;padding:14px 15px;border:1px solid #243341;cursor:pointer;transition:border-color .2s, transform .1s;}
+.ov-card:hover{border-color:#F57E26;transform:translateY(-1px);}
+.ov-card.red{border-left:3px solid #e74c3c;}
+.ov-card.yellow{border-left:3px solid #f39c12;}
+.ov-card.green{border-left:3px solid #27ae60;}
+.ov-card.grey{border-left:3px solid #3a5060;}
+.ov-label{font-size:10px;color:#5e7286;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.ov-value{font-size:13px;font-weight:600;color:#e8eef3;line-height:1.4;}
 
-  .skel{background:linear-gradient(90deg,#eef2f0 25%,#f6f8f7 50%,#eef2f0 75%);
-    background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:6px;color:transparent!important}
-  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* ── STATE SCREENS ── */
+.state-box{background:#1a2733;border-radius:14px;padding:50px;text-align:center;color:#5e7286;border:1px solid #243341;}
+.state-box h3{font-size:18px;color:#8499a8;margin-bottom:8px;}
+.state-box p{font-size:13px;margin-top:4px;}
+.spinner{width:34px;height:34px;border:3px solid #243341;border-top-color:#F57E26;border-radius:50%;animation:spin .75s linear infinite;margin:0 auto 18px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.retry-btn{margin-top:18px;background:#F57E26;color:#fff;border:none;padding:10px 22px;border-radius:8px;cursor:pointer;font-weight:700;font-size:13px;}
 
-  @media(max-width:860px){
-    .kpis{grid-template-columns:repeat(2,1fr)}
-    .chips{grid-template-columns:1fr}
-    .s-head,.s-row{grid-template-columns:120px 1fr 70px}
-    .s-head .r:nth-child(4),.s-head .r:nth-child(5),.s-row .s-pct,.s-row .s-units{display:none}
-  }
+/* ── DATA TABLE ── */
+.data-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px;}
+.data-table th{text-align:left;padding:8px 12px;color:#5e7286;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #243341;}
+.data-table td{padding:10px 12px;border-bottom:1px solid #1e2d3d;color:#cfdae3;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:#243341;}
+
+/* ── DIVIDER ── */
+.divider{border:none;border-top:1px solid #243341;margin:20px 0;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:820px){
+  .sidebar{position:fixed;z-index:90;top:71px;bottom:0;box-shadow:4px 0 24px rgba(0,0,0,.5);}
+  .menu-btn{display:block;}
+  .topbar-meta{display:none;}
+  .content{padding:16px;}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- HEADER -->
-  <div class="hero">
-    <div class="hero-row">
-      <div>
-        <div class="kicker">Live Team Snapshot</div>
-        <h1>Business Performance Dashboard</h1>
-        <div class="sub">Sections marked <b>Live</b> update automatically every morning. Sections marked <b>Snapshot</b> reflect the last manual update from Will or Patrick.</div>
+<!-- ── TOPBAR ── -->
+<div class="topbar">
+  <div class="logo-box">STG</div>
+  <div class="topbar-titles">
+    <div class="topbar-sub">Skip The Groomer · JARVIS</div>
+    <div class="topbar-title">Morning Dashboard</div>
+  </div>
+  <button class="refresh-btn" onclick="loadData()" style="margin-left:auto;">↻ Refresh</button>
+  <button class="menu-btn" onclick="toggleSidebar()">☰ Menu</button>
+  <div class="topbar-meta">
+    <div>Last run: <span class="topbar-updated" id="last-updated">—</span></div>
+    <div id="countdown" style="color:#5e7286;font-size:10px;"></div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- ── SIDEBAR ── -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sb-label">Dashboard</div>
+    <button class="nav-card active" id="nav-overview" onclick="show('overview')">
+      <span class="nav-dot grey" id="dot-overview"></span>
+      <span class="nav-title">Overview</span>
+    </button>
+
+    <div class="sb-label" style="margin-top:8px;">Finance</div>
+    <button class="nav-card" id="nav-quickbooks" onclick="show('quickbooks')">
+      <span class="nav-dot grey" id="dot-quickbooks"></span>
+      <span class="nav-title">QuickBooks</span>
+    </button>
+
+    <div class="sb-label" style="margin-top:8px;">Commerce</div>
+    <button class="nav-card" id="nav-shopify" onclick="show('shopify')">
+      <span class="nav-dot grey" id="dot-shopify"></span>
+      <span class="nav-title">Shopify</span>
+    </button>
+    <button class="nav-card" id="nav-klaviyo" onclick="show('klaviyo')">
+      <span class="nav-dot grey" id="dot-klaviyo"></span>
+      <span class="nav-title">Klaviyo</span>
+    </button>
+
+    <div class="sb-label" style="margin-top:8px;">Advertising</div>
+    <button class="nav-card" id="nav-amazon-ads" onclick="show('amazon-ads')">
+      <span class="nav-dot grey" id="dot-amazon-ads"></span>
+      <span class="nav-title">Amazon Ads</span>
+    </button>
+    <button class="nav-card" id="nav-amazon-sales" onclick="show('amazon-sales')">
+      <span class="nav-dot grey" id="dot-amazon-sales"></span>
+      <span class="nav-title">Amazon Sales</span>
+    </button>
+    <button class="nav-card" id="nav-google-ads" onclick="show('google-ads')">
+      <span class="nav-dot grey" id="dot-google-ads"></span>
+      <span class="nav-title">Google Ads</span>
+    </button>
+    <button class="nav-card" id="nav-meta-ads" onclick="show('meta-ads')">
+      <span class="nav-dot grey" id="dot-meta-ads"></span>
+      <span class="nav-title">Meta Ads</span>
+    </button>
+    <button class="nav-card" id="nav-helium10" onclick="show('helium10')">
+      <span class="nav-dot grey" id="dot-helium10"></span>
+      <span class="nav-title">Helium 10</span>
+    </button>
+
+    <div class="sb-label" style="margin-top:8px;">Product</div>
+    <button class="nav-card" id="nav-reviews" onclick="show('reviews')">
+      <span class="nav-dot grey" id="dot-reviews"></span>
+      <span class="nav-title">Reviews</span>
+    </button>
+  </nav>
+
+  <!-- ── CONTENT ── -->
+  <main class="content">
+
+    <!-- Loading -->
+    <div id="loading-state" class="state-box">
+      <div class="spinner"></div>
+      <h3>Loading JARVIS data…</h3>
+      <p>Fetching data/connectors_data.json</p>
+    </div>
+
+    <!-- Error -->
+    <div id="error-state" class="state-box" style="display:none;">
+      <h3>⚠️ Could not load data</h3>
+      <p id="error-msg" style="margin-top:8px;color:#e74c3c;"></p>
+      <p style="margin-top:10px;font-size:12px;">Make sure connectors_data.json exists at <code style="background:#243341;padding:2px 6px;border-radius:4px;">data/connectors_data.json</code> in this repo.</p>
+      <button class="retry-btn" onclick="loadData()">↻ Retry</button>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" style="display:none;">
+
+      <!-- OVERVIEW -->
+      <div class="section active" id="section-overview">
+        <div class="section-header">
+          <div class="section-title">Overview</div>
+          <div class="section-sub">All connectors at a glance — click any card to jump to detail</div>
+        </div>
+        <div id="alerts-area"></div>
+        <div class="overview-grid" id="overview-grid"></div>
       </div>
-      <div class="status-pill">
-        <span class="status-dot live"></span>
-        <span id="global-updated">Loading...</span>
+
+      <!-- QUICKBOOKS -->
+      <div class="section" id="section-quickbooks">
+        <div class="section-header">
+          <div class="section-title">QuickBooks</div>
+          <div class="section-sub">Cash position · P&amp;L · Runway</div>
+        </div>
+        <div class="cards" id="qb-cards"></div>
       </div>
-    </div>
-  </div>
 
-  <!-- KPI STRIP -->
-  <div class="kpis" id="kpi-strip">
-    <div class="kpi loading"><div class="lab">Cash Balance</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
-    <div class="kpi loading"><div class="lab">Weeks Runway</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
-    <div class="kpi loading"><div class="lab">Sales — Yesterday</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
-    <div class="kpi loading"><div class="lab">AOV</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
-    <div class="kpi loading"><div class="lab">Return Rate</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
-    <div class="kpi loading"><div class="lab">Cash in Inventory</div><div class="val skel">Loading</div><div class="foot skel">Loading</div></div>
-  </div>
+      <!-- SHOPIFY -->
+      <div class="section" id="section-shopify">
+        <div class="section-header">
+          <div class="section-title">Shopify</div>
+          <div class="section-sub">Yesterday's sales vs. 7-day average</div>
+        </div>
+        <div class="cards" id="shopify-cards"></div>
+      </div>
 
-  <!-- SECTION 1: SALES BY SKU — LIVE (Amazon via Supermetrics/Helium10 -> JARVIS) -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-head-left"><div class="sec-no">1</div><h2>Sales by SKU — revenue, share &amp; units</h2></div>
-      <span class="databadge live" id="badge-sales"><span class="dot"></span>Live</span>
-    </div>
-    <div class="sec-sub">Amazon Seller Central, updated every morning via JARVIS.</div>
-    <div class="s-head"><div>Product</div><div>Share of revenue</div><div class="r">Revenue</div><div class="r">% of rev</div><div class="r">Units</div></div>
-    <div id="sales-rows">
-      <div class="s-row"><div class="s-name skel">Loading product data</div><div class="s-bar"></div><div class="s-rev"></div><div class="s-pct"></div><div class="s-units"></div></div>
-    </div>
-    <div class="insight" id="sales-insight" style="display:none"></div>
-  </div>
+      <!-- KLAVIYO -->
+      <div class="section" id="section-klaviyo">
+        <div class="section-header">
+          <div class="section-title">Klaviyo</div>
+          <div class="section-sub">Email + SMS flow performance · Last 7 days</div>
+        </div>
+        <div class="cards" id="klaviyo-cards"></div>
+      </div>
 
-  <!-- SECTION 2: CASH — LIVE (QuickBooks via Routine) -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-head-left"><div class="sec-no">2</div><h2>Cash position</h2></div>
-      <span class="databadge live" id="badge-cash"><span class="dot"></span>Live</span>
-    </div>
-    <div class="sec-sub">QuickBooks, via Claude Routine — updated every morning.</div>
-    <div class="chips" id="cash-chips">
-      <div class="chip"><div class="cname">Cash Balance</div><div class="cval skel" id="cash-balance">Loading</div><div class="cunit">checking + money market</div></div>
-      <div class="chip"><div class="cname">Weeks of Runway</div><div class="cval skel" id="cash-runway">Loading</div><div class="cunit">at current burn rate</div></div>
-      <div class="chip"><div class="cname">Status</div><div class="cval skel" id="cash-status">Loading</div><div class="cunit">vs $25K floor</div></div>
-    </div>
-    <div class="insight" id="cash-insight" style="display:none"></div>
-  </div>
+      <!-- AMAZON ADS -->
+      <div class="section" id="section-amazon-ads">
+        <div class="section-header">
+          <div class="section-title">Amazon Ads</div>
+          <div class="section-sub">Spend · ROAS · ACOS per SKU · via Supermetrics</div>
+        </div>
+        <div class="cards" id="amzads-cards"></div>
+      </div>
 
-  <!-- SECTION 3: RETURNS — LIVE (Reviews sheet + Amazon Returns, once wired) -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-head-left"><div class="sec-no">3</div><h2>Returns &amp; reviews</h2></div>
-      <span class="databadge live" id="badge-returns"><span class="dot"></span>Live</span>
-    </div>
-    <div class="sec-sub">Amazon reviews sheet + returns data, updated every morning.</div>
-    <div class="chips" id="returns-chips">
-      <div class="chip"><div class="cname">Return Rate</div><div class="cval skel" id="return-rate">Loading</div><div class="cunit">365-day window</div></div>
-      <div class="chip"><div class="cname">Critical Review Rate</div><div class="cval skel" id="critical-review-rate">Loading</div><div class="cunit">1-2 star reviews</div></div>
-      <div class="chip"><div class="cname">Avg Rating</div><div class="cval skel" id="avg-rating">Loading</div><div class="cunit">across all SKUs</div></div>
-    </div>
-  </div>
+      <!-- AMAZON SALES -->
+      <div class="section" id="section-amazon-sales">
+        <div class="section-header">
+          <div class="section-title">Amazon Sales</div>
+          <div class="section-sub">Sessions · Conversion rate · Units sold · via Supermetrics</div>
+        </div>
+        <div class="cards" id="amzsales-cards"></div>
+      </div>
 
-  <!-- SECTION 4: PROFIT & MARGIN — SNAPSHOT (needs COGS sheet, not live-connectable) -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-head-left"><div class="sec-no">4</div><h2>Profit &amp; margin per SKU</h2></div>
-      <span class="databadge snapshot" id="badge-margin"><span class="dot"></span>Snapshot</span>
-    </div>
-    <div class="sec-sub" id="margin-updated-note">Requires the COGS &amp; Margins sheet — updated manually by Patrick.</div>
-    <div class="chips" id="margin-chips"></div>
-    <div class="gap"><span class="lab">Why this isn't live</span>Margin per SKU depends on the COGS &amp; Margins spreadsheet Patrick maintains — landed cost, packaging, tariffs, and freight aren't available through any connected data source. Updating this section means editing <code>data/manual_snapshot.json</code> directly, or asking Josh to update it after a fresh COGS export.</div>
-  </div>
+      <!-- GOOGLE ADS -->
+      <div class="section" id="section-google-ads">
+        <div class="section-header">
+          <div class="section-title">Google Ads</div>
+          <div class="section-sub">Spend · ROAS · Top campaigns · via Supermetrics</div>
+        </div>
+        <div class="cards" id="google-cards"></div>
+      </div>
 
-  <!-- SECTION 5: CASH — PRODUCTION SCHEDULE — SNAPSHOT -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-head-left"><div class="sec-no">5</div><h2>Owed &amp; planned production</h2></div>
-      <span class="databadge snapshot" id="badge-production"><span class="dot"></span>Snapshot</span>
-    </div>
-    <div class="sec-sub" id="production-updated-note">Requires the production plan — updated manually by Will/Patrick.</div>
-    <div id="production-content"></div>
-    <div class="gap"><span class="lab">Why this isn't live</span>Production schedule and vendor payment plans live in planning spreadsheets, not any connected system. Same update path as the margin section above.</div>
-  </div>
+      <!-- META ADS -->
+      <div class="section" id="section-meta-ads">
+        <div class="section-header">
+          <div class="section-title">Meta Ads</div>
+          <div class="section-sub">Spend · ROAS · via Meta MCP</div>
+        </div>
+        <div class="cards" id="meta-cards"></div>
+      </div>
 
-  <!-- SECTION 6: INVENTORY FORECAST — SNAPSHOT -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-head-left"><div class="sec-no">6</div><h2>Estimated inventory through year-end</h2></div>
-      <span class="databadge snapshot" id="badge-inventory-forecast"><span class="dot"></span>Snapshot</span>
-    </div>
-    <div class="sec-sub" id="inventory-forecast-updated-note">Projection model — updated manually.</div>
-    <div id="inventory-forecast-content"></div>
-  </div>
+      <!-- HELIUM 10 -->
+      <div class="section" id="section-helium10">
+        <div class="section-header">
+          <div class="section-title">Helium 10</div>
+          <div class="section-sub">Daily Profits · Keyword Tracker · via Gmail (stgbrandanalytics@gmail.com)</div>
+        </div>
+        <div class="cards" id="h10-cards"></div>
+      </div>
 
-  <!-- SECTION 7: SUBSCRIBE & SAVE — SNAPSHOT -->
-  <div class="section">
-    <div class="sec-head">
-      <div class="sec-head-left"><div class="sec-no">7</div><h2>Subscribe &amp; Save performance</h2></div>
-      <span class="databadge snapshot" id="badge-sns"><span class="dot"></span>Snapshot</span>
-    </div>
-    <div class="sec-sub" id="sns-updated-note">S&amp;S Performance report — updated manually (no live connector yet).</div>
-    <div id="sns-content"></div>
-  </div>
+      <!-- REVIEWS -->
+      <div class="section" id="section-reviews">
+        <div class="section-header">
+          <div class="section-title">Product Reviews</div>
+          <div class="section-sub">STG Weekly Review Update · Google Sheets</div>
+        </div>
+        <div class="cards" id="reviews-cards"></div>
+      </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="tag">Skip the Groomer. Keep the Love.</div>
-    <div>Demat. Detangle. Clean.</div>
-    <div style="margin-top:8px" id="footer-note">Live sections refresh automatically each morning. Snapshot sections reflect the last manual data update.</div>
-    <span class="conf">Internal — Team Use</span>
-  </div>
-
+    </div><!-- /dashboard -->
+  </main>
 </div>
 
 <script>
-// ============================================================
-// DATA LOADING
-// ============================================================
-// Live data: written daily by the Claude Routine (QuickBooks/
-// Klaviyo/Shopify) and by JARVIS/Apps Script (Amazon/Supermetrics).
-// Snapshot data: edited manually in data/manual_snapshot.json
-// whenever Will or Patrick provides updated COGS/production/S&S
-// numbers.
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
 
-const DATA_URLS = {
-  connectors: 'data/connectors_data.json',   // Routine: QuickBooks/Klaviyo/Shopify
-  amazon:     'data/amazon_data.json',       // JARVIS: Amazon sales/returns/reviews
-  manual:     'data/manual_snapshot.json'    // Manual: COGS/production/S&S/inventory forecast
-};
-
-function fmtMoney(n, decimals=0){
-  if (n === null || n === undefined || isNaN(n)) return '—';
-  return '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits:decimals, maximumFractionDigits:decimals});
+function fmtDollar(n) {
+  if (n == null) return '—';
+  return '$' + Number(n).toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 2});
 }
-function fmtPct(n, decimals=1){
-  if (n === null || n === undefined || isNaN(n)) return '—';
-  return Number(n).toFixed(decimals) + '%';
+function fmtNum(n, dec = 2) {
+  if (n == null) return '—';
+  return Number(n).toFixed(dec);
 }
-function timeAgo(isoString){
-  if (!isoString) return 'unknown';
-  const then = new Date(isoString);
-  const now = new Date();
-  const diffHrs = Math.round((now - then) / 36e5);
-  if (diffHrs < 1) return 'just now';
-  if (diffHrs === 1) return '1 hour ago';
-  if (diffHrs < 24) return diffHrs + ' hours ago';
-  const days = Math.round(diffHrs / 24);
-  return days === 1 ? '1 day ago' : days + ' days ago';
+function fmtPct(n) {
+  if (n == null) return '—';
+  return Number(n).toFixed(1) + '%';
 }
-
-async function fetchJSON(url){
-  try {
-    const res = await fetch(url + '?t=' + Date.now());
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    return await res.json();
-  } catch(e) {
-    console.warn('Failed to load', url, e);
-    return null;
-  }
+function badge(status) {
+  const s = String(status || '').toUpperCase();
+  const map = { GREEN: 'badge-green', YELLOW: 'badge-yellow', RED: 'badge-red' };
+  const cls = map[s] || 'badge-grey';
+  const dot = s === 'GREEN' ? '●' : s === 'YELLOW' ? '●' : s === 'RED' ? '●' : '○';
+  return `<span class="badge ${cls}">${dot} ${s || 'N/A'}</span>`;
 }
-
-function setBadgeError(id, label){
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.className = 'databadge error';
-  el.innerHTML = '<span class="dot"></span>' + label;
+function dotFor(status) {
+  const s = String(status || '').toUpperCase();
+  return s === 'GREEN' ? 'green' : s === 'YELLOW' ? 'yellow' : s === 'RED' ? 'red' : 'grey';
 }
-
-// ------------------------------------------------------------
-// KPI STRIP — pulls from whichever sources are available
-// ------------------------------------------------------------
-function renderKPIStrip(connectors, amazon){
-  const strip = document.getElementById('kpi-strip');
-  const cash = connectors && connectors.quickbooks;
-  const sales = amazon && amazon.sales_yesterday;
-  const returns = amazon && amazon.returns;
-
-  strip.innerHTML = `
-    <div class="kpi ${cash ? 'accent' : ''}">
-      <div class="lab">Cash Balance</div>
-      <div class="val">${cash ? fmtMoney(cash.cash_balance) : '—'}</div>
-      <div class="foot">${cash ? cash.weeks_runway + ' weeks runway' : 'awaiting data'}</div>
-    </div>
-    <div class="kpi">
-      <div class="lab">Sales — Yesterday</div>
-      <div class="val">${sales ? fmtMoney(sales.total) : '—'}</div>
-      <div class="foot">${sales && sales.vs_7day_pct !== undefined ? (sales.vs_7day_pct >= 0 ? '+' : '') + fmtPct(sales.vs_7day_pct) + ' vs 7-day avg' : 'awaiting data'}</div>
-    </div>
-    <div class="kpi">
-      <div class="lab">AOV</div>
-      <div class="val">${sales ? fmtMoney(sales.aov, 2) : '—'}</div>
-      <div class="foot">target $35+</div>
-    </div>
-    <div class="kpi ${returns ? 'accent' : ''}">
-      <div class="lab">Return Rate</div>
-      <div class="val">${returns ? fmtPct(returns.rate) : '—'}</div>
-      <div class="foot">365-day window</div>
-    </div>
-    <div class="kpi">
-      <div class="lab">Weeks Runway</div>
-      <div class="val">${cash ? cash.weeks_runway : '—'}</div>
-      <div class="foot">${cash ? cash.status : 'awaiting data'}</div>
-    </div>
-    <div class="kpi">
-      <div class="lab">Klaviyo Open Rate</div>
-      <div class="val">${connectors && connectors.klaviyo ? fmtPct(connectors.klaviyo.avg_open_rate) : '—'}</div>
-      <div class="foot">7-day average</div>
-    </div>
-  `;
-}
-
-// ------------------------------------------------------------
-// SECTION 1 — SALES BY SKU (live, from amazon_data.json)
-// ------------------------------------------------------------
-function renderSales(amazon){
-  const container = document.getElementById('sales-rows');
-  if (!amazon || !amazon.sales_by_sku || !amazon.sales_by_sku.length){
-    setBadgeError('badge-sales', 'No data');
-    container.innerHTML = '<div class="gap">Sales-by-SKU data not available yet. This populates once JARVIS pushes amazon_data.json.</div>';
-    return;
-  }
-  const rows = amazon.sales_by_sku;
-  const total = rows.reduce((s,r) => s + r.revenue, 0);
-  let html = '';
-  rows.forEach(r => {
-    const pct = total > 0 ? (r.revenue / total * 100) : 0;
-    html += `<div class="s-row">
-      <div class="s-name">${r.name}<span>${r.tag || ''}</span></div>
-      <div class="s-bar"><div class="s-fill" style="width:${pct}%"></div></div>
-      <div class="s-rev num">${fmtMoney(r.revenue)}</div>
-      <div class="s-pct num">${fmtPct(pct)}</div>
-      <div class="s-units num">${r.units.toLocaleString()}</div>
-    </div>`;
-  });
-  html += `<div class="s-row tot">
-    <div class="s-name">TOTAL</div><div class="s-bar"><div class="s-fill" style="width:100%"></div></div>
-    <div class="s-rev num">${fmtMoney(total)}</div><div class="s-pct num">100%</div>
-    <div class="s-units num">${rows.reduce((s,r)=>s+r.units,0).toLocaleString()}</div>
+function card(label, value, sub, extra) {
+  return `<div class="card">
+    <div class="card-label">${label}</div>
+    <div class="card-value">${value}</div>
+    ${sub ? `<div class="card-sub">${sub}</div>` : ''}
+    ${extra || ''}
   </div>`;
-  container.innerHTML = html;
+}
+function wideCard(label, inner) {
+  return `<div class="card wide">
+    <div class="card-label">${label}</div>
+    ${inner}
+  </div>`;
+}
+function flags(arr, empty) {
+  if (!arr || arr.length === 0)
+    return `<ul class="flag-list"><li class="empty">${empty || 'None'}</li></ul>`;
+  return `<ul class="flag-list">${arr.map(f => `<li>${f}</li>`).join('')}</ul>`;
+}
+function inlineBadge(ok, okTxt, badTxt) {
+  return ok
+    ? `<span class="badge badge-green">● ${okTxt}</span>`
+    : `<span class="badge badge-red">● ${badTxt}</span>`;
+}
 
-  if (amazon.sales_insight){
-    const insightEl = document.getElementById('sales-insight');
-    insightEl.style.display = 'block';
-    insightEl.innerHTML = amazon.sales_insight;
+// ─── NAV ──────────────────────────────────────────────────────────────────────
+let active = 'overview';
+
+function show(key) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-card').forEach(n => n.classList.remove('active'));
+  const sec = $('section-' + key);
+  const nav = $('nav-' + key);
+  if (sec) sec.classList.add('active');
+  if (nav) nav.classList.add('active');
+  active = key;
+  if (window.innerWidth <= 820) $('sidebar').classList.add('hidden');
+}
+
+function toggleSidebar() { $('sidebar').classList.toggle('hidden'); }
+
+// ─── LOAD ─────────────────────────────────────────────────────────────────────
+const DATA_URL = './data/connectors_data.json';
+const REFRESH_MS = 5 * 60 * 1000;
+let countdownId, secondsLeft;
+
+async function loadData() {
+  $('loading-state').style.display = 'block';
+  $('error-state').style.display   = 'none';
+  $('dashboard').style.display     = 'none';
+  try {
+    const res = await fetch(DATA_URL + '?_=' + Date.now());
+    if (!res.ok) throw new Error(`HTTP ${res.status} — ${res.statusText}`);
+    const data = await res.json();
+    render(data);
+    startCountdown();
+  } catch (err) {
+    $('loading-state').style.display = 'none';
+    $('error-state').style.display   = 'block';
+    $('error-msg').textContent = err.message;
   }
 }
 
-// ------------------------------------------------------------
-// SECTION 2 — CASH (live, from connectors_data.json)
-// ------------------------------------------------------------
-function renderCash(connectors){
-  if (!connectors || !connectors.quickbooks){
-    setBadgeError('badge-cash', 'No data');
-    return;
-  }
-  const qb = connectors.quickbooks;
-  document.getElementById('cash-balance').textContent = fmtMoney(qb.cash_balance);
-  document.getElementById('cash-balance').classList.remove('skel');
-  document.getElementById('cash-runway').textContent = qb.weeks_runway + ' wks';
-  document.getElementById('cash-runway').classList.remove('skel');
-
-  const statusEl = document.getElementById('cash-status');
-  statusEl.textContent = qb.status;
-  statusEl.classList.remove('skel');
-  const chipParent = statusEl.closest('.chip');
-  chipParent.className = 'chip ' + (qb.status === 'RED' ? 'r2' : qb.status === 'YELLOW' ? 'a' : 'g');
-
-  if (qb.status === 'RED'){
-    const insightEl = document.getElementById('cash-insight');
-    insightEl.style.display = 'block';
-    insightEl.className = 'insight warn';
-    insightEl.innerHTML = `<b>Cash below the $25K floor.</b> Review marketing spend and upcoming production commitments.`;
-  }
+function startCountdown() {
+  clearInterval(countdownId);
+  secondsLeft = REFRESH_MS / 1000;
+  countdownId = setInterval(() => {
+    secondsLeft--;
+    const m = Math.floor(secondsLeft / 60);
+    const s = String(secondsLeft % 60).padStart(2, '0');
+    $('countdown').textContent = `Auto-refresh in ${m}:${s}`;
+    if (secondsLeft <= 0) { clearInterval(countdownId); loadData(); }
+  }, 1000);
 }
 
-// ------------------------------------------------------------
-// SECTION 3 — RETURNS (live, from amazon_data.json)
-// ------------------------------------------------------------
-function renderReturns(amazon){
-  if (!amazon || !amazon.returns){
-    setBadgeError('badge-returns', 'No data');
-    return;
-  }
-  const r = amazon.returns;
-  document.getElementById('return-rate').textContent = fmtPct(r.rate);
-  document.getElementById('return-rate').classList.remove('skel');
-  document.getElementById('critical-review-rate').textContent = fmtPct(r.critical_review_rate);
-  document.getElementById('critical-review-rate').classList.remove('skel');
-  document.getElementById('avg-rating').textContent = r.avg_rating ? r.avg_rating.toFixed(1) + ' ★' : '—';
-  document.getElementById('avg-rating').classList.remove('skel');
-}
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function render(d) {
+  $('loading-state').style.display = 'none';
+  $('dashboard').style.display     = 'block';
+  $('last-updated').textContent    = d.last_updated || '—';
 
-// ------------------------------------------------------------
-// SECTIONS 4-7 — MANUAL SNAPSHOT (from manual_snapshot.json)
-// ------------------------------------------------------------
-function renderSnapshotSections(manual){
-  if (!manual){
-    ['badge-margin','badge-production','badge-inventory-forecast','badge-sns'].forEach(id => setBadgeError(id, 'No data yet'));
-    return;
-  }
+  const qbStatus  = d.quickbooks?.status;
+  const smStatus  = d.supermetrics?.status;
+  const rvStatus  = d.reviews?.status;
+  const klStatus  = (d.klaviyo?.flows_flagged?.length > 0) ? 'YELLOW' : 'GREEN';
+  const shStatus  = ((d.shopify?.aov || 99) < 35 || (d.shopify?.vs_7day_avg_pct || 0) < -20) ? 'RED' : 'GREEN';
+  const metaStatus = d.meta_ads?.available ? 'GREEN' : 'GREY';
+  const h10Status  = (d.helium10?.flags?.length > 0) ? 'YELLOW' : 'GREEN';
 
-  const updatedNote = (section) => {
-    const info = manual[section] && manual[section]._meta;
-    return info ? `Last updated by ${info.updated_by} on ${info.updated_date}` : 'Not yet set';
+  const statuses = {
+    overview: null,
+    quickbooks: qbStatus,
+    shopify: shStatus,
+    klaviyo: klStatus,
+    'amazon-ads':   smStatus,
+    'amazon-sales': smStatus,
+    'google-ads':   smStatus,
+    'meta-ads':     metaStatus,
+    helium10: h10Status,
+    reviews: rvStatus,
   };
 
-  // Section 4: Margin chips
-  if (manual.margin && manual.margin.skus){
-    document.getElementById('margin-updated-note').textContent = updatedNote('margin');
-    const chipsHtml = manual.margin.skus.map(s => {
-      const cls = s.margin_pct >= 40 ? 'g' : s.margin_pct >= 25 ? 'a' : 'r2';
-      return `<div class="chip ${cls}"><div class="cname">${s.name}</div>
-        <div class="cval num">${fmtMoney(s.profit_per_unit, 2)}</div>
-        <div><span class="cmar num">${fmtPct(s.margin_pct,0)} margin</span></div>
-        <div class="cunit">on ${fmtMoney(s.price,2)} price</div></div>`;
-    }).join('');
-    document.getElementById('margin-chips').innerHTML = chipsHtml;
-  }
+  // Update sidebar dots
+  Object.entries(statuses).forEach(([k, v]) => {
+    const dot = $('dot-' + k);
+    if (dot) dot.className = 'nav-dot ' + dotFor(v);
+  });
 
-  // Section 5: Production
-  if (manual.production){
-    document.getElementById('production-updated-note').textContent = updatedNote('production');
-    document.getElementById('production-content').innerHTML =
-      `<div class="stacklabel" style="font-size:12.5px;color:var(--ink2);margin-bottom:10px">
-        Still owed: <b class="num">${fmtMoney(manual.production.total_owed)}</b>
-        (${fmtMoney(manual.production.due_now)} due now)
-      </div>`;
-  }
-
-  // Section 6: Inventory forecast
-  if (manual.inventory_forecast){
-    document.getElementById('inventory-forecast-updated-note').textContent = updatedNote('inventory_forecast');
-    document.getElementById('inventory-forecast-content').innerHTML =
-      `<div class="stacklabel" style="font-size:12.5px;color:var(--ink2)">
-        Total units on hand climbs to <b class="num">${manual.inventory_forecast.year_end_units ? manual.inventory_forecast.year_end_units.toLocaleString() : '—'}</b> by December.
-      </div>`;
-  }
-
-  // Section 7: S&S
-  if (manual.subscribe_save){
-    document.getElementById('sns-updated-note').textContent = updatedNote('subscribe_save');
-    document.getElementById('sns-content').innerHTML =
-      `<div class="chips">
-        <div class="chip"><div class="cname">S&amp;S % of Sales</div><div class="cval num">${fmtPct(manual.subscribe_save.pct_of_sales)}</div><div class="cunit">target 5-10%</div></div>
-      </div>`;
-  }
+  renderOverview(d, statuses);
+  renderQuickbooks(d.quickbooks || {});
+  renderShopify(d.shopify || {});
+  renderKlaviyo(d.klaviyo || {});
+  renderAmzAds(d.supermetrics?.amazon_ads || {}, smStatus);
+  renderAmzSales(d.supermetrics?.amazon_sales || {}, smStatus);
+  renderGoogle(d.supermetrics?.google_ads || {}, smStatus);
+  renderMeta(d.meta_ads || {});
+  renderHelium10(d.helium10 || {});
+  renderReviews(d.reviews || {});
 }
 
-// ------------------------------------------------------------
-// MAIN
-// ------------------------------------------------------------
-async function loadDashboard(){
-  const [connectors, amazon, manual] = await Promise.all([
-    fetchJSON(DATA_URLS.connectors),
-    fetchJSON(DATA_URLS.amazon),
-    fetchJSON(DATA_URLS.manual)
-  ]);
+// OVERVIEW
+function renderOverview(d, statuses) {
+  const navLabels = {
+    quickbooks: 'QuickBooks', shopify: 'Shopify', klaviyo: 'Klaviyo',
+    'amazon-ads': 'Amazon Ads', 'amazon-sales': 'Amazon Sales',
+    'google-ads': 'Google Ads', 'meta-ads': 'Meta Ads',
+    helium10: 'Helium 10', reviews: 'Reviews',
+  };
+  const summaries = {
+    quickbooks:     d.quickbooks ? `${fmtDollar(d.quickbooks.cash_balance)} cash · ${fmtNum(d.quickbooks.weeks_runway,1)}w runway` : 'No data',
+    shopify:        d.shopify ? `${fmtDollar(d.shopify.yesterday_sales)} sales · AOV ${fmtDollar(d.shopify.aov)}` : 'No data',
+    klaviyo:        d.klaviyo ? `${fmtPct(d.klaviyo.avg_open_rate)} open · ${fmtPct(d.klaviyo.avg_click_rate)} click` : 'No data',
+    'amazon-ads':   d.supermetrics?.amazon_ads?.spend != null ? `${fmtDollar(d.supermetrics.amazon_ads.spend)} spend · ${fmtNum(d.supermetrics.amazon_ads.roas,2)}x ROAS` : 'No data / timeout',
+    'amazon-sales': d.supermetrics?.amazon_sales?.sessions != null ? `${(d.supermetrics.amazon_sales.sessions||0).toLocaleString()} sessions · ${fmtPct(d.supermetrics.amazon_sales.conversion_rate)} CVR` : 'No data / timeout',
+    'google-ads':   d.supermetrics?.google_ads?.spend != null ? `${fmtDollar(d.supermetrics.google_ads.spend)} spend · ${fmtNum(d.supermetrics.google_ads.roas,2)}x ROAS` : 'LICENSE error — check Supermetrics plan',
+    'meta-ads':     d.meta_ads?.available ? `${fmtDollar(d.meta_ads.spend)} spend · ${fmtNum(d.meta_ads.roas,2)}x ROAS` : 'Pending Meta rollout',
+    helium10:       d.helium10 ? `${(d.helium10.reports_found||[]).length} report(s) found` : 'No data',
+    reviews:        d.reviews?.new_review_count != null ? `${d.reviews.new_review_count} new · ${fmtNum(d.reviews.avg_rating_new_batch,1)}★ avg` : 'No data',
+  };
 
-  renderKPIStrip(connectors, amazon);
-  renderSales(amazon);
-  renderCash(connectors);
-  renderReturns(amazon);
-  renderSnapshotSections(manual);
+  // Alerts
+  const alerts = [];
+  if (String(d.quickbooks?.status||'').toUpperCase() === 'RED')
+    alerts.push(['Cash below $25K', `QuickBooks cash balance is ${fmtDollar(d.quickbooks?.cash_balance)} — below the $25,000 red-line threshold.`]);
+  if ((d.shopify?.aov||99) < 35)
+    alerts.push(['Shopify AOV below target', `AOV is ${fmtDollar(d.shopify?.aov)}, below the $35 target.`]);
+  if ((d.shopify?.vs_7day_avg_pct||0) < -20)
+    alerts.push(['Shopify sales drop', `Sales are ${Math.abs(d.shopify?.vs_7day_avg_pct).toFixed(1)}% below the 7-day average.`]);
+  if (String(d.reviews?.status||'').toUpperCase() === 'RED')
+    alerts.push(['Review alert', `Avg rating ${fmtNum(d.reviews?.avg_rating_new_batch,1)}★ or 3+ new 1-2★ reviews in the latest batch.`]);
+  if ((d.supermetrics?.amazon_ads?.flagged_skus||[]).length > 0)
+    alerts.push(['Amazon ROAS band breach', `${d.supermetrics.amazon_ads.flagged_skus.length} SKU(s) outside locked ROAS band: ${d.supermetrics.amazon_ads.flagged_skus.join(', ')}.`]);
 
-  const timestamps = [connectors && connectors.last_updated, amazon && amazon.last_updated]
-    .filter(Boolean).sort().reverse();
-  document.getElementById('global-updated').textContent =
-    timestamps.length ? 'Updated ' + timeAgo(timestamps[0]) : 'Waiting for first data push';
+  $('alerts-area').innerHTML = alerts.map(([title, msg]) =>
+    `<div class="alert"><strong>🔴 ${title}</strong>${msg}<div class="alert-note">Recommended action flagged in Slack — awaiting approval before any changes.</div></div>`
+  ).join('');
+
+  $('overview-grid').innerHTML = Object.entries(navLabels).map(([key, label]) => {
+    const s = String(statuses[key]||'GREY').toUpperCase();
+    const sc = s === 'GREEN' ? 'green' : s === 'YELLOW' ? 'yellow' : s === 'RED' ? 'red' : 'grey';
+    return `<div class="ov-card ${sc}" onclick="show('${key}')">
+      <div class="ov-label">${label}</div>
+      <div class="ov-value">${summaries[key]}</div>
+      <div style="margin-top:8px;">${badge(s)}</div>
+    </div>`;
+  }).join('');
 }
 
-loadDashboard();
+// QUICKBOOKS
+function renderQuickbooks(qb) {
+  const runway = qb.weeks_runway;
+  const low = qb.cash_balance != null && qb.cash_balance < 25000;
+  $('qb-cards').innerHTML =
+    card('Cash Balance', fmtDollar(qb.cash_balance), 'Checking + money market', low ? `<span class="badge badge-red">● BELOW $25K — RED FLAG</span>` : '') +
+    card('Weeks Runway', runway != null ? fmtNum(runway,1) + ' wks' : '—', 'Cash ÷ avg weekly burn (last 4 wks)',
+      badge(qb.status)) +
+    wideCard('Overall Status', badge(qb.status));
+}
+
+// SHOPIFY
+function renderShopify(sh) {
+  const vsAvg = sh.vs_7day_avg_pct;
+  const drop = vsAvg != null && vsAvg < -20;
+  const aovLow = (sh.aov||99) < 35;
+  $('shopify-cards').innerHTML =
+    card('Yesterday Sales', fmtDollar(sh.yesterday_sales),
+      vsAvg != null ? (vsAvg >= 0 ? '+' : '') + fmtPct(vsAvg) + ' vs 7-day avg' : '—',
+      drop ? inlineBadge(false,'','SIGNIFICANT DROP') : inlineBadge(true,'NORMAL','')) +
+    card('AOV', fmtDollar(sh.aov), 'Target: ≥ $35',
+      inlineBadge(!aovLow, 'ON TARGET', 'BELOW $35 TARGET')) +
+    card('vs 7-Day Avg', vsAvg != null ? (vsAvg >= 0 ? '+' : '') + fmtPct(vsAvg) : '—', 'Flag if > −20%',
+      inlineBadge(!drop, 'OK', 'DROP > 20%'));
+}
+
+// KLAVIYO
+function renderKlaviyo(kl) {
+  const openLow  = kl.avg_open_rate  != null && kl.avg_open_rate  < 15;
+  const clickLow = kl.avg_click_rate != null && kl.avg_click_rate < 2;
+  $('klaviyo-cards').innerHTML =
+    card('Avg Open Rate', fmtPct(kl.avg_open_rate), 'Flag if < 15%',
+      inlineBadge(!openLow, 'OK', 'BELOW 15% THRESHOLD')) +
+    card('Avg Click Rate', fmtPct(kl.avg_click_rate), 'Flag if < 2%',
+      inlineBadge(!clickLow, 'OK', 'BELOW 2% THRESHOLD')) +
+    wideCard('Flagged Flows', flags(kl.flows_flagged, 'No flows flagged — all within thresholds'));
+}
+
+// AMAZON ADS
+function renderAmzAds(aa, smStatus) {
+  const noData = aa.spend == null;
+  $('amzads-cards').innerHTML = noData
+    ? wideCard('Data Status', `<div class="card-value" style="font-size:15px;color:#8499a8;">No data — Supermetrics timeout or error</div><div class="card-sub" style="margin-top:8px;">The routine flagged this in Slack. Check Supermetrics for Amazon Ads connection or reduce the date range.</div>${badge(smStatus||'RED')}`)
+    : card('Spend', fmtDollar(aa.spend), 'Yesterday') +
+      card('ROAS', fmtNum(aa.roas,2) + 'x', 'Yesterday') +
+      wideCard('Flagged SKUs (outside ROAS band)', flags(aa.flagged_skus, 'No SKUs outside ROAS band — all within targets'));
+}
+
+// AMAZON SALES
+function renderAmzSales(as, smStatus) {
+  const noData = as.sessions == null;
+  const cvrLow = (as.conversion_rate||0) < 10;
+  $('amzsales-cards').innerHTML = noData
+    ? wideCard('Data Status', `<div class="card-value" style="font-size:15px;color:#8499a8;">No data — Supermetrics timeout or error</div><div class="card-sub" style="margin-top:8px;">The routine flagged this in Slack. Check Supermetrics for Amazon Seller Central connection.</div>${badge(smStatus||'RED')}`)
+    : card('Sessions', (as.sessions||0).toLocaleString(), 'Yesterday') +
+      card('Conversion Rate', fmtPct(as.conversion_rate), 'Flag if < 10%',
+        inlineBadge(!cvrLow, 'ON TARGET', 'BELOW 10% TARGET')) +
+      card('Units Sold', (as.units_sold||0).toLocaleString(), 'Yesterday');
+}
+
+// GOOGLE ADS
+function renderGoogle(ga, smStatus) {
+  const noData = ga.spend == null;
+  const roasLow = (ga.roas||0) < 2;
+  $('google-cards').innerHTML = noData
+    ? wideCard('Data Status', `<div class="card-value" style="font-size:15px;color:#8499a8;">LICENSE error — no data returned</div><div class="card-sub" style="margin-top:8px;">Not a Claude-side issue. Check the Supermetrics account plan — Google Ads data source may not be enabled or activated.</div>${badge(smStatus||'RED')}`)
+    : card('Spend', fmtDollar(ga.spend), 'Yesterday') +
+      card('ROAS', fmtNum(ga.roas,2) + 'x', 'Flag if < 2.0x',
+        inlineBadge(!roasLow, 'ON TARGET', 'BELOW 2.0x TARGET')) +
+      wideCard('Top Campaigns', flags(ga.top_campaigns, 'No campaign data available'));
+}
+
+// META ADS
+function renderMeta(ma) {
+  $('meta-cards').innerHTML = !ma.available
+    ? wideCard('Status', `<div class="card-value" style="font-size:15px;color:#8499a8;">Pending Meta Rollout</div>
+        <div class="card-sub" style="margin-top:8px;">Meta Ads connector is not yet live. This is expected — not a failure. Data will appear here once Meta's MCP rollout is complete for this account.</div>
+        <span class="badge badge-grey">○ NOT YET AVAILABLE</span>`)
+    : card('Spend', fmtDollar(ma.spend), 'Yesterday') +
+      card('ROAS', fmtNum(ma.roas,2) + 'x', 'Yesterday');
+}
+
+// HELIUM 10
+function renderHelium10(h10) {
+  $('h10-cards').innerHTML =
+    card('Reports Found', String((h10.reports_found||[]).length), (h10.reports_found||[]).join(', ') || 'None received') +
+    card('Data Readable', h10.data_readable ? 'Yes' : 'No',
+      h10.data_readable ? 'Inline email body — extracted' : 'Attachment only — not accessible via Gmail connector') +
+    wideCard('Flags from Reports', flags(h10.flags, 'No flags from Helium 10 reports'));
+}
+
+// REVIEWS
+function renderReviews(rv) {
+  const ratingLow = rv.avg_rating_new_batch != null && rv.avg_rating_new_batch < 3.5;
+  $('reviews-cards').innerHTML =
+    card('New Reviews', rv.new_review_count != null ? String(rv.new_review_count) : '—',
+      `Since last check: ${rv.last_reviews_check || '—'}`) +
+    card('Avg Rating (new batch)',
+      rv.avg_rating_new_batch != null ? fmtNum(rv.avg_rating_new_batch,1) + ' ★' : '—',
+      'Flag if < 3.5 or 3+ reviews at 1-2★',
+      rv.avg_rating_new_batch != null ? inlineBadge(!ratingLow, 'OK', 'BELOW 3.5 THRESHOLD') : '') +
+    card('Sheet Last Modified', rv.sheet_last_modified || '—', 'STG Weekly Review Update · Google Sheets') +
+    wideCard('Overall Status', badge(rv.status));
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+loadData();
 </script>
 </body>
 </html>
