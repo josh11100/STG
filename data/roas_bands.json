@@ -1,0 +1,102 @@
+{
+  "version": "2026-06-28 FINAL (verified COGS) — source: STG_MASTER_Consolidated docs 02 + 03",
+  "band_rule": "Green >= breakeven. Yellow = 80% of breakeven up to breakeven. Red = kill floor up to 80% of breakeven. Kill floor = higher of (55% of breakeven) or 1.0x. No ad killed in its first 3 days (learning window); kill logic activates day 4.",
+  "tacos_note": "TACOS = total ad spend / TOTAL sales (ad + organic). Target 35% for every SKU except Slicker Brush (liquidate, no ad funding). Chews: 45-55% at Sept 1 launch, ratchet to 35% steady-state. Computed on trailing 7-day window.",
+  "skus": [
+    {
+      "sku": "Emergency Dematter",
+      "asin": "B0FQL56V99",
+      "price": 22.99,
+      "amazon":  { "margin_pct": 48, "profit": 11.11, "breakeven": 2.07, "yellow_min": 1.66, "red_min": 1.14 },
+      "shopify": { "margin_pct": 55, "profit": 12.54, "breakeven": 1.83, "yellow_min": 1.47, "red_min": 1.01 },
+      "tacos_target": 35,
+      "sns": { "amazon": true, "shopify": false, "note": "Liquid consumable — Amazon S&S only" },
+      "liquidate": false,
+      "note": "Primary ad workhorse SKU"
+    },
+    {
+      "sku": "Pin Brush",
+      "asin": "B0FQDHXSZ5",
+      "price": 19.99,
+      "amazon":  { "margin_pct": 38, "profit": 7.67, "breakeven": 2.61, "yellow_min": 2.09, "red_min": 1.43 },
+      "shopify": { "margin_pct": 47, "profit": 9.32, "breakeven": 2.14, "yellow_min": 1.72, "red_min": 1.18 },
+      "tacos_target": 35,
+      "sns": { "amazon": false, "shopify": false, "note": "Durable good — never S&S" },
+      "liquidate": false
+    },
+    {
+      "sku": "Detangling Treatment",
+      "asin": "B0GV5ZFLC2",
+      "price": 18.99,
+      "amazon":  { "margin_pct": 36, "profit": 6.92, "breakeven": 2.74, "yellow_min": 2.20, "red_min": 1.51 },
+      "shopify": { "margin_pct": 45, "profit": 8.48, "breakeven": 2.24, "yellow_min": 1.79, "red_min": 1.23 },
+      "tacos_target": 35,
+      "sns": { "amazon": true, "shopify": true, "note": "Liquid consumable — both channels" },
+      "liquidate": false
+    },
+    {
+      "sku": "Rake Brush",
+      "asin": "B0FQF2VTMJ",
+      "price": 14.99,
+      "amazon":  { "margin_pct": 32, "profit": 4.81, "breakeven": 3.12, "yellow_min": 2.49, "red_min": 1.71 },
+      "shopify": { "margin_pct": 39, "profit": 5.86, "breakeven": 2.56, "yellow_min": 2.05, "red_min": 1.41 },
+      "tacos_target": 35,
+      "sns": { "amazon": false, "shopify": false, "note": "Durable good — never S&S" },
+      "liquidate": false
+    },
+    {
+      "sku": "4-in-1 Shampoo",
+      "asin": "B0FQL16GH4",
+      "price": 19.99,
+      "amazon":  { "margin_pct": 27, "profit": 5.33, "breakeven": 3.75, "yellow_min": 3.00, "red_min": 2.06 },
+      "shopify": { "margin_pct": 31, "profit": 6.11, "breakeven": 3.27, "yellow_min": 2.62, "red_min": 1.80 },
+      "tacos_target": 35,
+      "sns": { "amazon": true, "shopify": true, "note": "Liquid consumable — both channels" },
+      "liquidate": false
+    },
+    {
+      "sku": "Slicker Brush",
+      "asin": "B0FQ628KCH",
+      "price": 17.99,
+      "amazon":  { "margin_pct": 14, "profit": 2.52, "breakeven": 6.92, "yellow_min": 5.54, "red_min": 3.81 },
+      "shopify": { "margin_pct": 29, "profit": 5.30, "breakeven": 3.96, "yellow_min": 3.17, "red_min": 2.18 },
+      "tacos_target": "LIQUIDATE",
+      "sns": { "amazon": false, "shopify": false, "note": "Never S&S · no ad funding" },
+      "liquidate": true,
+      "note": "Corrected COGS $5.95 incl. freight (TACOS doc). Any ad spend > $0 = immediate flag."
+    },
+    {
+      "sku": "Skin & Coat Omega (COAT)",
+      "asin": null,
+      "price": 32.99,
+      "launch": "2026-09-01",
+      "amazon":  { "margin_pct": 42, "breakeven": 2.37, "yellow_min": 1.90, "red_min": 1.30 },
+      "shopify": { "breakeven": 1.43, "yellow_min": 1.14, "red_min": 1.00 },
+      "tacos_target": "45-55 at launch, ratchet to 35",
+      "sns": { "amazon": false, "shopify": true, "note": "Shopify subscription. No Amazon S&S at launch." },
+      "liquidate": false
+    },
+    {
+      "sku": "Calm & Relax (MIND)",
+      "asin": null,
+      "price": 32.99,
+      "launch": "2026-09-01",
+      "amazon":  { "margin_pct": 39, "breakeven": 2.55, "yellow_min": 2.04, "red_min": 1.40 },
+      "shopify": { "breakeven": 1.49, "yellow_min": 1.19, "red_min": 1.00 },
+      "tacos_target": "45-55 at launch, ratchet to 35",
+      "sns": { "amazon": false, "shopify": true, "note": "Shopify subscription. No Amazon S&S at launch." },
+      "liquidate": false
+    },
+    {
+      "sku": "Immune & Allergy (BODY)",
+      "asin": null,
+      "price": 32.99,
+      "launch": "2026-09-01",
+      "amazon":  { "margin_pct": 37, "breakeven": 2.73, "yellow_min": 2.18, "red_min": 1.50 },
+      "shopify": { "breakeven": 1.55, "yellow_min": 1.24, "red_min": 1.00 },
+      "tacos_target": "45-55 at launch, ratchet to 35",
+      "sns": { "amazon": false, "shopify": true, "note": "Shopify subscription. No Amazon S&S at launch." },
+      "liquidate": false
+    }
+  ]
+}
