@@ -1,18 +1,63 @@
 {
-  "last_updated": "2026-07-02T14:00:00-07:00",
+  "last_updated": "2026-07-05 23:41:00 PT",
   "quickbooks": {
-    "cash_balance": 45230,
-    "weeks_runway": 18,
-    "status": "GREEN"
+    "cash_balance": null,
+    "weeks_runway": null,
+    "status": "RED"
   },
   "klaviyo": {
-    "avg_open_rate": 22.4,
-    "avg_click_rate": 3.1,
-    "flows_flagged": []
+    "avg_open_rate": 55.6,
+    "avg_click_rate": 0,
+    "flows_flagged": [
+      "A | Welcome Series",
+      "Warranty Registration Confirmation",
+      "Abandoned Cart Reminder - Shopify Added to Cart Trigger"
+    ]
   },
   "shopify": {
-    "yesterday_sales": 150.92,
-    "aov": 37.73,
-    "vs_7day_avg_pct": -12
+    "yesterday_sales": null,
+    "aov": null,
+    "vs_7day_avg_pct": null
+  },
+  "helium10": {
+    "reports_found": [
+      "Daily Keyword Tracker"
+    ],
+    "data_readable": true,
+    "flags": [
+      "Daily Profits report not received in last 24-48h",
+      "'slicker brush for dogs' organic rank dropped 3 spots to 102",
+      "'dog slicker brushes for grooming' organic rank dropped 4 spots to 130"
+    ]
+  },
+  "supermetrics": {
+    "amazon_ads": {
+      "spend": null,
+      "roas": null,
+      "flagged_skus": []
+    },
+    "amazon_sales": {
+      "sessions": 0,
+      "conversion_rate": 0,
+      "units_sold": 87
+    },
+    "google_ads": {
+      "spend": null,
+      "roas": null,
+      "top_campaigns": []
+    },
+    "status": "RED"
+  },
+  "meta_ads": {
+    "available": false,
+    "spend": null,
+    "roas": null
+  },
+  "reviews": {
+    "last_reviews_check": "2026-07-06",
+    "sheet_last_modified": "2026-07-02",
+    "new_review_count": 0,
+    "avg_rating_new_batch": null,
+    "status": "GREEN"
   }
 }
