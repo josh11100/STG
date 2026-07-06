@@ -431,14 +431,33 @@ function render(d){
   statusTag($('qb-tag'), qb.cash_balance == null && !qb.status ? null : qb.status);
   dot('dot-quickbooks', qb.status);
   const qbLow = qb.cash_balance != null && qb.cash_balance < 25000;
+  const mtd = qb.mtd || {};
+  const mtdNeg = mtd.net_income != null && mtd.net_income < 0;
   $('qb-cards').innerHTML =
     card('Cash Balance (Chk + MM)', fmtDollar(qb.cash_balance), 'Checking + money market combined', qbLow?'bdr-red':qb.cash_balance!=null?'bdr-green':'bdr-grey', qbLow?'down':'') +
-    card('Weeks of Runway', fmtNum(qb.weeks_runway,1), 'Cash ÷ avg weekly burn (last 4 wks)', qb.weeks_runway!=null && qb.weeks_runway<8?'bdr-amber':qb.weeks_runway!=null?'bdr-teal':'bdr-grey') +
-    card('Status', qb.status ? esc(qb.status) : null, 'RED if checking under $25,000', qb.status==='RED'?'bdr-red':qb.status==='GREEN'?'bdr-green':'bdr-grey', qb.status==='RED'?'down':qb.status==='GREEN'?'up':'');
+    card('Weeks of Runway', fmtNum(qb.weeks_runway,1), 'Cash ÷ avg weekly burn (last 4 wks)', qb.weeks_runway!=null&&qb.weeks_runway<8?'bdr-amber':qb.weeks_runway!=null?'bdr-teal':'bdr-grey') +
+    card('Accounts Payable', fmtDollar(qb.accounts_payable), 'Owed to vendors right now', qb.accounts_payable!=null&&qb.accounts_payable>50000?'bdr-amber':'bdr-grey') +
+    card('Accounts Receivable', fmtDollar(qb.accounts_receivable), 'Owed to STG', 'bdr-teal');
   $('qb-alerts').innerHTML =
-    (qb.status==='RED' && qb.cash_balance==null) ? alertBox('crit','<b>RED:</b> QuickBooks returned no cash data on the last run. Verify the QuickBooks connector auth in the routine, then re-run. Needs approval before any action.') :
-    qbLow ? alertBox('crit','<b>RED — cash below $25,000.</b> Recommended action posted to #stg-finance-alerts; requires "approved" reply before anything executes.') :
+    (qb.status==='RED' && qb.cash_balance==null) ? alertBox('crit','<b>RED:</b> QuickBooks returned no cash data. Verify connector auth then re-run.') :
+    qbLow ? alertBox('crit','<b>RED — cash below $25,000.</b> Recommended action in #stg-finance-alerts — requires "approved" reply.') :
+    mtdNeg ? alertBox('warn','<b>MTD net income is negative ('+fmtDollar(mtd.net_income)+').</b> STG is spending more than earning this month. Review with Patrick.') :
     qb.cash_balance==null ? naAlert('QuickBooks') : '';
+  // MTD P&L table
+  const qbPLHtml = mtd.revenue != null ? `
+    <div class="tbl-wrap" style="margin-top:10px;">
+      <div class="tbl-title">Month-to-date P&amp;L — ${esc(mtd.period||'')}</div>
+      <table>
+        <tbody>
+          <tr><td>Revenue</td><td class="r" style="font-weight:700;color:var(--teal);">${fmtDollar(mtd.revenue)??'--'}</td></tr>
+          <tr><td>COGS</td><td class="r" style="color:var(--red);">${mtd.cogs!=null?'-'+fmtDollar(mtd.cogs):'--'}</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td><b>Gross Profit</b></td><td class="r" style="font-weight:700;">${fmtDollar(mtd.gross_profit)??'--'} ${mtd.gross_margin_pct!=null?'<span class="pill pill-ok">'+fmtNum(mtd.gross_margin_pct,1)+'% margin</span>':''}</td></tr>
+          <tr><td>Operating Expenses</td><td class="r" style="color:var(--red);">${mtd.operating_expenses!=null?'-'+fmtDollar(mtd.operating_expenses):'--'}</td></tr>
+          <tr style="border-top:2px solid var(--border);background:var(--card2);"><td><b>Net Income</b></td><td class="r" style="font-weight:800;font-size:14px;color:${(mtd.net_income||0)<0?'var(--red)':'var(--green)'};">${fmtDollar(mtd.net_income)??'--'} ${mtd.net_margin_pct!=null?'<span class="pill '+((mtd.net_margin_pct||0)<0?'pill-crit':'pill-ok')+'">'+fmtNum(mtd.net_margin_pct,1)+'%</span>':''}</td></tr>
+        </tbody>
+      </table>
+    </div>` : alertBox('info','MTD P&L not yet in the data file — will appear after the next routine run with the v9 instructions.');
+  $('qb-alerts').innerHTML += qbPLHtml;
 
   // — Klaviyo —
   const kl = d.klaviyo || {};
@@ -446,10 +465,40 @@ function render(d){
   const klStatus = kl.avg_open_rate==null ? null : (klFlags.length ? 'YELLOW' : 'GREEN');
   statusTag($('kl-tag'), klStatus); dot('dot-klaviyo', klStatus);
   $('kl-cards').innerHTML =
-    card('Avg Open Rate', fmtPct(kl.avg_open_rate), 'Flag threshold: below 15%', kl.avg_open_rate!=null && kl.avg_open_rate<15?'bdr-red':'bdr-teal') +
-    card('Avg Click Rate', fmtPct(kl.avg_click_rate), 'Flag threshold: below 2%', kl.avg_click_rate!=null && kl.avg_click_rate<2?'bdr-amber':'bdr-teal', kl.avg_click_rate!=null && kl.avg_click_rate<2?'warn':'') +
+    card('Avg Open Rate', fmtPct(kl.avg_open_rate), 'Flag if below 15%', kl.avg_open_rate!=null&&kl.avg_open_rate<15?'bdr-red':'bdr-teal') +
+    card('Avg Click Rate', fmtPct(kl.avg_click_rate), 'Flag if below 2%', kl.avg_click_rate!=null&&kl.avg_click_rate<2?'bdr-amber':'bdr-teal', kl.avg_click_rate!=null&&kl.avg_click_rate<2?'warn':'') +
+    card('Email Revenue (7d)', fmtDollar(kl.total_email_revenue_7d), 'Total Klaviyo-attributed', kl.total_email_revenue_7d!=null&&kl.total_email_revenue_7d>0?'bdr-green':'bdr-grey', kl.total_email_revenue_7d>0?'up':'') +
     card('Flows Flagged', kl.flows_flagged ? String(klFlags.length) : null, 'Open <15% or click <2%', klFlags.length?'bdr-amber':'bdr-green');
   flagList($('kl-flags'), klFlags, 'No flows below thresholds');
+  // Per-flow breakdown table
+  const klFlows = kl.flows || [];
+  const klFlowHtml = klFlows.length ? `
+    <div class="tbl-wrap" style="margin-top:10px;">
+      <div class="tbl-title">Per-flow performance — last 7 days</div>
+      <table><thead><tr>
+        <th>Flow</th>
+        <th class="r">Recipients</th>
+        <th class="r">Open %</th>
+        <th class="r">Click %</th>
+        <th class="r">Revenue</th>
+        <th class="r">Rev / Recipient</th>
+      </tr></thead><tbody>
+      ${klFlows.map(f => {
+        const openLow = (f.open_rate_pct||0) < 15 && (f.recipients||0) >= 10;
+        const clickLow = (f.click_rate_pct||0) < 2 && (f.recipients||0) >= 10;
+        const zeroRev = f.zero_revenue_flag;
+        return '<tr>' +
+          '<td><b>' + esc(f.name||'?') + '</b>' + (f.low_volume?' <span class="pill pill-na">low vol</span>':'') + (zeroRev?' <span class="pill pill-warn">$0 ever</span>':'') + '</td>' +
+          '<td class="r">' + (fmtInt(f.recipients)??'--') + '</td>' +
+          '<td class="r"><span class="pill ' + (openLow?'pill-crit':f.open_rate_pct>=15?'pill-ok':'pill-na') + '">' + (f.open_rate_pct!=null?fmtNum(f.open_rate_pct,1)+'%':'--') + '</span></td>' +
+          '<td class="r"><span class="pill ' + (clickLow?'pill-warn':f.click_rate_pct>=2?'pill-ok':'pill-na') + '">' + (f.click_rate_pct!=null?fmtNum(f.click_rate_pct,1)+'%':'--') + '</span></td>' +
+          '<td class="r" style="font-weight:600;color:' + ((f.revenue||0)>0?'var(--green)':'var(--muted)') + ';">' + (f.revenue!=null?fmtDollar(f.revenue):'--') + '</td>' +
+          '<td class="r">' + (f.revenue_per_recipient!=null?fmtDollar(f.revenue_per_recipient):'--') + '</td>' +
+        '</tr>';
+      }).join('')}
+      </tbody></table>
+    </div>` : alertBox('info', 'Per-flow breakdown not yet in data file — will appear after next routine run with v9 instructions.');
+  $('kl-flags').insertAdjacentHTML('afterend', klFlowHtml);
 
   // — Shopify —
   const sh = d.shopify || {};
