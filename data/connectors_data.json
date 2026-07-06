@@ -1,175 +1,1051 @@
-<![CDATA[{
-  "last_updated": "2026-07-06 09:05:00 PT",
-  "quickbooks": {
-    "cash_balance": null,
-    "weeks_runway": null,
-    "status": "RED"
-  },
-  "klaviyo": {
-    "avg_open_rate": 55.6,
-    "avg_click_rate": 0,
-    "flows_flagged": [
-      "A | Welcome Series - click rate 0% (2 recipients, low volume)",
-      "Warranty Registration Confirmation - click rate 0% (3 recipients, low volume)",
-      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (2 recipients, low volume)"
-    ]
-  },
-  "shopify": {
-    "yesterday_sales": 34.18,
-    "orders": 1,
-    "aov": 34.18,
-    "vs_7day_avg_pct": 88.3
-  },
-  "helium10": {
-    "report_found": true,
-    "report_date": "2026-07-05",
-    "data_readable": true,
-    "products": [
-      {
-        "name": "Slicker Brush for Dogs, Golden...",
-        "asin": "B0FQ628KCH",
-        "keywords": [
-          { "keyword": "doodle brush", "search_volume": 8448, "organic_rank": null, "sponsored_rank": null, "organic_change_rating": 214 },
-          { "keyword": "dog slicker brushes for grooming", "search_volume": 1176, "organic_rank": 121, "sponsored_rank": null, "organic_change_rating": 19 },
-          { "keyword": "slicker brush for dogs", "search_volume": 23837, "organic_rank": 104, "sponsored_rank": null, "organic_change_rating": 12 }
-        ]
-      },
-      {
-        "name": "Skip The Groomer Detangling Spray",
-        "asin": "B0FQ4PY573",
-        "keywords": []
-      },
-      {
-        "name": "Emergency Dematter Cream for Dogs",
-        "asin": "B0FQL56V99",
-        "keywords": [
-          { "keyword": "dematting spray for dogs", "search_volume": 1862, "organic_rank": 4, "sponsored_rank": 1, "organic_change_rating": 101 },
-          { "keyword": "dog detangler", "search_volume": 2635, "organic_rank": 16, "sponsored_rank": null, "organic_change_rating": 51 },
-          { "keyword": "dematting comb for dogs", "search_volume": 8448, "organic_rank": 19, "sponsored_rank": 6, "organic_change_rating": 32 }
-        ]
-      }
-    ],
-    "flags": [
-      "No NEW 3+ spot organic rank drops today - all tracked ranks unchanged vs prior-day baseline",
-      "Slicker Brush (B0FQ628KCH) keyword 'doodle brush' organic rank still unranked (change -204) - ongoing unresolved issue, unchanged since baseline"
-    ]
-  },
-  "helium10_profits": {
-    "daily":   { "date": "2026-07-05", "gross_revenue": 1715.67, "expenses": 933.74, "net_profit": 710.94, "net_margin_pct": 41.45, "units": 87, "vs_prior_day_pct": 33 },
-    "weekly":  { "period": "Jun 29 - Jul 5", "gross_revenue": 10562.00, "expenses": 8768.85, "net_profit": 741.98, "net_margin_pct": 7.02, "units": 517, "vs_prior_week_pct": -14 },
-    "monthly": { "period": "Jun 1 - Jun 30", "gross_revenue": 49883.25, "expenses": 49002.70, "net_profit": -1730.10, "net_margin_pct": -3.47, "units": 2623, "vs_prior_month_pct": 10 }
-  },
-  "helium10_listing_analyzer": {
-    "report_found": true,
-    "report_date": "2026-07-06",
-    "listings": [
-      { "product": "Emergency Dematter Cream for Dogs", "score": 9.5, "flags": ["Page views -35.2% WoW", "Sessions -32.9% WoW", "Conversion (UOSR) +12.6% WoW"] },
-      { "product": "Rake Brush for Dogs, Dematting Tool", "score": 9.5, "flags": ["Page views -48.6% WoW", "Sessions -45.0% WoW", "Conversion (UOSR) +28.5% WoW", "BSR -5.0% WoW"] },
-      { "product": "Detangling Treatment for Dogs", "score": 9.5, "flags": ["Page views -56.8% WoW", "Sessions -49.1% WoW", "Conversion (UOSR) +27.6% WoW", "BSR -36.5% WoW"] },
-      { "product": "Pin Brush for Dogs", "score": 8.5, "flags": ["Page views -49.9% WoW", "Sessions -49.2% WoW", "Conversion (UOSR) -10.0% WoW", "BSR -2.6% WoW"] },
-      { "product": "Dog Shampoo & Conditioner", "score": 9.5, "flags": ["Page views +6.0% WoW", "Sessions -2.2% WoW"] }
-    ]
-  },
-  "helium10_market_tracker": {
-    "report_found": true,
-    "report_date": "2026-07-06",
-    "review_changes": [
-      { "product": "We Love Doodles - B09Q837KK1", "change_summary": "Reviews 4675 -> 4690 (+0.3%)" },
-      { "product": "We Love Doodles - B0BFZ4C4Z9", "change_summary": "Reviews 3336 -> 3346 (+0.3%)" }
-    ]
-  },
-  "amazon_ads_browser": {
-    "available": false,
-    "last_scraped": null,
-    "account_summary": {
-      "date_range": null,
-      "total_spend": null,
-      "total_sales": null,
-      "account_roas": null,
-      "total_purchases": null,
-      "total_clicks": null
-    },
-    "campaigns_total": null,
-    "campaigns_delivering_count": null,
-    "campaigns_out_of_budget_count": null,
-    "estimated_missed_sales": null,
-    "campaigns_out_of_budget_list": [],
-    "campaigns_paused_high_roas": [],
-    "campaigns_paused_list": [],
-    "targets_with_sales": null,
-    "targets_with_clicks_no_sales": null,
-    "flags": ["No Claude-in-Chrome browser connector available in this environment - browser scrape skipped"]
-  },
-  "supermetrics": {
-    "amazon_ads": {
-      "spend": null,
-      "roas": null,
-      "flagged_skus": [],
-      "sku_data_pending": true,
-      "skus": []
-    },
-    "amazon_sales": {
-      "source": "sheet_feed",
-      "data_date": "2026-07-04",
-      "ordered_sales": 1214.77,
-      "order_items": 62,
-      "page_views": 469,
-      "sessions": 348,
-      "conversion_rate": 18.1,
-      "units_sold": 62,
-      "trailing_7d": { "avg_daily_sales": 1338.71, "avg_sessions": 402.86, "avg_conversion": 17.15, "total_units": 482, "wow_sales_change_pct": -25.36 },
-      "trailing_30d": [
-        {"date":"2026-06-05","sales":1753.22,"sessions":425,"conversion":19.53},
-        {"date":"2026-06-06","sales":1378.84,"sessions":418,"conversion":15.79},
-        {"date":"2026-06-07","sales":1708.83,"sessions":434,"conversion":20.97},
-        {"date":"2026-06-08","sales":1448.35,"sessions":401,"conversion":18.45},
-        {"date":"2026-06-09","sales":1493.86,"sessions":436,"conversion":18.35},
-        {"date":"2026-06-10","sales":1513.87,"sessions":420,"conversion":19.76},
-        {"date":"2026-06-11","sales":1403.28,"sessions":426,"conversion":18.08},
-        {"date":"2026-06-12","sales":1371.15,"sessions":391,"conversion":19.18},
-        {"date":"2026-06-13","sales":1767.89,"sessions":526,"conversion":18.25},
-        {"date":"2026-06-14","sales":1733.24,"sessions":531,"conversion":17.14},
-        {"date":"2026-06-15","sales":1634.41,"sessions":537,"conversion":16.57},
-        {"date":"2026-06-16","sales":1366.37,"sessions":516,"conversion":14.15},
-        {"date":"2026-06-17","sales":1358.26,"sessions":552,"conversion":13.41},
-        {"date":"2026-06-18","sales":1637.11,"sessions":436,"conversion":20.41},
-        {"date":"2026-06-19","sales":1424.82,"sessions":390,"conversion":20.26},
-        {"date":"2026-06-20","sales":1765.75,"sessions":444,"conversion":21.4},
-        {"date":"2026-06-21","sales":1686.44,"sessions":466,"conversion":18.45},
-        {"date":"2026-06-22","sales":1706.53,"sessions":506,"conversion":17.39},
-        {"date":"2026-06-23","sales":2245.21,"sessions":758,"conversion":18.34},
-        {"date":"2026-06-24","sales":2240.75,"sessions":580,"conversion":24.14},
-        {"date":"2026-06-25","sales":1739.37,"sessions":543,"conversion":19.71},
-        {"date":"2026-06-26","sales":2049.62,"sessions":567,"conversion":22.93},
-        {"date":"2026-06-27","sales":885.94,"sessions":328,"conversion":14.02},
-        {"date":"2026-06-28","sales":1112.64,"sessions":363,"conversion":15.43},
-        {"date":"2026-06-29","sales":999.30,"sessions":323,"conversion":15.79},
-        {"date":"2026-06-30","sales":1330.04,"sessions":444,"conversion":15.99},
-        {"date":"2026-07-01","sales":1438.94,"sessions":426,"conversion":17.84},
-        {"date":"2026-07-02","sales":1805.99,"sessions":491,"conversion":18.53},
-        {"date":"2026-07-03","sales":1469.27,"sessions":425,"conversion":18.35},
-        {"date":"2026-07-04","sales":1214.77,"sessions":348,"conversion":18.1}
-      ],
-      "sc_lag_note": "Amazon SC 24-48h processing lag - last finalized day"
-    },
-    "google_ads": {
-      "spend": null,
-      "roas": null,
-      "top_campaigns": []
-    },
-    "status": "YELLOW"
-  },
-  "meta_ads": {
-    "available": false,
-    "spend": null,
-    "roas": null
-  },
-  "reviews": {
-    "last_reviews_check": "2026-07-06",
-    "sheet_last_modified": "2026-07-02",
-    "new_review_count": 0,
-    "avg_rating_new_batch": null,
-    "status": "GREEN"
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STG — JARVIS Live Morning Dashboard</title>
+<style>
+:root{
+  --navy:#15212E;--navy2:#1d2b3a;--orange:#F57E26;--teal:#97D5CB;--teal2:#7fd1c4;
+  --green:#2faa6a;--red:#d2483f;--amber:#e6a417;--purple:#4E2D82;
+  --bg:#eef1f4;--card:#fff;--card2:#fafbfc;--border:#dde3ea;
+  --text:#1c2733;--muted:#6b7886;--sub:#9fb0bf;
+  --font:'Segoe UI',system-ui,-apple-system,sans-serif;
 }
-]]>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{margin:0;font-family:var(--font);background:#0f1822;color:var(--text);font-size:13px;}
+
+/* ── TOPBAR (master style) ── */
+.topbar{background:var(--navy);color:#fff;padding:12px 22px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.3);border-bottom:3px solid var(--teal);}
+.logo-wrap{background:#fff;border-radius:8px;padding:5px 9px;display:flex;align-items:center;flex-shrink:0;}
+.topbar .logo{height:40px;width:auto;display:block;}
+.topbar .ttl{font-size:16px;font-weight:700;letter-spacing:.3px;}
+.topbar .sub{font-size:11px;color:var(--teal2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+.topbar .meta{margin-left:auto;font-size:11px;color:var(--sub);text-align:right;line-height:1.7;}
+.topbar .meta .upd{color:var(--teal2);font-weight:600;}
+.menu-toggle{background:var(--orange);color:#fff;border:none;border-radius:7px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:.5px;display:none;}
+.refresh-btn{background:transparent;color:var(--teal2);border:1px solid #2f4150;border-radius:7px;padding:7px 12px;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:background .15s;flex-shrink:0;}
+.refresh-btn:hover{background:#243341;}
+
+/* ── LAYOUT ── */
+.layout{display:flex;min-height:calc(100vh - 74px);}
+.sidebar{width:300px;flex-shrink:0;background:#1a2733;overflow-y:auto;max-height:calc(100vh - 74px);position:sticky;top:74px;padding:14px 12px;transition:margin-left .25s;}
+.sidebar.hidden{margin-left:-300px;}
+.sb-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#5e7286;padding:8px 10px 6px;}
+.nav-card{display:flex;align-items:flex-start;gap:10px;width:100%;text-align:left;background:transparent;border:none;border-radius:8px;padding:10px 11px;cursor:pointer;margin-bottom:3px;color:#cfdae3;transition:background .15s;font-family:var(--font);}
+.nav-card:hover{background:#243341;}
+.nav-card.active{background:var(--orange);}
+.nav-card.active .nav-title{color:#fff;}
+.nav-card.active .nav-desc{color:#ffe6d2;}
+.nav-card.active .nav-num{background:#fff;color:var(--orange);}
+.nav-num{flex-shrink:0;width:24px;height:24px;border-radius:6px;background:#2f4150;color:#9fb0bf;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative;}
+.nav-dot{position:absolute;top:-3px;right:-3px;width:9px;height:9px;border-radius:50%;background:#3a5060;border:2px solid #1a2733;}
+.nav-dot.green{background:var(--green);}
+.nav-dot.yellow{background:var(--amber);}
+.nav-dot.red{background:#e74c3c;box-shadow:0 0 7px rgba(231,76,60,.7);animation:pulse-dot 1.5s infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.35;}}
+@media (prefers-reduced-motion: reduce){.nav-dot.red{animation:none;}}
+.nav-text{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.nav-title{font-size:13px;font-weight:600;color:#e8eef3;line-height:1.25;}
+.nav-desc{font-size:10.5px;color:#8499a8;line-height:1.35;}
+
+/* ── CONTENT (light, master inner-report style) ── */
+.content{flex:1;background:var(--bg);min-width:0;padding:0 22px 56px;}
+.wrap{max-width:1100px;margin:0 auto;}
+.section{display:none;}
+.section.active{display:block;}
+
+.sec-head{display:flex;align-items:center;gap:8px;padding:22px 0 8px;border-bottom:2px solid var(--border);margin-bottom:6px;flex-wrap:wrap;}
+.sec-head h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--navy);}
+.sec-head .when{margin-left:auto;font-size:10px;color:var(--sub);}
+.sec-desc{font-size:11.5px;color:var(--muted);line-height:1.55;padding:2px 0 6px;max-width:860px;}
+.sec-desc b{color:var(--navy);}
+.tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:.5px;}
+.tag-live{background:#e3f5ec;color:#1d7d4d;}
+.tag-na{background:#f0f2f5;color:#8a93a0;}
+.tag-warn{background:#fff3cd;color:#9a6c0a;}
+.tag-crit{background:#fbe6e3;color:#a8352c;}
+.tag-info{background:#e8edf2;color:#2a3d50;}
+
+/* CARDS */
+.cards{display:flex;flex-wrap:wrap;gap:10px;padding:8px 0;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:13px 15px;flex:1 1 155px;min-width:145px;}
+.c-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600;}
+.c-val{font-size:22px;font-weight:800;margin-top:5px;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums;}
+.c-val.na{font-size:13px;font-weight:600;color:#8a93a0;margin-top:8px;}
+.c-val.down{color:var(--red);}
+.c-val.warn{color:var(--amber);}
+.c-val.up{color:var(--green);}
+.c-sub{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.4;}
+.bdr-red{border-left:4px solid var(--red);}
+.bdr-amber{border-left:4px solid var(--amber);}
+.bdr-green{border-left:4px solid var(--green);}
+.bdr-grey{border-left:4px solid #c9d2db;}
+.bdr-teal{border-left:4px solid var(--teal);}
+.bdr-purple{border-left:4px solid var(--purple);}
+.bdr-orange{border-left:4px solid var(--orange);}
+
+/* ALERTS */
+.alert{padding:10px 14px;border-radius:7px;font-size:12px;margin:8px 0;line-height:1.5;}
+.alert-crit{background:#fbe6e3;border-left:4px solid var(--red);color:#7a2b24;}
+.alert-warn{background:#fff3cd;border-left:4px solid var(--amber);color:#7a5c00;}
+.alert-ok{background:#e3f5ec;border-left:4px solid var(--green);color:#1d6e46;}
+.alert-info{background:#edf1f5;border-left:4px solid var(--navy);color:#2a3d50;}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);background:var(--card2);padding:8px 11px;text-align:left;border-bottom:1px solid var(--border);}
+td{padding:8px 11px;border-bottom:1px solid var(--border);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#f5f7fa;}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow-x:auto;margin:8px 0;}
+.tbl-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:12px 12px 0;}
+.pill{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:.4px;}
+.pill-ok{background:#e3f5ec;color:#1d7d4d;}
+.pill-warn{background:#fff3cd;color:#9a6c0a;}
+.pill-crit{background:#fbe6e3;color:#a8352c;}
+.pill-na{background:#f0f2f5;color:#8a93a0;}
+
+/* FLAG LISTS */
+.flag-list{list-style:none;margin:6px 0;}
+.flag-list li{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:7px;padding:9px 13px;margin-bottom:6px;font-size:12px;}
+.flag-list li.crit{border-left-color:var(--red);}
+.flag-list li.empty{border-left-color:#c9d2db;color:#8a93a0;font-style:italic;}
+
+/* LOADING / ERROR */
+.state-box{max-width:520px;margin:70px auto;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:36px 30px;}
+.state-box h2{font-size:15px;color:var(--navy);margin-bottom:8px;}
+.state-box p{font-size:12px;color:var(--muted);line-height:1.6;}
+.spinner{width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:860px){
+  .sidebar{position:fixed;z-index:90;top:74px;bottom:0;box-shadow:4px 0 20px rgba(0,0,0,.4);}
+  .sidebar.hidden{margin-left:-300px;}
+  .topbar .meta{display:none;}
+  .menu-toggle{display:block;margin-left:auto;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo-wrap"><img class="logo" alt="STG" src="data:image/png;base64,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"></div>
+  <div>
+    <div class="sub">Skip The Groomer · JARVIS</div>
+    <div class="ttl">Live Morning Dashboard</div>
+  </div>
+  <div class="meta">
+    Updated: <span class="upd" id="meta-updated">—</span><br>
+    Auto-refresh in <span id="meta-countdown">—</span>
+  </div>
+  <button class="refresh-btn" onclick="loadData()">↻ Refresh</button>
+  <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+</div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar">
+    <div class="sb-label">Data Sources</div>
+    <button class="nav-card active" id="nav-overview" onclick="show('overview')">
+      <span class="nav-num">◎<span class="nav-dot" id="dot-overview"></span></span>
+      <span class="nav-text"><span class="nav-title">Morning Overview</span><span class="nav-desc">All sources at a glance + active RED flags</span></span>
+    </button>
+    <button class="nav-card" id="nav-quickbooks" onclick="show('quickbooks')">
+      <span class="nav-num">01<span class="nav-dot" id="dot-quickbooks"></span></span>
+      <span class="nav-text"><span class="nav-title">QuickBooks</span><span class="nav-desc">Cash position, runway, P&amp;L status</span></span>
+    </button>
+    <button class="nav-card" id="nav-klaviyo" onclick="show('klaviyo')">
+      <span class="nav-num">02<span class="nav-dot" id="dot-klaviyo"></span></span>
+      <span class="nav-text"><span class="nav-title">Klaviyo</span><span class="nav-desc">Email + SMS flow performance, 7-day</span></span>
+    </button>
+    <button class="nav-card" id="nav-shopify" onclick="show('shopify')">
+      <span class="nav-num">03<span class="nav-dot" id="dot-shopify"></span></span>
+      <span class="nav-text"><span class="nav-title">Shopify</span><span class="nav-desc">Yesterday's sales, AOV vs $35 target</span></span>
+    </button>
+    <button class="nav-card" id="nav-helium10" onclick="show('helium10')">
+      <span class="nav-num">04<span class="nav-dot" id="dot-helium10"></span></span>
+      <span class="nav-text"><span class="nav-title">Helium 10</span><span class="nav-desc">Keyword ranks per tracked product</span></span>
+    </button>
+    <button class="nav-card" id="nav-amazon" onclick="show('amazon')">
+      <span class="nav-num">05<span class="nav-dot" id="dot-amazon"></span></span>
+      <span class="nav-text"><span class="nav-title">Amazon Ads + Sales</span><span class="nav-desc">Spend, ROAS, sessions, conversion</span></span>
+    </button>
+    <button class="nav-card" id="nav-amzcamp" onclick="show('amzcamp')">
+      <span class="nav-num" style="font-size:9px;">5b<span class="nav-dot" id="dot-amzcamp"></span></span>
+      <span class="nav-text"><span class="nav-title">Amazon Campaigns</span><span class="nav-desc">Live scrape: budgets, paused winners, waste</span></span>
+    </button>
+    <button class="nav-card" id="nav-skus" onclick="show('skus')">
+      <span class="nav-num">06<span class="nav-dot" id="dot-skus"></span></span>
+      <span class="nav-text"><span class="nav-title">SKU Watch — ROAS + TACOS</span><span class="nav-desc">Live per-SKU vs locked bands + targets</span></span>
+    </button>
+    <button class="nav-card" id="nav-googleads" onclick="show('googleads')">
+      <span class="nav-num">07<span class="nav-dot" id="dot-googleads"></span></span>
+      <span class="nav-text"><span class="nav-title">Google Ads</span><span class="nav-desc">Spend, ROAS, top campaigns</span></span>
+    </button>
+    <button class="nav-card" id="nav-metaads" onclick="show('metaads')">
+      <span class="nav-num">08<span class="nav-dot" id="dot-metaads"></span></span>
+      <span class="nav-text"><span class="nav-title">Meta Ads</span><span class="nav-desc">Pending Meta connector rollout</span></span>
+    </button>
+    <button class="nav-card" id="nav-reviews" onclick="show('reviews')">
+      <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
+      <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
+    </button>
+    <button class="nav-card" id="nav-h10profits" onclick="show('h10profits')">
+      <span class="nav-num">10<span class="nav-dot" id="dot-h10profits"></span></span>
+      <span class="nav-text"><span class="nav-title">H10 Profits</span><span class="nav-desc">True Amazon net profit — daily / weekly / monthly</span></span>
+    </button>
+    <button class="nav-card" id="nav-listing" onclick="show('listing')">
+      <span class="nav-num">11<span class="nav-dot" id="dot-listing"></span></span>
+      <span class="nav-text"><span class="nav-title">Listing Analyzer</span><span class="nav-desc">Weekly H10 listing quality scores</span></span>
+    </button>
+    <button class="nav-card" id="nav-market" onclick="show('market')">
+      <span class="nav-num">12<span class="nav-dot" id="dot-market"></span></span>
+      <span class="nav-text"><span class="nav-title">Market Tracker</span><span class="nav-desc">Weekly competitor review velocity watch</span></span>
+    </button>
+    <div class="sb-label" style="margin-top:8px;">Strategic</div>
+    <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
+      <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
+      <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">Revenue · margins · inventory · brand · S&S</span></span>
+    </button>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+
+      <div id="loading-state" class="state-box">
+        <div class="spinner"></div>
+        <h2>Loading connector data…</h2>
+        <p>Fetching data/connectors_data.json</p>
+      </div>
+
+      <div id="error-state" class="state-box" style="display:none;">
+        <h2>Couldn't load dashboard data</h2>
+        <p id="error-msg">—</p>
+        <p style="margin-top:10px;">Check that <b>data/connectors_data.json</b> exists on the <b>main</b> branch and the morning routine pushed successfully.</p>
+      </div>
+
+      <div id="dashboard" style="display:none;">
+
+        <!-- OVERVIEW -->
+        <div class="section active" id="section-overview">
+          <div class="sec-head"><h2>Morning Overview</h2><span class="tag tag-info" id="ov-tag">ALL SOURCES</span><span class="when" id="ov-when"></span></div>
+          <div class="sec-desc">Every source in one table, refreshed each morning ~7:45 AM PT by the JARVIS routine. <b>GREEN</b> = inside all locked thresholds · <b>YELLOW</b> = flagged, watch it · <b>RED</b> = action recommended in Slack and waiting on a human "approved" reply — nothing executes automatically.</div>
+          <div id="ov-alerts"></div>
+          <div class="cards" id="ov-cards"></div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Source Status Board</div>
+            <table id="ov-table"><thead><tr><th>Source</th><th>Key Number</th><th>Notes</th><th class="r">Status</th></tr></thead><tbody></tbody></table>
+          </div>
+        </div>
+
+        <!-- QUICKBOOKS -->
+        <div class="section" id="section-quickbooks">
+          <div class="sec-head"><h2>QuickBooks — Finance</h2><span class="tag" id="qb-tag">—</span></div>
+          <div class="sec-desc">Cash on hand (checking + money market) and how many weeks it lasts at the average burn of the last 4 weeks. <b>Locked rule:</b> checking below $25,000 = RED + recommended action in #stg-finance-alerts.</div>
+          <div class="cards" id="qb-cards"></div>
+          <div id="qb-alerts"></div>
+        </div>
+
+        <!-- KLAVIYO -->
+        <div class="section" id="section-klaviyo">
+          <div class="sec-head"><h2>Klaviyo — Email + SMS Flows (Last 7 Days)</h2><span class="tag" id="kl-tag">—</span></div>
+          <div class="sec-desc">Flow performance over the trailing 7 days. <b>Locked thresholds:</b> open rate below 15% or click rate below 2% flags the flow for creative / audience review.</div>
+          <div class="cards" id="kl-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Flagged flows (open &lt;15% or click &lt;2%)</div>
+          <ul class="flag-list" id="kl-flags"></ul>
+        </div>
+
+        <!-- SHOPIFY -->
+        <div class="section" id="section-shopify">
+          <div class="sec-head"><h2>Shopify — Yesterday</h2><span class="tag" id="sh-tag">—</span></div>
+          <div class="sec-desc">Yesterday's DTC storefront: sales, orders, AOV. <b>Locked rules:</b> AOV target $35+ · a sales drop of more than 20% vs the 7-day average gets flagged in #stg-morning-brief.</div>
+          <div class="cards" id="sh-cards"></div>
+          <div id="sh-alerts"></div>
+        </div>
+
+        <!-- HELIUM 10 -->
+        <div class="section" id="section-helium10">
+          <div class="sec-head"><h2>Helium 10 — Keyword Tracker</h2><span class="tag" id="h10-tag">—</span><span class="when" id="h10-when"></span></div>
+          <div class="sec-desc">Amazon keyword ranks per tracked product from the Daily Keyword Tracker email (stgbrandanalytics@gmail.com). <b>Locked rule:</b> an organic rank drop of 3+ spots vs the prior report = flag naming the product + keyword. Rank pills: <b>#1–10</b> green · <b>#11–50</b> amber · <b>#51+</b> red.</div>
+          <div id="h10-alerts"></div>
+          <div id="h10-products"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Rank-drop flags (3+ spots)</div>
+          <ul class="flag-list" id="h10-flags"></ul>
+        </div>
+
+        <!-- AMAZON -->
+        <div class="section" id="section-amazon">
+          <div class="sec-head"><h2>Amazon Ads — Yesterday</h2><span class="tag" id="amz-tag">—</span></div>
+          <div class="sec-desc">Supermetrics: yesterday's ad spend + account-level ROAS. The per-SKU breakdown feeds SKU Watch below. Seller Central numbers reflect <b>2 days ago</b> — Amazon takes 24–48h to finalize SC data, that lag is normal, not a failure. <b>Locked rule:</b> conversion below 10% = flag.</div>
+          <div class="cards" id="amz-ads-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">SKUs outside locked ROAS bands</div>
+          <ul class="flag-list" id="amz-flags"></ul>
+          <div class="sec-head"><h2>Amazon Seller Central — Yesterday</h2><span class="tag tag-info">SALES</span></div>
+          <div class="cards" id="amz-sales-cards"></div>
+          <div id="amz-alerts"></div>
+        </div>
+
+        <!-- AMAZON CAMPAIGNS (browser scrape) -->
+        <div class="section" id="section-amzcamp">
+          <div class="sec-head"><h2>Amazon Campaigns — Live Scrape</h2><span class="tag" id="ac-tag">—</span><span class="when" id="ac-when"></span></div>
+          <div class="sec-desc">Campaign intelligence scraped straight from Amazon Campaign Manager via Claude in Chrome (Marcelo's browser must be open + connected at 7 AM). Watches three money leaks: <b>campaigns out of budget</b> (missed sales), <b>paused campaigns with ROAS &gt; 3</b> (free wins sitting idle), and <b>targets with clicks but zero sales</b> (spend waste). All unpause / budget actions need Will's approval in Slack.</div>
+          <div id="ac-alerts"></div>
+          <div class="cards" id="ac-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Campaigns out of budget</div>
+          <ul class="flag-list" id="ac-oob"></ul>
+          <div class="tbl-title" style="padding:10px 2px 0;">Paused with high ROAS (recommend unpausing — needs approval)</div>
+          <ul class="flag-list" id="ac-paused"></ul>
+        </div>
+
+        <!-- SKU WATCH -->
+        <div class="section" id="section-skus">
+          <div class="sec-head"><h2>SKU Watch — Live ROAS vs Locked Bands</h2><span class="tag" id="sku-tag">—</span><span class="when" id="sku-when"></span></div>
+          <div class="sec-desc">Yesterday's per-SKU ROAS classified against the locked bands in <b>data/roas_bands.json</b> — the same file the routine flags against, so dashboard and alerts can never disagree. TACOS uses a trailing 7-day window (single-day TACOS is too noisy to act on).</div>
+          <div id="sku-alerts"></div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Amazon — yesterday's ROAS per SKU vs bands (Green ≥ BE · Yellow 80%–BE · Red floor–80% · Kill &lt; floor)</div>
+            <table id="sku-live-table"><thead><tr><th>SKU</th><th class="r">Spend</th><th class="r">ROAS (y'day)</th><th class="r">Breakeven</th><th class="r">Band</th><th class="r">TACOS 7d</th><th class="r">Target</th><th class="r">TACOS</th></tr></thead><tbody></tbody></table>
+          </div>
+          <div class="sec-head"><h2>Locked Reference — Per-SKU Bands + S&amp;S Rules</h2><span class="tag tag-info">STATIC · JUNE 28 FINAL</span></div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Amazon + Shopify breakevens · TACOS targets · Subscribe &amp; Save</div>
+            <table id="sku-ref-table"><thead><tr><th>SKU</th><th class="r">Price</th><th class="r">Amazon BE</th><th class="r">Shopify BE</th><th class="r">TACOS Target</th><th>S&amp;S / Notes</th></tr></thead><tbody></tbody></table>
+          </div>
+          <div class="alert alert-info"><b>3-day learning window:</b> no ad is killed in its first 3 days regardless of ROAS — kill logic activates day 4. Shopify bands are reference-only for now (Meta/Google attribute per campaign, not per SKU).</div>
+        </div>
+
+        <!-- GOOGLE ADS -->
+        <div class="section" id="section-googleads">
+          <div class="sec-head"><h2>Google Ads — Yesterday</h2><span class="tag" id="ga-tag">—</span></div>
+          <div class="sec-desc">Yesterday via Supermetrics. <b>Locked rule:</b> ROAS below 2.0 = flag. Note: STG isn't currently running Google campaigns — $0 / no data here is expected, not an error.</div>
+          <div class="cards" id="ga-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Top campaigns</div>
+          <ul class="flag-list" id="ga-campaigns"></ul>
+          <div id="ga-alerts"></div>
+        </div>
+
+        <!-- META ADS -->
+        <div class="section" id="section-metaads">
+          <div class="sec-head"><h2>Meta Ads — Yesterday</h2><span class="tag" id="mt-tag">—</span></div>
+          <div class="sec-desc">Spend + ROAS once the Meta connector is enabled on the STG ad account (Will authenticates at hub.supermetrics.com). Until then "pending" is the expected state.</div>
+          <div class="cards" id="mt-cards"></div>
+          <div id="mt-alerts"></div>
+        </div>
+
+        <!-- REVIEWS -->
+        <div class="section" id="section-reviews">
+          <div class="sec-head"><h2>Product Reviews — Weekly Review Sheet</h2><span class="tag" id="rv-tag">—</span></div>
+          <div class="sec-desc">Watches the STG Weekly Review Update sheet for new batches. <b>Locked rule:</b> RED if the new batch averages under 3.5★ OR contains 3+ one/two-star reviews (mass negative signal) — complaint themes get summarized in #stg-content-alerts so Will sees what's wrong, not just that something is.</div>
+          <div class="cards" id="rv-cards"></div>
+          <div id="rv-alerts"></div>
+        </div>
+
+        <!-- H10 PROFITS -->
+        <div class="section" id="section-h10profits">
+          <div class="sec-head"><h2>Helium 10 — True Amazon Profit</h2><span class="tag" id="hp-tag">—</span><span class="when" id="hp-when"></span></div>
+          <div class="sec-desc">The number that says whether Amazon actually made money: gross revenue minus <b>all</b> costs (COGS, Amazon fees, ad spend) = net profit. From H10 Profit emails — daily arrives every morning, weekly lands Mondays, monthly ~the 1st. Green = profitable · red = losing money.</div>
+          <div id="hp-alerts"></div>
+          <div class="tbl-title" style="padding:6px 2px 0;">Yesterday</div>
+          <div class="cards" id="hp-daily"></div>
+          <div class="tbl-title" style="padding:6px 2px 0;">Last week</div>
+          <div class="cards" id="hp-weekly"></div>
+          <div class="tbl-title" style="padding:6px 2px 0;">Last month</div>
+          <div class="cards" id="hp-monthly"></div>
+        </div>
+
+        <!-- LISTING ANALYZER -->
+        <div class="section" id="section-listing">
+          <div class="sec-head"><h2>Helium 10 — Listing Analyzer</h2><span class="tag" id="la-tag">—</span><span class="when" id="la-when"></span></div>
+          <div class="sec-desc">Weekly listing quality scores per product. Arrives <b>weekly</b> — "no report" on other days is normal, not an error. Low scores or flags mean the listing itself (title, images, bullets) is leaving conversion on the table.</div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Latest listing scores</div>
+            <table id="la-table"><thead><tr><th>Product</th><th class="r">Score</th><th>Flags</th></tr></thead><tbody></tbody></table>
+          </div>
+        </div>
+
+        <!-- MARKET TRACKER -->
+        <div class="section" id="section-market">
+          <div class="sec-head"><h2>Helium 10 — Market Tracker</h2><span class="tag" id="mk-tag">—</span><span class="when" id="mk-when"></span></div>
+          <div class="sec-desc">Weekly competitor watch — review count changes for tracked competitors. A competitor's review velocity suddenly spiking is early warning that they're pushing (giveaways, inserts, ranking play) before it shows up in your rank.</div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Competitor review changes</div>
+            <table id="mk-table"><thead><tr><th>Competitor</th><th>Change</th></tr></thead><tbody></tbody></table>
+          </div>
+        </div>
+
+        <!-- BUSINESS HEALTH -->
+        <div class="section" id="section-bizhealth">
+          <div class="sec-head"><h2>Business Health — Strategic Overview</h2><span class="tag" id="bh-tag">—</span><span class="when" id="bh-when"></span></div>
+          <div class="sec-desc">The weekly zoom-out Will reviews — lifetime economics, cash in inventory, S&amp;S penetration, returns, brand loyalty. Patrick updates a Google Sheet weekly → emailed to stgbrandanalytics@gmail.com → written to <b>data/business_health.json</b>. This is strategy, not the daily pulse.</div>
+          <div id="bh-alerts"></div>
+          <div class="cards" id="bh-kpi-cards"></div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>1 — Sales by SKU</h2><span class="tag tag-info">LIFETIME REVENUE</span></div>
+          <div class="tbl-wrap"><div class="tbl-title">Revenue share · dollars · units</div><div id="bh-sku-revenue"></div></div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>2 — Profit &amp; Margin per SKU</h2><span class="tag tag-info">ALL-IN AMAZON ECONOMICS</span></div>
+          <div class="cards" id="bh-margin-cards"></div>
+          <div class="tbl-wrap" style="margin-top:10px;"><div class="tbl-title">Estimated lifetime profit by SKU (units sold × profit/unit)</div><div id="bh-profit-bars"></div></div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>3 — Cash: Inventory &amp; Production</h2><span class="tag tag-info">LANDED COGS</span></div>
+          <div class="tbl-wrap"><div class="tbl-title">$ landed COGS sitting in inventory</div><div id="bh-inventory-bars"></div></div>
+          <div class="tbl-wrap" style="margin-top:10px;"><div class="tbl-title">Cash by month — owed now vs planned production</div><div id="bh-production-bars"></div></div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>5 — Subscribe &amp; Save</h2><span class="tag tag-info">S&amp;S PENETRATION</span></div>
+          <div id="bh-sns-section"></div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>6 — Returns vs Industry</h2><span class="tag tag-info">365-DAY WINDOW</span></div>
+          <div id="bh-returns-section"></div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>7 — Brand Health &amp; Customer Loyalty</h2><span class="tag tag-info">BRAND ANALYTICS</span></div>
+          <div id="bh-brand-section"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const fmtDollar = n => n == null ? null : '$' + Number(n).toLocaleString('en-US',{maximumFractionDigits:2});
+const fmtNum    = (n,d=2) => n == null ? null : Number(n).toFixed(d);
+const fmtPct    = n => n == null ? null : Number(n).toFixed(1) + '%';
+const fmtInt    = n => n == null ? null : Number(n).toLocaleString('en-US');
+
+function card(label, value, sub, bdr, valCls){
+  const v = value == null
+    ? '<div class="c-val na">No data</div>'
+    : `<div class="c-val ${valCls||''}">${value}</div>`;
+  return `<div class="card ${bdr||'bdr-grey'}">
+    <div class="c-lbl">${label}</div>${v}
+    ${sub ? `<div class="c-sub">${sub}</div>` : ''}
+  </div>`;
+}
+function statusTag(el, status){
+  const s = String(status||'').toUpperCase();
+  const map = {GREEN:['tag tag-live','GREEN'], YELLOW:['tag tag-warn','YELLOW'], RED:['tag tag-crit','RED']};
+  const [cls,txt] = map[s] || ['tag tag-na','NO DATA'];
+  el.className = cls; el.textContent = txt;
+}
+function dot(id, status){
+  const s = String(status||'').toUpperCase();
+  const cls = s==='GREEN'?'green':s==='YELLOW'?'yellow':s==='RED'?'red':'';
+  $(id).className = 'nav-dot ' + cls;
+}
+function flagList(el, arr, emptyTxt, crit){
+  if (!arr || arr.length === 0){
+    el.innerHTML = `<li class="empty">${esc(emptyTxt||'None — all clear')}</li>`; return;
+  }
+  el.innerHTML = arr.map(f => `<li class="${crit?'crit':''}">${esc(typeof f==='string'?f:JSON.stringify(f))}</li>`).join('');
+}
+function alertBox(kind, html){ return `<div class="alert alert-${kind}">${html}</div>`; }
+const naAlert = src => alertBox('info', `<b>${src}:</b> connector returned no data on the last run — check the routine log / Slack note.`);
+
+// ─── NAV ─────────────────────────────────────────────────────────────────────
+function show(key){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-card').forEach(n=>n.classList.remove('active'));
+  const sec = $('section-'+key), nav = $('nav-'+key);
+  if (sec) sec.classList.add('active');
+  if (nav) nav.classList.add('active');
+  if (window.innerWidth <= 860) $('sidebar').classList.add('hidden');
+}
+function toggleSidebar(){ $('sidebar').classList.toggle('hidden'); }
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+function render(d){
+  $('meta-updated').textContent = d.last_updated || 'unknown';
+
+  // — QuickBooks —
+  const qb = d.quickbooks || {};
+  statusTag($('qb-tag'), qb.cash_balance == null && !qb.status ? null : qb.status);
+  dot('dot-quickbooks', qb.status);
+  const qbLow = qb.cash_balance != null && qb.cash_balance < 25000;
+  $('qb-cards').innerHTML =
+    card('Cash Balance (Chk + MM)', fmtDollar(qb.cash_balance), 'Checking + money market combined', qbLow?'bdr-red':qb.cash_balance!=null?'bdr-green':'bdr-grey', qbLow?'down':'') +
+    card('Weeks of Runway', fmtNum(qb.weeks_runway,1), 'Cash ÷ avg weekly burn (last 4 wks)', qb.weeks_runway!=null && qb.weeks_runway<8?'bdr-amber':qb.weeks_runway!=null?'bdr-teal':'bdr-grey') +
+    card('Status', qb.status ? esc(qb.status) : null, 'RED if checking under $25,000', qb.status==='RED'?'bdr-red':qb.status==='GREEN'?'bdr-green':'bdr-grey', qb.status==='RED'?'down':qb.status==='GREEN'?'up':'');
+  $('qb-alerts').innerHTML =
+    (qb.status==='RED' && qb.cash_balance==null) ? alertBox('crit','<b>RED:</b> QuickBooks returned no cash data on the last run. Verify the QuickBooks connector auth in the routine, then re-run. Needs approval before any action.') :
+    qbLow ? alertBox('crit','<b>RED — cash below $25,000.</b> Recommended action posted to #stg-finance-alerts; requires "approved" reply before anything executes.') :
+    qb.cash_balance==null ? naAlert('QuickBooks') : '';
+
+  // — Klaviyo —
+  const kl = d.klaviyo || {};
+  const klFlags = kl.flows_flagged || [];
+  const klStatus = kl.avg_open_rate==null ? null : (klFlags.length ? 'YELLOW' : 'GREEN');
+  statusTag($('kl-tag'), klStatus); dot('dot-klaviyo', klStatus);
+  $('kl-cards').innerHTML =
+    card('Avg Open Rate', fmtPct(kl.avg_open_rate), 'Flag threshold: below 15%', kl.avg_open_rate!=null && kl.avg_open_rate<15?'bdr-red':'bdr-teal') +
+    card('Avg Click Rate', fmtPct(kl.avg_click_rate), 'Flag threshold: below 2%', kl.avg_click_rate!=null && kl.avg_click_rate<2?'bdr-amber':'bdr-teal', kl.avg_click_rate!=null && kl.avg_click_rate<2?'warn':'') +
+    card('Flows Flagged', kl.flows_flagged ? String(klFlags.length) : null, 'Open <15% or click <2%', klFlags.length?'bdr-amber':'bdr-green');
+  flagList($('kl-flags'), klFlags, 'No flows below thresholds');
+
+  // — Shopify —
+  const sh = d.shopify || {};
+  const shBadAov = sh.aov != null && sh.aov < 35;
+  const shDrop = sh.vs_7day_avg_pct != null && sh.vs_7day_avg_pct <= -20;
+  const shStatus = sh.yesterday_sales==null ? null : (shBadAov||shDrop ? 'YELLOW' : 'GREEN');
+  statusTag($('sh-tag'), shStatus); dot('dot-shopify', shStatus);
+  $('sh-cards').innerHTML =
+    card("Yesterday's Sales", fmtDollar(sh.yesterday_sales), 'vs 7-day average', 'bdr-teal') +
+    card('Orders', fmtInt(sh.orders), 'Yesterday', 'bdr-purple') +
+    card('AOV', fmtDollar(sh.aov), 'Target: $35+', shBadAov?'bdr-red':'bdr-green', shBadAov?'down':'') +
+    card('vs 7-Day Avg', sh.vs_7day_avg_pct==null?null:(sh.vs_7day_avg_pct>0?'+':'')+fmtPct(sh.vs_7day_avg_pct), 'Flag if drop >20%', shDrop?'bdr-red':'bdr-teal', shDrop?'down':sh.vs_7day_avg_pct>0?'up':'');
+  $('sh-alerts').innerHTML = sh.yesterday_sales==null ? naAlert('Shopify') :
+    shDrop ? alertBox('warn','<b>Sales dropped more than 20%</b> vs the 7-day average — flagged in #stg-morning-brief.') : '';
+
+  // — Helium 10 — (tolerant: report_found | reports_found, products[] optional)
+  const h10 = d.helium10 || {};
+  const h10Found = h10.report_found != null ? h10.report_found
+                 : Array.isArray(h10.reports_found) ? h10.reports_found.length > 0
+                 : null;
+  const h10Flags = h10.flags || [];
+  const h10Status = h10Found==null ? null : !h10Found ? 'YELLOW' : h10Flags.length ? 'YELLOW' : 'GREEN';
+  statusTag($('h10-tag'), h10Status); dot('dot-helium10', h10Status);
+  $('h10-when').textContent = h10.report_date ? 'Report: ' + h10.report_date : '';
+  $('h10-alerts').innerHTML =
+    h10Found === false ? alertBox('warn','<b>Daily Keyword Tracker report not received</b> in the last 24–48h (stgbrandanalytics@gmail.com).') :
+    h10.data_readable === false ? alertBox('warn','Report arrived but data was attachment-only — Gmail connector can\'t read attachments.') : '';
+  const prods = h10.products || [];
+  $('h10-products').innerHTML = prods.length ? prods.map(p => `
+    <div class="tbl-wrap">
+      <div class="tbl-title">${esc(p.name||'Product')}${p.asin?` · <span style="font-weight:600;color:#9fb0bf;">${esc(p.asin)}</span>`:''}</div>
+      <table><thead><tr><th>Keyword</th><th class="r">Search Vol</th><th class="r">Organic Rank</th><th class="r">Sponsored</th><th class="r">Chg Rating</th></tr></thead>
+      <tbody>${(p.keywords||[]).map(k=>{
+        const rank = k.organic_rank;
+        const rankPill = rank==null ? '<span class="pill pill-na">unranked</span>'
+          : rank<=10 ? `<span class="pill pill-ok">#${rank}</span>`
+          : rank<=50 ? `<span class="pill pill-warn">#${rank}</span>`
+          : `<span class="pill pill-crit">#${rank}</span>`;
+        return `<tr><td>${esc(k.keyword)}</td><td class="r">${fmtInt(k.search_volume)??'—'}</td><td class="r">${rankPill}</td><td class="r">${k.sponsored_rank!=null?'#'+k.sponsored_rank:'—'}</td><td class="r">${k.organic_change_rating??'—'}</td></tr>`;
+      }).join('')}</tbody></table>
+    </div>`).join('')
+    : (h10Found ? '<div class="alert alert-info">No per-product breakdown in the latest data file.</div>' : '');
+  flagList($('h10-flags'), h10Flags, 'No keywords dropped 3+ spots');
+
+  // — Supermetrics: Amazon Ads / Sales, Google Ads —
+  const sm  = d.supermetrics || {};
+  const aa  = sm.amazon_ads || {};
+  const asl = sm.amazon_sales || {};
+  const ga  = sm.google_ads || {};
+  statusTag($('amz-tag'), aa.spend==null && sm.status==='RED' ? 'RED' : aa.spend==null ? null : sm.status);
+  dot('dot-amazon', sm.status);
+  $('amz-ads-cards').innerHTML =
+    card('Ad Spend', fmtDollar(aa.spend), 'Account level, yesterday', 'bdr-orange') +
+    card('ROAS', fmtNum(aa.roas), 'Per-SKU bands in STG_MASTER doc', 'bdr-teal') +
+    card('SKUs Flagged', aa.flagged_skus ? String((aa.flagged_skus||[]).length) : null, 'Outside locked ROAS band', (aa.flagged_skus||[]).length?'bdr-red':'bdr-green');
+  flagList($('amz-flags'), aa.flagged_skus, 'All SKUs inside their bands');
+  const lowConv = asl.conversion_rate != null && asl.conversion_rate > 0 && asl.conversion_rate < 10;
+  $('amz-sales-cards').innerHTML =
+    card('Sessions', fmtInt(asl.sessions), 'Yesterday', 'bdr-teal') +
+    card('Conversion Rate', fmtPct(asl.conversion_rate), 'Flag if below 10%', lowConv?'bdr-red':'bdr-green', lowConv?'down':'') +
+    card('Units Sold', fmtInt(asl.units_sold), 'Yesterday', 'bdr-purple');
+  $('amz-alerts').innerHTML =
+    (aa.spend==null && sm.status==='RED') ? alertBox('crit','<b>Supermetrics RED:</b> Amazon Ads query returned an error or no data on the last run — noted in #stg-ads-watchdog instead of guessing numbers.') : '';
+
+  // — SKU Watch: live per-SKU ROAS + TACOS vs locked bands —
+  const bandsSkus = (BANDS && BANDS.skus) || [];
+  const liveSkus = aa.skus || [];
+  const findBand = row => bandsSkus.find(b =>
+    (row.asin && b.asin && row.asin === b.asin) ||
+    (row.sku && b.sku && String(row.sku).toLowerCase().includes(String(b.sku).toLowerCase().split(' ')[0])));
+  const classify = (roas, b) => {
+    if (roas == null || !b || !b.amazon || b.amazon.breakeven == null) return null;
+    if (roas >= b.amazon.breakeven) return 'GREEN';
+    if (roas >= b.amazon.yellow_min) return 'YELLOW';
+    if (roas >= b.amazon.red_min) return 'RED';
+    return 'KILL';
+  };
+  const bandPill = band => {
+    const m = {GREEN:'pill-ok', YELLOW:'pill-warn', RED:'pill-crit', KILL:'pill-crit'};
+    return band ? `<span class="pill ${m[band]||'pill-na'}">${band}</span>` : '<span class="pill pill-na">—</span>';
+  };
+  let skuStatus = null, skuAlerts = [];
+  if (liveSkus.length){
+    const rows = liveSkus.map(row => {
+      const b = findBand(row);
+      const band = row.band || classify(row.roas, b);
+      const target = row.tacos_target != null ? row.tacos_target : (b ? b.tacos_target : null);
+      const liq = b && b.liquidate;
+      const tacosNum = row.tacos_7d != null ? Number(row.tacos_7d) : null;
+      let tacosPill = '<span class="pill pill-na">—</span>';
+      if (liq && (row.spend||0) > 0){ tacosPill = '<span class="pill pill-crit">LIQ-VIOLATION</span>'; skuAlerts.push(`${b.sku}: liquidation SKU received ad spend (${fmtDollar(row.spend)}) — no-ad-funding rule violated.`); }
+      else if (typeof target === 'number' && tacosNum != null){
+        tacosPill = tacosNum <= target ? '<span class="pill pill-ok">OK</span>'
+          : tacosNum <= target + 5 ? '<span class="pill pill-warn">OVER</span>'
+          : '<span class="pill pill-crit">OVER+5</span>';
+        if (tacosNum > target + 5) skuAlerts.push(`${(b&&b.sku)||row.sku}: TACOS ${tacosNum.toFixed(1)}% is more than 5 pts over its ${target}% target.`);
+      }
+      if (band === 'RED' || band === 'KILL') skuAlerts.push(`${(b&&b.sku)||row.sku}: ROAS ${fmtNum(row.roas)} landed in ${band} band${row.learning_window ? ' (in 3-day learning window — no kill action)' : ''}.`);
+      return `<tr><td><b>${esc((b&&b.sku)||row.sku||row.asin||'?')}</b>${row.learning_window?' <span class="pill pill-na">LEARNING</span>':''}</td>
+        <td class="r">${fmtDollar(row.spend)??'—'}</td>
+        <td class="r">${fmtNum(row.roas)??'—'}</td>
+        <td class="r">${b&&b.amazon?fmtNum(b.amazon.breakeven)+'x':'—'}</td>
+        <td class="r">${bandPill(band)}</td>
+        <td class="r">${tacosNum!=null?tacosNum.toFixed(1)+'%':'—'}</td>
+        <td class="r">${target!=null?(typeof target==='number'?target+'%':esc(String(target))):'—'}</td>
+        <td class="r">${tacosPill}</td></tr>`;
+    });
+    $('sku-live-table').querySelector('tbody').innerHTML = rows.join('');
+    skuStatus = skuAlerts.length ? (skuAlerts.some(a=>/KILL|violated|OVER\+/.test(a))?'RED':'YELLOW') : 'GREEN';
+    $('sku-alerts').innerHTML = skuAlerts.length
+      ? skuAlerts.map(a=>alertBox(/violated|KILL/.test(a)?'crit':'warn', esc(a))).join('')
+      : alertBox('ok','All advertised SKUs inside their bands and TACOS targets.');
+  } else {
+    $('sku-live-table').querySelector('tbody').innerHTML =
+      `<tr><td colspan="8" style="color:#8a93a0;font-style:italic;">${aa.sku_data_pending ? 'Per-SKU breakdown still generating on Amazon\'s side (25–30 min is normal) — account-level numbers above are good.' : 'No per-SKU data in the latest run — routine not yet writing the skus array (see step 5 patch).'}</td></tr>`;
+    $('sku-alerts').innerHTML = '';
+  }
+  statusTag($('sku-tag'), skuStatus); dot('dot-skus', skuStatus);
+  $('sku-when').textContent = liveSkus.length ? 'Live from last run' : '';
+  // static reference table
+  $('sku-ref-table').querySelector('tbody').innerHTML = bandsSkus.length ? bandsSkus.map(b => `
+    <tr><td><b>${esc(b.sku)}</b>${b.launch?` <span class="pill pill-na">SEPT 1</span>`:''}${b.liquidate?' <span class="pill pill-crit">LIQUIDATE</span>':''}</td>
+    <td class="r">$${b.price}</td>
+    <td class="r">${b.amazon&&b.amazon.breakeven!=null?fmtNum(b.amazon.breakeven)+'x':'—'}</td>
+    <td class="r">${b.shopify&&b.shopify.breakeven!=null?fmtNum(b.shopify.breakeven)+'x':'—'}</td>
+    <td class="r">${typeof b.tacos_target==='number'?b.tacos_target+'%':esc(String(b.tacos_target))}</td>
+    <td>${esc((b.sns&&b.sns.note)||'')}</td></tr>`).join('')
+    : '<tr><td colspan="6" style="color:#8a93a0;font-style:italic;">data/roas_bands.json not found in repo — commit it to render the locked reference.</td></tr>';
+
+  // — Google Ads —
+  const gaLow = ga.roas != null && ga.roas < 2.0;
+  const gaStatus = ga.spend==null ? (sm.status==='RED'?'RED':null) : gaLow ? 'YELLOW' : 'GREEN';
+  statusTag($('ga-tag'), gaStatus); dot('dot-googleads', gaStatus);
+  $('ga-cards').innerHTML =
+    card('Ad Spend', fmtDollar(ga.spend), 'Yesterday', 'bdr-orange') +
+    card('ROAS', fmtNum(ga.roas), 'Flag if below 2.0', gaLow?'bdr-red':'bdr-green', gaLow?'down':'') +
+    card('Top Campaigns', ga.top_campaigns ? String((ga.top_campaigns||[]).length) : null, 'Reported below', 'bdr-teal');
+  flagList($('ga-campaigns'), ga.top_campaigns, 'No campaign data on last run');
+  $('ga-alerts').innerHTML = (ga.spend==null && sm.status==='RED')
+    ? alertBox('crit','<b>Supermetrics RED:</b> Google Ads query failed on the last run (known LICENSE error / timeout issue).') : '';
+
+  // — Meta Ads —
+  const mt = d.meta_ads || {};
+  const mtStatus = mt.available ? (mt.spend!=null ? 'GREEN' : 'YELLOW') : null;
+  statusTag($('mt-tag'), mtStatus); dot('dot-metaads', mtStatus);
+  $('mt-cards').innerHTML =
+    card('Ad Spend', fmtDollar(mt.spend), 'Yesterday', 'bdr-orange') +
+    card('ROAS', fmtNum(mt.roas), 'Yesterday', 'bdr-teal') +
+    card('Connector', mt.available ? 'Available' : 'Pending', 'Meta MCP rollout', mt.available?'bdr-green':'bdr-grey', mt.available?'up':'');
+  $('mt-alerts').innerHTML = mt.available ? '' :
+    alertBox('info','Meta connector not yet available — pending Meta\'s rollout. Not treated as a failure.');
+
+  // — Amazon Campaigns (Claude in Chrome scrape) —
+  const ac = d.amazon_ads_browser || {};
+  const acs = ac.account_summary || {};
+  const acAvail = ac.available === true && (acs.account_roas != null || ac.campaigns_total != null);
+  const acLowRoas = acs.account_roas != null && acs.account_roas < 2.0;
+  const acStatus = !acAvail ? null : ((ac.campaigns_out_of_budget_count||0) > 0 || (ac.campaigns_paused_high_roas||[]).length > 0 || acLowRoas) ? 'YELLOW' : 'GREEN';
+  statusTag($('ac-tag'), acStatus); dot('dot-amzcamp', acStatus);
+  $('ac-when').textContent = ac.last_scraped ? 'Scraped ' + ac.last_scraped : '';
+  $('ac-cards').innerHTML =
+    card('Account ROAS', fmtNum(acs.account_roas), acs.date_range ? esc(acs.date_range) : 'Threshold: 2.0', acLowRoas?'bdr-red':'bdr-teal', acLowRoas?'down':'') +
+    card('Total Spend', fmtDollar(acs.total_spend), acs.total_sales!=null ? 'Sales: '+fmtDollar(acs.total_sales) : '', 'bdr-orange') +
+    card('Out of Budget', ac.campaigns_out_of_budget_count!=null ? String(ac.campaigns_out_of_budget_count) : null, ac.estimated_missed_sales!=null ? 'Est. missed: '+esc(String(ac.estimated_missed_sales)) : 'Missed sales while capped', (ac.campaigns_out_of_budget_count||0)>0?'bdr-red':'bdr-green') +
+    card('Delivering', fmtInt(ac.campaigns_delivering_count), ac.campaigns_total!=null ? 'of '+ac.campaigns_total+' total campaigns' : '', 'bdr-green') +
+    card('Targeting Waste', ac.targets_with_clicks_no_sales!=null ? String(ac.targets_with_clicks_no_sales) : null, ac.targets_with_sales!=null ? 'targets w/ clicks, $0 sales · '+ac.targets_with_sales+' converting' : 'Targets w/ clicks, zero sales', (ac.targets_with_clicks_no_sales||0)>50?'bdr-amber':'bdr-teal');
+  flagList($('ac-oob'), ac.campaigns_out_of_budget_list, 'None — no campaigns capped', true);
+  flagList($('ac-paused'), ac.campaigns_paused_high_roas, 'None — no high-ROAS campaigns sitting paused');
+  $('ac-alerts').innerHTML = !acAvail
+    ? alertBox('info', ac.available === false
+        ? "Chrome wasn't connected on the last run — Marcelo's Mac + Chrome extension need to be open before 7 AM for this scrape."
+        : 'No scrape data in the latest run yet.')
+    : ((ac.flags||[]).length ? ac.flags.map(f=>alertBox('warn', esc(f))).join('') : '');
+
+  // — H10 Profits (daily / weekly / monthly) —
+  const hp = d.helium10_profits || {};
+  const hpCards = (p, vsLabel, vsKey) => {
+    if (!p || p.gross_revenue == null) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
+    const neg = (p.net_profit||0) < 0;
+    const vs = p[vsKey];
+    return card('Gross Revenue', fmtDollar(p.gross_revenue), (p.units!=null?fmtInt(p.units)+' units':'') + (p.date?' · '+esc(p.date):p.period?' · '+esc(p.period):''), 'bdr-teal') +
+      card('Expenses', fmtDollar(p.expenses), 'COGS + fees + ads', 'bdr-orange') +
+      card('Net Profit', fmtDollar(p.net_profit), p.net_margin_pct!=null ? fmtNum(p.net_margin_pct,1)+'% net margin' : '', neg?'bdr-red':'bdr-green', neg?'down':'up') +
+      card(vsLabel, vs!=null ? (vs>0?'+':'')+vs+'%' : null, 'Net profit change', vs!=null&&vs<0?'bdr-amber':'bdr-grey', vs!=null&&vs<0?'warn':vs>0?'up':'');
+  };
+  $('hp-daily').innerHTML   = hpCards(hp.daily,   'vs Prior Day',   'vs_prior_day_pct');
+  $('hp-weekly').innerHTML  = hpCards(hp.weekly,  'vs Prior Week',  'vs_prior_week_pct');
+  $('hp-monthly').innerHTML = hpCards(hp.monthly, 'vs Prior Month', 'vs_prior_month_pct');
+  const hpMoNeg = hp.monthly && (hp.monthly.net_profit||0) < 0;
+  const hpWkNeg = hp.weekly && (hp.weekly.net_profit||0) < 0;
+  const hpStatus = !hp.daily && !hp.weekly && !hp.monthly ? null : hpMoNeg ? 'RED' : hpWkNeg ? 'YELLOW' : 'GREEN';
+  statusTag($('hp-tag'), hpStatus); dot('dot-h10profits', hpStatus);
+  $('hp-when').textContent = hp.daily && hp.daily.date ? 'Daily report: ' + hp.daily.date : '';
+  $('hp-alerts').innerHTML = hpMoNeg
+    ? alertBox('crit', '<b>Last month was net NEGATIVE ('+fmtDollar(hp.monthly.net_profit)+', '+fmtNum(hp.monthly.net_margin_pct,1)+'% margin).</b> Amazon lost money after all costs — worth a margin review with Will/Patrick.')
+    : hpWkNeg ? alertBox('warn','Last week was net negative — watch this week closely.') : '';
+
+  // — Listing Analyzer —
+  const la = d.helium10_listing_analyzer || {};
+  const laRows = la.listings || [];
+  const laStatus = la.report_found == null ? null : la.report_found ? (laRows.some(l=>(l.flags||[]).length) ? 'YELLOW' : 'GREEN') : null;
+  statusTag($('la-tag'), laStatus); dot('dot-listing', laStatus);
+  $('la-when').textContent = la.report_date ? 'Report: ' + la.report_date : '';
+  $('la-table').querySelector('tbody').innerHTML = laRows.length
+    ? laRows.map(l=>`<tr><td><b>${esc(l.product||'?')}</b></td><td class="r">${l.score!=null?esc(String(l.score)):'<span class="pill pill-na">no score</span>'}</td><td>${(l.flags||[]).length?l.flags.map(f=>`<span class="pill pill-warn">${esc(f)}</span>`).join(' '):'<span class="pill pill-ok">clean</span>'}</td></tr>`).join('')
+    : '<tr><td colspan="3" style="color:#8a93a0;font-style:italic;">No listing report this week yet — arrives weekly, this is normal.</td></tr>';
+
+  // — Market Tracker —
+  const mk = d.helium10_market_tracker || {};
+  const mkRows = mk.review_changes || [];
+  const mkStatus = mk.report_found == null ? null : mk.report_found ? 'GREEN' : null;
+  statusTag($('mk-tag'), mkStatus); dot('dot-market', mkStatus);
+  $('mk-when').textContent = mk.report_date ? 'Report: ' + mk.report_date : '';
+  $('mk-table').querySelector('tbody').innerHTML = mkRows.length
+    ? mkRows.map(r=>`<tr><td><b>${esc(r.product||'?')}</b></td><td>${esc(r.change_summary||'')}</td></tr>`).join('')
+    : '<tr><td colspan="2" style="color:#8a93a0;font-style:italic;">No market tracker report this week yet — arrives weekly, this is normal.</td></tr>';
+
+  // — Reviews —
+  const rv = d.reviews || {};
+  statusTag($('rv-tag'), rv.status); dot('dot-reviews', rv.status);
+  const noNew = (rv.new_review_count||0) === 0;
+  $('rv-cards').innerHTML =
+    card('New Reviews', fmtInt(rv.new_review_count), 'Since last check ' + (rv.last_reviews_check?esc('('+rv.last_reviews_check+')'):''), noNew?'bdr-grey':'bdr-teal') +
+    card('Avg Rating (New Batch)', fmtNum(rv.avg_rating_new_batch,1), 'RED if below 3.5', rv.avg_rating_new_batch!=null&&rv.avg_rating_new_batch<3.5?'bdr-red':'bdr-green') +
+    card('Sheet Last Modified', rv.sheet_last_modified?esc(rv.sheet_last_modified):null, 'STG Weekly Review Update sheet', 'bdr-teal');
+  $('rv-alerts').innerHTML =
+    rv.status==='RED' ? alertBox('crit','<b>RED — mass negative signal.</b> Complaint themes summarized in #stg-content-alerts.') :
+    noNew ? alertBox('ok','Sheet unchanged since last check — nothing new posted (by design).') : '';
+
+  // — Overview —
+  $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
+  const rows = [
+    ['QuickBooks',      qb.cash_balance!=null?fmtDollar(qb.cash_balance):'—',            qb.weeks_runway!=null?fmtNum(qb.weeks_runway,1)+' wks runway':'no data', qb.status],
+    ['Klaviyo',         kl.avg_open_rate!=null?fmtPct(kl.avg_open_rate)+' open':'—',     klFlags.length+' flow(s) flagged', klStatus],
+    ['Shopify',         sh.yesterday_sales!=null?fmtDollar(sh.yesterday_sales):'—',      sh.aov!=null?'AOV '+fmtDollar(sh.aov):'no data', shStatus],
+    ['Helium 10',       h10Found?'report received':'no report',                          h10Flags.length+' rank flag(s)', h10Status],
+    ['Amazon Ads',      aa.spend!=null?fmtDollar(aa.spend)+' spend':'—',                 (aa.flagged_skus||[]).length+' SKU(s) out of band', aa.spend!=null?sm.status:(sm.status==='RED'?'RED':null)],
+    ['SKU Watch',       liveSkus.length?liveSkus.length+' SKUs live':'—',                skuAlerts.length+' band/TACOS alert(s)', skuStatus],
+    ['Amazon Sales',    asl.units_sold!=null?fmtInt(asl.units_sold)+' units':'—',        asl.conversion_rate!=null?fmtPct(asl.conversion_rate)+' conv':'no data', asl.units_sold!=null?'GREEN':null],
+    ['Amazon Campaigns', acs.account_roas!=null?'ROAS '+fmtNum(acs.account_roas):'—',    ac.campaigns_out_of_budget_count!=null?ac.campaigns_out_of_budget_count+' out of budget':'Chrome scrape', acStatus],
+    ['H10 Profit',      hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit)+' net (day)':'—', hp.monthly&&hp.monthly.net_profit!=null?fmtDollar(hp.monthly.net_profit)+' net (month)':'no data', hpStatus],
+    ['Google Ads',      ga.spend!=null?fmtDollar(ga.spend)+' spend':'—',                 ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
+    ['Meta Ads',        mt.spend!=null?fmtDollar(mt.spend)+' spend':'—',                 mt.available?'connected':'pending rollout', mtStatus],
+    ['Product Reviews', fmtInt(rv.new_review_count||0)+' new',                           rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+'★ avg':'no new batch', rv.status],
+  ];
+  const pillFor = s => {
+    const u = String(s||'').toUpperCase();
+    return u==='GREEN'?'<span class="pill pill-ok">GREEN</span>':u==='YELLOW'?'<span class="pill pill-warn">YELLOW</span>':u==='RED'?'<span class="pill pill-crit">RED</span>':'<span class="pill pill-na">NO DATA</span>';
+  };
+  $('ov-table').querySelector('tbody').innerHTML =
+    rows.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td class="r">${pillFor(r[3])}</td></tr>`).join('');
+
+  const reds = rows.filter(r=>String(r[3]).toUpperCase()==='RED').map(r=>r[0]);
+  const overall = reds.length ? 'RED' : rows.some(r=>String(r[3]).toUpperCase()==='YELLOW') ? 'YELLOW' : 'GREEN';
+  dot('dot-overview', overall);
+  statusTag($('ov-tag'), overall);
+  $('ov-alerts').innerHTML = reds.length
+    ? alertBox('crit', `<b>${reds.length} source(s) RED:</b> ${reds.map(esc).join(', ')}. Recommended actions are in Slack and need a human "approved" reply — nothing executes automatically.`)
+    : alertBox('ok','No RED flags this morning.');
+  $('ov-cards').innerHTML =
+    card('Cash Balance', fmtDollar(qb.cash_balance), 'QuickBooks', qbLow||qb.status==='RED'?'bdr-red':'bdr-green') +
+    card("Shopify Sales", fmtDollar(sh.yesterday_sales), 'Yesterday', 'bdr-teal') +
+    card('Amazon Units', fmtInt(asl.units_sold), 'Yesterday', 'bdr-purple') +
+    card('Total Ad Spend', (aa.spend==null&&ga.spend==null&&mt.spend==null)?null:fmtDollar((aa.spend||0)+(ga.spend||0)+(mt.spend||0)), 'Amazon + Google + Meta', 'bdr-orange');
+}
+
+// ─── LOAD + AUTO-REFRESH ─────────────────────────────────────────────────────
+const DATA_URL  = './data/connectors_data.json';
+const BANDS_URL = './data/roas_bands.json';
+const BH_URL    = './data/business_health.json';
+const REFRESH_MS = 5 * 60 * 1000;
+let countdownId, secondsLeft;
+let BANDS = null;
+
+// Tolerant JSON parse: strips accidental CDATA wrappers / markdown fences before parsing,
+// so one bad routine write can't blank the whole dashboard.
+async function safeJson(res){
+  let t = await res.text();
+  t = t.replace(/^\uFEFF/, '').trim();
+  t = t.replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, '');
+  t = t.replace(/^```(?:json)?/, '').replace(/```$/, '').trim();
+  return JSON.parse(t);
+}
+
+// ─── BUSINESS HEALTH RENDER ──────────────────────────────────────────────────
+function renderBizHealth(bh){
+  if (!bh){ $('bh-alerts').innerHTML = alertBox('info','Business health file not found — Patrick needs to update and email the sheet.'); dot('dot-bizhealth',''); return; }
+  const k = bh.kpis || {};
+  const skus = bh.skus || [];
+  const prod = bh.production_schedule || [];
+  const brand = bh.brand_health || {};
+  const funnel = brand.funnel || {};
+  statusTag($('bh-tag'), skus.length ? 'GREEN' : null);
+  dot('dot-bizhealth', skus.length ? 'green' : '');
+  $('bh-when').textContent = bh.report_date ? 'As of ' + bh.report_date : '';
+
+  // KPI Header
+  $('bh-kpi-cards').innerHTML =
+    card('Lifetime Revenue', fmtDollar(k.lifetime_revenue), fmtInt(k.lifetime_units)+' units sold', 'bdr-teal', 'up') +
+    card('Est. Profit', fmtDollar(k.est_profit), 'Active SKUs · lifetime', 'bdr-green', 'up') +
+    card('Cash in Inventory', fmtDollar(k.inventory_cogs), 'Landed COGS · '+fmtInt(k.inventory_units)+' units', 'bdr-orange') +
+    card('Total Customers', fmtInt(k.total_customers), fmtNum(k.top_tier_pct,1)+'% top-tier', 'bdr-purple') +
+    card('Return Rate', k.return_rate_pct!=null?fmtNum(k.return_rate_pct,2)+'%':null, 'Healthy · below norms', 'bdr-green') +
+    card('Owed Thru Dec', fmtDollar(k.owed_total_thru_dec), fmtDollar(k.owed_now)+' due now · rest planned', k.owed_now>50000?'bdr-red':'bdr-amber');
+
+  // Section 1: Sales by SKU
+  const totalRev = skus.reduce((s,x)=>s+(x.revenue_lifetime||0),0);
+  $('bh-sku-revenue').innerHTML = `<table style="width:100%">
+    <thead><tr><th>Product</th><th>Share of Revenue</th><th class="r">Revenue</th><th class="r">% of Rev</th><th class="r">Units</th></tr></thead>
+    <tbody>${skus.map(s=>{
+      const pct = totalRev>0?(s.revenue_lifetime/totalRev*100):0;
+      const barW = Math.round(pct);
+      return `<tr>
+        <td><b>${esc(s.name)}</b></td>
+        <td style="min-width:180px;">
+          <div style="background:#eef1f4;border-radius:4px;height:10px;width:100%;">
+            <div style="background:var(--green);width:${barW}%;height:10px;border-radius:4px;"></div>
+          </div>
+        </td>
+        <td class="r"><b>${fmtDollar(s.revenue_lifetime)}</b></td>
+        <td class="r" style="color:var(--green);font-weight:700;">${fmtNum(s.revenue_share_pct||pct,1)}%</td>
+        <td class="r">${fmtInt(s.units_lifetime)}</td>
+      </tr>`;
+    }).join('')}
+    <tr style="border-top:2px solid var(--border);">
+      <td><b>TOTAL</b></td>
+      <td><div style="background:var(--green);border-radius:4px;height:10px;width:100%;"></div></td>
+      <td class="r"><b>${fmtDollar(totalRev)}</b></td>
+      <td class="r" style="color:var(--green);font-weight:700;">100%</td>
+      <td class="r"><b>${fmtInt(skus.reduce((s,x)=>s+(x.units_lifetime||0),0))}</b></td>
+    </tr></tbody></table>`;
+
+  // Section 2: Margin cards
+  const marginColor = m => m>=40?'bdr-green':m>=25?'bdr-amber':'bdr-red';
+  const marginPillColor = m => m>=40?'pill-ok':m>=25?'pill-warn':'pill-crit';
+  $('bh-margin-cards').innerHTML = skus.map(s=>`
+    <div class="card ${marginColor(s.margin_pct)}" style="min-width:160px;">
+      <div class="c-lbl">${esc(s.name)}</div>
+      <div class="c-val ${s.margin_pct>=40?'up':s.margin_pct>=25?'warn':'down'}">${fmtDollar(s.profit_per_unit)}</div>
+      <div style="margin-top:6px;"><span class="pill ${marginPillColor(s.margin_pct)}">${s.margin_pct}% margin</span></div>
+      <div class="c-sub">on ${fmtDollar(s.price)} price</div>
+    </div>`).join('');
+  const maxLifeProfit = Math.max(...skus.map(s=>(s.profit_per_unit||0)*(s.units_lifetime||0)));
+  $('bh-profit-bars').innerHTML = `<div style="padding:12px 16px;">
+    ${skus.map(s=>{
+      const lp = (s.profit_per_unit||0)*(s.units_lifetime||0);
+      const w = maxLifeProfit>0?Math.round(lp/maxLifeProfit*100):0;
+      return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:110px;font-size:12px;font-weight:600;">${esc(s.short||s.name)}</div>
+        <div style="flex:1;background:#eef1f4;border-radius:4px;height:22px;position:relative;">
+          <div style="background:var(--green);width:${w}%;height:22px;border-radius:4px;display:flex;align-items:center;padding-left:8px;">
+            ${w>20?`<span style="font-size:11px;font-weight:700;color:#fff;">${fmtDollar(lp)}</span>`:''}
+          </div>
+          ${w<=20?`<span style="position:absolute;left:${w+2}%;top:3px;font-size:11px;font-weight:700;color:var(--navy);">${fmtDollar(lp)}</span>`:''}
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  // Section 3: Inventory bars
+  const maxInvCogs = Math.max(...skus.map(s=>s.inventory_cogs||0));
+  const invStatusColor = st => st==='fresh'?'var(--green)':st==='high'?'var(--amber)':'var(--red)';
+  $('bh-inventory-bars').innerHTML = `<div style="padding:12px 16px;">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:10px;">Total: ${fmtDollar(k.inventory_cogs)} · ${fmtInt(k.inventory_units)} units</div>
+    ${skus.map(s=>{
+      const w = maxInvCogs>0?Math.round((s.inventory_cogs||0)/maxInvCogs*100):0;
+      const col = invStatusColor(s.inventory_status);
+      return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <div style="width:110px;">
+          <div style="font-size:12px;font-weight:600;">${esc(s.short||s.name)}</div>
+          <div style="font-size:10px;color:${col};font-weight:600;">${esc(s.inventory_status||'')}</div>
+        </div>
+        <div style="flex:1;background:#eef1f4;border-radius:4px;height:22px;position:relative;">
+          <div style="background:${col};width:${w}%;height:22px;border-radius:4px;display:flex;align-items:center;padding-left:8px;">
+            ${w>20?`<span style="font-size:11px;font-weight:700;color:#fff;">${fmtDollar(s.inventory_cogs)}</span>`:''}
+          </div>
+          ${w<=20?`<span style="position:absolute;left:${w+2}%;top:3px;font-size:11px;font-weight:700;color:var(--navy);">${fmtDollar(s.inventory_cogs)}</span>`:''}
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  // Production schedule bars
+  const maxProd = Math.max(...prod.map(p=>p.amount||0), 1);
+  $('bh-production-bars').innerHTML = `<div style="padding:12px 16px;">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:10px;">Total owed through Dec: ${fmtDollar(k.owed_total_thru_dec)}</div>
+    <div style="display:flex;align-items:flex-end;gap:8px;height:120px;">
+      ${prod.map(p=>{
+        const h = maxProd>0?Math.round((p.amount||0)/maxProd*90):0;
+        const col = p.type==='owed_now'?'var(--green)':'var(--amber)';
+        return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="font-size:10px;font-weight:600;color:var(--navy);">${p.amount>0?fmtDollar(p.amount):''}</div>
+          <div style="background:${col};width:100%;height:${h}px;border-radius:4px 4px 0 0;min-height:${p.amount>0?4:1}px;"></div>
+          <div style="font-size:10px;color:var(--muted);">${esc(p.month)}</div>
+        </div>`;
+      }).join('')}
+    </div>
+    <div style="display:flex;gap:16px;margin-top:8px;font-size:10px;">
+      <span><span style="display:inline-block;width:10px;height:10px;background:var(--green);border-radius:2px;margin-right:4px;"></span>owed now</span>
+      <span><span style="display:inline-block;width:10px;height:10px;background:var(--amber);border-radius:2px;margin-right:4px;"></span>planned (not yet owed)</span>
+    </div>
+  </div>`;
+
+  // Section 5: Subscribe & Save
+  const totalSns = skus.reduce((s,x)=>s+(x.sns_subs||0),0);
+  const overallSnsPct = bh.kpis?.sns_total_pct || (skus.length?skus.reduce((s,x)=>s+(x.sns_penetration_pct||0),0)/skus.filter(x=>x.sns_penetration_pct!=null).length:0);
+  const snsArc = Math.min(100,overallSnsPct||0);
+  $('bh-sns-section').innerHTML = `
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center;padding:10px 0;">
+      <div style="text-align:center;min-width:120px;">
+        <svg viewBox="0 0 100 100" width="110" height="110">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#eef1f4" stroke-width="16"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="var(--green)" stroke-width="16"
+            stroke-dasharray="${(snsArc/100)*226} ${226-(snsArc/100)*226}"
+            transform="rotate(-90 50 50)"/>
+          <text x="50" y="46" text-anchor="middle" font-size="14" font-weight="800" fill="#1c2733">${fmtNum(overallSnsPct,1)}%</text>
+          <text x="50" y="60" text-anchor="middle" font-size="8" fill="#6b7886">OF SALES</text>
+        </svg>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;">${fmtInt(totalSns)} active subs<br>vs ~5% industry · 5–10% target</div>
+      </div>
+      <div class="tbl-wrap" style="flex:1;min-width:260px;">
+        <table><thead><tr><th>Product</th><th class="r">Active Subs</th><th class="r">S&S %</th><th class="r">Coupon-Driven</th></tr></thead>
+        <tbody>${skus.filter(s=>s.sns_subs!=null).map(s=>`<tr>
+          <td>${esc(s.name)}</td>
+          <td class="r">${s.sns_subs}</td>
+          <td class="r"><span class="pill ${(s.sns_penetration_pct||0)>=5?'pill-ok':'pill-warn'}">${fmtNum(s.sns_penetration_pct,1)}%</span></td>
+          <td class="r">${s.coupon_driven_pct!=null?fmtNum(s.coupon_driven_pct,1)+'%':'—'}</td>
+        </tr>`).join('')}</tbody></table>
+      </div>
+    </div>
+    <div class="alert alert-warn">Subscriptions are underdeveloped (${fmtNum(overallSnsPct,1)}% vs 5–10% target). Best lever: push S&S on maintenance consumables (Shampoo, Detangling), not the crisis-bought Dematter.</div>`;
+
+  // Section 6: Returns
+  const maxReturn = Math.max(...skus.filter(s=>s.return_rate_pct!=null).map(s=>s.return_rate_pct||0), 12);
+  $('bh-returns-section').innerHTML = `
+    <div style="padding:10px 0;">
+      ${skus.filter(s=>s.return_rate_pct!=null).map(s=>{
+        const w = Math.round((s.return_rate_pct/maxReturn)*100);
+        const catW = s.category_avg_return_pct!=null?Math.round((s.category_avg_return_pct/maxReturn)*100):null;
+        const isAbove = s.return_vs_category==='above';
+        const col = isAbove?'var(--red)':'var(--green)';
+        return `<div style="margin-bottom:14px;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+            <b>${esc(s.name)}</b>
+            <span class="pill ${isAbove?'pill-crit':'pill-ok'}">${isAbove?'AT RISK':'OK'}</span>
+          </div>
+          <div style="background:#eef1f4;border-radius:4px;height:10px;position:relative;">
+            <div style="background:${col};width:${w}%;height:10px;border-radius:4px;"></div>
+            ${catW!=null?`<div style="position:absolute;left:${catW}%;top:-3px;width:2px;height:16px;background:var(--navy);border-radius:1px;" title="category avg"></div>`:''}
+          </div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px;">${fmtNum(s.return_rate_pct,2)}%${s.category_avg_return_pct!=null?' vs '+s.category_avg_return_pct+'% category avg':''} — ${esc(s.return_vs_category||'')} category</div>
+        </div>`;
+      }).join('')}
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">Dark line | marks the category average. Amazon's 10.2% fee threshold applies to all SKUs.</div>
+    </div>`;
+
+  // Section 7: Brand Health
+  const tier = (label, count, pct, desc, action, color) => `
+    <div class="card ${color}" style="min-width:200px;margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="c-lbl">${esc(label)}</div>
+        <span style="font-size:10px;color:var(--muted);">${fmtInt(count)} · ${fmtNum(pct,1)}%</span>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;">${esc(desc)}</div>
+      <div style="font-size:10px;font-weight:700;margin-top:6px;color:var(--navy);">${esc(action)}</div>
+    </div>`;
+  const topTier = brand.top_tier||{}, promising = brand.promising||{}, atRisk = brand.at_risk||{};
+  const totalCust = (topTier.count||0)+(promising.count||0)+(atRisk.count||0);
+  const ttArc = totalCust>0?(topTier.count/totalCust*226):0;
+  const prArc = totalCust>0?(promising.count/totalCust*226):0;
+  const arArc = totalCust>0?(atRisk.count/totalCust*226):0;
+  const ttOff = 0, prOff = -ttArc, arOff = -(ttArc+prArc);
+  $('bh-brand-section').innerHTML = `
+    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;padding:10px 0;">
+      <div style="text-align:center;min-width:130px;">
+        <svg viewBox="0 0 100 100" width="120" height="120">
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#2faa6a" stroke-width="16"
+            stroke-dasharray="${ttArc} ${226-ttArc}" transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#15212E" stroke-width="16"
+            stroke-dasharray="${prArc} ${226-prArc}" stroke-dashoffset="${-ttOff-ttArc}"
+            transform="rotate(-90 50 50)"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#e6a417" stroke-width="16"
+            stroke-dasharray="${arArc} ${226-arArc}" stroke-dashoffset="${-(ttArc+prArc)}"
+            transform="rotate(-90 50 50)"/>
+          <text x="50" y="46" text-anchor="middle" font-size="12" font-weight="800" fill="#1c2733">${fmtInt(totalCust)}</text>
+          <text x="50" y="59" text-anchor="middle" font-size="8" fill="#6b7886">CUSTOMERS</text>
+        </svg>
+      </div>
+      <div style="flex:1;min-width:240px;">
+        ${tier('Top-Tier', topTier.count, topTier.pct, 'Bought recently AND spend most / most often — your champions.', '→ Cross-sell maintenance line. Enroll in S&S first.', 'bdr-green')}
+        ${tier('Promising', promising.count, promising.pct, 'Recent buyers, lower frequency — mostly one-time crisis buyers. The grow pool.', '→ Win the 2nd purchase. Bundle Dematter + Rake. Nudge S&S.', 'bdr-grey')}
+        ${tier('At-Risk (lapsing)', atRisk.count, atRisk.pct, `Were engaged, haven't bought in a while — cooling off.${atRisk.wow_change_pct?` +${atRisk.wow_change_pct}% WoW ⚠️`:''}`, '→ Targeted win-back coupon. Replenishment reminder.', atRisk.wow_change_pct>100?'bdr-red':'bdr-amber')}
+      </div>
+    </div>
+    <div class="tbl-wrap" style="margin-top:10px;">
+      <div class="tbl-title">Key metrics vs targets (7-month brand)</div>
+      <table><thead><tr><th>Metric</th><th class="r">Current</th><th class="r">Target</th><th class="r">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Repeat purchase rate</td><td class="r"><b>${fmtNum(brand.repeat_purchase_rate_pct,1)}%</b></td><td class="r">10–15%</td><td class="r"><span class="pill pill-crit">Low</span></td></tr>
+        <tr><td>Subscribe &amp; Save %</td><td class="r"><b>${fmtNum(brand.sns_total_penetration_pct,1)}%</b></td><td class="r">5–10%</td><td class="r"><span class="pill pill-warn">Underdeveloped</span></td></tr>
+        <tr><td>Top-tier customer share</td><td class="r"><b>${fmtNum(topTier.pct,1)}%</b></td><td class="r">12–18%</td><td class="r"><span class="pill pill-ok">Ahead of pace ✓</span></td></tr>
+        <tr><td>At-risk customer share</td><td class="r"><b>${fmtNum(atRisk.pct,1)}%</b></td><td class="r">&lt;5%</td><td class="r"><span class="pill ${atRisk.pct<5?'pill-ok':'pill-crit'}">${atRisk.pct<5?'Healthy':'Over target'}</span></td></tr>
+        <tr><td>Brand search share</td><td class="r"><b>${fmtNum(brand.brand_search_share_pct,1)}%</b></td><td class="r">8–12%</td><td class="r"><span class="pill pill-warn">Under target</span></td></tr>
+        <tr><td>Cart abandoner recovery</td><td class="r"><b>~0%</b></td><td class="r">5%+ achievable</td><td class="r"><span class="pill pill-crit">${fmtInt(brand.cart_abandoners)} carts — quick win</span></td></tr>
+      </tbody></table>
+    </div>
+    ${funnel.awareness?`<div class="tbl-wrap" style="margin-top:10px;">
+      <div class="tbl-title">Customer journey funnel — week of ${esc(brand.week_of||'')}</div>
+      <div style="display:flex;gap:8px;padding:12px;flex-wrap:wrap;">
+        ${[['Awareness',funnel.awareness],['Consideration',funnel.consideration],['Intent (carted)',funnel.intent_carted],['Purchase (new)',funnel.purchase_new]].map(([lbl,f])=>f?`
+        <div class="card" style="flex:1;min-width:120px;text-align:center;">
+          <div class="c-lbl">${esc(lbl)}</div>
+          <div class="c-val">${fmtInt(f.count)}</div>
+          <div class="c-sub ${(f.wow_pct||0)<0?'down':'up'}">${(f.wow_pct||0)>0?'▲':'▼'} ${Math.abs(f.wow_pct||0)}% WoW</div>
+        </div>`:'').join('')}
+      </div>
+    </div>`:''}`;
+}
+
+async function loadData(){
+  try{
+    if (!BANDS){
+      try{
+        const bres = await fetch(BANDS_URL + '?_=' + Date.now());
+        if (bres.ok) BANDS = await safeJson(bres);
+      }catch(e){}
+    }
+    // Load business health (non-blocking)
+    try{
+      const bhres = await fetch(BH_URL + '?_=' + Date.now());
+      if (bhres.ok) renderBizHealth(await safeJson(bhres));
+      else renderBizHealth(null);
+    }catch(e){ renderBizHealth(null); }
+
+    const res = await fetch(DATA_URL + '?_=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
+    const data = await safeJson(res);
+    $('loading-state').style.display = 'none';
+    $('error-state').style.display   = 'none';
+    $('dashboard').style.display     = 'block';
+    render(data);
+  }catch(err){
+    $('loading-state').style.display = 'none';
+    $('dashboard').style.display     = 'none';
+    $('error-state').style.display   = 'block';
+    $('error-msg').textContent = err.message;
+  }
+  startCountdown();
+}
+function startCountdown(){
+  clearInterval(countdownId);
+  secondsLeft = REFRESH_MS/1000;
+  const tick = () => {
+    const m = Math.floor(secondsLeft/60), s = String(secondsLeft%60).padStart(2,'0');
+    $('meta-countdown').textContent = `${m}:${s}`;
+    if (secondsLeft-- <= 0) loadData();
+  };
+  tick();
+  countdownId = setInterval(tick, 1000);
+}
+loadData();
+</script>
+</body>
+</html>
