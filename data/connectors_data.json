@@ -1,12 +1,10 @@
-{
-  "last_updated": "2026-07-06 08:15:00 PT",
-
+<![CDATA[{
+  "last_updated": "2026-07-06 09:05:00 PT",
   "quickbooks": {
     "cash_balance": null,
     "weeks_runway": null,
     "status": "RED"
   },
-
   "klaviyo": {
     "avg_open_rate": 55.6,
     "avg_click_rate": 0,
@@ -16,14 +14,12 @@
       "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (2 recipients, low volume)"
     ]
   },
-
   "shopify": {
-    "yesterday_sales": 0,
-    "orders": 0,
-    "aov": null,
-    "vs_7day_avg_pct": -100
+    "yesterday_sales": 34.18,
+    "orders": 1,
+    "aov": 34.18,
+    "vs_7day_avg_pct": 88.3
   },
-
   "helium10": {
     "report_found": true,
     "report_date": "2026-07-05",
@@ -33,27 +29,9 @@
         "name": "Slicker Brush for Dogs, Golden...",
         "asin": "B0FQ628KCH",
         "keywords": [
-          {
-            "keyword": "doodle brush",
-            "search_volume": 8448,
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "organic_change_rating": 214
-          },
-          {
-            "keyword": "dog slicker brushes for grooming",
-            "search_volume": 1176,
-            "organic_rank": 121,
-            "sponsored_rank": null,
-            "organic_change_rating": 19
-          },
-          {
-            "keyword": "slicker brush for dogs",
-            "search_volume": 23837,
-            "organic_rank": 104,
-            "sponsored_rank": null,
-            "organic_change_rating": 12
-          }
+          { "keyword": "doodle brush", "search_volume": 8448, "organic_rank": null, "sponsored_rank": null, "organic_change_rating": 214 },
+          { "keyword": "dog slicker brushes for grooming", "search_volume": 1176, "organic_rank": 121, "sponsored_rank": null, "organic_change_rating": 19 },
+          { "keyword": "slicker brush for dogs", "search_volume": 23837, "organic_rank": 104, "sponsored_rank": null, "organic_change_rating": 12 }
         ]
       },
       {
@@ -65,78 +43,33 @@
         "name": "Emergency Dematter Cream for Dogs",
         "asin": "B0FQL56V99",
         "keywords": [
-          {
-            "keyword": "dematting spray for dogs",
-            "search_volume": 1862,
-            "organic_rank": 4,
-            "sponsored_rank": 1,
-            "organic_change_rating": 101
-          },
-          {
-            "keyword": "dog detangler",
-            "search_volume": 2635,
-            "organic_rank": 16,
-            "sponsored_rank": null,
-            "organic_change_rating": 51
-          },
-          {
-            "keyword": "dematting comb for dogs",
-            "search_volume": 8448,
-            "organic_rank": 19,
-            "sponsored_rank": 6,
-            "organic_change_rating": 32
-          }
+          { "keyword": "dematting spray for dogs", "search_volume": 1862, "organic_rank": 4, "sponsored_rank": 1, "organic_change_rating": 101 },
+          { "keyword": "dog detangler", "search_volume": 2635, "organic_rank": 16, "sponsored_rank": null, "organic_change_rating": 51 },
+          { "keyword": "dematting comb for dogs", "search_volume": 8448, "organic_rank": 19, "sponsored_rank": 6, "organic_change_rating": 32 }
         ]
       }
     ],
     "flags": [
-      "Same Daily Keyword Tracker report (Jul 5) as prior-day baseline - no new email since baseline was built, so no additional rank-drop comparison possible this run",
-      "Slicker Brush (B0FQ628KCH) keyword 'doodle brush' organic rank change -204 per Helium 10 (now unranked) - far past 3-spot drop threshold, still unresolved from baseline"
+      "No NEW 3+ spot organic rank drops today - all tracked ranks unchanged vs prior-day baseline",
+      "Slicker Brush (B0FQ628KCH) keyword 'doodle brush' organic rank still unranked (change -204) - ongoing unresolved issue, unchanged since baseline"
     ]
   },
-
   "helium10_profits": {
-    "daily": {
-      "date": "2026-07-05",
-      "gross_revenue": 1715.67,
-      "expenses": 933.74,
-      "net_profit": 710.94,
-      "net_margin_pct": 41.45,
-      "units": 87,
-      "vs_prior_day_pct": 33
-    },
-    "weekly": {
-      "period": "Jun 29 - Jul 5",
-      "gross_revenue": 10562.00,
-      "expenses": 8768.85,
-      "net_profit": 741.98,
-      "net_margin_pct": 7.02,
-      "units": 517,
-      "vs_prior_week_pct": -14
-    },
-    "monthly": {
-      "period": "Jun 1 - Jun 30",
-      "gross_revenue": 49883.25,
-      "expenses": 49002.70,
-      "net_profit": -1730.10,
-      "net_margin_pct": -3.47,
-      "units": 2623,
-      "vs_prior_month_pct": 10
-    }
+    "daily":   { "date": "2026-07-05", "gross_revenue": 1715.67, "expenses": 933.74, "net_profit": 710.94, "net_margin_pct": 41.45, "units": 87, "vs_prior_day_pct": 33 },
+    "weekly":  { "period": "Jun 29 - Jul 5", "gross_revenue": 10562.00, "expenses": 8768.85, "net_profit": 741.98, "net_margin_pct": 7.02, "units": 517, "vs_prior_week_pct": -14 },
+    "monthly": { "period": "Jun 1 - Jun 30", "gross_revenue": 49883.25, "expenses": 49002.70, "net_profit": -1730.10, "net_margin_pct": -3.47, "units": 2623, "vs_prior_month_pct": 10 }
   },
-
   "helium10_listing_analyzer": {
     "report_found": true,
     "report_date": "2026-07-06",
     "listings": [
-      { "product": "Emergency Dematter Cream for Dogs", "score": null, "flags": [] },
-      { "product": "Rake Brush for Dogs, Dematting Tool", "score": null, "flags": [] },
-      { "product": "Detangling Treatment for Dogs", "score": null, "flags": [] },
-      { "product": "Pin Brush for Dogs", "score": null, "flags": [] },
-      { "product": "Dog Shampoo & Conditioner", "score": null, "flags": [] }
+      { "product": "Emergency Dematter Cream for Dogs", "score": 9.5, "flags": ["Page views -35.2% WoW", "Sessions -32.9% WoW", "Conversion (UOSR) +12.6% WoW"] },
+      { "product": "Rake Brush for Dogs, Dematting Tool", "score": 9.5, "flags": ["Page views -48.6% WoW", "Sessions -45.0% WoW", "Conversion (UOSR) +28.5% WoW", "BSR -5.0% WoW"] },
+      { "product": "Detangling Treatment for Dogs", "score": 9.5, "flags": ["Page views -56.8% WoW", "Sessions -49.1% WoW", "Conversion (UOSR) +27.6% WoW", "BSR -36.5% WoW"] },
+      { "product": "Pin Brush for Dogs", "score": 8.5, "flags": ["Page views -49.9% WoW", "Sessions -49.2% WoW", "Conversion (UOSR) -10.0% WoW", "BSR -2.6% WoW"] },
+      { "product": "Dog Shampoo & Conditioner", "score": 9.5, "flags": ["Page views +6.0% WoW", "Sessions -2.2% WoW"] }
     ]
   },
-
   "helium10_market_tracker": {
     "report_found": true,
     "report_date": "2026-07-06",
@@ -145,7 +78,6 @@
       { "product": "We Love Doodles - B0BFZ4C4Z9", "change_summary": "Reviews 3336 -> 3346 (+0.3%)" }
     ]
   },
-
   "amazon_ads_browser": {
     "available": false,
     "last_scraped": null,
@@ -158,17 +90,16 @@
       "total_clicks": null
     },
     "campaigns_total": null,
+    "campaigns_delivering_count": null,
     "campaigns_out_of_budget_count": null,
     "estimated_missed_sales": null,
     "campaigns_out_of_budget_list": [],
     "campaigns_paused_high_roas": [],
     "campaigns_paused_list": [],
-    "campaigns_delivering_count": null,
     "targets_with_sales": null,
     "targets_with_clicks_no_sales": null,
     "flags": ["No Claude-in-Chrome browser connector available in this environment - browser scrape skipped"]
   },
-
   "supermetrics": {
     "amazon_ads": {
       "spend": null,
@@ -178,11 +109,48 @@
       "skus": []
     },
     "amazon_sales": {
+      "source": "sheet_feed",
       "data_date": "2026-07-04",
+      "ordered_sales": 1214.77,
+      "order_items": 62,
+      "page_views": 469,
       "sessions": 348,
       "conversion_rate": 18.1,
-      "units_sold": 63,
-      "sc_lag_note": "Amazon SC data has a 24-48h processing lag. This reflects the last fully finalized day, not yesterday."
+      "units_sold": 62,
+      "trailing_7d": { "avg_daily_sales": 1338.71, "avg_sessions": 402.86, "avg_conversion": 17.15, "total_units": 482, "wow_sales_change_pct": -25.36 },
+      "trailing_30d": [
+        {"date":"2026-06-05","sales":1753.22,"sessions":425,"conversion":19.53},
+        {"date":"2026-06-06","sales":1378.84,"sessions":418,"conversion":15.79},
+        {"date":"2026-06-07","sales":1708.83,"sessions":434,"conversion":20.97},
+        {"date":"2026-06-08","sales":1448.35,"sessions":401,"conversion":18.45},
+        {"date":"2026-06-09","sales":1493.86,"sessions":436,"conversion":18.35},
+        {"date":"2026-06-10","sales":1513.87,"sessions":420,"conversion":19.76},
+        {"date":"2026-06-11","sales":1403.28,"sessions":426,"conversion":18.08},
+        {"date":"2026-06-12","sales":1371.15,"sessions":391,"conversion":19.18},
+        {"date":"2026-06-13","sales":1767.89,"sessions":526,"conversion":18.25},
+        {"date":"2026-06-14","sales":1733.24,"sessions":531,"conversion":17.14},
+        {"date":"2026-06-15","sales":1634.41,"sessions":537,"conversion":16.57},
+        {"date":"2026-06-16","sales":1366.37,"sessions":516,"conversion":14.15},
+        {"date":"2026-06-17","sales":1358.26,"sessions":552,"conversion":13.41},
+        {"date":"2026-06-18","sales":1637.11,"sessions":436,"conversion":20.41},
+        {"date":"2026-06-19","sales":1424.82,"sessions":390,"conversion":20.26},
+        {"date":"2026-06-20","sales":1765.75,"sessions":444,"conversion":21.4},
+        {"date":"2026-06-21","sales":1686.44,"sessions":466,"conversion":18.45},
+        {"date":"2026-06-22","sales":1706.53,"sessions":506,"conversion":17.39},
+        {"date":"2026-06-23","sales":2245.21,"sessions":758,"conversion":18.34},
+        {"date":"2026-06-24","sales":2240.75,"sessions":580,"conversion":24.14},
+        {"date":"2026-06-25","sales":1739.37,"sessions":543,"conversion":19.71},
+        {"date":"2026-06-26","sales":2049.62,"sessions":567,"conversion":22.93},
+        {"date":"2026-06-27","sales":885.94,"sessions":328,"conversion":14.02},
+        {"date":"2026-06-28","sales":1112.64,"sessions":363,"conversion":15.43},
+        {"date":"2026-06-29","sales":999.30,"sessions":323,"conversion":15.79},
+        {"date":"2026-06-30","sales":1330.04,"sessions":444,"conversion":15.99},
+        {"date":"2026-07-01","sales":1438.94,"sessions":426,"conversion":17.84},
+        {"date":"2026-07-02","sales":1805.99,"sessions":491,"conversion":18.53},
+        {"date":"2026-07-03","sales":1469.27,"sessions":425,"conversion":18.35},
+        {"date":"2026-07-04","sales":1214.77,"sessions":348,"conversion":18.1}
+      ],
+      "sc_lag_note": "Amazon SC 24-48h processing lag - last finalized day"
     },
     "google_ads": {
       "spend": null,
@@ -191,13 +159,11 @@
     },
     "status": "YELLOW"
   },
-
   "meta_ads": {
     "available": false,
     "spend": null,
     "roas": null
   },
-
   "reviews": {
     "last_reviews_check": "2026-07-06",
     "sheet_last_modified": "2026-07-02",
@@ -206,3 +172,4 @@
     "status": "GREEN"
   }
 }
+]]>
