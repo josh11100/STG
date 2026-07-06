@@ -169,16 +169,20 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-num">05<span class="nav-dot" id="dot-amazon"></span></span>
       <span class="nav-text"><span class="nav-title">Amazon Ads + Sales</span><span class="nav-desc">Spend, ROAS, sessions, conversion</span></span>
     </button>
+    <button class="nav-card" id="nav-skus" onclick="show('skus')">
+      <span class="nav-num">06<span class="nav-dot" id="dot-skus"></span></span>
+      <span class="nav-text"><span class="nav-title">SKU Watch — ROAS + TACOS</span><span class="nav-desc">Live per-SKU vs locked bands + targets</span></span>
+    </button>
     <button class="nav-card" id="nav-googleads" onclick="show('googleads')">
-      <span class="nav-num">06<span class="nav-dot" id="dot-googleads"></span></span>
+      <span class="nav-num">07<span class="nav-dot" id="dot-googleads"></span></span>
       <span class="nav-text"><span class="nav-title">Google Ads</span><span class="nav-desc">Spend, ROAS, top campaigns</span></span>
     </button>
     <button class="nav-card" id="nav-metaads" onclick="show('metaads')">
-      <span class="nav-num">07<span class="nav-dot" id="dot-metaads"></span></span>
+      <span class="nav-num">08<span class="nav-dot" id="dot-metaads"></span></span>
       <span class="nav-text"><span class="nav-title">Meta Ads</span><span class="nav-desc">Pending Meta connector rollout</span></span>
     </button>
     <button class="nav-card" id="nav-reviews" onclick="show('reviews')">
-      <span class="nav-num">08<span class="nav-dot" id="dot-reviews"></span></span>
+      <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
       <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
     </button>
   </div>
@@ -251,6 +255,22 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div class="sec-head"><h2>Amazon Seller Central — Yesterday</h2><span class="tag tag-info">SALES</span></div>
           <div class="cards" id="amz-sales-cards"></div>
           <div id="amz-alerts"></div>
+        </div>
+
+        <!-- SKU WATCH -->
+        <div class="section" id="section-skus">
+          <div class="sec-head"><h2>SKU Watch — Live ROAS vs Locked Bands</h2><span class="tag" id="sku-tag">—</span><span class="when" id="sku-when"></span></div>
+          <div id="sku-alerts"></div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Amazon — yesterday's ROAS per SKU vs bands (Green ≥ BE · Yellow 80%–BE · Red floor–80% · Kill &lt; floor)</div>
+            <table id="sku-live-table"><thead><tr><th>SKU</th><th class="r">Spend</th><th class="r">ROAS (y'day)</th><th class="r">Breakeven</th><th class="r">Band</th><th class="r">TACOS 7d</th><th class="r">Target</th><th class="r">TACOS</th></tr></thead><tbody></tbody></table>
+          </div>
+          <div class="sec-head"><h2>Locked Reference — Per-SKU Bands + S&amp;S Rules</h2><span class="tag tag-info">STATIC · JUNE 28 FINAL</span></div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Amazon + Shopify breakevens · TACOS targets · Subscribe &amp; Save</div>
+            <table id="sku-ref-table"><thead><tr><th>SKU</th><th class="r">Price</th><th class="r">Amazon BE</th><th class="r">Shopify BE</th><th class="r">TACOS Target</th><th>S&amp;S / Notes</th></tr></thead><tbody></tbody></table>
+          </div>
+          <div class="alert alert-info"><b>3-day learning window:</b> no ad is killed in its first 3 days regardless of ROAS — kill logic activates day 4. Shopify bands are reference-only for now (Meta/Google attribute per campaign, not per SKU).</div>
         </div>
 
         <!-- GOOGLE ADS -->
@@ -422,6 +442,71 @@ function render(d){
   $('amz-alerts').innerHTML =
     (aa.spend==null && sm.status==='RED') ? alertBox('crit','<b>Supermetrics RED:</b> Amazon Ads query returned an error or no data on the last run — noted in #stg-ads-watchdog instead of guessing numbers.') : '';
 
+  // — SKU Watch: live per-SKU ROAS + TACOS vs locked bands —
+  const bandsSkus = (BANDS && BANDS.skus) || [];
+  const liveSkus = aa.skus || [];
+  const findBand = row => bandsSkus.find(b =>
+    (row.asin && b.asin && row.asin === b.asin) ||
+    (row.sku && b.sku && String(row.sku).toLowerCase().includes(String(b.sku).toLowerCase().split(' ')[0])));
+  const classify = (roas, b) => {
+    if (roas == null || !b || !b.amazon || b.amazon.breakeven == null) return null;
+    if (roas >= b.amazon.breakeven) return 'GREEN';
+    if (roas >= b.amazon.yellow_min) return 'YELLOW';
+    if (roas >= b.amazon.red_min) return 'RED';
+    return 'KILL';
+  };
+  const bandPill = band => {
+    const m = {GREEN:'pill-ok', YELLOW:'pill-warn', RED:'pill-crit', KILL:'pill-crit'};
+    return band ? `<span class="pill ${m[band]||'pill-na'}">${band}</span>` : '<span class="pill pill-na">—</span>';
+  };
+  let skuStatus = null, skuAlerts = [];
+  if (liveSkus.length){
+    const rows = liveSkus.map(row => {
+      const b = findBand(row);
+      const band = row.band || classify(row.roas, b);
+      const target = row.tacos_target != null ? row.tacos_target : (b ? b.tacos_target : null);
+      const liq = b && b.liquidate;
+      const tacosNum = row.tacos_7d != null ? Number(row.tacos_7d) : null;
+      let tacosPill = '<span class="pill pill-na">—</span>';
+      if (liq && (row.spend||0) > 0){ tacosPill = '<span class="pill pill-crit">LIQ-VIOLATION</span>'; skuAlerts.push(`${b.sku}: liquidation SKU received ad spend (${fmtDollar(row.spend)}) — no-ad-funding rule violated.`); }
+      else if (typeof target === 'number' && tacosNum != null){
+        tacosPill = tacosNum <= target ? '<span class="pill pill-ok">OK</span>'
+          : tacosNum <= target + 5 ? '<span class="pill pill-warn">OVER</span>'
+          : '<span class="pill pill-crit">OVER+5</span>';
+        if (tacosNum > target + 5) skuAlerts.push(`${(b&&b.sku)||row.sku}: TACOS ${tacosNum.toFixed(1)}% is more than 5 pts over its ${target}% target.`);
+      }
+      if (band === 'RED' || band === 'KILL') skuAlerts.push(`${(b&&b.sku)||row.sku}: ROAS ${fmtNum(row.roas)} landed in ${band} band${row.learning_window ? ' (in 3-day learning window — no kill action)' : ''}.`);
+      return `<tr><td><b>${esc((b&&b.sku)||row.sku||row.asin||'?')}</b>${row.learning_window?' <span class="pill pill-na">LEARNING</span>':''}</td>
+        <td class="r">${fmtDollar(row.spend)??'—'}</td>
+        <td class="r">${fmtNum(row.roas)??'—'}</td>
+        <td class="r">${b&&b.amazon?fmtNum(b.amazon.breakeven)+'x':'—'}</td>
+        <td class="r">${bandPill(band)}</td>
+        <td class="r">${tacosNum!=null?tacosNum.toFixed(1)+'%':'—'}</td>
+        <td class="r">${target!=null?(typeof target==='number'?target+'%':esc(String(target))):'—'}</td>
+        <td class="r">${tacosPill}</td></tr>`;
+    });
+    $('sku-live-table').querySelector('tbody').innerHTML = rows.join('');
+    skuStatus = skuAlerts.length ? (skuAlerts.some(a=>/KILL|violated|OVER\+/.test(a))?'RED':'YELLOW') : 'GREEN';
+    $('sku-alerts').innerHTML = skuAlerts.length
+      ? skuAlerts.map(a=>alertBox(/violated|KILL/.test(a)?'crit':'warn', esc(a))).join('')
+      : alertBox('ok','All advertised SKUs inside their bands and TACOS targets.');
+  } else {
+    $('sku-live-table').querySelector('tbody').innerHTML =
+      `<tr><td colspan="8" style="color:#8a93a0;font-style:italic;">${aa.sku_data_pending ? 'Per-SKU breakdown still generating on Amazon\'s side (25–30 min is normal) — account-level numbers above are good.' : 'No per-SKU data in the latest run — routine not yet writing the skus array (see step 5 patch).'}</td></tr>`;
+    $('sku-alerts').innerHTML = '';
+  }
+  statusTag($('sku-tag'), skuStatus); dot('dot-skus', skuStatus);
+  $('sku-when').textContent = liveSkus.length ? 'Live from last run' : '';
+  // static reference table
+  $('sku-ref-table').querySelector('tbody').innerHTML = bandsSkus.length ? bandsSkus.map(b => `
+    <tr><td><b>${esc(b.sku)}</b>${b.launch?` <span class="pill pill-na">SEPT 1</span>`:''}${b.liquidate?' <span class="pill pill-crit">LIQUIDATE</span>':''}</td>
+    <td class="r">$${b.price}</td>
+    <td class="r">${b.amazon&&b.amazon.breakeven!=null?fmtNum(b.amazon.breakeven)+'x':'—'}</td>
+    <td class="r">${b.shopify&&b.shopify.breakeven!=null?fmtNum(b.shopify.breakeven)+'x':'—'}</td>
+    <td class="r">${typeof b.tacos_target==='number'?b.tacos_target+'%':esc(String(b.tacos_target))}</td>
+    <td>${esc((b.sns&&b.sns.note)||'')}</td></tr>`).join('')
+    : '<tr><td colspan="6" style="color:#8a93a0;font-style:italic;">data/roas_bands.json not found in repo — commit it to render the locked reference.</td></tr>';
+
   // — Google Ads —
   const gaLow = ga.roas != null && ga.roas < 2.0;
   const gaStatus = ga.spend==null ? (sm.status==='RED'?'RED':null) : gaLow ? 'YELLOW' : 'GREEN';
@@ -465,6 +550,7 @@ function render(d){
     ['Shopify',         sh.yesterday_sales!=null?fmtDollar(sh.yesterday_sales):'—',      sh.aov!=null?'AOV '+fmtDollar(sh.aov):'no data', shStatus],
     ['Helium 10',       h10Found?'report received':'no report',                          h10Flags.length+' rank flag(s)', h10Status],
     ['Amazon Ads',      aa.spend!=null?fmtDollar(aa.spend)+' spend':'—',                 (aa.flagged_skus||[]).length+' SKU(s) out of band', aa.spend!=null?sm.status:(sm.status==='RED'?'RED':null)],
+    ['SKU Watch',       liveSkus.length?liveSkus.length+' SKUs live':'—',                skuAlerts.length+' band/TACOS alert(s)', skuStatus],
     ['Amazon Sales',    asl.units_sold!=null?fmtInt(asl.units_sold)+' units':'—',        asl.conversion_rate!=null?fmtPct(asl.conversion_rate)+' conv':'no data', asl.units_sold!=null?'GREEN':null],
     ['Google Ads',      ga.spend!=null?fmtDollar(ga.spend)+' spend':'—',                 ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
     ['Meta Ads',        mt.spend!=null?fmtDollar(mt.spend)+' spend':'—',                 mt.available?'connected':'pending rollout', mtStatus],
@@ -493,11 +579,19 @@ function render(d){
 
 // ─── LOAD + AUTO-REFRESH ─────────────────────────────────────────────────────
 const DATA_URL = './data/connectors_data.json';
+const BANDS_URL = './data/roas_bands.json';
 const REFRESH_MS = 5 * 60 * 1000;
 let countdownId, secondsLeft;
+let BANDS = null;
 
 async function loadData(){
   try{
+    if (!BANDS){
+      try{
+        const bres = await fetch(BANDS_URL + '?_=' + Date.now());
+        if (bres.ok) BANDS = await bres.json();
+      }catch(e){ /* bands are optional — reference table shows a hint */ }
+    }
     const res = await fetch(DATA_URL + '?_=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
     const data = await res.json();
