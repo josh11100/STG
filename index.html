@@ -185,6 +185,19 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
       <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
     </button>
+    <div class="sb-label" style="margin-top:8px;">Helium 10 Reports</div>
+    <button class="nav-card" id="nav-h10profits" onclick="show('h10profits')">
+      <span class="nav-num">10<span class="nav-dot" id="dot-h10profits"></span></span>
+      <span class="nav-text"><span class="nav-title">H10 Profits</span><span class="nav-desc">Daily · Weekly · Monthly Amazon revenue</span></span>
+    </button>
+    <button class="nav-card" id="nav-listing" onclick="show('listing')">
+      <span class="nav-num">11<span class="nav-dot" id="dot-listing"></span></span>
+      <span class="nav-text"><span class="nav-title">Listing Analyzer</span><span class="nav-desc">Weekly listing health + improvements</span></span>
+    </button>
+    <button class="nav-card" id="nav-market" onclick="show('market')">
+      <span class="nav-num">12<span class="nav-dot" id="dot-market"></span></span>
+      <span class="nav-text"><span class="nav-title">Market Tracker</span><span class="nav-desc">Top 10 weekly review changes</span></span>
+    </button>
   </div>
 
   <div class="content">
@@ -296,6 +309,32 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="rv-alerts"></div>
         </div>
 
+        <!-- H10 PROFITS -->
+        <div class="section" id="section-h10profits">
+          <div class="sec-head"><h2>Helium 10 — Amazon Profits</h2><span class="tag" id="h10p-tag">—</span></div>
+          <div class="sec-head" style="padding-top:14px;"><h2>Daily</h2><span class="tag tag-info">YESTERDAY</span><span class="when" id="h10p-daily-when"></span></div>
+          <div class="cards" id="h10p-daily-cards"></div>
+          <div class="sec-head" style="padding-top:14px;"><h2>Weekly</h2><span class="tag tag-info">TRAILING WEEK</span><span class="when" id="h10p-weekly-when"></span></div>
+          <div class="cards" id="h10p-weekly-cards"></div>
+          <div class="sec-head" style="padding-top:14px;"><h2>Monthly</h2><span class="tag tag-info">THIS MONTH</span><span class="when" id="h10p-monthly-when"></span></div>
+          <div class="cards" id="h10p-monthly-cards"></div>
+          <div id="h10p-alerts"></div>
+        </div>
+
+        <!-- LISTING ANALYZER -->
+        <div class="section" id="section-listing">
+          <div class="sec-head"><h2>Helium 10 — Listing Analyzer (Weekly)</h2><span class="tag" id="la-tag">—</span><span class="when" id="la-when"></span></div>
+          <div id="la-alerts"></div>
+          <div id="la-listings"></div>
+        </div>
+
+        <!-- MARKET TRACKER -->
+        <div class="section" id="section-market">
+          <div class="sec-head"><h2>Helium 10 — Market Tracker (Weekly)</h2><span class="tag" id="mkt-tag">—</span><span class="when" id="mkt-when"></span></div>
+          <div id="mkt-alerts"></div>
+          <div id="mkt-changes"></div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -388,6 +427,7 @@ function render(d){
   statusTag($('sh-tag'), shStatus); dot('dot-shopify', shStatus);
   $('sh-cards').innerHTML =
     card("Yesterday's Sales", fmtDollar(sh.yesterday_sales), 'vs 7-day average', 'bdr-teal') +
+    card('Orders', fmtInt(sh.orders), 'Yesterday order count', 'bdr-purple') +
     card('AOV', fmtDollar(sh.aov), 'Target: $35+', shBadAov?'bdr-red':'bdr-green', shBadAov?'down':'') +
     card('vs 7-Day Avg', sh.vs_7day_avg_pct==null?null:(sh.vs_7day_avg_pct>0?'+':'')+fmtPct(sh.vs_7day_avg_pct), 'Flag if drop >20%', shDrop?'bdr-red':'bdr-teal', shDrop?'down':sh.vs_7day_avg_pct>0?'up':'');
   $('sh-alerts').innerHTML = sh.yesterday_sales==null ? naAlert('Shopify') :
@@ -542,6 +582,74 @@ function render(d){
     rv.status==='RED' ? alertBox('crit','<b>RED — mass negative signal.</b> Complaint themes summarized in #stg-content-alerts.') :
     noNew ? alertBox('ok','Sheet unchanged since last check — nothing new posted (by design).') : '';
 
+  // — H10 Profits —
+  const h10p  = d.helium10_profits || {};
+  const h10pd = h10p.daily   || {};
+  const h10pw = h10p.weekly  || {};
+  const h10pm = h10p.monthly || {};
+  const h10pStatus = h10pd.gross_revenue != null ? 'GREEN' : h10pw.gross_revenue != null ? 'YELLOW' : null;
+  statusTag($('h10p-tag'), h10pStatus); dot('dot-h10profits', h10pStatus);
+  $('h10p-daily-when').textContent = h10pd.date ? 'Date: ' + h10pd.date : '';
+  const marginFmt = (np, gr) => (np!=null && gr!=null && gr>0) ? fmtNum(np/gr*100,1)+'%' : null;
+  $('h10p-daily-cards').innerHTML = h10pd.gross_revenue == null
+    ? '<div class="alert alert-info">Daily profit report not yet received — may arrive later in the morning. Not treated as an error.</div>'
+    : card('Gross Revenue', fmtDollar(h10pd.gross_revenue), 'Yesterday Amazon.com', 'bdr-teal') +
+      card('Expenses', fmtDollar(h10pd.expenses), 'Yesterday', 'bdr-orange') +
+      card('Net Profit', fmtDollar(h10pd.net_profit), 'Yesterday', h10pd.net_profit!=null&&h10pd.net_profit>0?'bdr-green':'bdr-red', h10pd.net_profit!=null&&h10pd.net_profit>0?'up':'down') +
+      card('Net Margin', h10pd.net_margin_pct!=null?fmtNum(h10pd.net_margin_pct,1)+'%':marginFmt(h10pd.net_profit,h10pd.gross_revenue), 'Net ÷ gross', 'bdr-teal') +
+      card('Units Sold', fmtInt(h10pd.units), 'Yesterday', 'bdr-purple') +
+      card('vs Prior Day', h10pd.vs_prior_day_pct!=null?(h10pd.vs_prior_day_pct>0?'+':'')+fmtPct(h10pd.vs_prior_day_pct):null, 'Day-over-day', 'bdr-grey', h10pd.vs_prior_day_pct>0?'up':h10pd.vs_prior_day_pct<0?'down':'');
+  $('h10p-weekly-when').textContent = h10pw.period ? 'Period: ' + h10pw.period : '';
+  $('h10p-weekly-cards').innerHTML = h10pw.gross_revenue == null
+    ? '<div class="alert alert-info">Weekly profit report arrives Mondays — not expected every day.</div>'
+    : card('Gross Revenue', fmtDollar(h10pw.gross_revenue), 'Weekly total', 'bdr-teal') +
+      card('Expenses', fmtDollar(h10pw.expenses), 'Weekly total', 'bdr-orange') +
+      card('Net Profit', fmtDollar(h10pw.net_profit), 'Weekly total', h10pw.net_profit!=null&&h10pw.net_profit>0?'bdr-green':'bdr-red', h10pw.net_profit!=null&&h10pw.net_profit>0?'up':'down') +
+      card('Net Margin', h10pw.net_margin_pct!=null?fmtNum(h10pw.net_margin_pct,1)+'%':marginFmt(h10pw.net_profit,h10pw.gross_revenue), 'Net ÷ gross', 'bdr-teal') +
+      card('Units', fmtInt(h10pw.units), 'Weekly total', 'bdr-purple') +
+      card('vs Prior Week', h10pw.vs_prior_week_pct!=null?(h10pw.vs_prior_week_pct>0?'+':'')+fmtPct(h10pw.vs_prior_week_pct):null, 'Week-over-week', 'bdr-grey', h10pw.vs_prior_week_pct>0?'up':h10pw.vs_prior_week_pct<0?'down':'');
+  $('h10p-monthly-when').textContent = h10pm.period ? 'Period: ' + h10pm.period : '';
+  $('h10p-monthly-cards').innerHTML = h10pm.gross_revenue == null
+    ? '<div class="alert alert-info">Monthly profit report arrives ~1st of each month — not expected most days.</div>'
+    : card('Gross Revenue', fmtDollar(h10pm.gross_revenue), 'Monthly total', 'bdr-teal') +
+      card('Expenses', fmtDollar(h10pm.expenses), 'Monthly total', 'bdr-orange') +
+      card('Net Profit', fmtDollar(h10pm.net_profit), 'Monthly total', h10pm.net_profit!=null&&h10pm.net_profit>0?'bdr-green':'bdr-red', h10pm.net_profit!=null&&h10pm.net_profit>0?'up':'down') +
+      card('Net Margin', h10pm.net_margin_pct!=null?fmtNum(h10pm.net_margin_pct,1)+'%':marginFmt(h10pm.net_profit,h10pm.gross_revenue), 'Net ÷ gross', 'bdr-teal') +
+      card('Units', fmtInt(h10pm.units), 'Monthly total', 'bdr-purple') +
+      card('vs Prior Month', h10pm.vs_prior_month_pct!=null?(h10pm.vs_prior_month_pct>0?'+':'')+fmtPct(h10pm.vs_prior_month_pct):null, 'Month-over-month', 'bdr-grey', h10pm.vs_prior_month_pct>0?'up':h10pm.vs_prior_month_pct<0?'down':'');
+
+  // — Listing Analyzer —
+  const la = d.helium10_listing_analyzer || {};
+  const laStatus = la.report_found ? 'GREEN' : null;
+  statusTag($('la-tag'), laStatus); dot('dot-listing', laStatus);
+  $('la-when').textContent = la.report_date ? 'Report: ' + la.report_date : '';
+  $('la-alerts').innerHTML = !la.report_found
+    ? alertBox('info', 'Listing Analyzer report arrives weekly — not expected every day.')
+    : '';
+  const laListings = la.listings || [];
+  $('la-listings').innerHTML = laListings.length ? laListings.map(l => `
+    <div class="tbl-wrap" style="margin:8px 0;">
+      <div class="tbl-title">${esc(l.product||'Product')}${l.score!=null?' · Score: <b>'+l.score+'</b>':''}</div>
+      <ul class="flag-list" style="padding:8px 12px;">${(l.flags||[]).map(f=>`<li>${esc(f)}</li>`).join('') || '<li class="empty">No flags</li>'}</ul>
+    </div>`).join('') : '';
+
+  // — Market Tracker —
+  const mkt = d.helium10_market_tracker || {};
+  const mktStatus = mkt.report_found ? 'GREEN' : null;
+  statusTag($('mkt-tag'), mktStatus); dot('dot-market', mktStatus);
+  $('mkt-when').textContent = mkt.report_date ? 'Report: ' + mkt.report_date : '';
+  $('mkt-alerts').innerHTML = !mkt.report_found
+    ? alertBox('info', 'Market Tracker report arrives weekly — not expected every day.')
+    : '';
+  const mktChanges = mkt.review_changes || [];
+  $('mkt-changes').innerHTML = mktChanges.length ? `
+    <div class="tbl-wrap">
+      <div class="tbl-title">Top Review Changes</div>
+      <table><thead><tr><th>Product</th><th>Change Summary</th></tr></thead>
+      <tbody>${mktChanges.map(c=>`<tr><td><b>${esc(c.product||'—')}</b></td><td>${esc(c.change_summary||'—')}</td></tr>`).join('')}</tbody>
+      </table>
+    </div>` : (mkt.report_found ? '<div class="alert alert-ok">No review changes in latest report.</div>' : '');
+
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
   const rows = [
@@ -555,6 +663,9 @@ function render(d){
     ['Google Ads',      ga.spend!=null?fmtDollar(ga.spend)+' spend':'—',                 ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
     ['Meta Ads',        mt.spend!=null?fmtDollar(mt.spend)+' spend':'—',                 mt.available?'connected':'pending rollout', mtStatus],
     ['Product Reviews', fmtInt(rv.new_review_count||0)+' new',                           rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+'★ avg':'no new batch', rv.status],
+    ['H10 Profits',     h10pd.gross_revenue!=null?fmtDollar(h10pd.net_profit)+' net today':'—', h10pd.gross_revenue!=null?(marginFmt(h10pd.net_profit,h10pd.gross_revenue)||'—')+' margin':'no daily data yet', h10pStatus],
+    ['Listing Analyzer',la.report_found?laListings.length+' listing(s)':'—',              la.report_date?'report: '+la.report_date:'weekly · not today', laStatus],
+    ['Market Tracker',  mkt.report_found?mktChanges.length+' change(s)':'—',             mkt.report_date?'report: '+mkt.report_date:'weekly · not today', mktStatus],
   ];
   const pillFor = s => {
     const u = String(s||'').toUpperCase();
