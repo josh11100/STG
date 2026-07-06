@@ -58,6 +58,8 @@ body{margin:0;font-family:var(--font);background:#0f1822;color:var(--text);font-
 .sec-head{display:flex;align-items:center;gap:8px;padding:22px 0 8px;border-bottom:2px solid var(--border);margin-bottom:6px;flex-wrap:wrap;}
 .sec-head h2{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--navy);}
 .sec-head .when{margin-left:auto;font-size:10px;color:var(--sub);}
+.sec-desc{font-size:11.5px;color:var(--muted);line-height:1.55;padding:2px 0 6px;max-width:860px;}
+.sec-desc b{color:var(--navy);}
 .tag{font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;letter-spacing:.5px;}
 .tag-live{background:#e3f5ec;color:#1d7d4d;}
 .tag-na{background:#f0f2f5;color:#8a93a0;}
@@ -169,6 +171,10 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-num">05<span class="nav-dot" id="dot-amazon"></span></span>
       <span class="nav-text"><span class="nav-title">Amazon Ads + Sales</span><span class="nav-desc">Spend, ROAS, sessions, conversion</span></span>
     </button>
+    <button class="nav-card" id="nav-amzcamp" onclick="show('amzcamp')">
+      <span class="nav-num" style="font-size:9px;">5b<span class="nav-dot" id="dot-amzcamp"></span></span>
+      <span class="nav-text"><span class="nav-title">Amazon Campaigns</span><span class="nav-desc">Live scrape: budgets, paused winners, waste</span></span>
+    </button>
     <button class="nav-card" id="nav-skus" onclick="show('skus')">
       <span class="nav-num">06<span class="nav-dot" id="dot-skus"></span></span>
       <span class="nav-text"><span class="nav-title">SKU Watch — ROAS + TACOS</span><span class="nav-desc">Live per-SKU vs locked bands + targets</span></span>
@@ -184,6 +190,18 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     <button class="nav-card" id="nav-reviews" onclick="show('reviews')">
       <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
       <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
+    </button>
+    <button class="nav-card" id="nav-h10profits" onclick="show('h10profits')">
+      <span class="nav-num">10<span class="nav-dot" id="dot-h10profits"></span></span>
+      <span class="nav-text"><span class="nav-title">H10 Profits</span><span class="nav-desc">True Amazon net profit — daily / weekly / monthly</span></span>
+    </button>
+    <button class="nav-card" id="nav-listing" onclick="show('listing')">
+      <span class="nav-num">11<span class="nav-dot" id="dot-listing"></span></span>
+      <span class="nav-text"><span class="nav-title">Listing Analyzer</span><span class="nav-desc">Weekly H10 listing quality scores</span></span>
+    </button>
+    <button class="nav-card" id="nav-market" onclick="show('market')">
+      <span class="nav-num">12<span class="nav-dot" id="dot-market"></span></span>
+      <span class="nav-text"><span class="nav-title">Market Tracker</span><span class="nav-desc">Weekly competitor review velocity watch</span></span>
     </button>
     <div class="sb-label" style="margin-top:8px;">Strategic</div>
     <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
@@ -212,6 +230,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- OVERVIEW -->
         <div class="section active" id="section-overview">
           <div class="sec-head"><h2>Morning Overview</h2><span class="tag tag-info" id="ov-tag">ALL SOURCES</span><span class="when" id="ov-when"></span></div>
+          <div class="sec-desc">Every source in one table, refreshed each morning ~7:45 AM PT by the JARVIS routine. <b>GREEN</b> = inside all locked thresholds · <b>YELLOW</b> = flagged, watch it · <b>RED</b> = action recommended in Slack and waiting on a human "approved" reply — nothing executes automatically.</div>
           <div id="ov-alerts"></div>
           <div class="cards" id="ov-cards"></div>
           <div class="tbl-wrap">
@@ -223,6 +242,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- QUICKBOOKS -->
         <div class="section" id="section-quickbooks">
           <div class="sec-head"><h2>QuickBooks — Finance</h2><span class="tag" id="qb-tag">—</span></div>
+          <div class="sec-desc">Cash on hand (checking + money market) and how many weeks it lasts at the average burn of the last 4 weeks. <b>Locked rule:</b> checking below $25,000 = RED + recommended action in #stg-finance-alerts.</div>
           <div class="cards" id="qb-cards"></div>
           <div id="qb-alerts"></div>
         </div>
@@ -230,6 +250,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- KLAVIYO -->
         <div class="section" id="section-klaviyo">
           <div class="sec-head"><h2>Klaviyo — Email + SMS Flows (Last 7 Days)</h2><span class="tag" id="kl-tag">—</span></div>
+          <div class="sec-desc">Flow performance over the trailing 7 days. <b>Locked thresholds:</b> open rate below 15% or click rate below 2% flags the flow for creative / audience review.</div>
           <div class="cards" id="kl-cards"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Flagged flows (open &lt;15% or click &lt;2%)</div>
           <ul class="flag-list" id="kl-flags"></ul>
@@ -238,6 +259,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- SHOPIFY -->
         <div class="section" id="section-shopify">
           <div class="sec-head"><h2>Shopify — Yesterday</h2><span class="tag" id="sh-tag">—</span></div>
+          <div class="sec-desc">Yesterday's DTC storefront: sales, orders, AOV. <b>Locked rules:</b> AOV target $35+ · a sales drop of more than 20% vs the 7-day average gets flagged in #stg-morning-brief.</div>
           <div class="cards" id="sh-cards"></div>
           <div id="sh-alerts"></div>
         </div>
@@ -245,6 +267,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- HELIUM 10 -->
         <div class="section" id="section-helium10">
           <div class="sec-head"><h2>Helium 10 — Keyword Tracker</h2><span class="tag" id="h10-tag">—</span><span class="when" id="h10-when"></span></div>
+          <div class="sec-desc">Amazon keyword ranks per tracked product from the Daily Keyword Tracker email (stgbrandanalytics@gmail.com). <b>Locked rule:</b> an organic rank drop of 3+ spots vs the prior report = flag naming the product + keyword. Rank pills: <b>#1–10</b> green · <b>#11–50</b> amber · <b>#51+</b> red.</div>
           <div id="h10-alerts"></div>
           <div id="h10-products"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Rank-drop flags (3+ spots)</div>
@@ -254,6 +277,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- AMAZON -->
         <div class="section" id="section-amazon">
           <div class="sec-head"><h2>Amazon Ads — Yesterday</h2><span class="tag" id="amz-tag">—</span></div>
+          <div class="sec-desc">Supermetrics: yesterday's ad spend + account-level ROAS. The per-SKU breakdown feeds SKU Watch below. Seller Central numbers reflect <b>2 days ago</b> — Amazon takes 24–48h to finalize SC data, that lag is normal, not a failure. <b>Locked rule:</b> conversion below 10% = flag.</div>
           <div class="cards" id="amz-ads-cards"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">SKUs outside locked ROAS bands</div>
           <ul class="flag-list" id="amz-flags"></ul>
@@ -262,9 +286,22 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="amz-alerts"></div>
         </div>
 
+        <!-- AMAZON CAMPAIGNS (browser scrape) -->
+        <div class="section" id="section-amzcamp">
+          <div class="sec-head"><h2>Amazon Campaigns — Live Scrape</h2><span class="tag" id="ac-tag">—</span><span class="when" id="ac-when"></span></div>
+          <div class="sec-desc">Campaign intelligence scraped straight from Amazon Campaign Manager via Claude in Chrome (Marcelo's browser must be open + connected at 7 AM). Watches three money leaks: <b>campaigns out of budget</b> (missed sales), <b>paused campaigns with ROAS &gt; 3</b> (free wins sitting idle), and <b>targets with clicks but zero sales</b> (spend waste). All unpause / budget actions need Will's approval in Slack.</div>
+          <div id="ac-alerts"></div>
+          <div class="cards" id="ac-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Campaigns out of budget</div>
+          <ul class="flag-list" id="ac-oob"></ul>
+          <div class="tbl-title" style="padding:10px 2px 0;">Paused with high ROAS (recommend unpausing — needs approval)</div>
+          <ul class="flag-list" id="ac-paused"></ul>
+        </div>
+
         <!-- SKU WATCH -->
         <div class="section" id="section-skus">
           <div class="sec-head"><h2>SKU Watch — Live ROAS vs Locked Bands</h2><span class="tag" id="sku-tag">—</span><span class="when" id="sku-when"></span></div>
+          <div class="sec-desc">Yesterday's per-SKU ROAS classified against the locked bands in <b>data/roas_bands.json</b> — the same file the routine flags against, so dashboard and alerts can never disagree. TACOS uses a trailing 7-day window (single-day TACOS is too noisy to act on).</div>
           <div id="sku-alerts"></div>
           <div class="tbl-wrap">
             <div class="tbl-title">Amazon — yesterday's ROAS per SKU vs bands (Green ≥ BE · Yellow 80%–BE · Red floor–80% · Kill &lt; floor)</div>
@@ -281,6 +318,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- GOOGLE ADS -->
         <div class="section" id="section-googleads">
           <div class="sec-head"><h2>Google Ads — Yesterday</h2><span class="tag" id="ga-tag">—</span></div>
+          <div class="sec-desc">Yesterday via Supermetrics. <b>Locked rule:</b> ROAS below 2.0 = flag. Note: STG isn't currently running Google campaigns — $0 / no data here is expected, not an error.</div>
           <div class="cards" id="ga-cards"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Top campaigns</div>
           <ul class="flag-list" id="ga-campaigns"></ul>
@@ -290,6 +328,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- META ADS -->
         <div class="section" id="section-metaads">
           <div class="sec-head"><h2>Meta Ads — Yesterday</h2><span class="tag" id="mt-tag">—</span></div>
+          <div class="sec-desc">Spend + ROAS once the Meta connector is enabled on the STG ad account (Will authenticates at hub.supermetrics.com). Until then "pending" is the expected state.</div>
           <div class="cards" id="mt-cards"></div>
           <div id="mt-alerts"></div>
         </div>
@@ -297,13 +336,48 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- REVIEWS -->
         <div class="section" id="section-reviews">
           <div class="sec-head"><h2>Product Reviews — Weekly Review Sheet</h2><span class="tag" id="rv-tag">—</span></div>
+          <div class="sec-desc">Watches the STG Weekly Review Update sheet for new batches. <b>Locked rule:</b> RED if the new batch averages under 3.5★ OR contains 3+ one/two-star reviews (mass negative signal) — complaint themes get summarized in #stg-content-alerts so Will sees what's wrong, not just that something is.</div>
           <div class="cards" id="rv-cards"></div>
           <div id="rv-alerts"></div>
+        </div>
+
+        <!-- H10 PROFITS -->
+        <div class="section" id="section-h10profits">
+          <div class="sec-head"><h2>Helium 10 — True Amazon Profit</h2><span class="tag" id="hp-tag">—</span><span class="when" id="hp-when"></span></div>
+          <div class="sec-desc">The number that says whether Amazon actually made money: gross revenue minus <b>all</b> costs (COGS, Amazon fees, ad spend) = net profit. From H10 Profit emails — daily arrives every morning, weekly lands Mondays, monthly ~the 1st. Green = profitable · red = losing money.</div>
+          <div id="hp-alerts"></div>
+          <div class="tbl-title" style="padding:6px 2px 0;">Yesterday</div>
+          <div class="cards" id="hp-daily"></div>
+          <div class="tbl-title" style="padding:6px 2px 0;">Last week</div>
+          <div class="cards" id="hp-weekly"></div>
+          <div class="tbl-title" style="padding:6px 2px 0;">Last month</div>
+          <div class="cards" id="hp-monthly"></div>
+        </div>
+
+        <!-- LISTING ANALYZER -->
+        <div class="section" id="section-listing">
+          <div class="sec-head"><h2>Helium 10 — Listing Analyzer</h2><span class="tag" id="la-tag">—</span><span class="when" id="la-when"></span></div>
+          <div class="sec-desc">Weekly listing quality scores per product. Arrives <b>weekly</b> — "no report" on other days is normal, not an error. Low scores or flags mean the listing itself (title, images, bullets) is leaving conversion on the table.</div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Latest listing scores</div>
+            <table id="la-table"><thead><tr><th>Product</th><th class="r">Score</th><th>Flags</th></tr></thead><tbody></tbody></table>
+          </div>
+        </div>
+
+        <!-- MARKET TRACKER -->
+        <div class="section" id="section-market">
+          <div class="sec-head"><h2>Helium 10 — Market Tracker</h2><span class="tag" id="mk-tag">—</span><span class="when" id="mk-when"></span></div>
+          <div class="sec-desc">Weekly competitor watch — review count changes for tracked competitors. A competitor's review velocity suddenly spiking is early warning that they're pushing (giveaways, inserts, ranking play) before it shows up in your rank.</div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Competitor review changes</div>
+            <table id="mk-table"><thead><tr><th>Competitor</th><th>Change</th></tr></thead><tbody></tbody></table>
+          </div>
         </div>
 
         <!-- BUSINESS HEALTH -->
         <div class="section" id="section-bizhealth">
           <div class="sec-head"><h2>Business Health — Strategic Overview</h2><span class="tag" id="bh-tag">—</span><span class="when" id="bh-when"></span></div>
+          <div class="sec-desc">The weekly zoom-out Will reviews — lifetime economics, cash in inventory, S&amp;S penetration, returns, brand loyalty. Patrick updates a Google Sheet weekly → emailed to stgbrandanalytics@gmail.com → written to <b>data/business_health.json</b>. This is strategy, not the daily pulse.</div>
           <div id="bh-alerts"></div>
           <div class="cards" id="bh-kpi-cards"></div>
 
@@ -420,6 +494,7 @@ function render(d){
   statusTag($('sh-tag'), shStatus); dot('dot-shopify', shStatus);
   $('sh-cards').innerHTML =
     card("Yesterday's Sales", fmtDollar(sh.yesterday_sales), 'vs 7-day average', 'bdr-teal') +
+    card('Orders', fmtInt(sh.orders), 'Yesterday', 'bdr-purple') +
     card('AOV', fmtDollar(sh.aov), 'Target: $35+', shBadAov?'bdr-red':'bdr-green', shBadAov?'down':'') +
     card('vs 7-Day Avg', sh.vs_7day_avg_pct==null?null:(sh.vs_7day_avg_pct>0?'+':'')+fmtPct(sh.vs_7day_avg_pct), 'Flag if drop >20%', shDrop?'bdr-red':'bdr-teal', shDrop?'down':sh.vs_7day_avg_pct>0?'up':'');
   $('sh-alerts').innerHTML = sh.yesterday_sales==null ? naAlert('Shopify') :
@@ -562,6 +637,71 @@ function render(d){
   $('mt-alerts').innerHTML = mt.available ? '' :
     alertBox('info','Meta connector not yet available — pending Meta\'s rollout. Not treated as a failure.');
 
+  // — Amazon Campaigns (Claude in Chrome scrape) —
+  const ac = d.amazon_ads_browser || {};
+  const acs = ac.account_summary || {};
+  const acAvail = ac.available === true && (acs.account_roas != null || ac.campaigns_total != null);
+  const acLowRoas = acs.account_roas != null && acs.account_roas < 2.0;
+  const acStatus = !acAvail ? null : ((ac.campaigns_out_of_budget_count||0) > 0 || (ac.campaigns_paused_high_roas||[]).length > 0 || acLowRoas) ? 'YELLOW' : 'GREEN';
+  statusTag($('ac-tag'), acStatus); dot('dot-amzcamp', acStatus);
+  $('ac-when').textContent = ac.last_scraped ? 'Scraped ' + ac.last_scraped : '';
+  $('ac-cards').innerHTML =
+    card('Account ROAS', fmtNum(acs.account_roas), acs.date_range ? esc(acs.date_range) : 'Threshold: 2.0', acLowRoas?'bdr-red':'bdr-teal', acLowRoas?'down':'') +
+    card('Total Spend', fmtDollar(acs.total_spend), acs.total_sales!=null ? 'Sales: '+fmtDollar(acs.total_sales) : '', 'bdr-orange') +
+    card('Out of Budget', ac.campaigns_out_of_budget_count!=null ? String(ac.campaigns_out_of_budget_count) : null, ac.estimated_missed_sales!=null ? 'Est. missed: '+esc(String(ac.estimated_missed_sales)) : 'Missed sales while capped', (ac.campaigns_out_of_budget_count||0)>0?'bdr-red':'bdr-green') +
+    card('Delivering', fmtInt(ac.campaigns_delivering_count), ac.campaigns_total!=null ? 'of '+ac.campaigns_total+' total campaigns' : '', 'bdr-green') +
+    card('Targeting Waste', ac.targets_with_clicks_no_sales!=null ? String(ac.targets_with_clicks_no_sales) : null, ac.targets_with_sales!=null ? 'targets w/ clicks, $0 sales · '+ac.targets_with_sales+' converting' : 'Targets w/ clicks, zero sales', (ac.targets_with_clicks_no_sales||0)>50?'bdr-amber':'bdr-teal');
+  flagList($('ac-oob'), ac.campaigns_out_of_budget_list, 'None — no campaigns capped', true);
+  flagList($('ac-paused'), ac.campaigns_paused_high_roas, 'None — no high-ROAS campaigns sitting paused');
+  $('ac-alerts').innerHTML = !acAvail
+    ? alertBox('info', ac.available === false
+        ? "Chrome wasn't connected on the last run — Marcelo's Mac + Chrome extension need to be open before 7 AM for this scrape."
+        : 'No scrape data in the latest run yet.')
+    : ((ac.flags||[]).length ? ac.flags.map(f=>alertBox('warn', esc(f))).join('') : '');
+
+  // — H10 Profits (daily / weekly / monthly) —
+  const hp = d.helium10_profits || {};
+  const hpCards = (p, vsLabel, vsKey) => {
+    if (!p || p.gross_revenue == null) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
+    const neg = (p.net_profit||0) < 0;
+    const vs = p[vsKey];
+    return card('Gross Revenue', fmtDollar(p.gross_revenue), (p.units!=null?fmtInt(p.units)+' units':'') + (p.date?' · '+esc(p.date):p.period?' · '+esc(p.period):''), 'bdr-teal') +
+      card('Expenses', fmtDollar(p.expenses), 'COGS + fees + ads', 'bdr-orange') +
+      card('Net Profit', fmtDollar(p.net_profit), p.net_margin_pct!=null ? fmtNum(p.net_margin_pct,1)+'% net margin' : '', neg?'bdr-red':'bdr-green', neg?'down':'up') +
+      card(vsLabel, vs!=null ? (vs>0?'+':'')+vs+'%' : null, 'Net profit change', vs!=null&&vs<0?'bdr-amber':'bdr-grey', vs!=null&&vs<0?'warn':vs>0?'up':'');
+  };
+  $('hp-daily').innerHTML   = hpCards(hp.daily,   'vs Prior Day',   'vs_prior_day_pct');
+  $('hp-weekly').innerHTML  = hpCards(hp.weekly,  'vs Prior Week',  'vs_prior_week_pct');
+  $('hp-monthly').innerHTML = hpCards(hp.monthly, 'vs Prior Month', 'vs_prior_month_pct');
+  const hpMoNeg = hp.monthly && (hp.monthly.net_profit||0) < 0;
+  const hpWkNeg = hp.weekly && (hp.weekly.net_profit||0) < 0;
+  const hpStatus = !hp.daily && !hp.weekly && !hp.monthly ? null : hpMoNeg ? 'RED' : hpWkNeg ? 'YELLOW' : 'GREEN';
+  statusTag($('hp-tag'), hpStatus); dot('dot-h10profits', hpStatus);
+  $('hp-when').textContent = hp.daily && hp.daily.date ? 'Daily report: ' + hp.daily.date : '';
+  $('hp-alerts').innerHTML = hpMoNeg
+    ? alertBox('crit', '<b>Last month was net NEGATIVE ('+fmtDollar(hp.monthly.net_profit)+', '+fmtNum(hp.monthly.net_margin_pct,1)+'% margin).</b> Amazon lost money after all costs — worth a margin review with Will/Patrick.')
+    : hpWkNeg ? alertBox('warn','Last week was net negative — watch this week closely.') : '';
+
+  // — Listing Analyzer —
+  const la = d.helium10_listing_analyzer || {};
+  const laRows = la.listings || [];
+  const laStatus = la.report_found == null ? null : la.report_found ? (laRows.some(l=>(l.flags||[]).length) ? 'YELLOW' : 'GREEN') : null;
+  statusTag($('la-tag'), laStatus); dot('dot-listing', laStatus);
+  $('la-when').textContent = la.report_date ? 'Report: ' + la.report_date : '';
+  $('la-table').querySelector('tbody').innerHTML = laRows.length
+    ? laRows.map(l=>`<tr><td><b>${esc(l.product||'?')}</b></td><td class="r">${l.score!=null?esc(String(l.score)):'<span class="pill pill-na">no score</span>'}</td><td>${(l.flags||[]).length?l.flags.map(f=>`<span class="pill pill-warn">${esc(f)}</span>`).join(' '):'<span class="pill pill-ok">clean</span>'}</td></tr>`).join('')
+    : '<tr><td colspan="3" style="color:#8a93a0;font-style:italic;">No listing report this week yet — arrives weekly, this is normal.</td></tr>';
+
+  // — Market Tracker —
+  const mk = d.helium10_market_tracker || {};
+  const mkRows = mk.review_changes || [];
+  const mkStatus = mk.report_found == null ? null : mk.report_found ? 'GREEN' : null;
+  statusTag($('mk-tag'), mkStatus); dot('dot-market', mkStatus);
+  $('mk-when').textContent = mk.report_date ? 'Report: ' + mk.report_date : '';
+  $('mk-table').querySelector('tbody').innerHTML = mkRows.length
+    ? mkRows.map(r=>`<tr><td><b>${esc(r.product||'?')}</b></td><td>${esc(r.change_summary||'')}</td></tr>`).join('')
+    : '<tr><td colspan="2" style="color:#8a93a0;font-style:italic;">No market tracker report this week yet — arrives weekly, this is normal.</td></tr>';
+
   // — Reviews —
   const rv = d.reviews || {};
   statusTag($('rv-tag'), rv.status); dot('dot-reviews', rv.status);
@@ -584,6 +724,8 @@ function render(d){
     ['Amazon Ads',      aa.spend!=null?fmtDollar(aa.spend)+' spend':'—',                 (aa.flagged_skus||[]).length+' SKU(s) out of band', aa.spend!=null?sm.status:(sm.status==='RED'?'RED':null)],
     ['SKU Watch',       liveSkus.length?liveSkus.length+' SKUs live':'—',                skuAlerts.length+' band/TACOS alert(s)', skuStatus],
     ['Amazon Sales',    asl.units_sold!=null?fmtInt(asl.units_sold)+' units':'—',        asl.conversion_rate!=null?fmtPct(asl.conversion_rate)+' conv':'no data', asl.units_sold!=null?'GREEN':null],
+    ['Amazon Campaigns', acs.account_roas!=null?'ROAS '+fmtNum(acs.account_roas):'—',    ac.campaigns_out_of_budget_count!=null?ac.campaigns_out_of_budget_count+' out of budget':'Chrome scrape', acStatus],
+    ['H10 Profit',      hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit)+' net (day)':'—', hp.monthly&&hp.monthly.net_profit!=null?fmtDollar(hp.monthly.net_profit)+' net (month)':'no data', hpStatus],
     ['Google Ads',      ga.spend!=null?fmtDollar(ga.spend)+' spend':'—',                 ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
     ['Meta Ads',        mt.spend!=null?fmtDollar(mt.spend)+' spend':'—',                 mt.available?'connected':'pending rollout', mtStatus],
     ['Product Reviews', fmtInt(rv.new_review_count||0)+' new',                           rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+'★ avg':'no new batch', rv.status],
