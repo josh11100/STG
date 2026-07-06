@@ -19,17 +19,26 @@
     "aov": null,
     "vs_7day_avg_pct": null
   },
-  "helium10": {
-    "reports_found": [
-      "Daily Keyword Tracker"
-    ],
-    "data_readable": true,
-    "flags": [
-      "Daily Profits report not received in last 24-48h",
-      "'slicker brush for dogs' organic rank dropped 3 spots to 102",
-      "'dog slicker brushes for grooming' organic rank dropped 4 spots to 130"
-    ]
-  },
+"helium10": {
+  "report_found": <bool>,
+  "report_date": "<date from email subject>",
+  "products": [
+    {
+      "name": "<product name>",
+      "asin": "<ASIN>",
+      "keywords": [
+        {
+          "keyword": "<keyword text>",
+          "search_volume": <number>,
+          "organic_rank": <number|null>,
+          "sponsored_rank": <number|null>,
+          "organic_change_rating": <number>
+        }
+      ]
+    }
+  ],
+  "flags": [<list of "product + keyword: rank drop" strings>]
+},
   "supermetrics": {
     "amazon_ads": {
       "spend": null,
