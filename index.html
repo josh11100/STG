@@ -759,6 +759,16 @@ const REFRESH_MS = 5 * 60 * 1000;
 let countdownId, secondsLeft;
 let BANDS = null;
 
+// Tolerant JSON parse: strips accidental CDATA wrappers / markdown fences before parsing,
+// so one bad routine write can't blank the whole dashboard.
+async function safeJson(res){
+  let t = await res.text();
+  t = t.replace(/^\uFEFF/, '').trim();
+  t = t.replace(/^<!\[CDATA\[/, '').replace(/\]\]>$/, '');
+  t = t.replace(/^```(?:json)?/, '').replace(/```$/, '').trim();
+  return JSON.parse(t);
+}
+
 // ─── BUSINESS HEALTH RENDER ──────────────────────────────────────────────────
 function renderBizHealth(bh){
   if (!bh){ $('bh-alerts').innerHTML = alertBox('info','Business health file not found — Patrick needs to update and email the sheet.'); dot('dot-bizhealth',''); return; }
@@ -999,19 +1009,19 @@ async function loadData(){
     if (!BANDS){
       try{
         const bres = await fetch(BANDS_URL + '?_=' + Date.now());
-        if (bres.ok) BANDS = await bres.json();
+        if (bres.ok) BANDS = await safeJson(bres);
       }catch(e){}
     }
     // Load business health (non-blocking)
     try{
       const bhres = await fetch(BH_URL + '?_=' + Date.now());
-      if (bhres.ok) renderBizHealth(await bhres.json());
+      if (bhres.ok) renderBizHealth(await safeJson(bhres));
       else renderBizHealth(null);
     }catch(e){ renderBizHealth(null); }
 
     const res = await fetch(DATA_URL + '?_=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
-    const data = await res.json();
+    const data = await safeJson(res);
     $('loading-state').style.display = 'none';
     $('error-state').style.display   = 'none';
     $('dashboard').style.display     = 'block';
