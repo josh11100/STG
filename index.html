@@ -337,6 +337,24 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
         </div>
 
+        <!-- GOOGLE ADS -->
+        <div class="section" id="section-googleads">
+          <div class="sec-head"><h2>Google Ads &mdash; Yesterday</h2><span class="tag" id="ga-tag">--</span></div>
+          <div class="sec-desc">Yesterday via Supermetrics. <b>Locked rule:</b> ROAS below 2.0 = flag. STG is not currently running Google campaigns &mdash; $0 / no data is expected, not an error.</div>
+          <div class="cards" id="ga-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Top campaigns</div>
+          <ul class="flag-list" id="ga-campaigns"></ul>
+          <div id="ga-alerts"></div>
+        </div>
+
+        <!-- META ADS -->
+        <div class="section" id="section-metaads">
+          <div class="sec-head"><h2>Meta Ads &mdash; Yesterday</h2><span class="tag" id="mt-tag">--</span></div>
+          <div class="sec-desc">Spend + ROAS once the Meta connector is enabled on the STG ad account (Will authenticates at hub.supermetrics.com). Until then "pending" is the expected state.</div>
+          <div class="cards" id="mt-cards"></div>
+          <div id="mt-alerts"></div>
+        </div>
+
         <!-- REVIEWS -->
         <div class="section" id="section-reviews">
           <div class="sec-head"><h2>Product Reviews</h2><span class="tag" id="rv-tag">--</span></div>
@@ -520,7 +538,7 @@ function render(d){
                  : null;
   const h10Flags = h10.flags || [];
   const h10Status = h10Found==null ? null : !h10Found ? 'YELLOW' : h10Flags.length ? 'YELLOW' : 'GREEN';
-  statusTag($('h10-tag'), h10Status); dot('dot-helium10', h10Status);
+  statusTag($('h10-tag'), h10Status); // dot('dot-helium10', h10Status);
   $('h10-when').textContent = h10.report_date ? 'Report: ' + h10.report_date : '';
   $('h10-alerts').innerHTML =
     h10Found === false ? alertBox('warn','<b>Daily Keyword Tracker report not received</b> in the last 24–48h (stgbrandanalytics@gmail.com).') :
@@ -615,8 +633,7 @@ function render(d){
       `<tr><td colspan="8" style="color:#8a93a0;font-style:italic;">${aa.sku_data_pending ? 'Per-SKU breakdown still generating on Amazon\'s side (25–30 min is normal) — account-level numbers above are good.' : 'No per-SKU data in the latest run — routine not yet writing the skus array (see step 5 patch).'}</td></tr>`;
     $('sku-alerts').innerHTML = '';
   }
-  statusTag($('sku-tag'), skuStatus); dot('dot-skus', skuStatus);
-  $('sku-when').textContent = liveSkus.length ? 'Live from last run' : '';
+  // SKU watch is inside Amazon section — no separate nav dot needed
   // static reference table
   $('sku-ref-table').querySelector('tbody').innerHTML = bandsSkus.length ? bandsSkus.map(b => `
     <tr><td><b>${esc(b.sku)}</b>${b.launch?` <span class="pill pill-na">SEPT 1</span>`:''}${b.liquidate?' <span class="pill pill-crit">LIQUIDATE</span>':''}</td>
@@ -751,10 +768,7 @@ function render(d){
 
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
-  const amzStatuses = [h10Status, hpStatus, acStatus, sm.status, skuStatus, laStatus, mkStatus].filter(Boolean);
-  const amzStatus = amzStatuses.includes('RED') ? 'RED' : amzStatuses.includes('YELLOW') ? 'YELLOW' : amzStatuses.length ? 'GREEN' : null;
-  dot('dot-amazon', amzStatus);
-
+  // amzStatus computed after all sub-statuses are known — see below overview table
   const rows = [
     ['QuickBooks',  qb.cash_balance!=null?fmtDollar(qb.cash_balance):'--',   qb.weeks_runway!=null?fmtNum(qb.weeks_runway,1)+' wks runway':'no data', qb.status],
     ['Klaviyo',     kl.avg_open_rate!=null?fmtPct(kl.avg_open_rate)+' open':'--', klFlags.length+' flow(s) flagged', klStatus],
@@ -765,6 +779,11 @@ function render(d){
     ['Meta Ads',    mt.spend!=null?fmtDollar(mt.spend)+' spend':'--',        mt.available?'connected':'pending rollout', mtStatus],
     ['Reviews',     fmtInt(rv.new_review_count||0)+' new',                   rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+' avg':'no new batch', rv.status],
   ];
+  // Compute Amazon consolidated status NOW — after laStatus, mkStatus, hpStatus all defined
+  const amzStatuses = [h10Status, hpStatus, acStatus, sm.status, skuStatus, laStatus, mkStatus].filter(Boolean);
+  const amzStatus = amzStatuses.includes('RED') ? 'RED' : amzStatuses.includes('YELLOW') ? 'YELLOW' : amzStatuses.length ? 'GREEN' : null;
+  dot('dot-amazon', amzStatus);
+
   const pillFor = s => {
     const u = String(s||'').toUpperCase();
     return u==='GREEN'?'<span class="pill pill-ok">GREEN</span>':u==='YELLOW'?'<span class="pill pill-warn">YELLOW</span>':u==='RED'?'<span class="pill pill-crit">RED</span>':'<span class="pill pill-na">NO DATA</span>';
