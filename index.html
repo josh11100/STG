@@ -169,6 +169,10 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-num">05<span class="nav-dot" id="dot-amazon"></span></span>
       <span class="nav-text"><span class="nav-title">Amazon Ads + Sales</span><span class="nav-desc">Spend, ROAS, sessions, conversion</span></span>
     </button>
+    <button class="nav-card" id="nav-amazoncamps" onclick="show('amazoncamps')">
+      <span class="nav-num">05b<span class="nav-dot" id="dot-amazoncamps"></span></span>
+      <span class="nav-text"><span class="nav-title">Amazon Campaigns</span><span class="nav-desc">Live campaign status, budget flags, targeting</span></span>
+    </button>
     <button class="nav-card" id="nav-skus" onclick="show('skus')">
       <span class="nav-num">06<span class="nav-dot" id="dot-skus"></span></span>
       <span class="nav-text"><span class="nav-title">SKU Watch — ROAS + TACOS</span><span class="nav-desc">Live per-SKU vs locked bands + targets</span></span>
@@ -300,6 +304,19 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div class="sec-head"><h2>Meta Ads — Yesterday</h2><span class="tag" id="mt-tag">—</span></div>
           <div class="cards" id="mt-cards"></div>
           <div id="mt-alerts"></div>
+        </div>
+
+        <!-- AMAZON CAMPAIGNS (browser scrape) -->
+        <div class="section" id="section-amazoncamps">
+          <div class="sec-head"><h2>Amazon Campaigns — Live Status</h2><span class="tag" id="ac-tag">—</span><span class="when" id="ac-when"></span></div>
+          <div id="ac-alerts"></div>
+          <div class="cards" id="ac-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Campaign flags</div>
+          <ul class="flag-list" id="ac-flags"></ul>
+          <div class="sec-head" style="padding-top:14px;"><h2>Out of Budget</h2><span class="tag tag-crit" id="ac-oob-tag">—</span></div>
+          <ul class="flag-list" id="ac-oob-list"></ul>
+          <div class="sec-head" style="padding-top:14px;"><h2>Paused Campaigns</h2><span class="tag tag-info">PAUSED</span></div>
+          <ul class="flag-list" id="ac-paused-list"></ul>
         </div>
 
         <!-- REVIEWS -->
@@ -582,6 +599,33 @@ function render(d){
     rv.status==='RED' ? alertBox('crit','<b>RED — mass negative signal.</b> Complaint themes summarized in #stg-content-alerts.') :
     noNew ? alertBox('ok','Sheet unchanged since last check — nothing new posted (by design).') : '';
 
+  // — Amazon Campaigns (browser scrape) —
+  const ac = d.amazon_ads_browser || {};
+  const acSum = ac.account_summary || {};
+  const acRoasLow = acSum.account_roas != null && acSum.account_roas < 2.0;
+  const acOob = ac.campaigns_out_of_budget_count || 0;
+  const acStatus = !ac.available ? null : (acOob > 0 || acRoasLow) ? 'RED' : 'GREEN';
+  statusTag($('ac-tag'), acStatus); dot('dot-amazoncamps', acStatus);
+  $('ac-when').textContent = ac.last_scraped ? 'Scraped: ' + ac.last_scraped : '';
+  $('ac-cards').innerHTML = !ac.available
+    ? '<div class="alert alert-info">Browser scrape unavailable — Chrome extension not connected or Amazon session expired.</div>'
+    : card('Account ROAS', acSum.account_roas!=null?fmtNum(acSum.account_roas)+'x':null, 'Flag if below 2.0 · '+esc(acSum.date_range||''), acRoasLow?'bdr-red':'bdr-green', acRoasLow?'down':'') +
+      card('Total Spend', fmtDollar(acSum.total_spend), esc(acSum.date_range||''), 'bdr-orange') +
+      card('Total Sales', fmtDollar(acSum.total_sales), esc(acSum.date_range||''), 'bdr-teal') +
+      card('Purchases', fmtInt(acSum.total_purchases), esc(acSum.date_range||''), 'bdr-purple') +
+      card('Out of Budget', ac.campaigns_out_of_budget_count!=null?String(ac.campaigns_out_of_budget_count):null, 'Est. missed: '+(ac.estimated_missed_sales||'—'), acOob>0?'bdr-red':'bdr-green', acOob>0?'down':'') +
+      card('Campaigns', ac.campaigns_total!=null?String(ac.campaigns_total):null, (ac.campaigns_delivering_count||0)+' delivering', 'bdr-teal') +
+      card('Targets: No Sales', ac.targets_with_clicks_no_sales!=null?String(ac.targets_with_clicks_no_sales):null, 'Clicks but zero conversions', ac.targets_with_clicks_no_sales>50?'bdr-red':'bdr-amber', ac.targets_with_clicks_no_sales>50?'down':'warn') +
+      card('Targets w/ Sales', ac.targets_with_sales!=null?String(ac.targets_with_sales):null, 'Of total tracked targets', 'bdr-green');
+  flagList($('ac-flags'), ac.flags, 'No campaign flags', true);
+  const oobList = (ac.campaigns_out_of_budget_list||[]).map(n=>`🔴 ${n}`);
+  flagList($('ac-oob-list'), oobList, 'No campaigns out of budget — all within daily budgets', false);
+  const pausedHighRoas = (ac.campaigns_paused_high_roas||[]).map(n=>`⚠️ ${n} — paused with high ROAS (unpausing needs approval)`);
+  const pausedOther = (ac.campaigns_paused_list||[]).filter(n=>!(ac.campaigns_paused_high_roas||[]).includes(n)).map(n=>`⏸ ${n}`);
+  flagList($('ac-paused-list'), [...pausedHighRoas, ...pausedOther], 'No paused campaigns', false);
+  const acOobTag = $('ac-oob-tag');
+  if (acOobTag) { acOobTag.textContent = acOob > 0 ? acOob + ' OUT OF BUDGET' : 'NONE'; acOobTag.className = acOob > 0 ? 'tag tag-crit' : 'tag tag-live'; }
+
   // — H10 Profits —
   const h10p  = d.helium10_profits || {};
   const h10pd = h10p.daily   || {};
@@ -658,6 +702,7 @@ function render(d){
     ['Shopify',         sh.yesterday_sales!=null?fmtDollar(sh.yesterday_sales):'—',      sh.aov!=null?'AOV '+fmtDollar(sh.aov):'no data', shStatus],
     ['Helium 10',       h10Found?'report received':'no report',                          h10Flags.length+' rank flag(s)', h10Status],
     ['Amazon Ads',      aa.spend!=null?fmtDollar(aa.spend)+' spend':'—',                 (aa.flagged_skus||[]).length+' SKU(s) out of band', aa.spend!=null?sm.status:(sm.status==='RED'?'RED':null)],
+    ['Amazon Campaigns',acSum.account_roas!=null?fmtNum(acSum.account_roas)+'x ROAS':'—', acOob>0?acOob+' out of budget':'all budgeted', acStatus],
     ['SKU Watch',       liveSkus.length?liveSkus.length+' SKUs live':'—',                skuAlerts.length+' band/TACOS alert(s)', skuStatus],
     ['Amazon Sales',    asl.units_sold!=null?fmtInt(asl.units_sold)+' units':'—',        asl.conversion_rate!=null?fmtPct(asl.conversion_rate)+' conv':'no data', asl.units_sold!=null?'GREEN':null],
     ['Google Ads',      ga.spend!=null?fmtDollar(ga.spend)+' spend':'—',                 ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
