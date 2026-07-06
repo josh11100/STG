@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-06 07:35:00 PT",
+  "last_updated": "2026-07-06 08:15:00 PT",
 
   "quickbooks": {
     "cash_balance": null,
@@ -8,16 +8,20 @@
   },
 
   "klaviyo": {
-    "avg_open_rate": null,
-    "avg_click_rate": null,
-    "flows_flagged": []
+    "avg_open_rate": 55.6,
+    "avg_click_rate": 0,
+    "flows_flagged": [
+      "A | Welcome Series - click rate 0% (2 recipients, low volume)",
+      "Warranty Registration Confirmation - click rate 0% (3 recipients, low volume)",
+      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (2 recipients, low volume)"
+    ]
   },
 
   "shopify": {
-    "yesterday_sales": 34.18,
-    "orders": 1,
-    "aov": 34.18,
-    "vs_7day_avg_pct": 48.4
+    "yesterday_sales": 0,
+    "orders": 0,
+    "aov": null,
+    "vs_7day_avg_pct": -100
   },
 
   "helium10": {
@@ -86,8 +90,8 @@
       }
     ],
     "flags": [
-      "No prior-day keyword baseline available for 3+ spot drop comparison (yesterday's stored products list was empty)",
-      "Slicker Brush (B0FQ628KCH) keyword 'doodle brush' organic rank change -204 per Helium 10 (now unranked) - far past 3-spot drop threshold, flagged for visibility though not verified against our own baseline"
+      "Same Daily Keyword Tracker report (Jul 5) as prior-day baseline - no new email since baseline was built, so no additional rank-drop comparison possible this run",
+      "Slicker Brush (B0FQ628KCH) keyword 'doodle brush' organic rank change -204 per Helium 10 (now unranked) - far past 3-spot drop threshold, still unresolved from baseline"
     ]
   },
 
@@ -142,6 +146,29 @@
     ]
   },
 
+  "amazon_ads_browser": {
+    "available": false,
+    "last_scraped": null,
+    "account_summary": {
+      "date_range": null,
+      "total_spend": null,
+      "total_sales": null,
+      "account_roas": null,
+      "total_purchases": null,
+      "total_clicks": null
+    },
+    "campaigns_total": null,
+    "campaigns_out_of_budget_count": null,
+    "estimated_missed_sales": null,
+    "campaigns_out_of_budget_list": [],
+    "campaigns_paused_high_roas": [],
+    "campaigns_paused_list": [],
+    "campaigns_delivering_count": null,
+    "targets_with_sales": null,
+    "targets_with_clicks_no_sales": null,
+    "flags": ["No Claude-in-Chrome browser connector available in this environment - browser scrape skipped"]
+  },
+
   "supermetrics": {
     "amazon_ads": {
       "spend": null,
@@ -151,16 +178,18 @@
       "skus": []
     },
     "amazon_sales": {
-      "sessions": 0,
-      "conversion_rate": 0,
-      "units_sold": 86
+      "data_date": "2026-07-04",
+      "sessions": 348,
+      "conversion_rate": 18.1,
+      "units_sold": 63,
+      "sc_lag_note": "Amazon SC data has a 24-48h processing lag. This reflects the last fully finalized day, not yesterday."
     },
     "google_ads": {
-      "spend": 0,
+      "spend": null,
       "roas": null,
       "top_campaigns": []
     },
-    "status": "RED"
+    "status": "YELLOW"
   },
 
   "meta_ads": {
