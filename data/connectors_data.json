@@ -1,33 +1,147 @@
 {
-  "last_updated": "2026-07-06 07:47:00 PT",
+  "last_updated": "2026-07-06 07:35:00 PT",
+
   "quickbooks": {
     "cash_balance": null,
     "weeks_runway": null,
     "status": "RED"
   },
+
   "klaviyo": {
-    "avg_open_rate": 55.56,
-    "avg_click_rate": 0,
-    "flows_flagged": [
-      "A | Welcome Series",
-      "Warranty Registration Confirmation",
-      "Abandoned Cart Reminder - Shopify Added to Cart Trigger"
-    ]
+    "avg_open_rate": null,
+    "avg_click_rate": null,
+    "flows_flagged": []
   },
+
   "shopify": {
     "yesterday_sales": 34.18,
+    "orders": 1,
     "aov": 34.18,
     "vs_7day_avg_pct": 48.4
   },
+
   "helium10": {
-    "report_found": false,
-    "report_date": null,
-    "data_readable": false,
-    "products": [],
+    "report_found": true,
+    "report_date": "2026-07-05",
+    "data_readable": true,
+    "products": [
+      {
+        "name": "Slicker Brush for Dogs, Golden...",
+        "asin": "B0FQ628KCH",
+        "keywords": [
+          {
+            "keyword": "doodle brush",
+            "search_volume": 8448,
+            "organic_rank": null,
+            "sponsored_rank": null,
+            "organic_change_rating": 214
+          },
+          {
+            "keyword": "dog slicker brushes for grooming",
+            "search_volume": 1176,
+            "organic_rank": 121,
+            "sponsored_rank": null,
+            "organic_change_rating": 19
+          },
+          {
+            "keyword": "slicker brush for dogs",
+            "search_volume": 23837,
+            "organic_rank": 104,
+            "sponsored_rank": null,
+            "organic_change_rating": 12
+          }
+        ]
+      },
+      {
+        "name": "Skip The Groomer Detangling Spray",
+        "asin": "B0FQ4PY573",
+        "keywords": []
+      },
+      {
+        "name": "Emergency Dematter Cream for Dogs",
+        "asin": "B0FQL56V99",
+        "keywords": [
+          {
+            "keyword": "dematting spray for dogs",
+            "search_volume": 1862,
+            "organic_rank": 4,
+            "sponsored_rank": 1,
+            "organic_change_rating": 101
+          },
+          {
+            "keyword": "dog detangler",
+            "search_volume": 2635,
+            "organic_rank": 16,
+            "sponsored_rank": null,
+            "organic_change_rating": 51
+          },
+          {
+            "keyword": "dematting comb for dogs",
+            "search_volume": 8448,
+            "organic_rank": 19,
+            "sponsored_rank": 6,
+            "organic_change_rating": 32
+          }
+        ]
+      }
+    ],
     "flags": [
-      "Daily Keyword Tracker report not received in last 24-48h"
+      "No prior-day keyword baseline available for 3+ spot drop comparison (yesterday's stored products list was empty)",
+      "Slicker Brush (B0FQ628KCH) keyword 'doodle brush' organic rank change -204 per Helium 10 (now unranked) - far past 3-spot drop threshold, flagged for visibility though not verified against our own baseline"
     ]
   },
+
+  "helium10_profits": {
+    "daily": {
+      "date": "2026-07-05",
+      "gross_revenue": 1715.67,
+      "expenses": 933.74,
+      "net_profit": 710.94,
+      "net_margin_pct": 41.45,
+      "units": 87,
+      "vs_prior_day_pct": 33
+    },
+    "weekly": {
+      "period": "Jun 29 - Jul 5",
+      "gross_revenue": 10562.00,
+      "expenses": 8768.85,
+      "net_profit": 741.98,
+      "net_margin_pct": 7.02,
+      "units": 517,
+      "vs_prior_week_pct": -14
+    },
+    "monthly": {
+      "period": "Jun 1 - Jun 30",
+      "gross_revenue": 49883.25,
+      "expenses": 49002.70,
+      "net_profit": -1730.10,
+      "net_margin_pct": -3.47,
+      "units": 2623,
+      "vs_prior_month_pct": 10
+    }
+  },
+
+  "helium10_listing_analyzer": {
+    "report_found": true,
+    "report_date": "2026-07-06",
+    "listings": [
+      { "product": "Emergency Dematter Cream for Dogs", "score": null, "flags": [] },
+      { "product": "Rake Brush for Dogs, Dematting Tool", "score": null, "flags": [] },
+      { "product": "Detangling Treatment for Dogs", "score": null, "flags": [] },
+      { "product": "Pin Brush for Dogs", "score": null, "flags": [] },
+      { "product": "Dog Shampoo & Conditioner", "score": null, "flags": [] }
+    ]
+  },
+
+  "helium10_market_tracker": {
+    "report_found": true,
+    "report_date": "2026-07-06",
+    "review_changes": [
+      { "product": "We Love Doodles - B09Q837KK1", "change_summary": "Reviews 4675 -> 4690 (+0.3%)" },
+      { "product": "We Love Doodles - B0BFZ4C4Z9", "change_summary": "Reviews 3336 -> 3346 (+0.3%)" }
+    ]
+  },
+
   "supermetrics": {
     "amazon_ads": {
       "spend": null,
@@ -42,17 +156,19 @@
       "units_sold": 86
     },
     "google_ads": {
-      "spend": null,
+      "spend": 0,
       "roas": null,
       "top_campaigns": []
     },
     "status": "RED"
   },
+
   "meta_ads": {
     "available": false,
     "spend": null,
     "roas": null
   },
+
   "reviews": {
     "last_reviews_check": "2026-07-06",
     "sheet_last_modified": "2026-07-02",
