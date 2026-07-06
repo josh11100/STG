@@ -161,21 +161,9 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-num">03<span class="nav-dot" id="dot-shopify"></span></span>
       <span class="nav-text"><span class="nav-title">Shopify</span><span class="nav-desc">Yesterday's sales, AOV vs $35 target</span></span>
     </button>
-    <button class="nav-card" id="nav-helium10" onclick="show('helium10')">
-      <span class="nav-num">04<span class="nav-dot" id="dot-helium10"></span></span>
-      <span class="nav-text"><span class="nav-title">Helium 10</span><span class="nav-desc">Keyword ranks per tracked product</span></span>
-    </button>
     <button class="nav-card" id="nav-amazon" onclick="show('amazon')">
-      <span class="nav-num">05<span class="nav-dot" id="dot-amazon"></span></span>
-      <span class="nav-text"><span class="nav-title">Amazon Ads + Sales</span><span class="nav-desc">Spend, ROAS, sessions, conversion</span></span>
-    </button>
-    <button class="nav-card" id="nav-amzcamp" onclick="show('amzcamp')">
-      <span class="nav-num" style="font-size:9px;">5b<span class="nav-dot" id="dot-amzcamp"></span></span>
-      <span class="nav-text"><span class="nav-title">Amazon Campaigns</span><span class="nav-desc">Live scrape: budgets, paused winners, waste</span></span>
-    </button>
-    <button class="nav-card" id="nav-skus" onclick="show('skus')">
-      <span class="nav-num">06<span class="nav-dot" id="dot-skus"></span></span>
-      <span class="nav-text"><span class="nav-title">SKU Watch — ROAS + TACOS</span><span class="nav-desc">Live per-SKU vs locked bands + targets</span></span>
+      <span class="nav-num" style="font-size:9px;">AMZ<span class="nav-dot" id="dot-amazon"></span></span>
+      <span class="nav-text"><span class="nav-title">Amazon</span><span class="nav-desc">Profit · keywords · campaigns · ads · SKUs · SC</span></span>
     </button>
     <button class="nav-card" id="nav-googleads" onclick="show('googleads')">
       <span class="nav-num">07<span class="nav-dot" id="dot-googleads"></span></span>
@@ -189,18 +177,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
       <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
     </button>
-    <button class="nav-card" id="nav-h10profits" onclick="show('h10profits')">
-      <span class="nav-num">10<span class="nav-dot" id="dot-h10profits"></span></span>
-      <span class="nav-text"><span class="nav-title">H10 Profits</span><span class="nav-desc">True Amazon net profit — daily / weekly / monthly</span></span>
-    </button>
-    <button class="nav-card" id="nav-listing" onclick="show('listing')">
-      <span class="nav-num">11<span class="nav-dot" id="dot-listing"></span></span>
-      <span class="nav-text"><span class="nav-title">Listing Analyzer</span><span class="nav-desc">Weekly H10 listing quality scores</span></span>
-    </button>
-    <button class="nav-card" id="nav-market" onclick="show('market')">
-      <span class="nav-num">12<span class="nav-dot" id="dot-market"></span></span>
-      <span class="nav-text"><span class="nav-title">Market Tracker</span><span class="nav-desc">Weekly competitor review velocity watch</span></span>
-    </button>
+
     <div class="sb-label" style="margin-top:8px;">Strategic</div>
     <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
       <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
@@ -258,109 +235,114 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="sh-alerts"></div>
         </div>
 
-        <!-- HELIUM 10 -->
-        <div class="section" id="section-helium10">
-          <div class="sec-head"><h2>Helium 10 — Keyword Tracker</h2><span class="tag" id="h10-tag">—</span><span class="when" id="h10-when"></span></div>
+        <!-- AMAZON (consolidated) -->
+        <div class="section" id="section-amazon">
+
+          <!-- A: Amazon Net Profit -->
+          <div class="sec-head">
+            <h2>Amazon — Net Profit</h2>
+            <span class="tag" id="hp-tag">—</span>
+            <span class="when" id="hp-when"></span>
+          </div>
+          <div class="sec-desc">Gross revenue minus <b>all</b> costs (COGS, Amazon fees, ad spend) = net profit per Helium 10. Daily every morning, weekly on Mondays, monthly ~the 1st. Red = losing money on Amazon after all costs.</div>
+          <div id="hp-alerts"></div>
+          <div class="tbl-title" style="padding:4px 2px 0;">Yesterday</div>
+          <div id="hp-daily"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Last week</div>
+          <div id="hp-weekly"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Last month</div>
+          <div id="hp-monthly"></div>
+
+          <!-- B: Keyword Rankings -->
+          <div class="sec-head" style="margin-top:20px;">
+            <h2>Keyword Rankings</h2>
+            <span class="tag" id="h10-tag">—</span>
+            <span class="when" id="h10-when"></span>
+          </div>
+          <div class="sec-desc">Daily Keyword Tracker from Helium 10 (stgbrandanalytics@gmail.com). Tracks all 6 active SKUs. <b>Locked rule:</b> 3+ spot organic rank drop = flag naming product + keyword.</div>
           <div id="h10-alerts"></div>
           <div id="h10-products"></div>
           <div class="tbl-title" style="padding:10px 2px 0;">Rank-drop flags (3+ spots)</div>
           <ul class="flag-list" id="h10-flags"></ul>
-        </div>
 
-        <!-- AMAZON -->
-        <div class="section" id="section-amazon">
-          <div class="sec-head"><h2>Amazon Ads — Yesterday</h2><span class="tag" id="amz-tag">—</span></div>
-          <div class="cards" id="amz-ads-cards"></div>
-          <div class="tbl-title" style="padding:10px 2px 0;">SKUs outside locked ROAS bands</div>
-          <ul class="flag-list" id="amz-flags"></ul>
-          <div class="sec-head"><h2>Amazon Seller Central — Yesterday</h2><span class="tag tag-info">SALES</span></div>
-          <div class="cards" id="amz-sales-cards"></div>
-          <div id="amz-alerts"></div>
-        </div>
-
-        <!-- SKU WATCH -->
-        <div class="section" id="section-skus">
-          <div class="sec-head"><h2>SKU Watch — Live ROAS vs Locked Bands</h2><span class="tag" id="sku-tag">—</span><span class="when" id="sku-when"></span></div>
-          <div id="sku-alerts"></div>
-          <div class="tbl-wrap">
-            <div class="tbl-title">Amazon — yesterday's ROAS per SKU vs bands (Green ≥ BE · Yellow 80%–BE · Red floor–80% · Kill &lt; floor)</div>
-            <table id="sku-live-table"><thead><tr><th>SKU</th><th class="r">Spend</th><th class="r">ROAS (y'day)</th><th class="r">Breakeven</th><th class="r">Band</th><th class="r">TACOS 7d</th><th class="r">Target</th><th class="r">TACOS</th></tr></thead><tbody></tbody></table>
+          <!-- C: Campaign Status -->
+          <div class="sec-head" style="margin-top:20px;">
+            <h2>Campaign Status</h2>
+            <span class="tag" id="ac-tag">—</span>
+            <span class="when" id="ac-when"></span>
           </div>
-          <div class="sec-head"><h2>Locked Reference — Per-SKU Bands + S&amp;S Rules</h2><span class="tag tag-info">STATIC · JUNE 28 FINAL</span></div>
+          <div class="sec-desc">Scraped from Amazon Campaign Manager via Claude in Chrome (Marcelo's browser must be open at 7 AM). Flags: <b>out-of-budget campaigns</b> (missed sales), <b>paused high-ROAS campaigns</b> (free wins idle), <b>targeting waste</b>. All actions need Will's approval.</div>
+          <div id="ac-alerts"></div>
+          <div class="cards" id="ac-cards"></div>
+          <div class="tbl-title" style="padding:10px 2px 0;">Out of budget</div>
+          <ul class="flag-list" id="ac-oob"></ul>
+          <div class="tbl-title" style="padding:8px 2px 0;">Paused with high ROAS — recommend unpausing (needs approval)</div>
+          <ul class="flag-list" id="ac-paused"></ul>
+
+          <!-- D: Ad Performance + SKU Watch -->
+          <div class="sec-head" style="margin-top:20px;">
+            <h2>Ad Performance — Spend &amp; ROAS</h2>
+            <span class="tag" id="amz-tag">—</span>
+          </div>
+          <div class="sec-desc">Yesterday's ad spend + account ROAS via Supermetrics. Per-SKU ROAS is classified against locked bands in <b>data/roas_bands.json</b>. TACOS uses a 7-day trailing window (single-day is too noisy).</div>
+          <div class="cards" id="amz-ads-cards"></div>
+          <div id="sku-alerts"></div>
+          <div class="tbl-wrap" style="margin-top:8px;">
+            <div class="tbl-title">Per-SKU ROAS vs locked bands &amp; TACOS targets</div>
+            <table id="sku-live-table"><thead><tr><th>SKU</th><th class="r">Spend</th><th class="r">ROAS</th><th class="r">Breakeven</th><th class="r">Band</th><th class="r">TACOS 7d</th><th class="r">Target</th><th class="r">Status</th></tr></thead><tbody></tbody></table>
+          </div>
+          <div class="tbl-title" style="padding:10px 2px 0;">SKUs flagged outside bands</div>
+          <ul class="flag-list" id="amz-flags"></ul>
+          <div class="sec-head" style="padding-top:14px;"><h2>Locked Reference — Bands + S&amp;S Rules</h2><span class="tag tag-info">STATIC · JUNE 28</span></div>
           <div class="tbl-wrap">
             <div class="tbl-title">Amazon + Shopify breakevens · TACOS targets · Subscribe &amp; Save</div>
             <table id="sku-ref-table"><thead><tr><th>SKU</th><th class="r">Price</th><th class="r">Amazon BE</th><th class="r">Shopify BE</th><th class="r">TACOS Target</th><th>S&amp;S / Notes</th></tr></thead><tbody></tbody></table>
           </div>
-          <div class="alert alert-info"><b>3-day learning window:</b> no ad is killed in its first 3 days regardless of ROAS — kill logic activates day 4. Shopify bands are reference-only for now (Meta/Google attribute per campaign, not per SKU).</div>
-        </div>
+          <div class="alert alert-info"><b>3-day learning window:</b> no ad is killed in its first 3 days — kill logic activates day 4.</div>
 
-        <!-- GOOGLE ADS -->
-        <div class="section" id="section-googleads">
-          <div class="sec-head"><h2>Google Ads — Yesterday</h2><span class="tag" id="ga-tag">—</span></div>
-          <div class="cards" id="ga-cards"></div>
-          <div class="tbl-title" style="padding:10px 2px 0;">Top campaigns</div>
-          <ul class="flag-list" id="ga-campaigns"></ul>
-          <div id="ga-alerts"></div>
-        </div>
+          <!-- E: Seller Central -->
+          <div class="sec-head" style="margin-top:20px;">
+            <h2>Seller Central — Traffic &amp; Conversion</h2>
+            <span class="tag tag-info">SC DATA</span>
+          </div>
+          <div class="sec-desc">Sessions, conversion rate, and units sold. <b>Amazon SC has a 24–48h processing lag</b> — data always reflects 2 days ago, not yesterday. That's normal, not a failure. Flag if conversion rate drops below 10%.</div>
+          <div class="cards" id="amz-sales-cards"></div>
+          <div id="amz-alerts"></div>
 
-        <!-- META ADS -->
-        <div class="section" id="section-metaads">
-          <div class="sec-head"><h2>Meta Ads — Yesterday</h2><span class="tag" id="mt-tag">—</span></div>
-          <div class="cards" id="mt-cards"></div>
-          <div id="mt-alerts"></div>
-        </div>
-
-        <!-- REVIEWS -->
-        <div class="section" id="section-reviews">
-          <div class="sec-head"><h2>Product Reviews — Weekly Review Sheet</h2><span class="tag" id="rv-tag">—</span></div>
-          <div class="sec-desc">Watches the STG Weekly Review Update sheet for new batches. <b>Locked rule:</b> RED if the new batch averages under 3.5&#9733; OR contains 3+ one/two-star reviews.</div>
-          <div class="cards" id="rv-cards"></div>
-          <div id="rv-alerts"></div>
-        </div>
-
-        <!-- AMAZON CAMPAIGNS (browser scrape) -->
-        <div class="section" id="section-amzcamp">
-          <div class="sec-head"><h2>Amazon Campaigns — Live Scrape</h2><span class="tag" id="ac-tag">—</span><span class="when" id="ac-when"></span></div>
-          <div class="sec-desc">Campaign intelligence scraped from Amazon Campaign Manager via Claude in Chrome (Marcelo's browser must be open + connected at 7 AM). Watches: <b>out-of-budget campaigns</b>, <b>paused campaigns with ROAS &gt; 3</b>, and <b>targeting waste</b>. All actions need Will's approval.</div>
-          <div id="ac-alerts"></div>
-          <div class="cards" id="ac-cards"></div>
-          <div class="tbl-title" style="padding:10px 2px 0;">Campaigns out of budget</div>
-          <ul class="flag-list" id="ac-oob"></ul>
-          <div class="tbl-title" style="padding:10px 2px 0;">Paused with high ROAS (recommend unpausing — needs approval)</div>
-          <ul class="flag-list" id="ac-paused"></ul>
-        </div>
-
-        <!-- H10 PROFITS -->
-        <div class="section" id="section-h10profits">
-          <div class="sec-head"><h2>Helium 10 — True Amazon Profit</h2><span class="tag" id="hp-tag">—</span><span class="when" id="hp-when"></span></div>
-          <div class="sec-desc">Gross revenue minus <b>all</b> costs (COGS, Amazon fees, ad spend) = net profit. Daily arrives every morning, weekly lands Mondays, monthly ~the 1st. Green = profitable &middot; red = losing money.</div>
-          <div id="hp-alerts"></div>
-          <div class="tbl-title" style="padding:6px 2px 0;">Yesterday</div>
-          <div id="hp-daily"></div>
-          <div class="tbl-title" style="padding:6px 2px 0;">Last week</div>
-          <div id="hp-weekly"></div>
-          <div class="tbl-title" style="padding:6px 2px 0;">Last month</div>
-          <div id="hp-monthly"></div>
-        </div>
-
-        <!-- LISTING ANALYZER -->
-        <div class="section" id="section-listing">
-          <div class="sec-head"><h2>Helium 10 — Listing Analyzer</h2><span class="tag" id="la-tag">—</span><span class="when" id="la-when"></span></div>
-          <div class="sec-desc">Weekly listing quality scores per product. Arrives <b>weekly</b> — "no report" on other days is normal. Low scores or flags mean the listing itself is leaving conversion on the table.</div>
+          <!-- F: Listing Analyzer -->
+          <div class="sec-head" style="margin-top:20px;">
+            <h2>Listing Analyzer</h2>
+            <span class="tag" id="la-tag">—</span>
+            <span class="when" id="la-when"></span>
+          </div>
+          <div class="sec-desc">Weekly H10 listing quality scores. Arrives <b>weekly</b> — "no report" on other days is normal. Low scores or specific flags mean the listing is leaving conversion on the table.</div>
           <div class="tbl-wrap">
-            <div class="tbl-title">Latest listing scores</div>
+            <div class="tbl-title">Latest listing scores (all 6 active SKUs)</div>
             <table id="la-table"><thead><tr><th>Product</th><th class="r">Score</th><th>Flags</th></tr></thead><tbody></tbody></table>
           </div>
-        </div>
 
-        <!-- MARKET TRACKER -->
-        <div class="section" id="section-market">
-          <div class="sec-head"><h2>Helium 10 — Market Tracker</h2><span class="tag" id="mk-tag">—</span><span class="when" id="mk-when"></span></div>
-          <div class="sec-desc">Weekly competitor watch — review count changes. A spike in a competitor's review velocity is early warning they're pushing before it shows up in your rank.</div>
+          <!-- G: Market Tracker -->
+          <div class="sec-head" style="margin-top:20px;">
+            <h2>Market Tracker — Competitor Watch</h2>
+            <span class="tag" id="mk-tag">—</span>
+            <span class="when" id="mk-when"></span>
+          </div>
+          <div class="sec-desc">Weekly H10 competitor watch — review count changes. A competitor's review velocity spiking is early warning they're pushing before it shows up in your rank.</div>
           <div class="tbl-wrap">
             <div class="tbl-title">Competitor review changes</div>
             <table id="mk-table"><thead><tr><th>Competitor</th><th>Change</th></tr></thead><tbody></tbody></table>
           </div>
+
+        </div>
+
+        </div>
+
+        <!-- REVIEWS -->
+        <div class="section" id="section-reviews">
+          <div class="sec-head"><h2>Product Reviews</h2><span class="tag" id="rv-tag">--</span></div>
+          <div class="sec-desc">Watches the STG Weekly Review Update sheet. <b>Locked rule:</b> RED if new batch averages under 3.5 stars OR 3+ one/two-star reviews. Complaint themes summarized in Slack so Will sees what is wrong, not just that something is.</div>
+          <div class="cards" id="rv-cards"></div>
+          <div id="rv-alerts"></div>
         </div>
 
         <!-- BUSINESS HEALTH -->
@@ -720,19 +702,19 @@ function render(d){
 
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
+  const amzStatuses = [h10Status, hpStatus, acStatus, sm.status, skuStatus, laStatus, mkStatus].filter(Boolean);
+  const amzStatus = amzStatuses.includes('RED') ? 'RED' : amzStatuses.includes('YELLOW') ? 'YELLOW' : amzStatuses.length ? 'GREEN' : null;
+  dot('dot-amazon', amzStatus);
+
   const rows = [
-    ['QuickBooks',      qb.cash_balance!=null?fmtDollar(qb.cash_balance):'—',            qb.weeks_runway!=null?fmtNum(qb.weeks_runway,1)+' wks runway':'no data', qb.status],
-    ['Klaviyo',         kl.avg_open_rate!=null?fmtPct(kl.avg_open_rate)+' open':'—',     klFlags.length+' flow(s) flagged', klStatus],
-    ['Shopify',         sh.yesterday_sales!=null?fmtDollar(sh.yesterday_sales):'—',      sh.aov!=null?'AOV '+fmtDollar(sh.aov):'no data', shStatus],
-    ['Helium 10',       h10Found?'report received':'no report',                          h10Flags.length+' rank flag(s)', h10Status],
-    ['Amazon Ads',      aa.spend!=null?fmtDollar(aa.spend)+' spend':'—',                 (aa.flagged_skus||[]).length+' SKU(s) out of band', aa.spend!=null?sm.status:(sm.status==='RED'?'RED':null)],
-    ['SKU Watch',       liveSkus.length?liveSkus.length+' SKUs live':'—',                skuAlerts.length+' band/TACOS alert(s)', skuStatus],
-    ['Amazon Sales',    asl.units_sold!=null?fmtInt(asl.units_sold)+' units':'—',        asl.conversion_rate!=null?fmtPct(asl.conversion_rate)+' conv':'no data', asl.units_sold!=null?'GREEN':null],
-    ['Google Ads',      ga.spend!=null?fmtDollar(ga.spend)+' spend':'—',                 ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
-    ['Meta Ads',        mt.spend!=null?fmtDollar(mt.spend)+' spend':'—',                 mt.available?'connected':'pending rollout', mtStatus],
-    ['Amazon Campaigns', acs.account_roas!=null?'ROAS '+fmtNum(acs.account_roas):'—',    ac.campaigns_out_of_budget_count!=null?ac.campaigns_out_of_budget_count+' out of budget':'Chrome scrape', acStatus],
-    ['H10 Profit',      hp.daily&&(hp.daily.net_profit!=null)?fmtDollar(hp.daily.net_profit)+' net (day)':'—', hp.monthly&&(hp.monthly.net_profit!=null)?fmtDollar(hp.monthly.net_profit)+' net (month)':'no data', hpStatus],
-    ['Product Reviews', fmtInt(rv.new_review_count||0)+' new',                           rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+'★ avg':'no new batch', rv.status],
+    ['QuickBooks',  qb.cash_balance!=null?fmtDollar(qb.cash_balance):'--',   qb.weeks_runway!=null?fmtNum(qb.weeks_runway,1)+' wks runway':'no data', qb.status],
+    ['Klaviyo',     kl.avg_open_rate!=null?fmtPct(kl.avg_open_rate)+' open':'--', klFlags.length+' flow(s) flagged', klStatus],
+    ['Shopify',     sh.yesterday_sales!=null?fmtDollar(sh.yesterday_sales):'--', sh.aov!=null?'AOV '+fmtDollar(sh.aov):'no data', shStatus],
+    ['Amazon',      hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit)+' net today':(aa.spend!=null?fmtDollar(aa.spend)+' ad spend':'--'),
+                    [hpMoNeg?'MONTH NET NEGATIVE':'', (ac.campaigns_out_of_budget_count||0)>0?ac.campaigns_out_of_budget_count+' OOB':'', skuAlerts.length?skuAlerts.length+' SKU flag(s)':''].filter(Boolean).join(' / ')||'see Amazon tab', amzStatus],
+    ['Google Ads',  ga.spend!=null?fmtDollar(ga.spend)+' spend':'--',        ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
+    ['Meta Ads',    mt.spend!=null?fmtDollar(mt.spend)+' spend':'--',        mt.available?'connected':'pending rollout', mtStatus],
+    ['Reviews',     fmtInt(rv.new_review_count||0)+' new',                   rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+' avg':'no new batch', rv.status],
   ];
   const pillFor = s => {
     const u = String(s||'').toUpperCase();
@@ -751,7 +733,7 @@ function render(d){
   $('ov-cards').innerHTML =
     card('Cash Balance', fmtDollar(qb.cash_balance), 'QuickBooks', qbLow||qb.status==='RED'?'bdr-red':'bdr-green') +
     card("Shopify Sales", fmtDollar(sh.yesterday_sales), 'Yesterday', 'bdr-teal') +
-    card('Amazon Units', fmtInt(asl.units_sold), 'Yesterday', 'bdr-purple') +
+    card('Amazon Net Profit', hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit):fmtInt(asl.units_sold)!=null?fmtInt(asl.units_sold)+' units':null, hp.daily&&hp.daily.net_profit!=null?'Yesterday · '+(hp.daily.net_margin_pct!=null?fmtNum(hp.daily.net_margin_pct,1)+'% margin':''):'Amazon SC units', hp.daily&&(hp.daily.net_profit||0)<0?'bdr-red':hp.daily&&hp.daily.net_profit!=null?'bdr-green':'bdr-purple', hp.daily&&(hp.daily.net_profit||0)<0?'down':hp.daily&&hp.daily.net_profit!=null?'up':'') +
     card('Total Ad Spend', (aa.spend==null&&ga.spend==null&&mt.spend==null)?null:fmtDollar((aa.spend||0)+(ga.spend||0)+(mt.spend||0)), 'Amazon + Google + Meta', 'bdr-orange');
 }
 
