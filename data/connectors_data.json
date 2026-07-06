@@ -1,17 +1,17 @@
 {
-  "last_updated": "2026-07-06 09:05:00 PT",
+  "last_updated": "2026-07-06 13:00:00 PT",
   "quickbooks": {
-    "cash_balance": null,
-    "weeks_runway": null,
-    "status": "RED"
+    "cash_balance": 621199.44,
+    "weeks_runway": 36.6,
+    "status": "GREEN"
   },
   "klaviyo": {
-    "avg_open_rate": 55.6,
+    "avg_open_rate": 62.5,
     "avg_click_rate": 0,
     "flows_flagged": [
       "A | Welcome Series - click rate 0% (2 recipients, low volume)",
       "Warranty Registration Confirmation - click rate 0% (3 recipients, low volume)",
-      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (2 recipients, low volume)"
+      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (3 recipients, low volume)"
     ]
   },
   "shopify": {
@@ -91,33 +91,9 @@
     ]
   },
   "helium10_profits": {
-    "daily": {
-      "date": "2026-07-05",
-      "gross_revenue": 1715.67,
-      "expenses": 933.74,
-      "net_profit": 710.94,
-      "net_margin_pct": 41.45,
-      "units": 87,
-      "vs_prior_day_pct": 33
-    },
-    "weekly": {
-      "period": "Jun 29 - Jul 5",
-      "gross_revenue": 10562.0,
-      "expenses": 8768.85,
-      "net_profit": 741.98,
-      "net_margin_pct": 7.02,
-      "units": 517,
-      "vs_prior_week_pct": -14
-    },
-    "monthly": {
-      "period": "Jun 1 - Jun 30",
-      "gross_revenue": 49883.25,
-      "expenses": 49002.7,
-      "net_profit": -1730.1,
-      "net_margin_pct": -3.47,
-      "units": 2623,
-      "vs_prior_month_pct": 10
-    }
+    "daily":   { "date": "2026-07-05", "gross_revenue": 1715.67, "expenses": 933.74, "net_profit": 710.94, "net_margin_pct": 41.45, "units": 87, "vs_prior_day_pct": 33 },
+    "weekly":  { "period": "Jun 29 - Jul 5", "gross_revenue": 10562.00, "expenses": 8768.85, "net_profit": 741.98, "net_margin_pct": 7.02, "units": 517, "vs_prior_week_pct": -14 },
+    "monthly": { "period": "Jun 1 - Jun 30", "gross_revenue": 49883.25, "expenses": 49002.70, "net_profit": -1730.10, "net_margin_pct": -3.47, "units": 2623, "vs_prior_month_pct": 10 }
   },
   "helium10_listing_analyzer": {
     "report_found": true,
@@ -214,7 +190,9 @@
     "amazon_ads": {
       "spend": null,
       "roas": null,
-      "flagged_skus": [],
+      "flagged_skus": [
+        "Per-SKU ROAS/ACOS data still pending (Amazon Ads API queries submitted at run start have not completed) - Slicker Brush no-ad-funding check could not be verified this run"
+      ],
       "sku_data_pending": true,
       "skus": []
     },
@@ -227,196 +205,49 @@
       "sessions": 348,
       "conversion_rate": 18.1,
       "units_sold": 62,
-      "trailing_7d": {
-        "avg_daily_sales": 1338.71,
-        "avg_sessions": 402.86,
-        "avg_conversion": 17.15,
-        "total_units": 482,
-        "wow_sales_change_pct": -25.36
-      },
+      "trailing_7d": { "avg_daily_sales": 1338.71, "avg_sessions": 402.86, "avg_conversion": 17.15, "total_units": 482, "wow_sales_change_pct": -25.36 },
       "trailing_30d": [
-        {
-          "date": "2026-06-05",
-          "sales": 1753.22,
-          "sessions": 425,
-          "conversion": 19.53
-        },
-        {
-          "date": "2026-06-06",
-          "sales": 1378.84,
-          "sessions": 418,
-          "conversion": 15.79
-        },
-        {
-          "date": "2026-06-07",
-          "sales": 1708.83,
-          "sessions": 434,
-          "conversion": 20.97
-        },
-        {
-          "date": "2026-06-08",
-          "sales": 1448.35,
-          "sessions": 401,
-          "conversion": 18.45
-        },
-        {
-          "date": "2026-06-09",
-          "sales": 1493.86,
-          "sessions": 436,
-          "conversion": 18.35
-        },
-        {
-          "date": "2026-06-10",
-          "sales": 1513.87,
-          "sessions": 420,
-          "conversion": 19.76
-        },
-        {
-          "date": "2026-06-11",
-          "sales": 1403.28,
-          "sessions": 426,
-          "conversion": 18.08
-        },
-        {
-          "date": "2026-06-12",
-          "sales": 1371.15,
-          "sessions": 391,
-          "conversion": 19.18
-        },
-        {
-          "date": "2026-06-13",
-          "sales": 1767.89,
-          "sessions": 526,
-          "conversion": 18.25
-        },
-        {
-          "date": "2026-06-14",
-          "sales": 1733.24,
-          "sessions": 531,
-          "conversion": 17.14
-        },
-        {
-          "date": "2026-06-15",
-          "sales": 1634.41,
-          "sessions": 537,
-          "conversion": 16.57
-        },
-        {
-          "date": "2026-06-16",
-          "sales": 1366.37,
-          "sessions": 516,
-          "conversion": 14.15
-        },
-        {
-          "date": "2026-06-17",
-          "sales": 1358.26,
-          "sessions": 552,
-          "conversion": 13.41
-        },
-        {
-          "date": "2026-06-18",
-          "sales": 1637.11,
-          "sessions": 436,
-          "conversion": 20.41
-        },
-        {
-          "date": "2026-06-19",
-          "sales": 1424.82,
-          "sessions": 390,
-          "conversion": 20.26
-        },
-        {
-          "date": "2026-06-20",
-          "sales": 1765.75,
-          "sessions": 444,
-          "conversion": 21.4
-        },
-        {
-          "date": "2026-06-21",
-          "sales": 1686.44,
-          "sessions": 466,
-          "conversion": 18.45
-        },
-        {
-          "date": "2026-06-22",
-          "sales": 1706.53,
-          "sessions": 506,
-          "conversion": 17.39
-        },
-        {
-          "date": "2026-06-23",
-          "sales": 2245.21,
-          "sessions": 758,
-          "conversion": 18.34
-        },
-        {
-          "date": "2026-06-24",
-          "sales": 2240.75,
-          "sessions": 580,
-          "conversion": 24.14
-        },
-        {
-          "date": "2026-06-25",
-          "sales": 1739.37,
-          "sessions": 543,
-          "conversion": 19.71
-        },
-        {
-          "date": "2026-06-26",
-          "sales": 2049.62,
-          "sessions": 567,
-          "conversion": 22.93
-        },
-        {
-          "date": "2026-06-27",
-          "sales": 885.94,
-          "sessions": 328,
-          "conversion": 14.02
-        },
-        {
-          "date": "2026-06-28",
-          "sales": 1112.64,
-          "sessions": 363,
-          "conversion": 15.43
-        },
-        {
-          "date": "2026-06-29",
-          "sales": 999.3,
-          "sessions": 323,
-          "conversion": 15.79
-        },
-        {
-          "date": "2026-06-30",
-          "sales": 1330.04,
-          "sessions": 444,
-          "conversion": 15.99
-        },
-        {
-          "date": "2026-07-01",
-          "sales": 1438.94,
-          "sessions": 426,
-          "conversion": 17.84
-        },
-        {
-          "date": "2026-07-02",
-          "sales": 1805.99,
-          "sessions": 491,
-          "conversion": 18.53
-        },
-        {
-          "date": "2026-07-03",
-          "sales": 1469.27,
-          "sessions": 425,
-          "conversion": 18.35
-        },
-        {
-          "date": "2026-07-04",
-          "sales": 1214.77,
-          "sessions": 348,
-          "conversion": 18.1
-        }
+        { "date": "2026-06-05", "sales": 1753.22, "sessions": 425, "conversion": 19.53 },
+        { "date": "2026-06-06", "sales": 1378.84, "sessions": 418, "conversion": 15.79 },
+        { "date": "2026-06-07", "sales": 1708.83, "sessions": 434, "conversion": 20.97 },
+        { "date": "2026-06-08", "sales": 1448.35, "sessions": 401, "conversion": 18.45 },
+        { "date": "2026-06-09", "sales": 1493.86, "sessions": 436, "conversion": 18.35 },
+        { "date": "2026-06-10", "sales": 1513.87, "sessions": 420, "conversion": 19.76 },
+        { "date": "2026-06-11", "sales": 1403.28, "sessions": 426, "conversion": 18.08 },
+        { "date": "2026-06-12", "sales": 1371.15, "sessions": 391, "conversion": 19.18 },
+        { "date": "2026-06-13", "sales": 1767.89, "sessions": 526, "conversion": 18.25 },
+        { "date": "2026-06-14", "sales": 1733.24, "sessions": 531, "conversion": 17.14 },
+        { "date": "2026-06-15", "sales": 1634.41, "sessions": 537, "conversion": 16.57 },
+        { "date": "2026-06-16", "sales": 1366.37, "sessions": 516, "conversion": 14.15 },
+        { "date": "2026-06-17", "sales": 1358.26, "sessions": 552, "conversion": 13.41 },
+        { "date": "2026-06-18", "sales": 1637.11, "sessions": 436, "conversion": 20.41 },
+        { "date": "2026-06-19", "sales": 1424.82, "sessions": 390, "conversion": 20.26 },
+        { "date": "2026-06-20", "sales": 1765.75, "sessions": 444, "conversion": 21.4 },
+        { "date": "2026-06-21", "sales": 1686.44, "sessions": 466, "conversion": 18.45 },
+        { "date": "2026-06-22", "sales": 1706.53, "sessions": 506, "conversion": 17.39 },
+        { "date": "2026-06-23", "sales": 2245.21, "sessions": 758, "conversion": 18.34 },
+        { "date": "2026-06-24", "sales": 2240.75, "sessions": 580, "conversion": 24.14 },
+        { "date": "2026-06-25", "sales": 1739.37, "sessions": 543, "conversion": 19.71 },
+        { "date": "2026-06-26", "sales": 2049.62, "sessions": 567, "conversion": 22.93 },
+        { "date": "2026-06-27", "sales": 885.94, "sessions": 328, "conversion": 14.02 },
+        { "date": "2026-06-28", "sales": 1112.64, "sessions": 363, "conversion": 15.43 },
+        { "date": "2026-06-29", "sales": 999.3, "sessions": 323, "conversion": 15.79 },
+        { "date": "2026-06-30", "sales": 1330.04, "sessions": 444, "conversion": 15.99 },
+        { "date": "2026-07-01", "sales": 1438.94, "sessions": 426, "conversion": 17.84 },
+        { "date": "2026-07-02", "sales": 1805.99, "sessions": 491, "conversion": 18.53 },
+        { "date": "2026-07-03", "sales": 1469.27, "sessions": 425, "conversion": 18.35 },
+        { "date": "2026-07-04", "sales": 1214.77, "sessions": 348, "conversion": 18.1 }
       ],
-      "sc_lag_note": "Amazon SC 24-48h processing lag - last finalized day"
+      "sc_lag_note": "Amazon SC 24-48h processing lag - last finalized day",
+      "sc_ordered_sales_by_asin_7d": {
+        "note": "Trailing 7-day (Jun 28 - Jul 4) ordered product sales by ASIN from Seller Central - ad spend not yet available to compute TACOS",
+        "Emergency Dematter (B0FQL56V99)": 6871.54,
+        "Rake Brush (B0FQF2VTMJ)": 1485.34,
+        "Detangling Treatment (B0GV5ZFLC2)": 462.35,
+        "Pin Brush (B0FQDHXSZ5)": 333.83,
+        "4-in-1 Shampoo (B0FQL16GH4)": 151.92,
+        "Slicker Brush (B0FQ628KCH)": 77.96
+      }
     },
     "google_ads": {
       "spend": null,
