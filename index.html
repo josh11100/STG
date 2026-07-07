@@ -410,15 +410,18 @@ function card(label, value, sub, bdr, valCls){
   </div>`;
 }
 function statusTag(el, status){
+  if (!el) return; // element may not exist
   const s = String(status||'').toUpperCase();
   const map = {GREEN:['tag tag-live','GREEN'], YELLOW:['tag tag-warn','YELLOW'], RED:['tag tag-crit','RED']};
   const [cls,txt] = map[s] || ['tag tag-na','NO DATA'];
   el.className = cls; el.textContent = txt;
 }
 function dot(id, status){
+  const el = $(id);
+  if (!el) return; // nav item may have been removed
   const s = String(status||'').toUpperCase();
   const cls = s==='GREEN'?'green':s==='YELLOW'?'yellow':s==='RED'?'red':'';
-  $(id).className = 'nav-dot ' + cls;
+  el.className = 'nav-dot ' + cls;
 }
 function flagList(el, arr, emptyTxt, crit){
   if (!arr || arr.length === 0){
@@ -538,7 +541,7 @@ function render(d){
                  : null;
   const h10Flags = h10.flags || [];
   const h10Status = h10Found==null ? null : !h10Found ? 'YELLOW' : h10Flags.length ? 'YELLOW' : 'GREEN';
-  statusTag($('h10-tag'), h10Status); // dot('dot-helium10', h10Status);
+  statusTag($('h10-tag'), h10Status); // // removed nav: // dot-helium10 nav removed
   $('h10-when').textContent = h10.report_date ? 'Report: ' + h10.report_date : '';
   $('h10-alerts').innerHTML =
     h10Found === false ? alertBox('warn','<b>Daily Keyword Tracker report not received</b> in the last 24–48h (stgbrandanalytics@gmail.com).') :
@@ -673,7 +676,7 @@ function render(d){
   const acAvail = ac.available === true && (acs.account_roas != null || ac.campaigns_total != null);
   const acLowRoas = acs.account_roas != null && acs.account_roas < 2.0;
   const acStatus = !acAvail ? null : ((ac.campaigns_out_of_budget_count||0) > 0 || (ac.campaigns_paused_high_roas||[]).length > 0 || acLowRoas) ? 'YELLOW' : 'GREEN';
-  statusTag($('ac-tag'), acStatus); dot('dot-amzcamp', acStatus);
+  statusTag($('ac-tag'), acStatus); // removed nav: // dot-amzcamp nav removed
   $('ac-when').textContent = ac.last_scraped ? 'Scraped ' + ac.last_scraped : '';
   $('ac-cards').innerHTML =
     card('Account ROAS', fmtNum(acs.account_roas), acs.date_range ? esc(acs.date_range) : 'Threshold: 2.0', acLowRoas?'bdr-red':'bdr-teal', acLowRoas?'down':'') +
@@ -726,7 +729,7 @@ function render(d){
   const hpWkNeg = hp.weekly  && (hp.weekly.net_profit||0)  < 0;
   const hpWkLoss = ((hp.weekly||{}).products||[]).filter(p=>(!p.marketplace||p.marketplace==='US')&&(p.net_profit||0)<0);
   const hpStatus = !hp.daily && !hp.weekly && !hp.monthly ? null : hpMoNeg ? 'RED' : (hpWkNeg||hpWkLoss.length>0) ? 'YELLOW' : 'GREEN';
-  statusTag($('hp-tag'), hpStatus); dot('dot-h10profits', hpStatus);
+  statusTag($('hp-tag'), hpStatus); // removed nav: // dot-h10profits nav removed
   $('hp-when').textContent = (hp.daily||{}).date ? 'Daily report: ' + hp.daily.date : '';
   $('hp-alerts').innerHTML =
     hpMoNeg ? alertBox('crit', '<b>🔴 Last month net NEGATIVE — '+fmtDollar(hp.monthly.net_profit)+' ('+fmtNum(hp.monthly.net_margin_pct,1)+'% margin).</b> Amazon lost money after all costs. Margin review with Will + Patrick needed.')
@@ -738,7 +741,7 @@ function render(d){
   const la = d.helium10_listing_analyzer || {};
   const laRows = la.listings || [];
   const laStatus = la.report_found == null ? null : la.report_found ? (laRows.some(l=>(l.flags||[]).length) ? 'YELLOW' : 'GREEN') : null;
-  statusTag($('la-tag'), laStatus); dot('dot-listing', laStatus);
+  statusTag($('la-tag'), laStatus); // removed nav: // dot-listing nav removed
   $('la-when').textContent = la.report_date ? 'Report: ' + la.report_date : '';
   $('la-table').querySelector('tbody').innerHTML = laRows.length
     ? laRows.map(l=>'<tr><td><b>'+esc(l.product||'?')+'</b></td><td class="r">'+(l.score!=null?esc(String(l.score)):'<span class="pill pill-na">no score</span>')+'</td><td>'+((l.flags||[]).length?l.flags.map(f=>'<span class="pill pill-warn">'+esc(f)+'</span>').join(' '):'<span class="pill pill-ok">clean</span>')+'</td></tr>').join('')
@@ -748,7 +751,7 @@ function render(d){
   const mk = d.helium10_market_tracker || {};
   const mkRows = mk.review_changes || [];
   const mkStatus = mk.report_found == null ? null : mk.report_found ? 'GREEN' : null;
-  statusTag($('mk-tag'), mkStatus); dot('dot-market', mkStatus);
+  statusTag($('mk-tag'), mkStatus); // removed nav: // dot-market nav removed
   $('mk-when').textContent = mk.report_date ? 'Report: ' + mk.report_date : '';
   $('mk-table').querySelector('tbody').innerHTML = mkRows.length
     ? mkRows.map(r=>'<tr><td><b>'+esc(r.product||'?')+'</b></td><td>'+esc(r.change_summary||'')+'</td></tr>').join('')
