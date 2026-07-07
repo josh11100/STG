@@ -1,5 +1,5 @@
 {
-  "submitted_at": "2026-07-07 XX:XX:XX PT",  ← current real time
+  "submitted_at": "2026-07-07 XX:XX:XX PT", 
   "query_date": "2026-07-06", 
   "schedule_ids": {
     "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
