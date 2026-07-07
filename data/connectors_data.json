@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-07 06:50:00 PT",
+  "last_updated": "2026-07-07 07:24:00 PT",
 
   "quickbooks": {
     "cash_balance": 621199.44,
@@ -8,7 +8,7 @@
     "accounts_receivable": 0,
     "status": "YELLOW",
     "mtd": {
-      "period": "Jul 1 - Jul 6, 2026",
+      "period": "Jul 1 - Jul 7, 2026",
       "revenue": 3100.64,
       "cogs": 1392.47,
       "gross_profit": 1708.17,
@@ -64,10 +64,10 @@
   },
 
   "shopify": {
-    "yesterday_sales": 0,
-    "orders": 0,
-    "aov": null,
-    "vs_7day_avg_pct": -100
+    "yesterday_sales": 34.18,
+    "orders": 1,
+    "aov": 34.18,
+    "vs_7day_avg_pct": 48.4
   },
 
   "helium10": {
@@ -101,13 +101,29 @@
       }
     ],
     "flags": [
-      "3+ spot organic drop: Slicker Brush (B0FQ628KCH) 'dog slicker brushes for grooming' rank 121 -> unranked",
-      "3+ spot organic drop: Emergency Dematter Cream (B0FQL56V99) 'dematting comb for dogs' rank 19 -> 23"
+      "Daily Keyword Tracker only covers 3 of 6 target SKUs (Slicker Brush, Detangling Spray, Emergency Dematter Cream) - pre-existing report-config gap, not new",
+      "No 3+ spot organic drops today vs prior baseline"
     ]
   },
 
   "helium10_profits": {
-    "daily": { "date": null, "gross_revenue": null, "expenses": null, "net_profit": null, "net_margin_pct": null, "units": null, "vs_prior_day_pct": null, "products": [] },
+    "daily": {
+      "date": "2026-07-06",
+      "gross_revenue": 2063.07,
+      "expenses": 1041.18,
+      "net_profit": 885.63,
+      "net_margin_pct": 42.9,
+      "units": 105,
+      "vs_prior_day_pct": 19,
+      "products": [
+        { "name": "Emergency Dematter Cream for Dogs", "asin": "B0FQL56V99", "marketplace": "US", "gross_revenue": 1523.48, "expenses": 642.11, "net_profit": 773.94, "units": 68, "profitable": true },
+        { "name": "Rake Brush for Dogs, Dematting Tool", "asin": "B0FQF2VTMJ", "marketplace": "US", "gross_revenue": 358.88, "expenses": 255.63, "net_profit": 80.22, "units": 28, "profitable": true },
+        { "name": "Detangling Treatment for Dogs", "asin": "B0GV5ZFLC2", "marketplace": "US", "gross_revenue": 97.80, "expenses": 43.95, "net_profit": 51.00, "units": 5, "profitable": true },
+        { "name": "Pin Brush for Dogs", "asin": "B0FQDHXSZ5", "marketplace": "US", "gross_revenue": 61.17, "expenses": 41.70, "net_profit": 18.27, "units": 3, "profitable": true },
+        { "name": "Dog Shampoo & Conditioner", "asin": "B0FQL16GH4", "marketplace": "US", "gross_revenue": 21.74, "expenses": 26.33, "net_profit": -6.34, "units": 1, "profitable": false },
+        { "name": "Slicker Brush for Dogs", "asin": "B0FQ628KCH", "marketplace": "US", "gross_revenue": 0, "expenses": 31.46, "net_profit": -31.46, "units": 0, "profitable": false }
+      ]
+    },
     "weekly": { "period": "Jun 29 - Jul 5", "gross_revenue": 10562.00, "expenses": 8768.85, "net_profit": 741.98, "net_margin_pct": 7.02, "units": 517, "vs_prior_week_pct": -14, "products": [] },
     "monthly": { "period": "Jun 1 - Jun 30", "gross_revenue": 49883.25, "expenses": 49002.70, "net_profit": -1730.10, "net_margin_pct": -3.47, "units": 2623, "vs_prior_month_pct": 10, "products": [] }
   },
@@ -157,7 +173,7 @@
       "spend": null,
       "roas": null,
       "flagged_skus": [
-        "Evening Pre-Run handoff (supermetrics_ids.json) is corrupted: submitted_at '2026-07-07 23:00:00 PT' is ~16h in the FUTURE relative to this run, while query_date is '2026-07-05' (2 days stale). Treating all Supermetrics data as unavailable this run.",
+        "Evening Pre-Run handoff (supermetrics_ids.json) STILL corrupted on 2nd consecutive run: submitted_at '2026-07-07 23:00:00 PT' is ~16h in the FUTURE, query_date '2026-07-05' is 2 days stale. Evening Pre-Run did not run correctly last night either. Treating all Supermetrics data as unavailable this run.",
         "Slicker Brush (B0FQ628KCH) zero-ad-spend safety check could NOT be verified this run - needs manual check or a fixed Evening Pre-Run"
       ],
       "sku_data_pending": true,
