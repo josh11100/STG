@@ -1,1 +1,13 @@
-
+{
+  "submitted_at": "2026-07-07 23:00:00 PT",
+  "query_date": "2026-07-05",
+  "schedule_ids": {
+    "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
+    "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
+    "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
+    "D": "d0c687aa8aa690d47c9c6000c9d1f544a6606dd948a03c8e97ea0e2ce31b2c06",
+    "E": "240c6e871026ee4b5a00de90508a86e00ca032c415bda6d50c71318fde870c15",
+    "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
+  },
+  "submission_errors": []
+}
