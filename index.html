@@ -771,7 +771,11 @@ function render(d){
 
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
-  // amzStatus computed after all sub-statuses are known — see below overview table
+  // amzStatus computed HERE — all sub-statuses defined by this point
+  const amzStatuses = [h10Status, hpStatus, acStatus, sm.status, skuStatus, laStatus, mkStatus].filter(Boolean);
+  const amzStatus = amzStatuses.includes('RED') ? 'RED' : amzStatuses.includes('YELLOW') ? 'YELLOW' : amzStatuses.length ? 'GREEN' : null;
+  dot('dot-amazon', amzStatus);
+
   const rows = [
     ['QuickBooks',  qb.cash_balance!=null?fmtDollar(qb.cash_balance):'--',   qb.weeks_runway!=null?fmtNum(qb.weeks_runway,1)+' wks runway':'no data', qb.status],
     ['Klaviyo',     kl.avg_open_rate!=null?fmtPct(kl.avg_open_rate)+' open':'--', klFlags.length+' flow(s) flagged', klStatus],
@@ -782,10 +786,6 @@ function render(d){
     ['Meta Ads',    mt.spend!=null?fmtDollar(mt.spend)+' spend':'--',        mt.available?'connected':'pending rollout', mtStatus],
     ['Reviews',     fmtInt(rv.new_review_count||0)+' new',                   rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+' avg':'no new batch', rv.status],
   ];
-  // Compute Amazon consolidated status NOW — after laStatus, mkStatus, hpStatus all defined
-  const amzStatuses = [h10Status, hpStatus, acStatus, sm.status, skuStatus, laStatus, mkStatus].filter(Boolean);
-  const amzStatus = amzStatuses.includes('RED') ? 'RED' : amzStatuses.includes('YELLOW') ? 'YELLOW' : amzStatuses.length ? 'GREEN' : null;
-  dot('dot-amazon', amzStatus);
 
   const pillFor = s => {
     const u = String(s||'').toUpperCase();
