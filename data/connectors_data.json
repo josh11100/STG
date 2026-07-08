@@ -1,21 +1,23 @@
 {
-  "last_updated": "2026-07-08 07:15:00 PT",
+  "last_updated": "2026-07-08 10:45:00 PT",
 
   "quickbooks": {
-    "cash_balance": 605134.34,
-    "weeks_runway": 42.8,
+    "cash_balance": 600943.16,
+    "checking_balance": 6892.61,
+    "money_market_balance": 594050.55,
+    "weeks_runway": 47.4,
     "accounts_payable": 53349.75,
     "accounts_receivable": 0,
     "status": "RED",
     "mtd": {
-      "period": "Jul 1 - Jul 7, 2026",
-      "revenue": 3122.48,
-      "cogs": 1400.18,
-      "gross_profit": 1722.30,
-      "gross_margin_pct": 55.16,
-      "operating_expenses": 9273.59,
-      "net_income": -7551.29,
-      "net_margin_pct": -241.87
+      "period": "Jul 1 - Jul 8, 2026",
+      "revenue": 3132.48,
+      "cogs": 1412.55,
+      "gross_profit": 1719.93,
+      "gross_margin_pct": 54.9,
+      "operating_expenses": 14475.72,
+      "net_income": -12755.79,
+      "net_margin_pct": -407.2
     }
   },
 
@@ -27,7 +29,7 @@
     "flows_flagged": [
       "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (5 recipients, low volume)",
       "Warranty Registration Confirmation - open rate 0% below 15% threshold (1 recipient, low volume)",
-      "Warranty Registration Confirmation - zero revenue, flow is 42 days old (created 2026-05-27)"
+      "Warranty Registration Confirmation - zero revenue, flow is 42+ days old (created 2026-05-27)"
     ],
     "flows": [
       {
@@ -92,8 +94,8 @@
     ],
     "flags": [
       "Daily Keyword Tracker only covers 3 of 6 target SKUs (Slicker Brush, Detangling Spray, Emergency Dematter Cream) - pre-existing report-config gap, not new",
-      "Slicker Brush (B0FQ628KCH) 'doodle brush' organic rank dropped 9 spots (100->109) vs yesterday's baseline",
-      "Emergency Dematter Cream (B0FQL56V99) 'detangler for dogs' organic rank dropped 5 spots (8->13) vs yesterday's baseline"
+      "Slicker Brush (B0FQ628KCH) 'doodle brush' organic rank dropped 9 spots (100->109) vs prior baseline",
+      "Emergency Dematter Cream (B0FQL56V99) 'detangler for dogs' organic rank dropped 5 spots (8->13) vs prior baseline"
     ]
   },
 
@@ -159,16 +161,32 @@
   },
 
   "supermetrics": {
-    "collected_from_ids": "2026-07-07 23:04:30 PT",
+    "collected_from_ids": "2026-07-08 10:03:53 PT",
     "amazon_ads": {
-      "spend": null,
-      "roas": null,
+      "spend": 513.01,
+      "roas": 1.51,
       "flagged_skus": [
-        "All 6 Supermetrics schedule_ids (submitted 2026-07-07 23:04:30 PT by Evening Pre-Run) had expired by the time this morning's run tried to collect them - 3rd consecutive day of missing Supermetrics ad data. The v10 submit-at-night/collect-in-morning handoff needs a fix: results are expiring before collection.",
-        "Slicker Brush (B0FQ628KCH) zero-ad-spend safety check could NOT be verified again this run - needs manual check or a fixed handoff"
+        "CRITICAL: Slicker Brush (B0FQ628KCH, liquidation SKU - no ad spend allowed) has $1.37 in ad spend - violates no-ad-funding rule",
+        "Emergency Dematter Cream (B0FQL56V99) ROAS 1.43 - RED band (breakeven 2.07, red floor 1.14) - primary ad workhorse underperforming",
+        "Detangling Treatment (B0GV5ZFLC2) $11.51 spend with $0 attributed sales - KILL band",
+        "Dog Shampoo & Conditioner (B0FQL16GH4) $3.00 spend with $0 attributed sales - KILL band",
+        "Pin Brush (B0FQDHXSZ5) $4.61 spend with $0 attributed sales - KILL band",
+        "Unrecognized ASIN B0GT1H84JM has $166.90 spend (2nd largest spend in account) and is not one of the 6 tracked SKUs or in roas_bands.json - needs identification",
+        "Minor unrecognized-ASIN spend also seen on B0GY9WZWKH ($1.26) and B0GXLPJS4C ($0.21)",
+        "Queries C (TACOS spend) still running after 3-min budget, D/E/F (ordered sales, Seller Central, Google Ads) expired before collection - 4th consecutive day of partial/missing Supermetrics data despite fresh submission by stray daytime trigger"
       ],
-      "sku_data_pending": true,
-      "skus": []
+      "sku_data_pending": false,
+      "skus": [
+        { "sku": "Emergency Dematter Cream", "asin": "B0FQL56V99", "spend": 318.18, "attributed_sales": 454.65, "acos": 69.98, "roas": 1.43, "band": "RED", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
+        { "sku": "Rake Brush", "asin": "B0FQF2VTMJ", "spend": 5.97, "attributed_sales": 14.99, "acos": 39.83, "roas": 2.51, "band": "YELLOW", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
+        { "sku": "Detangling Treatment", "asin": "B0GV5ZFLC2", "spend": 11.51, "attributed_sales": 0, "acos": null, "roas": 0, "band": "KILL", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
+        { "sku": "4-in-1 Shampoo", "asin": "B0FQL16GH4", "spend": 3.00, "attributed_sales": 0, "acos": null, "roas": 0, "band": "KILL", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
+        { "sku": "Pin Brush", "asin": "B0FQDHXSZ5", "spend": 4.61, "attributed_sales": 0, "acos": null, "roas": 0, "band": "KILL", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
+        { "sku": "Slicker Brush", "asin": "B0FQ628KCH", "spend": 1.37, "attributed_sales": 0, "acos": null, "roas": 0, "band": "VIOLATION", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": "LIQUIDATE", "tacos_status": "LIQUIDATE-VIOLATION" },
+        { "sku": "UNRECOGNIZED", "asin": "B0GT1H84JM", "spend": 166.90, "attributed_sales": 235.65, "acos": 70.83, "roas": 1.41, "band": null, "learning_window": null, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": null, "tacos_status": null },
+        { "sku": "UNRECOGNIZED", "asin": "B0GY9WZWKH", "spend": 1.26, "attributed_sales": 30.38, "acos": 4.15, "roas": 24.1, "band": null, "learning_window": null, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": null, "tacos_status": null },
+        { "sku": "UNRECOGNIZED", "asin": "B0GXLPJS4C", "spend": 0.21, "attributed_sales": 37.78, "acos": 0.56, "roas": 179.9, "band": null, "learning_window": null, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": null, "tacos_status": null }
+      ]
     },
     "amazon_sales": {
       "data_date": null,
