@@ -621,14 +621,18 @@ function render(d){
         if (tacosNum > target + 5) skuAlerts.push(`${(b&&b.sku)||row.sku}: TACOS ${tacosNum.toFixed(1)}% is more than 5 pts over its ${target}% target.`);
       }
       if (band === 'RED' || band === 'KILL') skuAlerts.push(`${(b&&b.sku)||row.sku}: ROAS ${fmtNum(row.roas)} landed in ${band} band${row.learning_window ? ' (in 3-day learning window — no kill action)' : ''}.`);
-      return `<tr><td><b>${esc((b&&b.sku)||row.sku||row.asin||'?')}</b>${row.learning_window?' <span class="pill pill-na">LEARNING</span>':''}</td>
+      const isUnknown = !b;
+      if (isUnknown && (row.spend||0) > 0) skuAlerts.push(`UNRECOGNIZED ASIN (${esc(row.asin||row.sku||'?')}): $${fmtNum(row.spend,2)} spend — not in roas_bands.json. Angelo: identify in Amazon Ads console and add to tracked SKUs or pause.`);
+      const skuLabel = b ? ((b&&b.sku)||row.sku||row.asin||'?') : (row.asin||row.sku||'?');
+      const rowStyle = isUnknown ? ' style="background:#fff8f0;"' : '';
+      return `<tr${rowStyle}><td><b>${esc(skuLabel)}</b>${row.learning_window?' <span class="pill pill-na">LEARNING</span>':''}${isUnknown?' <span class="pill pill-warn">⚠️ UNRECOGNIZED</span>':''}</td>
         <td class="r">${fmtDollar(row.spend)??'—'}</td>
         <td class="r">${fmtNum(row.roas)??'—'}</td>
-        <td class="r">${b&&b.amazon?fmtNum(b.amazon.breakeven)+'x':'—'}</td>
-        <td class="r">${bandPill(band)}</td>
+        <td class="r">${b&&b.amazon?fmtNum(b.amazon.breakeven)+'x':'<span style="color:var(--muted);font-size:11px;">not tracked</span>'}</td>
+        <td class="r">${isUnknown?'<span class="pill pill-warn">UNKNOWN</span>':bandPill(band)}</td>
         <td class="r">${tacosNum!=null?tacosNum.toFixed(1)+'%':'—'}</td>
-        <td class="r">${target!=null?(typeof target==='number'?target+'%':esc(String(target))):'—'}</td>
-        <td class="r">${tacosPill}</td></tr>`;
+        <td class="r">${target!=null?(typeof target==='number'?target+'%':esc(String(target))):'<span style="color:var(--muted);font-size:11px;">not tracked</span>'}</td>
+        <td class="r">${isUnknown?'<span class="pill pill-warn">ACTION NEEDED</span>':tacosPill}</td></tr>`;
     });
     $('sku-live-table').querySelector('tbody').innerHTML = rows.join('');
     skuStatus = skuAlerts.length ? (skuAlerts.some(a=>/KILL|violated|OVER\+/.test(a))?'RED':'YELLOW') : 'GREEN';
@@ -748,8 +752,13 @@ function render(d){
   const laStatus = la.report_found == null ? null : la.report_found ? (laRows.some(l=>(l.flags||[]).length) ? 'YELLOW' : 'GREEN') : null;
   statusTag($('la-tag'), laStatus); // removed nav: // dot-listing nav removed
   $('la-when').textContent = la.report_date ? 'Report: ' + la.report_date : '';
+  // Check if Slicker Brush is missing from the H10 report
+  const slickerInReport = laRows.some(l => l.product && l.product.toLowerCase().includes('slicker'));
+  const slickerRow = !slickerInReport && laRows.length > 0
+    ? '<tr style="background:#fff8f0;"><td><b>Slicker Brush for Dogs</b> <span class="pill pill-warn">⚠️ NOT IN H10 REPORT</span></td><td class="r"><span class="pill pill-na">—</span></td><td><span style="color:var(--muted);font-size:11px;">H10 Listing Analyzer did not include this SKU. Likely excluded because it is a liquidation SKU (B0FQ628KCH). Will: confirm H10 is no longer tracking this listing or check H10 settings.</span></td></tr>'
+    : '';
   $('la-table').querySelector('tbody').innerHTML = laRows.length
-    ? laRows.map(l=>'<tr><td><b>'+esc(l.product||'?')+'</b></td><td class="r">'+(l.score!=null?esc(String(l.score)):'<span class="pill pill-na">no score</span>')+'</td><td>'+((l.flags||[]).length?l.flags.map(f=>'<span class="pill pill-warn">'+esc(f)+'</span>').join(' '):'<span class="pill pill-ok">clean</span>')+'</td></tr>').join('')
+    ? laRows.map(l=>'<tr><td><b>'+esc(l.product||'?')+'</b></td><td class="r">'+(l.score!=null?esc(String(l.score)):'<span class="pill pill-na">no score</span>')+'</td><td>'+((l.flags||[]).length?l.flags.map(f=>'<span class="pill pill-warn">'+esc(f)+'</span>').join(' '):'<span class="pill pill-ok">clean</span>')+'</td></tr>').join('') + slickerRow
     : '<tr><td colspan="3" style="color:#8a93a0;font-style:italic;">No listing report this week yet — arrives weekly, this is normal.</td></tr>';
 
   // — Market Tracker —
