@@ -357,10 +357,14 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
         <!-- REVIEWS -->
         <div class="section" id="section-reviews">
-          <div class="sec-head"><h2>Product Reviews</h2><span class="tag" id="rv-tag">--</span></div>
-          <div class="sec-desc">Watches the STG Weekly Review Update sheet — <b>Patrick updates this every week.</b> If the sheet hasn't been updated in 8+ days, JARVIS flags YELLOW so Will knows to follow up. <b>Locked rule:</b> RED if new batch averages under 3.5 stars OR 3+ one/two-star reviews. Complaint themes summarized in Slack.</div>
+          <div class="sec-head">
+            <h2>Product Reviews</h2><span class="tag" id="rv-tag">--</span>
+            <a href="https://docs.google.com/spreadsheets/d/1noefqPyotb3G-10YWo5c_jtew7u14IsU2lUYW4AZ37I/edit" target="_blank" style="margin-left:auto;font-size:11px;color:var(--teal);border:1px solid var(--teal);border-radius:6px;padding:4px 10px;text-decoration:none;font-weight:600;">↗ Open Full Sheet</a>
+          </div>
+          <div class="sec-desc">Watches the STG Weekly Review Update sheet — <b>Angelo updates this every week.</b> If the sheet hasn't been updated in 8+ days, JARVIS flags YELLOW so Will knows to follow up. <b>Locked rule:</b> RED if new batch averages under 3.5 stars OR 3+ one/two-star reviews. Complaint themes summarized in Slack.</div>
           <div class="cards" id="rv-cards"></div>
           <div id="rv-alerts"></div>
+          <div id="rv-recent"></div>
         </div>
 
         <!-- BUSINESS HEALTH -->
@@ -776,8 +780,27 @@ function render(d){
       rvStale?'bdr-amber':'bdr-teal');
   $('rv-alerts').innerHTML =
     rv.status==='RED' ? alertBox('crit','<b>RED — mass negative signal.</b> Complaint themes summarized in #stg-content-alerts.') :
-    rvStale ? alertBox('warn','<b>⚠️ Review sheet not updated in '+rvDaysAgo+' days.</b> Patrick updates this every week — last update was '+esc(rv.sheet_last_modified||'unknown')+'. Will: check if Patrick has new reviews to add.') :
-    noNew ? alertBox('ok','Sheet unchanged since last check — nothing new posted (by design). Patrick updates weekly.') : '';
+    rvStale ? alertBox('warn','<b>⚠️ Review sheet not updated in '+rvDaysAgo+' days.</b> Angelo updates this every week — last update was '+esc(rv.sheet_last_modified||'unknown')+'. Will: follow up with Angelo.') :
+    noNew ? alertBox('ok','Sheet unchanged since last check — nothing new posted (by design). Angelo updates weekly.') : '';
+
+  // Recent reviews table — renders if routine stores them in reviews.recent[]
+  const rvRecent = rv.recent || [];
+  const starStr = n => n==null?'?':'★'.repeat(Math.max(0,Math.min(5,Math.round(n)))) + '☆'.repeat(5-Math.max(0,Math.min(5,Math.round(n))));
+  $('rv-recent').innerHTML = rvRecent.length ? `
+    <div class="tbl-wrap" style="margin-top:10px;">
+      <div class="tbl-title">Most recent reviews — from Angelo's sheet</div>
+      <table><thead><tr><th>Date</th><th>Product</th><th class="r">Stars</th><th>Review</th></tr></thead><tbody>
+      ${rvRecent.map(r => {
+        const low = (r.rating||5) <= 2;
+        return '<tr>' +
+          '<td style="white-space:nowrap;color:var(--muted);">' + esc(r.date||'') + '</td>' +
+          '<td style="font-weight:600;max-width:130px;">' + esc(r.product||'') + '</td>' +
+          '<td class="r" style="color:' + (low?'var(--red)':'var(--green)') + ';white-space:nowrap;">' + starStr(r.rating) + ' (' + (r.rating||'?') + ')</td>' +
+          '<td style="max-width:300px;color:' + (low?'var(--red)':'var(--text)') + ';">' + esc(r.text||'') + '</td></tr>';
+      }).join('')}
+      </tbody></table>
+    </div>` :
+    alertBox('info','Review detail not yet in data — use <b>↗ Open Full Sheet</b> above to see all reviews. To display them here automatically, the routine needs to read Angelo\'s sheet rows and store them in <b>reviews.recent[]</b>.');
 
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
