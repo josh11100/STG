@@ -1,12 +1,12 @@
 {
-  "submitted_at": "2026-07-07 23:04:30 PT",
-  "query_date": "2026-07-06",
+  "submitted_at": "2026-07-08 09:35:39 PT",
+  "query_date": "2026-07-07",
   "schedule_ids": {
     "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
     "B": "00c8960a86b5e6be0b352258245ae418fd6824608de022f5917976b0258f09f8",
     "C": "e537ca0e50c918ee3bf59c74fed13266711c35e2c74ec761c187db85fac0e9cd",
-    "D": "d0c687aa8aa690d47c9c6000c9d1f544a6606dd948a03c8e97ea0e2ce31b2c06",
-    "E": "240c6e871026ee4b5a00de90508a86e00ca032c415bda6d50c71318fde870c15",
+    "D": "966d790948e9c014de746e18ddaea6f9593ff9c876ba1fef4c48fc2479b4a0c3",
+    "E": "e83ee8b7f35c82281d57f7ba32f6ba74acce66e3896e2c4cc1dc8325428d2f1f",
     "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
   },
   "submission_errors": []
