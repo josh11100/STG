@@ -1,49 +1,39 @@
 {
-  "last_updated": "2026-07-07 07:24:00 PT",
+  "last_updated": "2026-07-08 07:15:00 PT",
 
   "quickbooks": {
-    "cash_balance": 621199.44,
-    "weeks_runway": 22.2,
-    "accounts_payable": 69401.89,
+    "cash_balance": 605134.34,
+    "weeks_runway": 42.8,
+    "accounts_payable": 53349.75,
     "accounts_receivable": 0,
-    "status": "YELLOW",
+    "status": "RED",
     "mtd": {
       "period": "Jul 1 - Jul 7, 2026",
-      "revenue": 3100.64,
-      "cogs": 1392.47,
-      "gross_profit": 1708.17,
-      "gross_margin_pct": 55.1,
-      "operating_expenses": 8178.23,
-      "net_income": -6470.06,
-      "net_margin_pct": -208.7
+      "revenue": 3122.48,
+      "cogs": 1400.18,
+      "gross_profit": 1722.30,
+      "gross_margin_pct": 55.16,
+      "operating_expenses": 9273.59,
+      "net_income": -7551.29,
+      "net_margin_pct": -241.87
     }
   },
 
   "klaviyo": {
-    "avg_open_rate": 80.6,
+    "avg_open_rate": 40,
     "avg_click_rate": 0,
     "total_email_revenue_7d": 0,
     "total_sms_revenue_7d": null,
     "flows_flagged": [
-      "A | Welcome Series - click rate 0% (1 recipient, low volume)",
-      "Warranty Registration Confirmation - click rate 0% (3 recipients, low volume)",
-      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (4 recipients, low volume)"
+      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (5 recipients, low volume)",
+      "Warranty Registration Confirmation - open rate 0% below 15% threshold (1 recipient, low volume)",
+      "Warranty Registration Confirmation - zero revenue, flow is 42 days old (created 2026-05-27)"
     ],
     "flows": [
       {
-        "name": "A | Welcome Series",
-        "recipients": 1,
-        "open_rate_pct": 100,
-        "click_rate_pct": 0,
-        "revenue": 0,
-        "revenue_per_recipient": 0,
-        "low_volume": true,
-        "zero_revenue_flag": false
-      },
-      {
         "name": "Abandoned Cart Reminder - Shopify Added to Cart Trigger",
-        "recipients": 4,
-        "open_rate_pct": 75,
+        "recipients": 5,
+        "open_rate_pct": 80,
         "click_rate_pct": 0,
         "revenue": 0,
         "revenue_per_recipient": 0,
@@ -52,36 +42,36 @@
       },
       {
         "name": "Warranty Registration Confirmation",
-        "recipients": 3,
-        "open_rate_pct": 66.7,
+        "recipients": 1,
+        "open_rate_pct": 0,
         "click_rate_pct": 0,
         "revenue": 0,
         "revenue_per_recipient": 0,
         "low_volume": true,
-        "zero_revenue_flag": false
+        "zero_revenue_flag": true
       }
     ]
   },
 
   "shopify": {
-    "yesterday_sales": 34.18,
-    "orders": 1,
-    "aov": 34.18,
-    "vs_7day_avg_pct": 48.4
+    "yesterday_sales": 0,
+    "orders": 0,
+    "aov": null,
+    "vs_7day_avg_pct": -100
   },
 
   "helium10": {
     "report_found": true,
-    "report_date": "2026-07-06",
+    "report_date": "2026-07-07",
     "data_readable": true,
     "products": [
       {
         "name": "Slicker Brush for Dogs, Golden...",
         "asin": "B0FQ628KCH",
         "keywords": [
-          { "keyword": "doodle brush", "search_volume": 8448, "organic_rank": 100, "sponsored_rank": null, "organic_change_rating": 206 },
-          { "keyword": "dog slicker brushes for grooming", "search_volume": 1176, "organic_rank": null, "sponsored_rank": null, "organic_change_rating": -185 },
-          { "keyword": "slicker brush for dogs", "search_volume": 23837, "organic_rank": 102, "sponsored_rank": null, "organic_change_rating": 2 }
+          { "keyword": "dog slicker brushes for grooming", "search_volume": 1176, "organic_rank": 124, "sponsored_rank": null, "organic_change_rating": 202 },
+          { "keyword": "doodle brush", "search_volume": 8448, "organic_rank": 109, "sponsored_rank": null, "organic_change_rating": 19 },
+          { "keyword": "slicker brush for dogs", "search_volume": 23837, "organic_rank": 104, "sponsored_rank": null, "organic_change_rating": 12 }
         ]
       },
       {
@@ -93,35 +83,36 @@
         "name": "Emergency Dematter Cream for Dogs",
         "asin": "B0FQL56V99",
         "keywords": [
-          { "keyword": "dematting spray for dogs", "search_volume": 1862, "organic_rank": 2, "sponsored_rank": null, "organic_change_rating": 2 },
-          { "keyword": "detangler for dogs", "search_volume": 1862, "organic_rank": 8, "sponsored_rank": null, "organic_change_rating": 6 },
-          { "keyword": "dog detangler", "search_volume": 2635, "organic_rank": 15, "sponsored_rank": 28, "organic_change_rating": 1 },
-          { "keyword": "dematting comb for dogs", "search_volume": 8448, "organic_rank": 23, "sponsored_rank": 4, "organic_change_rating": -4 }
+          { "keyword": "dematting spray for dogs", "search_volume": 1862, "organic_rank": 3, "sponsored_rank": null, "organic_change_rating": 101 },
+          { "keyword": "detangler for dogs", "search_volume": 1862, "organic_rank": 13, "sponsored_rank": 10, "organic_change_rating": 55 },
+          { "keyword": "dog detangler", "search_volume": 2635, "organic_rank": 11, "sponsored_rank": null, "organic_change_rating": 54 },
+          { "keyword": "dematting comb for dogs", "search_volume": 8448, "organic_rank": 21, "sponsored_rank": null, "organic_change_rating": 32 }
         ]
       }
     ],
     "flags": [
       "Daily Keyword Tracker only covers 3 of 6 target SKUs (Slicker Brush, Detangling Spray, Emergency Dematter Cream) - pre-existing report-config gap, not new",
-      "No 3+ spot organic drops today vs prior baseline"
+      "Slicker Brush (B0FQ628KCH) 'doodle brush' organic rank dropped 9 spots (100->109) vs yesterday's baseline",
+      "Emergency Dematter Cream (B0FQL56V99) 'detangler for dogs' organic rank dropped 5 spots (8->13) vs yesterday's baseline"
     ]
   },
 
   "helium10_profits": {
     "daily": {
-      "date": "2026-07-06",
-      "gross_revenue": 2063.07,
-      "expenses": 1041.18,
-      "net_profit": 885.63,
-      "net_margin_pct": 42.9,
-      "units": 105,
-      "vs_prior_day_pct": 19,
+      "date": "2026-07-07",
+      "gross_revenue": 1683.23,
+      "expenses": 1452.73,
+      "net_profit": 85.57,
+      "net_margin_pct": 5.08,
+      "units": 85,
+      "vs_prior_day_pct": -19,
       "products": [
-        { "name": "Emergency Dematter Cream for Dogs", "asin": "B0FQL56V99", "marketplace": "US", "gross_revenue": 1523.48, "expenses": 642.11, "net_profit": 773.94, "units": 68, "profitable": true },
-        { "name": "Rake Brush for Dogs, Dematting Tool", "asin": "B0FQF2VTMJ", "marketplace": "US", "gross_revenue": 358.88, "expenses": 255.63, "net_profit": 80.22, "units": 28, "profitable": true },
-        { "name": "Detangling Treatment for Dogs", "asin": "B0GV5ZFLC2", "marketplace": "US", "gross_revenue": 97.80, "expenses": 43.95, "net_profit": 51.00, "units": 5, "profitable": true },
-        { "name": "Pin Brush for Dogs", "asin": "B0FQDHXSZ5", "marketplace": "US", "gross_revenue": 61.17, "expenses": 41.70, "net_profit": 18.27, "units": 3, "profitable": true },
-        { "name": "Dog Shampoo & Conditioner", "asin": "B0FQL16GH4", "marketplace": "US", "gross_revenue": 21.74, "expenses": 26.33, "net_profit": -6.34, "units": 1, "profitable": false },
-        { "name": "Slicker Brush for Dogs", "asin": "B0FQ628KCH", "marketplace": "US", "gross_revenue": 0, "expenses": 31.46, "net_profit": -31.46, "units": 0, "profitable": false }
+        { "name": "Emergency Dematter Cream for Dogs", "asin": "B0FQL56V99", "marketplace": "US", "gross_revenue": 1258.88, "expenses": 1035.66, "net_profit": 99.73, "units": 56, "profitable": true },
+        { "name": "Rake Brush for Dogs, Dematting Tool", "asin": "B0FQF2VTMJ", "marketplace": "US", "gross_revenue": 287.91, "expenses": 272.14, "net_profit": 0.64, "units": 22, "profitable": true },
+        { "name": "Detangling Treatment for Dogs", "asin": "B0GV5ZFLC2", "marketplace": "US", "gross_revenue": 115.05, "expenses": 73.82, "net_profit": 36.32, "units": 6, "profitable": true },
+        { "name": "Slicker Brush for Dogs", "asin": "B0FQ628KCH", "marketplace": "US", "gross_revenue": 21.39, "expenses": 24.23, "net_profit": -4.24, "units": 1, "profitable": false },
+        { "name": "Dog Shampoo & Conditioner", "asin": "B0FQL16GH4", "marketplace": "US", "gross_revenue": 0, "expenses": 28.64, "net_profit": -28.64, "units": 0, "profitable": false },
+        { "name": "Pin Brush for Dogs", "asin": "B0FQDHXSZ5", "marketplace": "US", "gross_revenue": 0, "expenses": 18.24, "net_profit": -18.24, "units": 0, "profitable": false }
       ]
     },
     "weekly": { "period": "Jun 29 - Jul 5", "gross_revenue": 10562.00, "expenses": 8768.85, "net_profit": 741.98, "net_margin_pct": 7.02, "units": 517, "vs_prior_week_pct": -14, "products": [] },
@@ -168,13 +159,13 @@
   },
 
   "supermetrics": {
-    "collected_from_ids": null,
+    "collected_from_ids": "2026-07-07 23:04:30 PT",
     "amazon_ads": {
       "spend": null,
       "roas": null,
       "flagged_skus": [
-        "Evening Pre-Run handoff (supermetrics_ids.json) STILL corrupted on 2nd consecutive run: submitted_at '2026-07-07 23:00:00 PT' is ~16h in the FUTURE, query_date '2026-07-05' is 2 days stale. Evening Pre-Run did not run correctly last night either. Treating all Supermetrics data as unavailable this run.",
-        "Slicker Brush (B0FQ628KCH) zero-ad-spend safety check could NOT be verified this run - needs manual check or a fixed Evening Pre-Run"
+        "All 6 Supermetrics schedule_ids (submitted 2026-07-07 23:04:30 PT by Evening Pre-Run) had expired by the time this morning's run tried to collect them - 3rd consecutive day of missing Supermetrics ad data. The v10 submit-at-night/collect-in-morning handoff needs a fix: results are expiring before collection.",
+        "Slicker Brush (B0FQ628KCH) zero-ad-spend safety check could NOT be verified again this run - needs manual check or a fixed handoff"
       ],
       "sku_data_pending": true,
       "skus": []
@@ -201,7 +192,7 @@
   },
 
   "reviews": {
-    "last_reviews_check": "2026-07-07",
+    "last_reviews_check": "2026-07-08",
     "sheet_last_modified": "2026-07-02",
     "new_review_count": 0,
     "avg_rating_new_batch": null,
