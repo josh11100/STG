@@ -1,1 +1,64 @@
-
+{
+  "version": 1,
+  "last_updated": "2026-07-08 15:00:00 PT",
+  "learnings": [
+    {
+      "id": "L-2026-07-08-001",
+      "date_observed": "2026-07-08",
+      "subject": "Emergency Dematter Cream",
+      "asin": "B0FQL56V99",
+      "scope": "amazon_ads",
+      "learning": "Dematter paid ROAS fell to RED (1.43 vs 2.07 breakeven) in the same window its 'detangler for dogs' organic rank slid 8->13 - possible pattern: rising paid spend masking organic decline; check organic rank before scaling Dematter paid.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "ROAS 1.43 on $318.18 spend (Supermetrics Query B, 2026-07-08)",
+        "Organic rank 'detangler for dogs' 8->13 (H10 Daily Keyword Tracker, 2026-07-08)"
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-08",
+      "contradictions": 0,
+      "source_brief_id": "jarvis_dematter_2026-07-08_red",
+      "action_implication": "Before any Dematter budget increase, verify organic ranks are stable; if organic is sliding, fix the listing before adding spend.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-08-002",
+      "date_observed": "2026-07-08",
+      "subject": "Detangling Treatment / 4-in-1 Shampoo / Pin Brush",
+      "asin": "B0GV5ZFLC2, B0FQL16GH4, B0FQDHXSZ5",
+      "scope": "amazon_ads",
+      "learning": "Three low-spend SKUs ($3-$12/day) each spent with zero attributed sales on 2026-07-08 - sub-$15 daily budgets may be too small to exit the learning phase and convert; trickle spend produced $19.12 total loss with nothing learned.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "Detangling $11.51 / Shampoo $3.00 / Pin Brush $4.61, all ROAS 0.00 (Supermetrics Query B, 2026-07-08)"
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-08",
+      "contradictions": 0,
+      "source_brief_id": "jarvis_killband_2026-07-08_red",
+      "action_implication": "For these SKUs: either fund a campaign at a viable test budget with a defined kill threshold, or pause entirely - avoid indefinite trickle spend.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-08-003",
+      "date_observed": "2026-07-08",
+      "subject": "Account tracking hygiene",
+      "asin": "B0GT1H84JM, B0GY9WZWKH, B0GXLPJS4C",
+      "scope": "amazon_ads",
+      "learning": "Three ASINs were spending in the ad account without existing in roas_bands.json - one at $166.90/day (2nd largest in account) - untracked spend can run unnoticed until the per-SKU pipeline works; every new campaign launch must add its ASIN to roas_bands.json the same day.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "B0GT1H84JM $166.90 spend ROAS 1.41, unrecognized (Supermetrics Query B, 2026-07-08)"
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-08",
+      "contradictions": 0,
+      "source_brief_id": "jarvis_unrecognized_2026-07-08_red",
+      "action_implication": "Launch checklist rule for Angelo: campaign live -> ASIN added to roas_bands.json same day. JARVIS flags any unrecognized ASIN as RED automatically.",
+      "retired_reason": null
+    }
+  ]
+}
