@@ -358,7 +358,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- REVIEWS -->
         <div class="section" id="section-reviews">
           <div class="sec-head"><h2>Product Reviews</h2><span class="tag" id="rv-tag">--</span></div>
-          <div class="sec-desc">Watches the STG Weekly Review Update sheet. <b>Locked rule:</b> RED if new batch averages under 3.5 stars OR 3+ one/two-star reviews. Complaint themes summarized in Slack so Will sees what is wrong, not just that something is.</div>
+          <div class="sec-desc">Watches the STG Weekly Review Update sheet — <b>Patrick updates this every week.</b> If the sheet hasn't been updated in 8+ days, JARVIS flags YELLOW so Will knows to follow up. <b>Locked rule:</b> RED if new batch averages under 3.5 stars OR 3+ one/two-star reviews. Complaint themes summarized in Slack.</div>
           <div class="cards" id="rv-cards"></div>
           <div id="rv-alerts"></div>
         </div>
@@ -649,7 +649,8 @@ function render(d){
 
   // — Google Ads —
   const gaLow = ga.roas != null && ga.roas < 2.0;
-  const gaStatus = ga.spend==null ? (sm.status==='RED'?'RED':null) : gaLow ? 'YELLOW' : 'GREEN';
+  // Google Ads: null spend = no campaigns running (expected) — never RED just for no data
+  const gaStatus = ga.spend==null ? null : gaLow ? 'YELLOW' : 'GREEN';
   statusTag($('ga-tag'), gaStatus); dot('dot-googleads', gaStatus);
   $('ga-cards').innerHTML =
     card('Ad Spend', fmtDollar(ga.spend), 'Yesterday', 'bdr-orange') +
@@ -759,15 +760,24 @@ function render(d){
 
   // — Reviews —
   const rv = d.reviews || {};
-  statusTag($('rv-tag'), rv.status); dot('dot-reviews', rv.status);
+  // Staleness check — flag if sheet hasn't been updated in 8+ days
+  const rvModDate = rv.sheet_last_modified ? new Date(rv.sheet_last_modified) : null;
+  const rvDaysAgo = rvModDate ? Math.floor((Date.now() - rvModDate) / 86400000) : null;
+  const rvStale = rvDaysAgo != null && rvDaysAgo >= 8;
+  // Override status to YELLOW if stale and not already RED
+  const rvEffectiveStatus = rv.status==='RED' ? 'RED' : rvStale ? 'YELLOW' : rv.status;
+  statusTag($('rv-tag'), rvEffectiveStatus); dot('dot-reviews', rvEffectiveStatus);
   const noNew = (rv.new_review_count||0) === 0;
   $('rv-cards').innerHTML =
     card('New Reviews', fmtInt(rv.new_review_count), 'Since last check ' + (rv.last_reviews_check?esc('('+rv.last_reviews_check+')'):''), noNew?'bdr-grey':'bdr-teal') +
     card('Avg Rating (New Batch)', fmtNum(rv.avg_rating_new_batch,1), 'RED if below 3.5', rv.avg_rating_new_batch!=null&&rv.avg_rating_new_batch<3.5?'bdr-red':'bdr-green') +
-    card('Sheet Last Modified', rv.sheet_last_modified?esc(rv.sheet_last_modified):null, 'STG Weekly Review Update sheet', 'bdr-teal');
+    card('Sheet Last Modified', rv.sheet_last_modified?esc(rv.sheet_last_modified):null,
+      rvDaysAgo!=null ? (rvStale?'⚠️ '+rvDaysAgo+' days ago — overdue':''+rvDaysAgo+' day(s) ago') : 'STG Weekly Review Update sheet',
+      rvStale?'bdr-amber':'bdr-teal');
   $('rv-alerts').innerHTML =
     rv.status==='RED' ? alertBox('crit','<b>RED — mass negative signal.</b> Complaint themes summarized in #stg-content-alerts.') :
-    noNew ? alertBox('ok','Sheet unchanged since last check — nothing new posted (by design).') : '';
+    rvStale ? alertBox('warn','<b>⚠️ Review sheet not updated in '+rvDaysAgo+' days.</b> Patrick updates this every week — last update was '+esc(rv.sheet_last_modified||'unknown')+'. Will: check if Patrick has new reviews to add.') :
+    noNew ? alertBox('ok','Sheet unchanged since last check — nothing new posted (by design). Patrick updates weekly.') : '';
 
   // — Overview —
   $('ov-when').textContent = d.last_updated ? 'As of ' + d.last_updated : '';
