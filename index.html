@@ -178,6 +178,11 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
       <span class="nav-text"><span class="nav-title">Product Reviews</span><span class="nav-desc">Weekly Review sheet — new batch health</span></span>
     </button>
 
+        <button class="nav-card" id="nav-daas" onclick="show('daas')">
+      <span class="nav-num" style="font-size:8px;">DAAS<span class="nav-dot" id="dot-daas"></span></span>
+      <span class="nav-text"><span class="nav-title">DAAS Report</span><span class="nav-desc">Patrick's TACOS &middot; true net &middot; SKU P&amp;L</span></span>
+    </button>
+
     <div class="sb-label" style="margin-top:8px;">Strategic</div>
     <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
       <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
@@ -369,7 +374,51 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="rv-recent"></div>
         </div>
 
-        <!-- BUSINESS HEALTH -->
+        <!-- DAAS REPORT (Patrick Confirmed) -->
+        <div class="section" id="section-daas">
+          <div class="sec-head">
+            <h2>DAAS Report &mdash; Patrick Confirmed</h2>
+            <span class="tag" id="daas-tag">&mdash;</span>
+            <span class="tag tag-info" id="daas-source-tag" style="margin-left:4px;">&mdash;</span>
+            <span class="when" id="daas-when"></span>
+          </div>
+          <div class="sec-desc">Patrick Towle's Daily Amazon / TACOS Report &mdash; ingested daily at 10:30 AM PT via the DAAS Intake Routine. <b>TACOS (7-day weighted) is the headline metric.</b> True Net = gross revenue minus all expenses minus ad spend. Patrick's confirmed stamp validates the ad spend number used in the TACOS calculation. Dashboard auto-updates when <b>data/daas_data.json</b> is pushed.</div>
+          <div id="daas-alerts"></div>
+
+          <div class="sec-head" style="padding-top:12px;"><h2>Daily Snapshot</h2><span class="tag tag-info" id="daas-daily-tag">PATRICK CONFIRMED</span></div>
+          <div class="cards" id="daas-cards"></div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>Month to Date</h2><span class="tag tag-info">MTD</span></div>
+          <div class="cards" id="daas-mtd-cards"></div>
+
+          <div class="tbl-wrap" style="margin-top:10px;">
+            <div class="tbl-title">YTD TACOS Trend &mdash; 2026 &nbsp;<span class="pill pill-na" style="font-size:9px;">ytd_table[] in v1.2</span></div>
+            <table id="daas-ytd-table">
+              <thead><tr><th>Month</th><th class="r">Revenue</th><th class="r">Ad Spend</th><th class="r">TACOS</th><th class="r">vs Target</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>SKU Performance</h2><span class="tag tag-info">H10 CONFIRMED</span></div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">Per-SKU revenue &middot; units &middot; net profit &mdash; reported date</div>
+            <table id="daas-sku-table">
+              <thead><tr><th>SKU</th><th>ASIN</th><th class="r">Revenue</th><th class="r">Units</th><th class="r">Net Profit (H10)</th><th class="r">Rev Share</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="sec-head" style="padding-top:14px;"><h2>Inventory Flags</h2><span class="tag tag-info">LTSF / LIF</span></div>
+          <div class="tbl-wrap">
+            <div class="tbl-title">LIF + LTSF risk per SKU &mdash; from Patrick's Inventory Insights section</div>
+            <table id="daas-inv-table">
+              <thead><tr><th>SKU</th><th>ASIN</th><th>LIF Risk</th><th>LTSF Risk</th><th>Notes</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+                <!-- BUSINESS HEALTH -->
         <div class="section" id="section-bizhealth">
           <div class="sec-head"><h2>Business Health — Strategic Overview</h2><span class="tag" id="bh-tag">—</span><span class="when" id="bh-when"></span></div>
           <div class="sec-desc">The weekly zoom-out Will reviews &mdash; lifetime economics, cash in inventory, S&amp;S penetration, returns, brand loyalty. <b>Top row is LIVE</b> (auto, from this morning's JARVIS run). Lifetime/inventory numbers come from <b>data/business_health.json</b> (Patrick, weekly) &mdash; flagged yellow when stale.</div>
@@ -397,6 +446,164 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 </div>
 
 <script>
+// ─── DAAS RENDER ─────────────────────────────────────────────────────────────
+function renderDaas(daas) {
+  window.__DAAS = daas;
+  window.__DAAS_STATUS = null;
+  const alertEl = $('daas-alerts');
+
+  if (!daas || daas.parse_source === 'seed') {
+    statusTag($('daas-tag'), null);
+    dot('dot-daas', null);
+    if (alertEl) alertEl.innerHTML = daas && daas.parse_source === 'seed'
+      ? alertBox('warn', '<b>Seed data only</b> — DAAS Intake Routine not yet scheduled. Numbers will populate once the routine is live and Patrick sends his first report.')
+      : alertBox('info', 'DAAS Intake Routine not yet scheduled — Patrick\'s confirmed TACOS and SKU data will appear here once it goes live.');
+    ['daas-cards','daas-mtd-cards'].forEach(id => { const el = $(id); if(el) el.innerHTML = card('No data','—','Routine not yet live','bdr-grey'); });
+    ['daas-sku-table','daas-inv-table','daas-ytd-table'].forEach(id => {
+      const tb = $(id) ? $(id).querySelector('tbody') : null;
+      if(tb) tb.innerHTML = '<tr><td colspan="6" style="color:#8a93a0;font-style:italic;">No data yet.</td></tr>';
+    });
+    return;
+  }
+
+  // Staleness
+  const repDate = daas.report_date ? new Date(daas.report_date + 'T12:00:00') : null;
+  const daysOld = repDate ? Math.floor((Date.now() - repDate) / 86400000) : null;
+  const isStale = daysOld != null && daysOld > 2;
+
+  const whenEl = $('daas-when');
+  if (whenEl) whenEl.textContent = daas.report_date
+    ? 'Report: ' + daas.report_date + (daysOld != null ? ' · ' + daysOld + ' day(s) old' : '') : '';
+
+  // Source badge
+  const srcTag = $('daas-source-tag');
+  if (srcTag) {
+    const src = daas.parse_source || 'unknown';
+    const srcMap = { email_body:'EMAIL BODY', pdf_fallback:'PDF', partial_body_no_pdf:'PARTIAL', seed:'SEED' };
+    srcTag.textContent = srcMap[src] || src.toUpperCase();
+    srcTag.className = 'tag ' + (src === 'pdf_fallback' ? 'tag-warn' : src === 'partial_body_no_pdf' ? 'tag-warn' : 'tag-info');
+  }
+
+  const daily = daas.daily || {};
+  const mtd   = daas.mtd || {};
+  const flags  = daas.flags || [];
+
+  // Status
+  const isCrit = flags.includes('daily_tacos_red') || flags.includes('true_net_negative');
+  const isWarn = isStale || flags.includes('daily_tacos_yellow') || flags.includes('mtd_tacos_elevated') || flags.includes('ltsf_risk_present') || flags.includes('parse_error_revenue') || flags.includes('parse_incomplete');
+  const daasStatus = isCrit ? 'RED' : isWarn ? 'YELLOW' : daily.daily_tacos_pct != null ? 'GREEN' : null;
+  window.__DAAS_STATUS = daasStatus;
+  statusTag($('daas-tag'), daasStatus);
+  dot('dot-daas', daasStatus);
+
+  // Alerts
+  const flagDesc = {
+    daily_tacos_red:    ['crit', 'Daily TACOS ' + fmtPct(daily.daily_tacos_pct) + ' — above 35% target. Check ad spend mix.'],
+    daily_tacos_yellow: ['warn', 'Daily TACOS ' + fmtPct(daily.daily_tacos_pct) + ' — watch band (30–35%). On track but watch.'],
+    mtd_tacos_elevated: ['warn', 'MTD TACOS ' + fmtPct(mtd.tacos_pct) + ' — elevated above 35% target.'],
+    true_net_negative:  ['crit', 'True Net negative (' + fmtDollar(daily.true_net) + ') — unprofitable day after all costs + ad spend.'],
+    ltsf_risk_present:  ['warn', 'LTSF risk on one or more SKUs — review inventory flags below.'],
+    parse_error_revenue:['warn', '⚠️ Revenue parse failed — some fields are null. Check email/PDF format.'],
+    parse_incomplete:   ['warn', '⚠️ Partial parse — no PDF attachment found. Some fields may be null.'],
+  };
+  let alertsHtml = isStale ? alertBox('warn', '<b>Report is ' + daysOld + ' day(s) old.</b> DAAS Intake Routine may not have found today\'s email or Patrick hasn\'t sent yet.') : '';
+  flags.forEach(f => {
+    const [kind, msg] = flagDesc[f] || ['info', f];
+    alertsHtml += alertBox(kind, msg);
+  });
+  if (!alertsHtml && daily.daily_tacos_pct != null) {
+    alertsHtml = alertBox('ok', 'Patrick confirmed &middot; TACOS on target &middot; all flags clear.');
+  }
+  if (alertEl) alertEl.innerHTML = alertsHtml;
+
+  // TACOS color helpers
+  const tColor = t => t == null ? 'bdr-grey' : t > 35 ? 'bdr-red' : t > 30 ? 'bdr-amber' : 'bdr-green';
+  const tCls   = t => t == null ? '' : t > 35 ? 'down' : t > 30 ? 'warn' : 'up';
+
+  // Daily cards
+  const t = daily.daily_tacos_pct, tn = daily.true_net;
+  const daasCardsEl = $('daas-cards');
+  if (daasCardsEl) daasCardsEl.innerHTML =
+    card('Daily TACOS', fmtPct(t), 'Target: <35% &middot; Patrick confirmed', tColor(t), tCls(t)) +
+    card('True Net', fmtDollar(tn), 'After all costs + ad spend', tn != null && tn < 0 ? 'bdr-red' : tn != null ? 'bdr-green' : 'bdr-grey', tn != null && tn < 0 ? 'down' : tn != null ? 'up' : '') +
+    card('Ad Spend (Confirmed)', fmtDollar(daily.ad_spend), 'Patrick confirmed &middot; used for TACOS', 'bdr-orange') +
+    card('Gross Revenue', fmtDollar(daily.gross_revenue), 'H10 confirmed', 'bdr-teal') +
+    card('Net Profit (H10)', fmtDollar(daily.net_profit_h10), 'Before ad spend deduction', 'bdr-purple') +
+    card('Units Sold', fmtInt(daily.units_sold), 'H10 confirmed', 'bdr-grey');
+
+  // MTD cards
+  const mt = mtd.tacos_pct;
+  const daasMtdEl = $('daas-mtd-cards');
+  if (daasMtdEl) daasMtdEl.innerHTML =
+    card('MTD TACOS', fmtPct(mt), (mtd.days_confirmed != null ? 'Day ' + mtd.days_confirmed + ' &middot; ' : '') + 'Target: <35%', tColor(mt), tCls(mt)) +
+    card('MTD Revenue', fmtDollar(mtd.revenue), 'Month to date', 'bdr-teal') +
+    card('MTD Ad Spend', fmtDollar(mtd.ad_spend), 'Month to date &middot; confirmed', 'bdr-orange');
+
+  // YTD table
+  const ytd = daas.ytd_table || [];
+  const ytdTbody = $('daas-ytd-table') ? $('daas-ytd-table').querySelector('tbody') : null;
+  if (ytdTbody) {
+    ytdTbody.innerHTML = ytd.length ? ytd.map(row => {
+      const tp = row.tacos_pct;
+      const pill = tp == null ? '<span class="pill pill-na">—</span>'
+        : tp <= 35 ? '<span class="pill pill-ok">' + fmtNum(tp,1) + '%</span>'
+        : tp <= 45 ? '<span class="pill pill-warn">' + fmtNum(tp,1) + '%</span>'
+        : '<span class="pill pill-crit">' + fmtNum(tp,1) + '%</span>';
+      const vs = tp == null ? '—' : tp <= 35
+        ? '<span class="pill pill-ok">On target</span>'
+        : '<span class="pill ' + (tp <= 50 ? 'pill-warn' : 'pill-crit') + '">Elevated</span>';
+      return '<tr><td><b>' + esc(row.month) + '</b></td>'
+        + '<td class="r">' + (fmtDollar(row.revenue) ?? '—') + '</td>'
+        + '<td class="r">' + (fmtDollar(row.ad_spend) ?? '—') + '</td>'
+        + '<td class="r">' + pill + '</td>'
+        + '<td class="r">' + vs + '</td></tr>';
+    }).join('')
+    : '<tr><td colspan="5" style="color:#8a93a0;font-style:italic;">YTD table not in daas_data.json yet — add ytd_table[] to the DAAS Intake Routine schema (v1.2 trigger).</td></tr>';
+  }
+
+  // SKU table
+  const skus = daas.sku_table || [];
+  const skuTbody = $('daas-sku-table') ? $('daas-sku-table').querySelector('tbody') : null;
+  if (skuTbody) {
+    if (skus.length) {
+      const totalRev = skus.reduce((s, x) => s + (x.revenue || 0), 0);
+      skuTbody.innerHTML = skus.map(sku => {
+        const share = totalRev > 0 && sku.revenue != null ? (sku.revenue / totalRev * 100) : null;
+        const highConc = share != null && share > 50;
+        const np = sku.net_profit_h10;
+        return '<tr>'
+          + '<td><b>' + esc(sku.sku_name || '?') + '</b>'
+          + (highConc ? ' <span class="pill pill-warn">' + fmtNum(share,0) + '% of rev</span>' : '') + '</td>'
+          + '<td style="font-size:10px;color:var(--muted);">' + esc(sku.asin || '—') + '</td>'
+          + '<td class="r">' + (fmtDollar(sku.revenue) ?? '—') + '</td>'
+          + '<td class="r">' + (fmtInt(sku.units) ?? '—') + '</td>'
+          + '<td class="r" style="font-weight:700;color:' + (np == null ? 'var(--muted)' : np < 0 ? 'var(--red)' : 'var(--green)') + ';">'
+          + (fmtDollar(np) ?? '—') + '</td>'
+          + '<td class="r">' + (share != null ? '<div style="display:flex;align-items:center;gap:5px;justify-content:flex-end;"><div style="width:50px;background:#eef1f4;border-radius:3px;height:6px;"><div style="background:' + (highConc ? 'var(--amber)' : 'var(--teal)') + ';width:' + Math.min(Math.round(share), 100) + '%;height:6px;border-radius:3px;"></div></div><span>' + fmtNum(share,0) + '%</span></div>' : '—') + '</td>'
+          + '</tr>';
+      }).join('');
+    } else {
+      skuTbody.innerHTML = '<tr><td colspan="6" style="color:#8a93a0;font-style:italic;">No SKU data in daas_data.json yet.</td></tr>';
+    }
+  }
+
+  // Inventory flags table
+  const invFlags = daas.inventory_flags || [];
+  const invTbody = $('daas-inv-table') ? $('daas-inv-table').querySelector('tbody') : null;
+  if (invTbody) {
+    invTbody.innerHTML = invFlags.length ? invFlags.map(f => {
+      return '<tr>'
+        + '<td><b>' + esc(f.sku_name || '?') + '</b></td>'
+        + '<td style="font-size:10px;color:var(--muted);">' + esc(f.asin || '—') + '</td>'
+        + '<td>' + (f.lif_flag ? '<span class="pill pill-warn">' + esc(f.lif_flag) + '</span>' : '—') + '</td>'
+        + '<td>' + (f.ltsf_flag ? '<span class="pill pill-crit">' + esc(f.ltsf_flag) + '</span>' : '—') + '</td>'
+        + '<td style="font-size:11px;color:var(--muted);">' + esc(f.note || '') + '</td>'
+        + '</tr>';
+    }).join('')
+    : '<tr><td colspan="5" style="color:#8a93a0;font-style:italic;">No inventory flags — all SKUs clear on this report.</td></tr>';
+  }
+}
+
 // ─── HELPERS ─────────────────────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -895,6 +1102,7 @@ function render(d){
                     [hpMoNeg?'MONTH NET NEGATIVE':'', (ac.campaigns_out_of_budget_count||0)>0?ac.campaigns_out_of_budget_count+' OOB':'', skuAlerts.length?skuAlerts.length+' SKU flag(s)':''].filter(Boolean).join(' / ')||'see Amazon tab', amzStatus],
     ['Google Ads',  ga.spend!=null?fmtDollar(ga.spend)+' spend':'--',        ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
     ['Meta Ads',    mtM.spend!=null?fmtDollar(mtM.spend)+' MTD spend':'--',  mt.available?'connected':'pending rollout', mtStatus],
+    ['DAAS (Patrick)', daasTacos != null ? 'TACOS ' + fmtPct(daasTacos) : '--', window.__DAAS && window.__DAAS.mtd ? 'MTD ' + fmtPct(window.__DAAS.mtd.tacos_pct) : 'routine not yet live', window.__DAAS_STATUS],
     ['Reviews',     fmtInt(rv.new_review_count||0)+' new',                   rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+' avg':'no new batch', rv.status],
   ];
 
@@ -912,10 +1120,18 @@ function render(d){
   $('ov-alerts').innerHTML = reds.length
     ? alertBox('crit', `<b>${reds.length} source(s) RED:</b> ${reds.map(esc).join(', ')}. Recommended actions are in Slack and need a human "approved" reply — nothing executes automatically.`)
     : alertBox('ok','No RED flags this morning.');
+  // Pull TACOS from DAAS if available
+  const daiDaas = window.__DAAS && window.__DAAS.daily ? window.__DAAS.daily : null;
+  const daasTacos = daiDaas ? daiDaas.daily_tacos_pct : null;
+  const daasTrueNet = daiDaas ? daiDaas.true_net : null;
+  const tColorOv = t => t == null ? 'bdr-grey' : t > 35 ? 'bdr-red' : t > 30 ? 'bdr-amber' : 'bdr-green';
+  const tClsOv   = t => t == null ? '' : t > 35 ? 'down' : t > 30 ? 'warn' : 'up';
   $('ov-cards').innerHTML =
     card('Cash Balance', fmtDollar(qb.cash_balance), 'QuickBooks', qbLow||qb.status==='RED'?'bdr-red':'bdr-green') +
+    card('Daily TACOS', fmtPct(daasTacos), daasTacos != null ? 'Patrick confirmed · target <35%' : 'DAAS routine not yet live', tColorOv(daasTacos), tClsOv(daasTacos)) +
     card("Shopify Sales", fmtDollar(sh.yesterday_sales), 'Yesterday', 'bdr-teal') +
     card('Amazon Net Profit', hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit):fmtInt(asl.units_sold)!=null?fmtInt(asl.units_sold)+' units':null, hp.daily&&hp.daily.net_profit!=null?'Yesterday · '+(hp.daily.net_margin_pct!=null?fmtNum(hp.daily.net_margin_pct,1)+'% margin':''):'Amazon SC units', hp.daily&&(hp.daily.net_profit||0)<0?'bdr-red':hp.daily&&hp.daily.net_profit!=null?'bdr-green':'bdr-purple', hp.daily&&(hp.daily.net_profit||0)<0?'down':hp.daily&&hp.daily.net_profit!=null?'up':'') +
+    card('True Net', daasTrueNet != null ? fmtDollar(daasTrueNet) : null, 'After all costs + ads · Patrick', daasTrueNet != null && daasTrueNet < 0 ? 'bdr-red' : daasTrueNet != null ? 'bdr-green' : 'bdr-grey', daasTrueNet != null && daasTrueNet < 0 ? 'down' : daasTrueNet != null ? 'up' : '') +
     card('Total Ad Spend', (aa.spend==null&&ga.spend==null&&mtY.spend==null)?null:fmtDollar((aa.spend||0)+(ga.spend||0)+(mtY.spend||0)), 'Amazon + Google + Meta · yesterday', 'bdr-orange');
 }
 
@@ -923,6 +1139,7 @@ function render(d){
 const DATA_URL  = './data/connectors_data.json';
 const BANDS_URL = './data/roas_bands.json';
 const BH_URL    = './data/business_health.json';
+const DAAS_URL  = './data/daas_data.json';
 const REFRESH_MS = 5 * 60 * 1000;
 let countdownId, secondsLeft;
 let BANDS = null;
@@ -1014,6 +1231,11 @@ async function loadData(){
       if (bhres.ok) renderBizHealth(await safeJson(bhres));
       else renderBizHealth(null);
     }catch(e){ renderBizHealth(null); }
+    try{
+      const daasRes = await fetch(DAAS_URL + '?_=' + Date.now());
+      if (daasRes.ok) renderDaas(await safeJson(daasRes));
+      else renderDaas(null);
+    }catch(e){ renderDaas(null); }
   }catch(err){
     $('loading-state').style.display = 'none';
     $('dashboard').style.display     = 'none';
