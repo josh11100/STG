@@ -171,7 +171,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     </button>
     <button class="nav-card" id="nav-metaads" onclick="show('metaads')">
       <span class="nav-num">08<span class="nav-dot" id="dot-metaads"></span></span>
-      <span class="nav-text"><span class="nav-title">Meta Ads</span><span class="nav-desc">Pending Meta connector rollout</span></span>
+      <span class="nav-text"><span class="nav-title">Meta Ads</span><span class="nav-desc">Spend &middot; ROAS &middot; campaigns &middot; flags</span></span>
     </button>
     <button class="nav-card" id="nav-reviews" onclick="show('reviews')">
       <span class="nav-num">09<span class="nav-dot" id="dot-reviews"></span></span>
@@ -351,9 +351,10 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- META ADS -->
         <div class="section" id="section-metaads">
           <div class="sec-head"><h2>Meta Ads &mdash; Yesterday</h2><span class="tag" id="mt-tag">--</span></div>
-          <div class="sec-desc">Spend + ROAS once the Meta connector is enabled on the STG ad account (Will authenticates at hub.supermetrics.com). Until then "pending" is the expected state.</div>
+          <div class="sec-desc">Live via the Meta MCP connector &mdash; ad account <b>2158768751536031</b>. Pulled each morning by the JARVIS routine (Step 6). Flags fire on the $75 kill threshold and duplicate campaigns.</div>
           <div class="cards" id="mt-cards"></div>
           <div id="mt-alerts"></div>
+          <div class="tbl-wrap"><div class="tbl-title">Campaigns &mdash; last 7 days</div><div id="mt-campaigns"></div></div>
         </div>
 
         <!-- REVIEWS -->
@@ -371,7 +372,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- BUSINESS HEALTH -->
         <div class="section" id="section-bizhealth">
           <div class="sec-head"><h2>Business Health — Strategic Overview</h2><span class="tag" id="bh-tag">—</span><span class="when" id="bh-when"></span></div>
-          <div class="sec-desc">The weekly zoom-out Will reviews — lifetime economics, cash in inventory, S&amp;S penetration, returns, brand loyalty. Patrick updates a Google Sheet weekly &rarr; written to <b>data/business_health.json</b>.</div>
+          <div class="sec-desc">The weekly zoom-out Will reviews &mdash; lifetime economics, cash in inventory, S&amp;S penetration, returns, brand loyalty. <b>Top row is LIVE</b> (auto, from this morning's JARVIS run). Lifetime/inventory numbers come from <b>data/business_health.json</b> (Patrick, weekly) &mdash; flagged yellow when stale.</div>
           <div id="bh-alerts"></div>
           <div class="cards" id="bh-kpi-cards"></div>
           <div class="sec-head" style="padding-top:14px;"><h2>1 — Sales by SKU</h2><span class="tag tag-info">LIFETIME</span></div>
@@ -450,6 +451,7 @@ function toggleSidebar(){ $('sidebar').classList.toggle('hidden'); }
 
 // ─── RENDER ──────────────────────────────────────────────────────────────────
 function render(d){
+  window.__LIVE = d;
   $('meta-updated').textContent = d.last_updated || 'unknown';
 
   // — QuickBooks —
@@ -711,14 +713,36 @@ function render(d){
 
   // — Meta Ads —
   const mt = d.meta_ads || {};
-  const mtStatus = mt.available ? (mt.spend!=null ? 'GREEN' : 'YELLOW') : null;
+  const mtFlags = mt.flags || [];
+  const mtKill = mtFlags.some(f => /kill/i.test(f));
+  const mtLoss = mt.spend > 0 && (mt.roas || 0) < 1;
+  const mtStatus = !mt.available ? null
+    : mtKill ? 'RED'
+    : (mtFlags.length || mtLoss) ? 'YELLOW'
+    : (mt.spend != null ? 'GREEN' : 'YELLOW');
   statusTag($('mt-tag'), mtStatus); dot('dot-metaads', mtStatus);
+  const mtCams = mt.campaigns_7d || [];
+  const mtActive = mtCams.filter(c => String(c.status).toUpperCase() === 'ACTIVE');
   $('mt-cards').innerHTML =
     card('Ad Spend', fmtDollar(mt.spend), 'Yesterday', 'bdr-orange') +
-    card('ROAS', fmtNum(mt.roas), 'Yesterday', 'bdr-teal') +
-    card('Connector', mt.available ? 'Available' : 'Pending', 'Meta MCP rollout', mt.available?'bdr-green':'bdr-grey', mt.available?'up':'');
-  $('mt-alerts').innerHTML = mt.available ? '' :
-    alertBox('info','Meta connector not yet available — pending Meta\'s rollout. Not treated as a failure.');
+    card('Purchase Value', fmtDollar(mt.purchase_value), 'Yesterday', 'bdr-teal') +
+    card('ROAS', fmtNum(mt.roas), mtLoss ? 'Below 1.0 — losing money' : 'Yesterday', mtLoss ? 'bdr-red' : 'bdr-green', mtLoss ? 'down' : '') +
+    card('Active Campaigns', mtCams.length ? (mtActive.length + ' of ' + mtCams.length) : null, 'Last 7 days', 'bdr-purple') +
+    card('Connector', mt.available ? 'Live' : 'Pending', mt.account_id ? ('Acct ' + mt.account_id) : 'Meta MCP', mt.available ? 'bdr-green' : 'bdr-grey', mt.available ? 'up' : '');
+  $('mt-alerts').innerHTML = !mt.available
+    ? alertBox('info', 'Meta connector not yet available — not treated as a failure.')
+    : mtFlags.map(f => alertBox(/kill/i.test(f) ? 'crit' : 'warn', esc(f))).join('');
+  $('mt-campaigns').innerHTML = mtCams.length
+    ? '<table style="width:100%"><thead><tr><th>Campaign</th><th>Status</th><th class="r">Spend (7d)</th><th>Results</th></tr></thead><tbody>'
+      + mtCams.map(c => {
+          const act = String(c.status).toUpperCase() === 'ACTIVE';
+          return '<tr><td><b>' + esc(c.name) + '</b></td>'
+            + '<td><span class="pill ' + (act ? 'pill-ok' : 'pill-na') + '">' + esc(c.status || '') + '</span></td>'
+            + '<td class="r">' + (fmtDollar(c.spend) ?? '--') + '</td>'
+            + '<td>' + esc(c.results || '') + '</td></tr>';
+        }).join('')
+      + '</tbody></table>'
+    : '<div style="padding:12px 16px;font-size:12px;color:var(--muted);">No campaign data on last run</div>';
 
   // — Amazon Campaigns (Claude in Chrome scrape) —
   const ac = d.amazon_ads_browser || {};
@@ -912,12 +936,23 @@ async function safeJson(res){
 function renderBizHealth(bh){
   if (!bh){ $('bh-alerts').innerHTML = alertBox('info','Business health file not found — Patrick needs to update and email the sheet.'); dot('dot-bizhealth',''); return; }
   const k = bh.kpis || {}, skus = bh.skus || [], prod = bh.production_schedule || [], brand = bh.brand_health || {}, funnel = brand.funnel || {};
-  statusTag($('bh-tag'), skus.length ? 'GREEN' : null);
-  dot('dot-bizhealth', skus.length ? 'green' : '');
-  $('bh-when').textContent = bh.report_date ? 'As of ' + bh.report_date : '';
+  const bhDays = bh.report_date ? Math.floor((Date.now() - new Date(bh.report_date + 'T00:00:00')) / 86400000) : null;
+  const bhStale = bhDays != null && bhDays > 10;
+  statusTag($('bh-tag'), skus.length ? (bhStale ? 'YELLOW' : 'GREEN') : null);
+  dot('dot-bizhealth', skus.length ? (bhStale ? 'yellow' : 'green') : '');
+  $('bh-when').textContent = bh.report_date ? 'As of ' + bh.report_date + (bhDays != null ? ' · ' + bhDays + ' day(s) old' : '') : '';
+  const live = window.__LIVE || {};
+  const lqb = (live.quickbooks || {}), lmtd = lqb.mtd || {}, lh10 = ((live.helium10_profits || {}).daily || {}), lsh = live.shopify || {};
+  $('bh-alerts').innerHTML = bhStale
+    ? alertBox('warn','<b>Strategic data is ' + bhDays + ' days old</b> (last update ' + esc(bh.report_date) + '). Lifetime revenue, inventory, and production numbers below are stale — Patrick\'s weekly update is overdue. Live row below is current as of this morning.')
+    : '';
   $('bh-kpi-cards').innerHTML =
-    card('Lifetime Revenue', fmtDollar(k.lifetime_revenue), fmtInt(k.lifetime_units)+' units sold', 'bdr-teal', 'up') +
-    card('Est. Profit', fmtDollar(k.est_profit), 'Active SKUs · lifetime', 'bdr-green', 'up') +
+    card('MTD Revenue', fmtDollar(lmtd.revenue), (lmtd.period || 'QuickBooks') + ' · LIVE', 'bdr-teal') +
+    card('MTD Net Income', fmtDollar(lmtd.net_income), 'QuickBooks · LIVE', (lmtd.net_income || 0) < 0 ? 'bdr-red' : 'bdr-green', (lmtd.net_income || 0) < 0 ? 'down' : 'up') +
+    card('AMZ Net Profit', fmtDollar(lh10.net_profit), 'Yesterday · LIVE', 'bdr-green') +
+    card('Shopify Sales', fmtDollar(lsh.yesterday_sales), 'Yesterday · LIVE', 'bdr-purple') +
+    card('Lifetime Revenue', fmtDollar(k.lifetime_revenue), fmtInt(k.lifetime_units)+' units · weekly file', 'bdr-teal', 'up') +
+    card('Est. Profit', fmtDollar(k.est_profit), 'Active SKUs · lifetime · weekly file', 'bdr-green', 'up') +
     card('Cash in Inventory', fmtDollar(k.inventory_cogs), 'Landed COGS · '+fmtInt(k.inventory_units)+' units', 'bdr-orange') +
     card('Total Customers', fmtInt(k.total_customers), fmtNum(k.top_tier_pct,1)+'% top-tier', 'bdr-purple') +
     card('Return Rate', k.return_rate_pct!=null?fmtNum(k.return_rate_pct,2)+'%':null, 'Healthy · below norms', 'bdr-green') +
@@ -960,12 +995,6 @@ async function loadData(){
         if (bres.ok) BANDS = await safeJson(bres);
       }catch(e){}
     }
-    try{
-      const bhres = await fetch(BH_URL + '?_=' + Date.now());
-      if (bhres.ok) renderBizHealth(await safeJson(bhres));
-      else renderBizHealth(null);
-    }catch(e){ renderBizHealth(null); }
-
     const res = await fetch(DATA_URL + '?_=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
     const data = await safeJson(res);
@@ -973,6 +1002,12 @@ async function loadData(){
     $('error-state').style.display   = 'none';
     $('dashboard').style.display     = 'block';
     render(data);
+
+    try{
+      const bhres = await fetch(BH_URL + '?_=' + Date.now());
+      if (bhres.ok) renderBizHealth(await safeJson(bhres));
+      else renderBizHealth(null);
+    }catch(e){ renderBizHealth(null); }
   }catch(err){
     $('loading-state').style.display = 'none';
     $('dashboard').style.display     = 'none';
