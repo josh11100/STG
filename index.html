@@ -351,7 +351,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <!-- META ADS -->
         <div class="section" id="section-metaads">
           <div class="sec-head"><h2>Meta Ads &mdash; Yesterday</h2><span class="tag" id="mt-tag">--</span></div>
-          <div class="sec-desc">Live via the Meta MCP connector &mdash; ad account <b>2158768751536031</b>. Pulled each morning by the JARVIS routine (Step 6). Flags fire on the $75 kill threshold and duplicate campaigns.</div>
+          <div class="sec-desc">Live via the Meta MCP connector &mdash; ad account <b>2158768751536031</b>. <b>Month-to-date window</b> (1st &rarr; yesterday) &mdash; MTD ROAS is the headline metric. Flags fire on the $75 cumulative kill threshold and duplicate campaigns.</div>
           <div class="cards" id="mt-cards"></div>
           <div id="mt-alerts"></div>
           <div class="tbl-wrap"><div class="tbl-title">Campaigns &mdash; last 7 days</div><div id="mt-campaigns"></div></div>
@@ -711,29 +711,33 @@ function render(d){
   $('ga-alerts').innerHTML = (ga.spend==null && sm.status==='RED')
     ? alertBox('crit','<b>Supermetrics RED:</b> Google Ads query failed on the last run (known LICENSE error / timeout issue).') : '';
 
-  // — Meta Ads —
+  // — Meta Ads — (MTD primary; falls back to flat legacy fields if mtd absent)
   const mt = d.meta_ads || {};
+  const mtM = mt.mtd || { spend: mt.spend, purchase_value: mt.purchase_value, roas: mt.roas };
+  const mtY = mt.yesterday || {};
+  const mtPeriod = mt.period || 'Month to date';
   const mtFlags = mt.flags || [];
   const mtKill = mtFlags.some(f => /kill/i.test(f));
-  const mtLoss = mt.spend > 0 && (mt.roas || 0) < 1;
+  const mtLoss = mtM.spend > 0 && (mtM.roas || 0) < 1;
   const mtStatus = !mt.available ? null
     : mtKill ? 'RED'
     : (mtFlags.length || mtLoss) ? 'YELLOW'
-    : (mt.spend != null ? 'GREEN' : 'YELLOW');
+    : (mtM.spend != null ? 'GREEN' : 'YELLOW');
   statusTag($('mt-tag'), mtStatus); dot('dot-metaads', mtStatus);
-  const mtCams = mt.campaigns_7d || [];
+  const mtCams = mt.campaigns_mtd || mt.campaigns_7d || [];
   const mtActive = mtCams.filter(c => String(c.status).toUpperCase() === 'ACTIVE');
   $('mt-cards').innerHTML =
-    card('Ad Spend', fmtDollar(mt.spend), 'Yesterday', 'bdr-orange') +
-    card('Purchase Value', fmtDollar(mt.purchase_value), 'Yesterday', 'bdr-teal') +
-    card('ROAS', fmtNum(mt.roas), mtLoss ? 'Below 1.0 — losing money' : 'Yesterday', mtLoss ? 'bdr-red' : 'bdr-green', mtLoss ? 'down' : '') +
-    card('Active Campaigns', mtCams.length ? (mtActive.length + ' of ' + mtCams.length) : null, 'Last 7 days', 'bdr-purple') +
+    card('MTD Ad Spend', fmtDollar(mtM.spend), mtPeriod, 'bdr-orange') +
+    card('MTD Purchase Value', fmtDollar(mtM.purchase_value), mtPeriod, 'bdr-teal') +
+    card('MTD ROAS', fmtNum(mtM.roas), mtLoss ? 'Below 1.0 — losing money' : mtPeriod, mtLoss ? 'bdr-red' : 'bdr-green', mtLoss ? 'down' : '') +
+    card('Yesterday Spend', fmtDollar(mtY.spend), 'Daily spike watch', 'bdr-grey') +
+    card('Active Campaigns', mtCams.length ? (mtActive.length + ' of ' + mtCams.length) : null, mtPeriod, 'bdr-purple') +
     card('Connector', mt.available ? 'Live' : 'Pending', mt.account_id ? ('Acct ' + mt.account_id) : 'Meta MCP', mt.available ? 'bdr-green' : 'bdr-grey', mt.available ? 'up' : '');
   $('mt-alerts').innerHTML = !mt.available
     ? alertBox('info', 'Meta connector not yet available — not treated as a failure.')
     : mtFlags.map(f => alertBox(/kill/i.test(f) ? 'crit' : 'warn', esc(f))).join('');
   $('mt-campaigns').innerHTML = mtCams.length
-    ? '<table style="width:100%"><thead><tr><th>Campaign</th><th>Status</th><th class="r">Spend (7d)</th><th>Results</th></tr></thead><tbody>'
+    ? '<table style="width:100%"><thead><tr><th>Campaign</th><th>Status</th><th class="r">Spend (' + esc(mt.campaigns_mtd ? 'MTD' : '7d') + ')</th><th>Results</th></tr></thead><tbody>'
       + mtCams.map(c => {
           const act = String(c.status).toUpperCase() === 'ACTIVE';
           return '<tr><td><b>' + esc(c.name) + '</b></td>'
@@ -890,7 +894,7 @@ function render(d){
     ['Amazon',      hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit)+' net today':(aa.spend!=null?fmtDollar(aa.spend)+' ad spend':'--'),
                     [hpMoNeg?'MONTH NET NEGATIVE':'', (ac.campaigns_out_of_budget_count||0)>0?ac.campaigns_out_of_budget_count+' OOB':'', skuAlerts.length?skuAlerts.length+' SKU flag(s)':''].filter(Boolean).join(' / ')||'see Amazon tab', amzStatus],
     ['Google Ads',  ga.spend!=null?fmtDollar(ga.spend)+' spend':'--',        ga.roas!=null?'ROAS '+fmtNum(ga.roas):'no data', gaStatus],
-    ['Meta Ads',    mt.spend!=null?fmtDollar(mt.spend)+' spend':'--',        mt.available?'connected':'pending rollout', mtStatus],
+    ['Meta Ads',    mtM.spend!=null?fmtDollar(mtM.spend)+' MTD spend':'--',  mt.available?'connected':'pending rollout', mtStatus],
     ['Reviews',     fmtInt(rv.new_review_count||0)+' new',                   rv.avg_rating_new_batch!=null?fmtNum(rv.avg_rating_new_batch,1)+' avg':'no new batch', rv.status],
   ];
 
@@ -912,7 +916,7 @@ function render(d){
     card('Cash Balance', fmtDollar(qb.cash_balance), 'QuickBooks', qbLow||qb.status==='RED'?'bdr-red':'bdr-green') +
     card("Shopify Sales", fmtDollar(sh.yesterday_sales), 'Yesterday', 'bdr-teal') +
     card('Amazon Net Profit', hp.daily&&hp.daily.net_profit!=null?fmtDollar(hp.daily.net_profit):fmtInt(asl.units_sold)!=null?fmtInt(asl.units_sold)+' units':null, hp.daily&&hp.daily.net_profit!=null?'Yesterday · '+(hp.daily.net_margin_pct!=null?fmtNum(hp.daily.net_margin_pct,1)+'% margin':''):'Amazon SC units', hp.daily&&(hp.daily.net_profit||0)<0?'bdr-red':hp.daily&&hp.daily.net_profit!=null?'bdr-green':'bdr-purple', hp.daily&&(hp.daily.net_profit||0)<0?'down':hp.daily&&hp.daily.net_profit!=null?'up':'') +
-    card('Total Ad Spend', (aa.spend==null&&ga.spend==null&&mt.spend==null)?null:fmtDollar((aa.spend||0)+(ga.spend||0)+(mt.spend||0)), 'Amazon + Google + Meta', 'bdr-orange');
+    card('Total Ad Spend', (aa.spend==null&&ga.spend==null&&mtY.spend==null)?null:fmtDollar((aa.spend||0)+(ga.spend||0)+(mtY.spend||0)), 'Amazon + Google + Meta · yesterday', 'bdr-orange');
 }
 
 // ─── LOAD + AUTO-REFRESH ─────────────────────────────────────────────────────
@@ -957,18 +961,20 @@ function renderBizHealth(bh){
     card('Total Customers', fmtInt(k.total_customers), fmtNum(k.top_tier_pct,1)+'% top-tier', 'bdr-purple') +
     card('Return Rate', k.return_rate_pct!=null?fmtNum(k.return_rate_pct,2)+'%':null, 'Healthy · below norms', 'bdr-green') +
     card('Owed Thru Dec', fmtDollar(k.owed_total_thru_dec), fmtDollar(k.owed_now)+' due now · rest planned', (k.owed_now||0)>50000?'bdr-red':'bdr-amber');
+  const bhNote = '<div style="padding:8px 16px 0;font-size:10px;color:var(--muted);">Weekly file · as of '+esc(bh.report_date||'?')+(bhStale?' · <span class="pill pill-warn">STALE — not current</span>':'')+'</div>';
+  const bhNoData = '<div style="padding:12px 16px;font-size:12px;color:var(--muted);">No data — Patrick\'s weekly file missing or empty.</div>';
   const totalRev = skus.reduce((s,x)=>s+(x.revenue_lifetime||0),0);
-  $('bh-sku-revenue').innerHTML = '<table style="width:100%"><thead><tr><th>Product</th><th>Share</th><th class="r">Revenue</th><th class="r">%</th><th class="r">Units</th></tr></thead><tbody>' +
+  $('bh-sku-revenue').innerHTML = !skus.length ? bhNoData : bhNote + '<table style="width:100%"><thead><tr><th>Product</th><th>Share</th><th class="r">Revenue</th><th class="r">%</th><th class="r">Units</th></tr></thead><tbody>' +
     skus.map(s=>{ const pct=totalRev>0?(s.revenue_lifetime/totalRev*100):0; const bw=Math.round(pct); return '<tr><td><b>'+esc(s.name)+'</b></td><td style="min-width:140px;"><div style="background:#eef1f4;border-radius:4px;height:8px;"><div style="background:var(--green);width:'+bw+'%;height:8px;border-radius:4px;"></div></div></td><td class="r"><b>'+fmtDollar(s.revenue_lifetime)+'</b></td><td class="r" style="color:var(--green);font-weight:700;">'+fmtNum(s.revenue_share_pct||pct,1)+'%</td><td class="r">'+fmtInt(s.units_lifetime)+'</td></tr>'; }).join('') +
     '<tr style="border-top:2px solid var(--border);"><td><b>TOTAL</b></td><td><div style="background:var(--green);border-radius:4px;height:8px;width:100%;"></div></td><td class="r"><b>'+fmtDollar(totalRev)+'</b></td><td class="r" style="color:var(--green);font-weight:700;">100%</td><td class="r"><b>'+fmtInt(skus.reduce((s,x)=>s+(x.units_lifetime||0),0))+'</b></td></tr></tbody></table>';
   const mC = m=>m>=40?'bdr-green':m>=25?'bdr-amber':'bdr-red', mP = m=>m>=40?'pill-ok':m>=25?'pill-warn':'pill-crit';
-  $('bh-margin-cards').innerHTML = skus.map(s=>'<div class="card '+mC(s.margin_pct)+'" style="min-width:160px;"><div class="c-lbl">'+esc(s.name)+'</div><div class="c-val '+(s.margin_pct>=40?'up':s.margin_pct>=25?'warn':'down')+'">'+fmtDollar(s.profit_per_unit)+'</div><div style="margin-top:6px;"><span class="pill '+mP(s.margin_pct)+'">'+s.margin_pct+'% margin</span></div><div class="c-sub">on '+fmtDollar(s.price)+' price</div></div>').join('');
+  $('bh-margin-cards').innerHTML = !skus.length ? bhNoData : bhNote + skus.map(s=>'<div class="card '+mC(s.margin_pct)+'" style="min-width:160px;"><div class="c-lbl">'+esc(s.name)+'</div><div class="c-val '+(s.margin_pct>=40?'up':s.margin_pct>=25?'warn':'down')+'">'+fmtDollar(s.profit_per_unit)+'</div><div style="margin-top:6px;"><span class="pill '+mP(s.margin_pct)+'">'+s.margin_pct+'% margin</span></div><div class="c-sub">on '+fmtDollar(s.price)+' price</div></div>').join('');
   const maxLP = Math.max(...skus.map(s=>(s.profit_per_unit||0)*(s.units_lifetime||0)));
-  $('bh-profit-bars').innerHTML = '<div style="padding:12px 16px;">'+skus.map(s=>{ const lp=(s.profit_per_unit||0)*(s.units_lifetime||0),w=maxLP>0?Math.round(lp/maxLP*100):0; return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><div style="width:100px;font-size:12px;font-weight:600;">'+esc(s.short||s.name)+'</div><div style="flex:1;background:#eef1f4;border-radius:4px;height:20px;position:relative;"><div style="background:var(--green);width:'+w+'%;height:20px;border-radius:4px;display:flex;align-items:center;padding-left:6px;">'+(w>20?'<span style="font-size:11px;font-weight:700;color:#fff;">'+fmtDollar(lp)+'</span>':'')+'</div>'+(w<=20?'<span style="position:absolute;left:'+(w+2)+'%;top:2px;font-size:11px;font-weight:700;color:var(--navy);">'+fmtDollar(lp)+'</span>':'')+'</div></div>'; }).join('')+'</div>';
+  $('bh-profit-bars').innerHTML = !skus.length ? bhNoData : bhNote + '<div style="padding:12px 16px;">'+skus.map(s=>{ const lp=(s.profit_per_unit||0)*(s.units_lifetime||0),w=maxLP>0?Math.round(lp/maxLP*100):0; return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><div style="width:100px;font-size:12px;font-weight:600;">'+esc(s.short||s.name)+'</div><div style="flex:1;background:#eef1f4;border-radius:4px;height:20px;position:relative;"><div style="background:var(--green);width:'+w+'%;height:20px;border-radius:4px;display:flex;align-items:center;padding-left:6px;">'+(w>20?'<span style="font-size:11px;font-weight:700;color:#fff;">'+fmtDollar(lp)+'</span>':'')+'</div>'+(w<=20?'<span style="position:absolute;left:'+(w+2)+'%;top:2px;font-size:11px;font-weight:700;color:var(--navy);">'+fmtDollar(lp)+'</span>':'')+'</div></div>'; }).join('')+'</div>';
   const maxIC = Math.max(...skus.map(s=>s.inventory_cogs||0)), iSC = st=>st==='fresh'?'var(--green)':st==='high'?'var(--amber)':'var(--red)';
-  $('bh-inventory-bars').innerHTML = '<div style="padding:12px 16px;"><div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Total: '+fmtDollar(k.inventory_cogs)+' · '+fmtInt(k.inventory_units)+' units</div>'+skus.map(s=>{ const w=maxIC>0?Math.round((s.inventory_cogs||0)/maxIC*100):0,col=iSC(s.inventory_status); return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:100px;"><div style="font-size:12px;font-weight:600;">'+esc(s.short||s.name)+'</div><div style="font-size:10px;color:'+col+';font-weight:600;">'+esc(s.inventory_status||'')+'</div></div><div style="flex:1;background:#eef1f4;border-radius:4px;height:20px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:20px;border-radius:4px;display:flex;align-items:center;padding-left:6px;">'+(w>20?'<span style="font-size:11px;font-weight:700;color:#fff;">'+fmtDollar(s.inventory_cogs)+'</span>':'')+'</div>'+(w<=20?'<span style="position:absolute;left:'+(w+2)+'%;top:2px;font-size:11px;font-weight:700;color:var(--navy);">'+fmtDollar(s.inventory_cogs)+'</span>':'')+'</div></div>'; }).join('')+'</div>';
+  $('bh-inventory-bars').innerHTML = !skus.length ? bhNoData : bhNote + '<div style="padding:12px 16px;"><div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Total: '+fmtDollar(k.inventory_cogs)+' · '+fmtInt(k.inventory_units)+' units</div>'+skus.map(s=>{ const w=maxIC>0?Math.round((s.inventory_cogs||0)/maxIC*100):0,col=iSC(s.inventory_status); return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:100px;"><div style="font-size:12px;font-weight:600;">'+esc(s.short||s.name)+'</div><div style="font-size:10px;color:'+col+';font-weight:600;">'+esc(s.inventory_status||'')+'</div></div><div style="flex:1;background:#eef1f4;border-radius:4px;height:20px;position:relative;"><div style="background:'+col+';width:'+w+'%;height:20px;border-radius:4px;display:flex;align-items:center;padding-left:6px;">'+(w>20?'<span style="font-size:11px;font-weight:700;color:#fff;">'+fmtDollar(s.inventory_cogs)+'</span>':'')+'</div>'+(w<=20?'<span style="position:absolute;left:'+(w+2)+'%;top:2px;font-size:11px;font-weight:700;color:var(--navy);">'+fmtDollar(s.inventory_cogs)+'</span>':'')+'</div></div>'; }).join('')+'</div>';
   const maxP = Math.max(...prod.map(p=>p.amount||0),1);
-  $('bh-production-bars').innerHTML = '<div style="padding:12px 16px;"><div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Total owed through Dec: '+fmtDollar(k.owed_total_thru_dec)+'</div><div style="display:flex;align-items:flex-end;gap:8px;height:100px;">'+prod.map(p=>{ const h=maxP>0?Math.round((p.amount||0)/maxP*80):0,col=p.type==='owed_now'?'var(--green)':'var(--amber)'; return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:10px;font-weight:600;color:var(--navy);">'+(p.amount>0?fmtDollar(p.amount):'')+'</div><div style="background:'+col+';width:100%;height:'+h+'px;border-radius:4px 4px 0 0;min-height:'+(p.amount>0?3:1)+'px;"></div><div style="font-size:10px;color:var(--muted);">'+esc(p.month)+'</div></div>'; }).join('')+'</div><div style="display:flex;gap:12px;margin-top:6px;font-size:10px;"><span><span style="display:inline-block;width:8px;height:8px;background:var(--green);border-radius:2px;margin-right:3px;"></span>owed now</span><span><span style="display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:2px;margin-right:3px;"></span>planned</span></div></div>';
+  $('bh-production-bars').innerHTML = !skus.length ? bhNoData : bhNote + '<div style="padding:12px 16px;"><div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Total owed through Dec: '+fmtDollar(k.owed_total_thru_dec)+'</div><div style="display:flex;align-items:flex-end;gap:8px;height:100px;">'+prod.map(p=>{ const h=maxP>0?Math.round((p.amount||0)/maxP*80):0,col=p.type==='owed_now'?'var(--green)':'var(--amber)'; return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;"><div style="font-size:10px;font-weight:600;color:var(--navy);">'+(p.amount>0?fmtDollar(p.amount):'')+'</div><div style="background:'+col+';width:100%;height:'+h+'px;border-radius:4px 4px 0 0;min-height:'+(p.amount>0?3:1)+'px;"></div><div style="font-size:10px;color:var(--muted);">'+esc(p.month)+'</div></div>'; }).join('')+'</div><div style="display:flex;gap:12px;margin-top:6px;font-size:10px;"><span><span style="display:inline-block;width:8px;height:8px;background:var(--green);border-radius:2px;margin-right:3px;"></span>owed now</span><span><span style="display:inline-block;width:8px;height:8px;background:var(--amber);border-radius:2px;margin-right:3px;"></span>planned</span></div></div>';
   const totSns=skus.reduce((s,x)=>s+(x.sns_subs||0),0), snsP=bh.kpis?.sns_total_pct||0, snsA=Math.min(100,snsP||0);
   $('bh-sns-section').innerHTML = '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;padding:8px 0;"><div style="text-align:center;min-width:110px;"><svg viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="36" fill="none" stroke="#eef1f4" stroke-width="16"/><circle cx="50" cy="50" r="36" fill="none" stroke="var(--green)" stroke-width="16" stroke-dasharray="'+(snsA/100*226)+' '+(226-snsA/100*226)+'" transform="rotate(-90 50 50)"/><text x="50" y="46" text-anchor="middle" font-size="14" font-weight="800" fill="#1c2733">'+fmtNum(snsP,1)+'%</text><text x="50" y="60" text-anchor="middle" font-size="8" fill="#6b7886">OF SALES</text></svg><div style="font-size:11px;color:var(--muted);margin-top:4px;">'+fmtInt(totSns)+' subs</div></div><div class="tbl-wrap" style="flex:1;min-width:240px;"><table><thead><tr><th>Product</th><th class="r">Subs</th><th class="r">S&S %</th><th class="r">Coupon %</th></tr></thead><tbody>'+skus.filter(s=>s.sns_subs!=null).map(s=>'<tr><td>'+esc(s.name)+'</td><td class="r">'+s.sns_subs+'</td><td class="r"><span class="pill '+((s.sns_penetration_pct||0)>=5?'pill-ok':'pill-warn')+'">'+fmtNum(s.sns_penetration_pct,1)+'%</span></td><td class="r">'+(s.coupon_driven_pct!=null?fmtNum(s.coupon_driven_pct,1)+'%':'—')+'</td></tr>').join('')+'</tbody></table></div></div>'+alertBox('warn','Subscriptions underdeveloped ('+fmtNum(snsP,1)+'% vs 5–10% target). Push S&S on maintenance consumables (Shampoo, Detangling), not crisis-bought Dematter.');
   const maxR=Math.max(...skus.filter(s=>s.return_rate_pct!=null).map(s=>s.return_rate_pct||0),12);
