@@ -1,16 +1,16 @@
 {
-  "last_updated": "2026-07-08 10:45:00 PT",
+  "last_updated": "2026-07-09 07:55:00 PT",
 
   "quickbooks": {
     "cash_balance": 600943.16,
     "checking_balance": 6892.61,
     "money_market_balance": 594050.55,
-    "weeks_runway": 47.4,
+    "weeks_runway": 29.2,
     "accounts_payable": 53349.75,
     "accounts_receivable": 0,
     "status": "RED",
     "mtd": {
-      "period": "Jul 1 - Jul 8, 2026",
+      "period": "Jul 1 - Jul 9, 2026",
       "revenue": 3132.48,
       "cogs": 1412.55,
       "gross_profit": 1719.93,
@@ -29,7 +29,7 @@
     "flows_flagged": [
       "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% (5 recipients, low volume)",
       "Warranty Registration Confirmation - open rate 0% below 15% threshold (1 recipient, low volume)",
-      "Warranty Registration Confirmation - zero revenue, flow is 42+ days old (created 2026-05-27)"
+      "Warranty Registration Confirmation - zero revenue, flow is 43+ days old (created 2026-05-27)"
     ],
     "flows": [
       {
@@ -59,21 +59,30 @@
     "yesterday_sales": 0,
     "orders": 0,
     "aov": null,
-    "vs_7day_avg_pct": -100
+    "vs_7day_avg_pct": -100,
+    "daily_7d": [
+      { "date": "2026-07-02", "sales": 0, "orders": 0 },
+      { "date": "2026-07-03", "sales": 0, "orders": 0 },
+      { "date": "2026-07-04", "sales": 75.96, "orders": 2 },
+      { "date": "2026-07-05", "sales": 34.18, "orders": 1 },
+      { "date": "2026-07-06", "sales": 34.18, "orders": 1 },
+      { "date": "2026-07-07", "sales": 0, "orders": 0 },
+      { "date": "2026-07-08", "sales": 0, "orders": 0 }
+    ]
   },
 
   "helium10": {
     "report_found": true,
-    "report_date": "2026-07-07",
+    "report_date": "2026-07-08",
     "data_readable": true,
     "products": [
       {
         "name": "Slicker Brush for Dogs, Golden...",
         "asin": "B0FQ628KCH",
         "keywords": [
-          { "keyword": "dog slicker brushes for grooming", "search_volume": 1176, "organic_rank": 124, "sponsored_rank": null, "organic_change_rating": 202 },
-          { "keyword": "doodle brush", "search_volume": 8448, "organic_rank": 109, "sponsored_rank": null, "organic_change_rating": 19 },
-          { "keyword": "slicker brush for dogs", "search_volume": 23837, "organic_rank": 104, "sponsored_rank": null, "organic_change_rating": 12 }
+          { "keyword": "doodle brush", "search_volume": 4580, "organic_rank": 92, "sponsored_rank": null, "organic_change_rating": 27 },
+          { "keyword": "dog slicker brushes for grooming", "search_volume": 807, "organic_rank": 129, "sponsored_rank": null, "organic_change_rating": 15 },
+          { "keyword": "slicker brush for dogs", "search_volume": 19289, "organic_rank": 101, "sponsored_rank": null, "organic_change_rating": 13 }
         ]
       },
       {
@@ -85,36 +94,36 @@
         "name": "Emergency Dematter Cream for Dogs",
         "asin": "B0FQL56V99",
         "keywords": [
-          { "keyword": "dematting spray for dogs", "search_volume": 1862, "organic_rank": 3, "sponsored_rank": null, "organic_change_rating": 101 },
-          { "keyword": "detangler for dogs", "search_volume": 1862, "organic_rank": 13, "sponsored_rank": 10, "organic_change_rating": 55 },
-          { "keyword": "dog detangler", "search_volume": 2635, "organic_rank": 11, "sponsored_rank": null, "organic_change_rating": 54 },
-          { "keyword": "dematting comb for dogs", "search_volume": 8448, "organic_rank": 21, "sponsored_rank": null, "organic_change_rating": 32 }
+          { "keyword": "detangler for dogs", "search_volume": 1498, "organic_rank": 5, "sponsored_rank": null, "organic_change_rating": 208 },
+          { "keyword": "dematting spray for dogs", "search_volume": 1688, "organic_rank": 2, "sponsored_rank": 20, "organic_change_rating": 101 },
+          { "keyword": "dog detangler", "search_volume": 1716, "organic_rank": 7, "sponsored_rank": null, "organic_change_rating": 54 },
+          { "keyword": "dematting comb for dogs", "search_volume": 5465, "organic_rank": 34, "sponsored_rank": null, "organic_change_rating": 43 }
         ]
       }
     ],
     "flags": [
       "Daily Keyword Tracker only covers 3 of 6 target SKUs (Slicker Brush, Detangling Spray, Emergency Dematter Cream) - pre-existing report-config gap, not new",
-      "Slicker Brush (B0FQ628KCH) 'doodle brush' organic rank dropped 9 spots (100->109) vs prior baseline",
-      "Emergency Dematter Cream (B0FQL56V99) 'detangler for dogs' organic rank dropped 5 spots (8->13) vs prior baseline"
+      "Slicker Brush (B0FQ628KCH) 'dog slicker brushes for grooming' organic rank dropped 5 spots (124->129) vs prior baseline",
+      "Emergency Dematter Cream (B0FQL56V99) 'dematting comb for dogs' organic rank dropped 13 spots (21->34) vs prior baseline",
+      "Emergency Dematter Cream (B0FQL56V99) 'detangler for dogs' organic rank recovered 8 spots (13->5) vs prior baseline - see L-2026-07-08-001, ROAS unverifiable today due to Supermetrics outage"
     ]
   },
 
   "helium10_profits": {
     "daily": {
-      "date": "2026-07-07",
-      "gross_revenue": 1683.23,
-      "expenses": 1452.73,
-      "net_profit": 85.57,
-      "net_margin_pct": 5.08,
+      "date": "2026-07-08",
+      "gross_revenue": 1679.37,
+      "expenses": 902.60,
+      "net_profit": 670.05,
+      "net_margin_pct": 39.9,
       "units": 85,
-      "vs_prior_day_pct": -19,
+      "vs_prior_day_pct": -2,
       "products": [
-        { "name": "Emergency Dematter Cream for Dogs", "asin": "B0FQL56V99", "marketplace": "US", "gross_revenue": 1258.88, "expenses": 1035.66, "net_profit": 99.73, "units": 56, "profitable": true },
-        { "name": "Rake Brush for Dogs, Dematting Tool", "asin": "B0FQF2VTMJ", "marketplace": "US", "gross_revenue": 287.91, "expenses": 272.14, "net_profit": 0.64, "units": 22, "profitable": true },
-        { "name": "Detangling Treatment for Dogs", "asin": "B0GV5ZFLC2", "marketplace": "US", "gross_revenue": 115.05, "expenses": 73.82, "net_profit": 36.32, "units": 6, "profitable": true },
-        { "name": "Slicker Brush for Dogs", "asin": "B0FQ628KCH", "marketplace": "US", "gross_revenue": 21.39, "expenses": 24.23, "net_profit": -4.24, "units": 1, "profitable": false },
-        { "name": "Dog Shampoo & Conditioner", "asin": "B0FQL16GH4", "marketplace": "US", "gross_revenue": 0, "expenses": 28.64, "net_profit": -28.64, "units": 0, "profitable": false },
-        { "name": "Pin Brush for Dogs", "asin": "B0FQDHXSZ5", "marketplace": "US", "gross_revenue": 0, "expenses": 18.24, "net_profit": -18.24, "units": 0, "profitable": false }
+        { "name": "Emergency Dematter Cream for Dogs", "asin": "B0FQL56V99", "marketplace": "US", "gross_revenue": 1289.31, "expenses": 699.40, "net_profit": 512.13, "units": 57, "profitable": true },
+        { "name": "Rake Brush for Dogs, Dematting Tool", "asin": "B0FQF2VTMJ", "marketplace": "US", "gross_revenue": 309.92, "expenses": 144.63, "net_profit": 152.13, "units": 24, "profitable": true },
+        { "name": "Detangling Treatment for Dogs", "asin": "B0GV5ZFLC2", "marketplace": "US", "gross_revenue": 38.76, "expenses": 18.45, "net_profit": 17.63, "units": 2, "profitable": true },
+        { "name": "Pin Brush for Dogs", "asin": "B0FQDHXSZ5", "marketplace": "US", "gross_revenue": 41.38, "expenses": 24.46, "net_profit": 3.82, "units": 2, "profitable": true },
+        { "name": "Dog Shampoo & Conditioner", "asin": "B0FQL16GH4", "marketplace": "US", "gross_revenue": 0, "expenses": 15.66, "net_profit": -15.66, "units": 0, "profitable": false }
       ]
     },
     "weekly": { "period": "Jun 29 - Jul 5", "gross_revenue": 10562.00, "expenses": 8768.85, "net_profit": 741.98, "net_margin_pct": 7.02, "units": 517, "vs_prior_week_pct": -14, "products": [] },
@@ -161,32 +170,18 @@
   },
 
   "supermetrics": {
-    "collected_from_ids": "2026-07-08 10:03:53 PT",
+    "collected_from_ids": "2026-07-08 23:04:59 PT",
     "amazon_ads": {
-      "spend": 513.01,
-      "roas": 1.51,
+      "spend": null,
+      "roas": null,
       "flagged_skus": [
-        "CRITICAL: Slicker Brush (B0FQ628KCH, liquidation SKU - no ad spend allowed) has $1.37 in ad spend - violates no-ad-funding rule",
-        "Emergency Dematter Cream (B0FQL56V99) ROAS 1.43 - RED band (breakeven 2.07, red floor 1.14) - primary ad workhorse underperforming",
-        "Detangling Treatment (B0GV5ZFLC2) $11.51 spend with $0 attributed sales - KILL band",
-        "Dog Shampoo & Conditioner (B0FQL16GH4) $3.00 spend with $0 attributed sales - KILL band",
-        "Pin Brush (B0FQDHXSZ5) $4.61 spend with $0 attributed sales - KILL band",
-        "Unrecognized ASIN B0GT1H84JM has $166.90 spend (2nd largest spend in account) and is not one of the 6 tracked SKUs or in roas_bands.json - needs identification",
-        "Minor unrecognized-ASIN spend also seen on B0GY9WZWKH ($1.26) and B0GXLPJS4C ($0.21)",
-        "Queries C (TACOS spend) still running after 3-min budget, D/E/F (ordered sales, Seller Central, Google Ads) expired before collection - 4th consecutive day of partial/missing Supermetrics data despite fresh submission by stray daytime trigger"
+        "TOTAL OUTAGE: all 6 schedule_ids (A-F) expired before collection this morning - 'schedule_id has expired' on every poll. No spend/ROAS/ACOS/TACOS data available today.",
+        "Cannot verify whether the Slicker Brush (B0FQ628KCH) liquidation-SKU ad-spend violation flagged RED yesterday has stopped.",
+        "Cannot verify whether the 3 KILL-band SKUs or the unrecognized $166.90/day ASIN (B0GT1H84JM) are still active.",
+        "See learnings.json L-2026-07-09-001 - new FAILURE pattern written up for this pipeline gap."
       ],
-      "sku_data_pending": false,
-      "skus": [
-        { "sku": "Emergency Dematter Cream", "asin": "B0FQL56V99", "spend": 318.18, "attributed_sales": 454.65, "acos": 69.98, "roas": 1.43, "band": "RED", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
-        { "sku": "Rake Brush", "asin": "B0FQF2VTMJ", "spend": 5.97, "attributed_sales": 14.99, "acos": 39.83, "roas": 2.51, "band": "YELLOW", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
-        { "sku": "Detangling Treatment", "asin": "B0GV5ZFLC2", "spend": 11.51, "attributed_sales": 0, "acos": null, "roas": 0, "band": "KILL", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
-        { "sku": "4-in-1 Shampoo", "asin": "B0FQL16GH4", "spend": 3.00, "attributed_sales": 0, "acos": null, "roas": 0, "band": "KILL", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
-        { "sku": "Pin Brush", "asin": "B0FQDHXSZ5", "spend": 4.61, "attributed_sales": 0, "acos": null, "roas": 0, "band": "KILL", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": 35, "tacos_status": null },
-        { "sku": "Slicker Brush", "asin": "B0FQ628KCH", "spend": 1.37, "attributed_sales": 0, "acos": null, "roas": 0, "band": "VIOLATION", "learning_window": false, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": "LIQUIDATE", "tacos_status": "LIQUIDATE-VIOLATION" },
-        { "sku": "UNRECOGNIZED", "asin": "B0GT1H84JM", "spend": 166.90, "attributed_sales": 235.65, "acos": 70.83, "roas": 1.41, "band": null, "learning_window": null, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": null, "tacos_status": null },
-        { "sku": "UNRECOGNIZED", "asin": "B0GY9WZWKH", "spend": 1.26, "attributed_sales": 30.38, "acos": 4.15, "roas": 24.1, "band": null, "learning_window": null, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": null, "tacos_status": null },
-        { "sku": "UNRECOGNIZED", "asin": "B0GXLPJS4C", "spend": 0.21, "attributed_sales": 37.78, "acos": 0.56, "roas": 179.9, "band": null, "learning_window": null, "spend_7d": null, "total_sales_7d": null, "tacos_7d": null, "tacos_target": null, "tacos_status": null }
-      ]
+      "sku_data_pending": true,
+      "skus": []
     },
     "amazon_sales": {
       "data_date": null,
@@ -210,10 +205,27 @@
   },
 
   "reviews": {
-    "last_reviews_check": "2026-07-08",
+    "last_reviews_check": "2026-07-09",
     "sheet_last_modified": "2026-07-02",
     "new_review_count": 0,
     "avg_rating_new_batch": null,
-    "status": "GREEN"
+    "status": "GREEN",
+    "recent": [
+      { "date": "2026-06-24", "product": null, "rating": 1, "text": "it is like glue. This is the ABSOLUTE WORST stuff I have ever used. I put it on my pup's small mat (tangle) it is like glue. I could not hope to brush it out after. I had to cut his fur!" },
+      { "date": "2026-06-23", "product": "Save The Shave", "rating": 5, "text": "Amazing. Amazing product, works like a charm" },
+      { "date": "2026-06-20", "product": "Detangling Treatment", "rating": 4, "text": "Detangled minor matting. For the minor matting that occurs on my doodle's body, this works great. I like that it is a leave-in detangler. Being unscented is a plus for my dog and me." },
+      { "date": "2026-06-19", "product": "Emergency Dematter", "rating": 2, "text": "Would Not Recommend. Didn't really work for me" },
+      { "date": "2026-06-18", "product": "Detangling Treatment", "rating": 5, "text": "It's great. It works!" },
+      { "date": "2026-06-15", "product": "Emergency Dematter", "rating": 5, "text": "Best for smaller dogs. It's good when used with the right comb. However, I lost patience and ended up shaving my dog's hair. He's a big dog and it's a lot of work." },
+      { "date": "2026-06-10", "product": "Emergency Dematter", "rating": 5, "text": "I let it sit on the mat longer. Made cutting the fur easier. Worked as stated" },
+      { "date": "2026-06-10", "product": "Emergency Dematter", "rating": 5, "text": "Just need patience. Product really works." },
+      { "date": "2026-06-09", "product": "Emergency Dematter", "rating": 5, "text": "Would buy again if needed. I used this in my doggy and it worked well he was very matted and as for how bad he was it helped out." },
+      { "date": "2026-06-09", "product": "Emergency Dematter", "rating": 5, "text": "worked great! Would buy again!" },
+      { "date": "2026-06-04", "product": "Detangling Treatment", "rating": 2, "text": "Nah. Didn't really do anything. Not impressed." },
+      { "date": "2026-06-03", "product": "Emergency Dematter", "rating": 1, "text": "Need a product that actually works. This item does not work on our dogs. The smell is terrible. It does not get the mats and tangles out. So the effectiveness is no good. Don't waste your money." },
+      { "date": "2026-06-01", "product": "Detangling Treatment", "rating": 5, "text": "great detangler. The detangling treatment for dogs does a great job on our golden retriever's tail knots." },
+      { "date": "2026-06-01", "product": "Shampoo & Conditioner", "rating": 5, "text": "Effective and wonderful product. Great effective product! Fragrance is wonderful - it's natural and not overly perfumey." },
+      { "date": "2026-06-01", "product": "Emergency Dematter", "rating": 4, "text": "Order a de-matting comb to go with it. It works well, you do need to purchase a de-matting comb to go with it" }
+    ]
   }
 }
