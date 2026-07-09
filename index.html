@@ -1094,6 +1094,13 @@ function render(d){
   const amzStatus = amzStatuses.includes('RED') ? 'RED' : amzStatuses.includes('YELLOW') ? 'YELLOW' : amzStatuses.length ? 'GREEN' : null;
   dot('dot-amazon', amzStatus);
 
+  // DAAS — pull before rows so both rows[] and ov-cards can reference them
+  const daiDaas = window.__DAAS && window.__DAAS.daily ? window.__DAAS.daily : null;
+  const daasTacos = daiDaas ? daiDaas.daily_tacos_pct : null;
+  const daasTrueNet = daiDaas ? daiDaas.true_net : null;
+  const tColorOv = t => t == null ? 'bdr-grey' : t > 35 ? 'bdr-red' : t > 30 ? 'bdr-amber' : 'bdr-green';
+  const tClsOv   = t => t == null ? '' : t > 35 ? 'down' : t > 30 ? 'warn' : 'up';
+
   const rows = [
     ['QuickBooks',  qb.cash_balance!=null?fmtDollar(qb.cash_balance):'--',   qb.weeks_runway!=null?fmtNum(qb.weeks_runway,1)+' wks runway':'no data', qb.status],
     ['Klaviyo',     kl.avg_open_rate!=null?fmtPct(kl.avg_open_rate)+' open':'--', klFlags.length+' flow(s) flagged', klStatus],
@@ -1120,12 +1127,6 @@ function render(d){
   $('ov-alerts').innerHTML = reds.length
     ? alertBox('crit', `<b>${reds.length} source(s) RED:</b> ${reds.map(esc).join(', ')}. Recommended actions are in Slack and need a human "approved" reply — nothing executes automatically.`)
     : alertBox('ok','No RED flags this morning.');
-  // Pull TACOS from DAAS if available
-  const daiDaas = window.__DAAS && window.__DAAS.daily ? window.__DAAS.daily : null;
-  const daasTacos = daiDaas ? daiDaas.daily_tacos_pct : null;
-  const daasTrueNet = daiDaas ? daiDaas.true_net : null;
-  const tColorOv = t => t == null ? 'bdr-grey' : t > 35 ? 'bdr-red' : t > 30 ? 'bdr-amber' : 'bdr-green';
-  const tClsOv   = t => t == null ? '' : t > 35 ? 'down' : t > 30 ? 'warn' : 'up';
   $('ov-cards').innerHTML =
     card('Cash Balance', fmtDollar(qb.cash_balance), 'QuickBooks', qbLow||qb.status==='RED'?'bdr-red':'bdr-green') +
     card('Daily TACOS', fmtPct(daasTacos), daasTacos != null ? 'Patrick confirmed · target <35%' : 'DAAS routine not yet live', tColorOv(daasTacos), tClsOv(daasTacos)) +
