@@ -199,9 +199,23 @@
   },
 
   "meta_ads": {
-    "available": false,
-    "spend": null,
-    "roas": null
+    "available": true,
+    "account_id": "2158768751536031",
+    "spend": 26.62,
+    "purchase_value": 0,
+    "roas": 0,
+    "campaigns_7d": [
+      { "name": "Save the Shave UGC Bill _UGC_070326", "status": "ACTIVE", "spend": 130.89, "results": "2 website purchases ($68.36 value)" },
+      { "name": "STG_META_DEMATTER_UGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" },
+      { "name": "STG_Meta_Detangling_30sUGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" },
+      { "name": "STG_Meta_Detangling_30sUGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" },
+      { "name": "STG_Meta_SaveTheShave_22sUGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" }
+    ],
+    "flags": [
+      "Save the Shave UGC Bill _UGC_070326: $130.89 7d spend, ROAS 0.52 - past $75 kill threshold with ROAS < 1.0, needs kill/revise decision (Will approves)",
+      "Duplicate-named campaigns: 'STG_Meta_Detangling_30sUGC_2026-04' appears twice (IDs 120244295191790118, 120244294919800118) - note for cleanup",
+      "Old account ID 2111571079704746 was wrong/legacy - corrected to 2158768751536031 per v10.4"
+    ]
   },
 
   "reviews": {
