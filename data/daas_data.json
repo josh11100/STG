@@ -1,1 +1,30 @@
-
+{
+  "source": "patrick_daas_email",
+  "parse_source": "email_body",
+  "patrick_confirmed": true,
+  "routine_version": "v1.2",
+  "collected_at": "2026-07-09T11:43:58-07:00",
+  "report_date": "2026-07-08",
+  "daily": {
+    "gross_revenue": null,
+    "ad_spend": 501.11,
+    "daily_tacos_pct": 29.8,
+    "expenses_fba": null,
+    "net_profit_h10": null,
+    "true_net": 168.94,
+    "units_sold": null
+  },
+  "mtd": {
+    "revenue": null,
+    "ad_spend": null,
+    "tacos_pct": 37.8,
+    "days_confirmed": null
+  },
+  "sku_table": [],
+  "inventory_flags": [
+    { "sku_name": "Rake Brush", "asin": null, "lif_flag": null, "ltsf_flag": "watch list", "note": "Back on LTSF watch list" },
+    { "sku_name": "Dog Shampoo", "asin": null, "lif_flag": null, "ltsf_flag": null, "note": "Cleared off LTSF watch list" }
+  ],
+  "ytd_table": [],
+  "flags": ["mtd_tacos_elevated", "ltsf_risk_present", "parse_error_revenue"]
+}
