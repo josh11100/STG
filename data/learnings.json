@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-09 07:55:00 PT",
+  "last_updated": "2026-07-10 07:51:00 PT",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -12,7 +12,8 @@
       "driver_type": "FAILURE",
       "evidence": [
         "ROAS 1.43 on $318.18 spend (Supermetrics Query B, 2026-07-08)",
-        "Organic rank 'detangler for dogs' 8->13 (H10 Daily Keyword Tracker, 2026-07-08)"
+        "Organic rank 'detangler for dogs' 8->13 (H10 Daily Keyword Tracker, 2026-07-08)",
+        "2026-07-10: 'detangler for dogs' rank slid further to 7 (from a baseline of 5), and 'dog detangler' dropped 9 spots (7->16) - organic instability continues, but paid ROAS remains unverifiable (Supermetrics down 2nd straight day) so this cannot be confirmed or contradicted today"
       ],
       "status": "HYPOTHESIS",
       "confirmations": 1,
@@ -70,14 +71,35 @@
       "driver_type": "FAILURE",
       "evidence": [
         "supermetrics_ids.json submitted_at: 2026-07-08 23:04:59 PT",
-        "All 6 schedule_ids (A-F) returned RuntimeError 'schedule_id has expired' on first poll, 2026-07-09 morning run"
+        "All 6 schedule_ids (A-F) returned RuntimeError 'schedule_id has expired' on first poll, 2026-07-09 morning run",
+        "2026-07-10: same failure repeated - schedule_ids submitted 2026-07-09 23:05:55 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll at the 2026-07-10 morning run (~8h45m gap again). 2nd consecutive day of total (6-for-6) outage - confirms this is a systemic gap-length issue, not a one-off."
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-10",
+      "contradictions": 0,
+      "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
+      "action_implication": "Shorten the gap between Evening Pre-Run submission and Morning collection (e.g. submit closer to sunrise), or confirm the actual result-retention window with Supermetrics support and adjust the 26h staleness check accordingly. Until fixed, treat every morning run as having a real chance of zero ad-data visibility. 2 consecutive total-outage days - escalate to Will for a pipeline fix decision.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-10-001",
+      "date_observed": "2026-07-10",
+      "subject": "Save the Shave UGC Bill (Meta campaign)",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "Meta campaign 'Save the Shave UGC Bill _UGC_070326' breached the $75 cumulative-spend / ROAS<1.0 kill threshold on 2026-07-09 ($130.89 spend, ROAS 0.52) and was flagged for a kill/revise decision. As of 2026-07-10 it has continued spending past the threshold ($154.29 MTD, ROAS 0.44) with no kill/revise decision recorded - the flag alone does not stop spend without a human action.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "2026-07-09: $130.89 7d spend, ROAS 0.52 (Meta MCP, flagged jarvis_metaads_2026-07-09)",
+        "2026-07-10: $154.29 MTD spend, ROAS 0.44 - spend increased $23.40 overnight with no revise/kill applied (Meta MCP, account 2158768751536031)"
       ],
       "status": "HYPOTHESIS",
       "confirmations": 1,
-      "last_confirmed": "2026-07-09",
+      "last_confirmed": "2026-07-10",
       "contradictions": 0,
-      "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
-      "action_implication": "Shorten the gap between Evening Pre-Run submission and Morning collection (e.g. submit closer to sunrise), or confirm the actual result-retention window with Supermetrics support and adjust the 26h staleness check accordingly. Until fixed, treat every morning run as having a real chance of zero ad-data visibility.",
+      "source_brief_id": "jarvis_metaads_2026-07-10_red",
+      "action_implication": "A kill-threshold flag needs a same-day or next-day human decision (Will) to actually stop spend - repeated flags without follow-through just document the loss rather than prevent it. Consider escalating unresolved kill-threshold breaches after 1 day instead of re-flagging silently.",
       "retired_reason": null
     }
   ]
