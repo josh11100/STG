@@ -1,23 +1,23 @@
 {
-  "last_updated": "2026-07-10 07:51:00 PT",
+  "last_updated": "2026-07-11 07:55:00 PT",
 
   "quickbooks": {
-    "cash_balance": 596098.16,
-    "checking_balance": 12047.61,
+    "cash_balance": 596213.15,
+    "checking_balance": 12162.60,
     "money_market_balance": 584050.55,
-    "weeks_runway": 32.25,
+    "weeks_runway": 37.33,
     "accounts_payable": 48504.75,
     "accounts_receivable": 0,
     "status": "RED",
     "mtd": {
-      "period": "Jul 1 - Jul 9, 2026",
-      "revenue": 3132.48,
-      "cogs": 1412.55,
-      "gross_profit": 1719.93,
-      "gross_margin_pct": 54.9,
-      "operating_expenses": 15667.59,
-      "net_income": -13947.66,
-      "net_margin_pct": -445.2
+      "period": "Jul 1 - Jul 10, 2026",
+      "revenue": 3248.82,
+      "cogs": 1441.47,
+      "gross_profit": 1807.35,
+      "gross_margin_pct": 55.6,
+      "operating_expenses": 16872.68,
+      "net_income": -15065.33,
+      "net_margin_pct": -463.7
     }
   },
 
@@ -28,9 +28,9 @@
     "total_sms_revenue_7d": null,
     "flows_flagged": [
       "Abandoned Cart Reminder - Shopify Added to Cart Trigger - click rate 0% below 2% threshold (6 recipients, low volume)",
-      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - zero revenue, flow is 245+ days old (created 2025-11-07)",
+      "Abandoned Cart Reminder - Shopify Added to Cart Trigger - zero revenue, flow is 246+ days old (created 2025-11-07)",
       "Warranty Registration Confirmation - click rate 0% below 2% threshold (1 recipient, low volume)",
-      "Warranty Registration Confirmation - zero revenue, flow is 44+ days old (created 2026-05-27)"
+      "Warranty Registration Confirmation - zero revenue, flow is 45+ days old (created 2026-05-27)"
     ],
     "flows": [
       {
@@ -62,27 +62,28 @@
     "aov": null,
     "vs_7day_avg_pct": -100,
     "daily_7d": [
-      { "date": "2026-07-03", "sales": 0, "orders": 0 },
       { "date": "2026-07-04", "sales": 75.96, "orders": 2 },
       { "date": "2026-07-05", "sales": 34.18, "orders": 1 },
       { "date": "2026-07-06", "sales": 34.18, "orders": 1 },
       { "date": "2026-07-07", "sales": 0, "orders": 0 },
       { "date": "2026-07-08", "sales": 0, "orders": 0 },
-      { "date": "2026-07-09", "sales": 0, "orders": 0 }
+      { "date": "2026-07-09", "sales": 0, "orders": 0 },
+      { "date": "2026-07-10", "sales": 0, "orders": 0 }
     ]
   },
 
   "helium10": {
     "report_found": true,
-    "report_date": "2026-07-09",
+    "report_date": "2026-07-10",
     "data_readable": true,
     "products": [
       {
         "name": "Slicker Brush for Dogs, Golden...",
         "asin": "B0FQ628KCH",
         "keywords": [
-          { "keyword": "doodle brush", "search_volume": 4580, "organic_rank": 104, "sponsored_rank": null, "organic_change_rating": 22 },
-          { "keyword": "dog slicker brushes for grooming", "search_volume": 807, "organic_rank": 125, "sponsored_rank": null, "organic_change_rating": 14 }
+          { "keyword": "dog slicker brushes for grooming", "search_volume": 807, "organic_rank": 121, "sponsored_rank": null, "organic_change_rating": 14 },
+          { "keyword": "doodle brush", "search_volume": 4580, "organic_rank": 101, "sponsored_rank": null, "organic_change_rating": 13 },
+          { "keyword": "slicker brush for dogs", "search_volume": 19289, "organic_rank": 102, "sponsored_rank": null, "organic_change_rating": 11 }
         ]
       },
       {
@@ -94,36 +95,37 @@
         "name": "Emergency Dematter Cream for Dogs",
         "asin": "B0FQL56V99",
         "keywords": [
-          { "keyword": "detangler for dogs", "search_volume": 1498, "organic_rank": 7, "sponsored_rank": null, "organic_change_rating": 102 },
-          { "keyword": "dematting spray for dogs", "search_volume": 1688, "organic_rank": 3, "sponsored_rank": 33, "organic_change_rating": 101 },
-          { "keyword": "dog detangler", "search_volume": 1716, "organic_rank": 16, "sponsored_rank": null, "organic_change_rating": 59 },
-          { "keyword": "dematting comb for dogs", "search_volume": 5465, "organic_rank": 26, "sponsored_rank": 3, "organic_change_rating": 38 }
+          { "keyword": "dematting spray for dogs", "search_volume": 1688, "organic_rank": 2, "sponsored_rank": 3, "organic_change_rating": 101 },
+          { "keyword": "dematting tool for dogs", "search_volume": 2624, "organic_rank": 6, "sponsored_rank": null, "organic_change_rating": 101 },
+          { "keyword": "detangler for dogs", "search_volume": 1498, "organic_rank": 23, "sponsored_rank": null, "organic_change_rating": 76 },
+          { "keyword": "dog detangler", "search_volume": 1716, "organic_rank": 14, "sponsored_rank": null, "organic_change_rating": 52 },
+          { "keyword": "dematting comb for dogs", "search_volume": 5465, "organic_rank": 22, "sponsored_rank": 1, "organic_change_rating": 34 }
         ]
       }
     ],
     "flags": [
       "Daily Keyword Tracker only covers 3 of 6 target SKUs (Slicker Brush, Detangling Spray, Emergency Dematter Cream) - pre-existing report-config gap, not new",
-      "Slicker Brush (B0FQ628KCH) 'doodle brush' organic rank dropped 12 spots (92->104) vs prior baseline",
-      "Emergency Dematter Cream (B0FQL56V99) 'dog detangler' organic rank dropped 9 spots (7->16) vs prior baseline",
-      "Emergency Dematter Cream (B0FQL56V99) 'dematting comb for dogs' organic rank recovered 8 spots (34->26) vs prior baseline - but 'detangler for dogs' continued sliding (5->7); see L-2026-07-08-001, paid ROAS unverifiable today due to 2nd-day Supermetrics outage"
+      "Emergency Dematter Cream (B0FQL56V99) 'detangler for dogs' organic rank collapsed 16 spots (7->23) vs prior baseline - largest single-day drop yet in this pattern, see L-2026-07-08-001; paid ROAS impact unverifiable, Supermetrics 3rd consecutive day of total outage",
+      "Slicker Brush (B0FQ628KCH) and remaining Emergency Dematter Cream keywords all improved vs baseline (doodle brush 104->101, dog slicker brushes for grooming 125->121, dog detangler 16->14, dematting comb for dogs 26->22, dematting spray for dogs 3->2) - decline is isolated to 'detangler for dogs', not whole-listing"
     ]
   },
 
   "helium10_profits": {
     "daily": {
-      "date": "2026-07-09",
-      "gross_revenue": 1816.46,
-      "expenses": 832.19,
-      "net_profit": 880.86,
-      "net_margin_pct": 48.5,
-      "units": 92,
-      "vs_prior_day_pct": 31.5,
+      "date": "2026-07-10",
+      "gross_revenue": 1714.70,
+      "expenses": 839.86,
+      "net_profit": 693.19,
+      "net_margin_pct": 40.4,
+      "units": 84,
+      "vs_prior_day_pct": -6,
       "products": [
-        { "name": "Emergency Dematter Cream for Dogs", "asin": "B0FQL56V99", "marketplace": "US", "gross_revenue": 1366.22, "expenses": 634.46, "net_profit": 652.90, "units": 61, "profitable": true },
-        { "name": "Rake Brush for Dogs, Dematting Tool", "asin": "B0FQF2VTMJ", "marketplace": "US", "gross_revenue": 325.84, "expenses": 144.08, "net_profit": 164.67, "units": 25, "profitable": true },
-        { "name": "Detangling Treatment for Dogs", "asin": "B0GV5ZFLC2", "marketplace": "US", "gross_revenue": 61.93, "expenses": 23.85, "net_profit": 33.12, "units": 3, "profitable": true },
-        { "name": "Pin Brush for Dogs", "asin": "B0FQDHXSZ5", "marketplace": "US", "gross_revenue": 41.18, "expenses": 15.43, "net_profit": 24.55, "units": 2, "profitable": true },
-        { "name": "Dog Shampoo & Conditioner", "asin": "B0FQL16GH4", "marketplace": "US", "gross_revenue": 21.29, "expenses": 14.36, "net_profit": 5.63, "units": 1, "profitable": true }
+        { "name": "Emergency Dematter Cream for Dogs", "asin": "B0FQL56V99", "marketplace": "US", "gross_revenue": 1350.78, "expenses": 566.01, "net_profit": 641.03, "units": 59, "profitable": true },
+        { "name": "Rake Brush for Dogs, Dematting Tool", "asin": "B0FQF2VTMJ", "marketplace": "US", "gross_revenue": 246.55, "expenses": 181.75, "net_profit": 44.51, "units": 19, "profitable": true },
+        { "name": "Detangling Treatment for Dogs", "asin": "B0GV5ZFLC2", "marketplace": "US", "gross_revenue": 56.48, "expenses": 40.70, "net_profit": 14.37, "units": 3, "profitable": true },
+        { "name": "Pin Brush for Dogs", "asin": "B0FQDHXSZ5", "marketplace": "US", "gross_revenue": 39.23, "expenses": 30.05, "net_profit": -5.36, "units": 2, "profitable": false },
+        { "name": "Dog Shampoo & Conditioner", "asin": "B0FQL16GH4", "marketplace": "US", "gross_revenue": 21.66, "expenses": 16.59, "net_profit": 3.40, "units": 1, "profitable": true },
+        { "name": "Slicker Brush for Dogs (liquidation)", "asin": "B0FQ628KCH", "marketplace": "US", "gross_revenue": 0, "expenses": 4.76, "net_profit": -4.76, "units": 0, "profitable": false }
       ]
     },
     "weekly": { "period": null, "gross_revenue": null, "expenses": null,
@@ -174,14 +176,14 @@
   },
 
   "supermetrics": {
-    "collected_from_ids": "2026-07-09 23:05:55 PT",
+    "collected_from_ids": "2026-07-10 23:06:57 PT",
     "amazon_ads": {
       "spend": null,
       "roas": null,
       "flagged_skus": [
         "TOTAL OUTAGE: all 6 schedule_ids (A-F) expired before collection this morning - 'schedule_id has expired' on every poll. No spend/ROAS/ACOS/TACOS data available today.",
-        "2nd consecutive day of total outage (see L-2026-07-09-001, confirmations now 2).",
-        "Cannot verify whether the Slicker Brush (B0FQ628KCH) liquidation-SKU ad-spend violation flagged 2 days ago has stopped.",
+        "3rd consecutive day of total outage (see L-2026-07-09-001, confirmations now 3).",
+        "Cannot verify whether the Slicker Brush (B0FQ628KCH) liquidation-SKU ad-spend violation flagged 3 days ago has stopped.",
         "Cannot verify whether the 3 KILL-band SKUs or the unrecognized $166.90/day ASIN (B0GT1H84JM) are still active."
       ],
       "sku_data_pending": true,
@@ -205,31 +207,31 @@
   "meta_ads": {
     "available": true,
     "account_id": "2158768751536031",
-    "period": "Jul 1 - Jul 9, 2026",
+    "period": "Jul 1 - Jul 10, 2026",
     "mtd": {
-      "spend": 154.29,
+      "spend": 178.65,
       "purchase_value": 68.36,
-      "roas": 0.44
+      "roas": 0.38
     },
     "yesterday": {
-      "spend": 23.40,
-      "purchase_value": null
+      "spend": 24.36,
+      "purchase_value": 0
     },
     "campaigns_mtd": [
-      { "name": "Save the Shave UGC Bill _UGC_070326", "status": "ACTIVE", "spend": 154.29, "results": "2 website purchases ($68.36 value)" },
+      { "name": "Save the Shave UGC Bill _UGC_070326", "status": "ACTIVE", "spend": 178.65, "results": "2 website purchases ($68.36 value)" },
       { "name": "STG_META_DEMATTER_UGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" },
       { "name": "STG_Meta_Detangling_30sUGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" },
       { "name": "STG_Meta_Detangling_30sUGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" },
       { "name": "STG_Meta_SaveTheShave_22sUGC_2026-04", "status": "PAUSED", "spend": 0, "results": "0 link clicks" }
     ],
     "flags": [
-      "Save the Shave UGC Bill _UGC_070326: $154.29 MTD spend, ROAS 0.44 - past $75 kill threshold with ROAS < 1.0, needs kill/revise decision (Will approves) - 2nd consecutive day flagged, see L-2026-07-10-001",
+      "Save the Shave UGC Bill _UGC_070326: $178.65 MTD spend, ROAS 0.38 - past $75 kill threshold with ROAS < 1.0, needs kill/revise decision (Will approves) - 3rd consecutive day flagged with no action, see L-2026-07-10-001",
       "Duplicate-named campaigns: 'STG_Meta_Detangling_30sUGC_2026-04' appears twice (IDs 120244295191790118, 120244294919800118) - note for cleanup, unchanged from yesterday"
     ]
   },
 
   "reviews": {
-    "last_reviews_check": "2026-07-10",
+    "last_reviews_check": "2026-07-11",
     "sheet_last_modified": "2026-07-09",
     "new_review_count": 6,
     "avg_rating_new_batch": 3.67,
