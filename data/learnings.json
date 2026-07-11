@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-10 07:51:00 PT",
+  "last_updated": "2026-07-11 07:55:00 PT",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -13,14 +13,15 @@
       "evidence": [
         "ROAS 1.43 on $318.18 spend (Supermetrics Query B, 2026-07-08)",
         "Organic rank 'detangler for dogs' 8->13 (H10 Daily Keyword Tracker, 2026-07-08)",
-        "2026-07-10: 'detangler for dogs' rank slid further to 7 (from a baseline of 5), and 'dog detangler' dropped 9 spots (7->16) - organic instability continues, but paid ROAS remains unverifiable (Supermetrics down 2nd straight day) so this cannot be confirmed or contradicted today"
+        "2026-07-10: 'detangler for dogs' rank slid further to 7 (from a baseline of 5), and 'dog detangler' dropped 9 spots (7->16) - organic instability continues, but paid ROAS remains unverifiable (Supermetrics down 2nd straight day) so this cannot be confirmed or contradicted today",
+        "2026-07-11: 'detangler for dogs' rank collapsed 7->23 (-16 spots), the largest single-day drop yet in this pattern (H10 Daily Keyword Tracker, report date 2026-07-10); other Dematter keywords ('dog detangler', 'dematting comb for dogs', 'dematting spray for dogs') all improved the same day, so this is isolated to one keyword, not a whole-listing decline. Paid ROAS impact still unverifiable - Supermetrics 3rd consecutive day of total outage"
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 1,
-      "last_confirmed": "2026-07-08",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-11",
       "contradictions": 0,
       "source_brief_id": "jarvis_dematter_2026-07-08_red",
-      "action_implication": "Before any Dematter budget increase, verify organic ranks are stable; if organic is sliding, fix the listing before adding spend.",
+      "action_implication": "Before any Dematter budget increase, verify organic ranks are stable; if organic is sliding, fix the listing before adding spend. The 'detangler for dogs' keyword specifically needs investigation (competitor movement, listing/PPC change) since it is diverging sharply from the SKU's other keywords.",
       "retired_reason": null
     },
     {
@@ -72,14 +73,15 @@
       "evidence": [
         "supermetrics_ids.json submitted_at: 2026-07-08 23:04:59 PT",
         "All 6 schedule_ids (A-F) returned RuntimeError 'schedule_id has expired' on first poll, 2026-07-09 morning run",
-        "2026-07-10: same failure repeated - schedule_ids submitted 2026-07-09 23:05:55 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll at the 2026-07-10 morning run (~8h45m gap again). 2nd consecutive day of total (6-for-6) outage - confirms this is a systemic gap-length issue, not a one-off."
+        "2026-07-10: same failure repeated - schedule_ids submitted 2026-07-09 23:05:55 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll at the 2026-07-10 morning run (~8h45m gap again). 2nd consecutive day of total (6-for-6) outage - confirms this is a systemic gap-length issue, not a one-off.",
+        "2026-07-11: 3rd consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-10 23:06:57 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll. Pipeline has now produced zero usable Amazon Ads/Amazon SC/Google Ads data for 3 straight mornings."
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 2,
-      "last_confirmed": "2026-07-10",
+      "confirmations": 3,
+      "last_confirmed": "2026-07-11",
       "contradictions": 0,
       "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
-      "action_implication": "Shorten the gap between Evening Pre-Run submission and Morning collection (e.g. submit closer to sunrise), or confirm the actual result-retention window with Supermetrics support and adjust the 26h staleness check accordingly. Until fixed, treat every morning run as having a real chance of zero ad-data visibility. 2 consecutive total-outage days - escalate to Will for a pipeline fix decision.",
+      "action_implication": "Shorten the gap between Evening Pre-Run submission and Morning collection (e.g. submit closer to sunrise), or confirm the actual result-retention window with Supermetrics support and adjust the 26h staleness check accordingly. 3 consecutive total-outage days - this needs Will's decision on a pipeline fix now, not another re-flag; STG has had zero Amazon Ads/SC/Google Ads visibility for 3 straight days.",
       "retired_reason": null
     },
     {
@@ -92,14 +94,35 @@
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-09: $130.89 7d spend, ROAS 0.52 (Meta MCP, flagged jarvis_metaads_2026-07-09)",
-        "2026-07-10: $154.29 MTD spend, ROAS 0.44 - spend increased $23.40 overnight with no revise/kill applied (Meta MCP, account 2158768751536031)"
+        "2026-07-10: $154.29 MTD spend, ROAS 0.44 - spend increased $23.40 overnight with no revise/kill applied (Meta MCP, account 2158768751536031)",
+        "2026-07-11: $178.65 MTD spend (Jul 1-10), ROAS 0.38 - spend increased another $24.36 overnight, ROAS continuing to decline, still no kill/revise decision recorded. 3rd consecutive day flagged with no action taken."
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-11",
+      "contradictions": 0,
+      "source_brief_id": "jarvis_metaads_2026-07-10_red",
+      "action_implication": "A kill-threshold flag needs a same-day or next-day human decision (Will) to actually stop spend - repeated flags without follow-through just document the loss rather than prevent it. 3 days unresolved - recommend escalating directly to Will rather than re-flagging a 4th time.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-11-001",
+      "date_observed": "2026-07-11",
+      "subject": "Shopify D2C channel",
+      "asin": null,
+      "scope": "shopify",
+      "learning": "Shopify direct-to-consumer sales have been $0 for 4 consecutive days (Jul 7-10), coinciding with $0 email revenue on the only two active Klaviyo flows (both zero-revenue, low-volume). No paid or organic driver in this run's data explains the drought - it may simply reflect very low current Shopify traffic/marketing investment rather than a discrete failure.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "Shopify daily_7d: Jul7 $0/0 orders, Jul8 $0/0, Jul9 $0/0, Jul10 $0/0 (ShopifyQL, ds=sales)",
+        "Klaviyo 7d: total_email_revenue_7d $0 across both active flows (Abandoned Cart Reminder, Warranty Registration Confirmation)"
       ],
       "status": "HYPOTHESIS",
       "confirmations": 1,
-      "last_confirmed": "2026-07-10",
+      "last_confirmed": "2026-07-11",
       "contradictions": 0,
-      "source_brief_id": "jarvis_metaads_2026-07-10_red",
-      "action_implication": "A kill-threshold flag needs a same-day or next-day human decision (Will) to actually stop spend - repeated flags without follow-through just document the loss rather than prevent it. Consider escalating unresolved kill-threshold breaches after 1 day instead of re-flagging silently.",
+      "source_brief_id": "jarvis_morningbrief_2026-07-11_red",
+      "action_implication": "Check whether Shopify is still being actively promoted (paid social, email) at all, or whether STG has effectively deprioritized the D2C channel in favor of Amazon - if unintentional, this is worth a decision from Will on whether to invest in reviving Shopify traffic or formally deprioritize it.",
       "retired_reason": null
     }
   ]
