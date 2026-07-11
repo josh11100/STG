@@ -1,13 +1,13 @@
 {
-  "submitted_at": "2026-07-09 23:05:55 PT",
-  "query_date": "2026-07-08",
+  "submitted_at": "2026-07-10 23:06:57 PT",
+  "query_date": "2026-07-09",
   "schedule_ids": {
     "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
     "B": "ac393baa8ff41321ab2595c0eb8b53751b8828dcf9f24bcc5bdf262077b556dc",
     "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
-    "D": "d011058ceae354e72ed3bf09c82d4637c24eda2940dbe233be5d9e8e80eba2c8",
-    "E": "117cf219d2505b3b76ca3b3017d4dfefecb2f9f2aff6cd89a752c0b817ae6c2c",
-    "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
+    "D": "6230a9a33f832b97c4b7ab1ec8b9896a351ee49a0b3351332cefa074a887052c",
+    "E": "a0d49775eb6c0b661ba79490d34201ff768e63ef1e4b238fa5e1b7672ad829e6",
+    "F": "405a2b69995c0c4b1557b83298ddd16b26d1befc1f1342aabed97977e8bd4069"
   },
   "submission_errors": []
 }
