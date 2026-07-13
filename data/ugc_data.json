@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-07-12T00:00:00-07:00",
+  "updated_by": "seed",
+  "note": "Maintained by Ezra agent. One writer per file — only Ezra writes to this JSON. Emily confirms counts when content is delivered.",
+  "skus": [
+    {
+      "asin": "B0FQL56V99",
+      "name": "Emergency Dematter Cream",
+      "handle": "emergency-dematter-cream",
+      "pillar_moment": "rescue",
+      "billo": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "fiverr": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "organic_ugc": {
+        "count": 0,
+        "last_date": null
+      },
+      "gap_flag": true,
+      "notes": ""
+    },
+    {
+      "asin": "B0GV5ZFLC2",
+      "name": "Detangling Treatment",
+      "handle": "detangling-treatment",
+      "pillar_moment": "routine",
+      "billo": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "fiverr": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "organic_ugc": {
+        "count": 0,
+        "last_date": null
+      },
+      "gap_flag": true,
+      "notes": ""
+    },
+    {
+      "asin": "B0FQL16GH4",
+      "name": "4-in-1 Shampoo",
+      "handle": "4-in-1-shampoo",
+      "pillar_moment": "bath day",
+      "billo": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "fiverr": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "organic_ugc": {
+        "count": 0,
+        "last_date": null
+      },
+      "gap_flag": true,
+      "notes": ""
+    },
+    {
+      "asin": "B0FQF2VTMJ",
+      "name": "Rake Brush",
+      "handle": "rake-brush",
+      "pillar_moment": "companion tool",
+      "billo": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "fiverr": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "organic_ugc": {
+        "count": 0,
+        "last_date": null
+      },
+      "gap_flag": true,
+      "notes": ""
+    },
+    {
+      "asin": "B0FQDHXSZ5",
+      "name": "Pin Brush",
+      "handle": "pin-brush",
+      "pillar_moment": "companion tool",
+      "billo": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "fiverr": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "organic_ugc": {
+        "count": 0,
+        "last_date": null
+      },
+      "gap_flag": true,
+      "notes": ""
+    },
+    {
+      "asin": "B0FQ628KCH",
+      "name": "Slicker Brush",
+      "handle": "slicker-brush",
+      "pillar_moment": "companion tool",
+      "billo": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "fiverr": {
+        "status": "none",
+        "active_briefs": 0,
+        "completed_videos": 0,
+        "last_submission_date": null
+      },
+      "organic_ugc": {
+        "count": 0,
+        "last_date": null
+      },
+      "gap_flag": true,
+      "notes": "Liquidation SKU — no paid ads. UGC for organic only. Confirm with Will before any Billo brief."
+    }
+  ],
+  "status_values": {
+    "none": "No UGC activity for this SKU on this platform",
+    "brief_active": "Brief submitted, waiting on creator delivery",
+    "content_in_review": "Content delivered, Emily reviewing",
+    "complete": "Approved content live or in library"
+  }
+}
