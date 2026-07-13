@@ -343,6 +343,75 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 
         </div>
 
+        <!-- AUTHORITY & KILL RULES -->
+<div class="section" id="section-authority">
+  <div class="sec-head">
+    <h2>Authority &amp; Kill Rules</h2>
+    <span class="tag" id="auth-tag">—</span>
+    <span class="when" id="auth-when"></span>
+  </div>
+  <div class="sec-desc">
+    The complete rulebook the agents enforce. Auto-execute authority is governed by
+    <b>docs/STANDING_AUTHORITY_v1.0.md</b> (checked live below) — everything else is
+    staged and waits for a human "approved" in Slack.
+  </div>
+
+  <div id="auth-status-box"></div>
+
+  <div class="tbl-wrap" style="margin-top:8px;">
+    <div class="tbl-title">Hard rules — every platform, every run</div>
+    <table>
+      <thead><tr><th>Rule</th><th>Trigger</th><th>What happens</th><th>Authority</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>$75 Kill Rule (A-1)</b></td>
+          <td>LIVE ad reaches <b>$75 cumulative spend</b> while below its failure threshold (ROAS &lt; 1.0 on Meta; band floor per SKU on Amazon)</td>
+          <td>Pause that single ad (never delete, never edit budget) + immediate post to #stg-ads-watchdog and #stg-decisions-log, Will tagged for kill/revise</td>
+          <td id="a1-authority">—</td>
+        </tr>
+        <tr>
+          <td><b>Spend Anomaly (A-2)</b></td>
+          <td>Unrecognized ASIN spending · any Slicker Brush ad spend · daily spend &gt; 2× trailing-7-day average</td>
+          <td>Immediate RED alert to #stg-ads-watchdog, Patrick + Will tagged — notification only, nothing touched</td>
+          <td id="a2-authority">—</td>
+        </tr>
+        <tr>
+          <td><b>3-Day Learning Window</b></td>
+          <td>Ad younger than 3 days lands in RED/KILL band</td>
+          <td>Band reported, marked "learning — no kill action". Kill logic activates day 4</td>
+          <td>Always on</td>
+        </tr>
+        <tr>
+          <td><b>Slicker Liquidation</b></td>
+          <td>ANY ad spend &gt; $0 on Slicker Brush (B0FQ628KCH)</td>
+          <td>Instant RED + #stg-decisions-log entry — no threshold, no learning window. No paid ads, no partnership kits, ever</td>
+          <td>Always on</td>
+        </tr>
+        <tr>
+          <td><b>Missing Data</b></td>
+          <td>Data required to evaluate any trigger is missing or stale</td>
+          <td>No action taken — MISSING declared in the brief. Fabricated or inferred data never satisfies a trigger</td>
+          <td>Always on</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tbl-wrap" style="margin-top:12px;">
+    <div class="tbl-title">Full ROAS band math per SKU — Amazon channel (from roas_bands.json, live)</div>
+    <table id="auth-bands-table">
+      <thead><tr>
+        <th>SKU</th><th class="r">Breakeven</th>
+        <th class="r">GREEN ≥</th><th class="r">YELLOW ≥</th>
+        <th class="r">RED ≥</th><th class="r">KILL &lt;</th>
+        <th class="r">TACOS Target</th><th>Rule</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="alert alert-info" id="auth-band-formula"></div>
+</div>
+
         <!-- GOOGLE ADS -->
         <div class="section" id="section-googleads">
           <div class="sec-head"><h2>Google Ads &mdash; Yesterday</h2><span class="tag" id="ga-tag">--</span></div>
@@ -1257,6 +1326,71 @@ function startCountdown(){
   countdownId = setInterval(tick, 1000);
 }
 loadData();
+</script>
+<script>
+(async function authorityPanel(){
+  const $a = id => document.getElementById(id);
+  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
+
+  // ── 1. Standing Authority status (live from the signed doc) ──
+  let mode = 'UNKNOWN', modeDetail = 'Could not fetch STANDING_AUTHORITY_v1.0.md';
+  try {
+    const r = await fetch(RAW + 'docs/STANDING_AUTHORITY_v1.0.md', {cache:'no-store'});
+    if (r.ok) {
+      const txt = await r.text();
+      const line = (txt.split('\n').find(l => l.includes('SIGNATURE STATUS')) || '');
+      if (/SIGNED/i.test(line) && !/PENDING/i.test(line)) {
+        mode = 'CLASS A ACTIVE';
+        modeDetail = 'Signed — A-1 ($75 kill) and A-2 (spend anomaly) may auto-execute per the document\u2019s limits. Everything else remains staged.';
+      } else {
+        mode = 'CLASS B ONLY';
+        modeDetail = 'Standing Authority is PENDING Will\u2019s signature — NOTHING auto-executes. All kill breaches are staged as recommendations tagged to Will.';
+      }
+    }
+  } catch(e) { /* leave UNKNOWN */ }
+
+  const tag = $a('auth-tag');
+  tag.textContent = mode;
+  tag.className = 'tag ' + (mode === 'CLASS A ACTIVE' ? 'tag-ok' : mode === 'CLASS B ONLY' ? 'tag-warn' : 'tag-info');
+  $a('auth-when').textContent = 'checked ' + new Date().toLocaleTimeString();
+  const boxCls = mode === 'CLASS A ACTIVE' ? 'alert-ok' : 'alert-warn';
+  $a('auth-status-box').innerHTML =
+    '<div class="alert ' + boxCls + '"><b>Auto-execute authority: ' + mode + '.</b> ' + modeDetail + '</div>';
+  const authLabel = mode === 'CLASS A ACTIVE' ? 'AUTO (signed)' : 'STAGED (unsigned)';
+  $a('a1-authority').textContent = authLabel;
+  $a('a2-authority').textContent = authLabel;
+
+  // ── 2. Full band math from roas_bands.json ──
+  try {
+    const r = await fetch(RAW + 'data/roas_bands.json', {cache:'no-store'});
+    if (!r.ok) throw new Error(r.status);
+    const bands = await r.json();
+    const esc = s => String(s==null?'—':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const n = v => (v==null ? '—' : Number(v).toFixed(2) + 'x');
+    const rows = (bands.skus || []).map(s => {
+      const a = s.amazon || {};
+      const liq = !!s.liquidate;
+      const rule = liq
+        ? '<b style="color:#C00000">LIQUIDATION — no ad spend allowed, any spend = RED</b>'
+        : esc(s.note || '');
+      return '<tr' + (liq ? ' style="background:rgba(192,0,0,.06)"' : '') + '>'
+        + '<td><b>' + esc(s.sku) + '</b><br><span style="font-size:10px;color:var(--sub)">' + esc(s.asin) + '</span></td>'
+        + '<td class="r">' + (liq ? '—' : n(a.breakeven)) + '</td>'
+        + '<td class="r">' + (liq ? '—' : '≥ ' + n(a.breakeven)) + '</td>'
+        + '<td class="r">' + (liq ? '—' : '≥ ' + n(a.yellow_min)) + '</td>'
+        + '<td class="r">' + (liq ? '—' : '≥ ' + n(a.red_min)) + '</td>'
+        + '<td class="r">' + (liq ? '—' : '&lt; ' + n(a.red_min)) + '</td>'
+        + '<td class="r">' + (liq ? 'LIQUIDATE' : esc(s.tacos_target) + '%') + '</td>'
+        + '<td>' + rule + '</td></tr>';
+    });
+    $a('auth-bands-table').querySelector('tbody').innerHTML = rows.join('');
+    $a('auth-band-formula').innerHTML = '<b>Band formula (locked):</b> ' + esc(bands.band_rule || '')
+      + '<br><b>TACOS:</b> ' + esc(bands.tacos_note || '');
+  } catch(e) {
+    $a('auth-bands-table').querySelector('tbody').innerHTML =
+      '<tr><td colspan="8">roas_bands.json unavailable (' + e + ')</td></tr>';
+  }
+})();
 </script>
 </body>
 </html>
