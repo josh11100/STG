@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-07-13T10:04:05-07:00",
+  "query_date_yesterday": "2026-07-12",
+  "query_date_sc": "2026-07-11",
+  "queries": {
+    "A": {
+      "status": "failed",
+      "error": "poll timeout 20m (polled ~43 min, still running)"
+    },
+    "B": {
+      "status": "failed",
+      "error": "poll timeout 20m (polled ~43 min, still running)"
+    },
+    "C": {
+      "status": "failed",
+      "error": "poll timeout 20m (polled ~43 min, still running)"
+    },
+    "D": {
+      "status": "completed",
+      "requested_field_ids": ["asin", "ordered_product_sales"],
+      "rows": [
+        ["B0FQL56V99", 1401.19],
+        ["B0FQF2VTMJ", 314.74],
+        ["B0FQDHXSZ5", 75.96],
+        ["B0GV5ZFLC2", 72.16],
+        ["B0FQL16GH4", 17.99]
+      ]
+    },
+    "E": {
+      "status": "completed",
+      "requested_field_ids": ["sessions", "unit_session_percentage", "units_ordered"],
+      "rows": [
+        [473, 21.35, 101]
+      ]
+    },
+    "F": {
+      "status": "completed",
+      "requested_field_ids": ["campaign_name", "cost", "conversions_value", "roas"],
+      "rows": []
+    }
+  },
+  "schedule_ids": {
+    "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
+    "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
+    "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
+    "D": "7c859ecafc2ddb8fc899dbfe83434d4b083ccd7de74d17559773ae40bf930174",
+    "E": "085509d691ab18f61261fcd2d5c6fbb0d0fc386c6648dc17185699100ef3354b",
+    "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
+  }
+}
