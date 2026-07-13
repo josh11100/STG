@@ -25,7 +25,34 @@
       "source_brief_id": "jarvis_dematter_2026-07-08_red",
       "action_implication": "Before any Dematter budget increase, verify organic ranks are stable; if organic is sliding, fix the listing before adding spend. The 'detangler for dogs' keyword specifically needs investigation (competitor movement, listing/PPC change) since it swings far more sharply than the SKU's other keywords in either direction - worth checking for a competing promotion or algorithm test bucket rather than assuming steady decline.",
       "retired_reason": null
-    },
+    }, 
+    {
+  "id": "L-2026-07-09-001",
+  "date_observed": "2026-07-09",
+  "subject": "Supermetrics schedule_id pipeline",
+  "asin": null,
+  "scope": "supermetrics_pipeline",
+  "learning": "Root cause identified 2026-07-13 — TWO stacked failures: (1) Supermetrics schedule_ids expire before morning collection regardless of gap length (both ~8h45m and ~4h gaps failed), so a submit-overnight/redeem-morning handoff can never work; (2) separately, the Amazon Ads data source (ds AA) hangs indefinitely on all report jobs — auth shows AUTHENTICATED and accounts list fine, but jobs never complete (43+ min), while Amazon SC (ASELL) and Google Ads (AW) complete normally. Fix (1) shipped: Evening Pre-Run v5 polls queries to completion at 11 PM and stores RESULTS in data/supermetrics_data.json; Morning Routine v10.6 reads the file, never redeems IDs. Fix (2) pending: Amazon Ads connection re-auth by Will at hub.supermetrics.com/token-management (connected via his Amazon login).",
+  "driver_type": "FAILURE",
+  "evidence": [
+    "supermetrics_ids.json submitted_at: 2026-07-08 23:04:59 PT",
+    "All 6 schedule_ids (A-F) returned RuntimeError 'schedule_id has expired' on first poll, 2026-07-09 morning run",
+    "2026-07-10: same failure repeated - schedule_ids submitted 2026-07-09 23:05:55 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll at the 2026-07-10 morning run (~8h45m gap again). 2nd consecutive day of total (6-for-6) outage - confirms this is a systemic gap-length issue, not a one-off.",
+    "2026-07-11: 3rd consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-10 23:06:57 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll. Pipeline has now produced zero usable Amazon Ads/Amazon SC/Google Ads data for 3 straight mornings.",
+    "2026-07-12: 4th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 03:34:10 PT (a much shorter ~4h gap than prior days), all 6 (A-F) still returned 'schedule_id has expired' on first poll. A shorter submission-to-collection gap did NOT fix it this time, which weakens the pure 'gap-length' theory and suggests the retention window may be shorter than assumed, or another systemic issue is at play.",
+    "2026-07-13: 5th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 23:06:22 PT (~8h44m gap, back to the longer pattern), all 6 (A-F) again returned 'schedule_id has expired' on first poll.",
+    "2026-07-13 (diagnosis): schedule_ids proven to be content-hashes of query parameters — identical IDs day-over-day for relative-date queries is EXPECTED, not evidence of failed resubmission; the old 'different hash = fix confirmed' check could never signal anything.",
+    "2026-07-13 (v5 first run): Evening Pre-Run v5 polled to completion — D (Amazon SC sales), E (SC sessions), F (Google Ads) completed and pushed real data to supermetrics_data.json; A/B/C (all ds AA) hung 43 min and never completed. Fresh-hash AA test job (custom dates, unique schedule_id) also hung — rules out stuck-job pinning; the AA data source itself is broken.",
+    "2026-07-13 (connection check): data_source_discovery ds AA returned authentication_status AUTHENTICATED and accounts_discovery listed all 4 marketplaces ('Connected via: Will Dryden') — token valid at metadata level while report generation fails silently. Supermetrics trace IDs if support is needed: fa024804dae1583ed581fa313a30d9db, 56214a5ea32dfa604bda663bef5521d6."
+  ],
+  "status": "HYPOTHESIS",
+  "confirmations": 5,
+  "last_confirmed": "2026-07-13",
+  "contradictions": 0,
+  "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
+  "action_implication": "ARCHITECTURAL RULE (survives this incident): never build a submit-now/collect-later handoff on Supermetrics schedule_ids — poll to completion in the same session and persist DATA, not IDs. DIAGNOSTIC RULE: if ds AA jobs hang >40 min while ASELL/AW complete normally, suspect the Amazon Ads connection in Supermetrics (re-auth at hub.supermetrics.com/token-management, must be the connecting user), not 'Amazon slowness' — AUTHENTICATED status does not prove report jobs work. Remaining action: Will's re-auth; verify with a live AA test query immediately after.",
+  "retired_reason": null
+},
     {
       "id": "L-2026-07-08-002",
       "date_observed": "2026-07-08",
@@ -154,3 +181,4 @@
     }
   ]
 }
+
