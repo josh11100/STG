@@ -1,1 +1,39 @@
-
+{
+  "agent": "033 Amazon",
+  "date": "2026-07-14",
+  "generated_at": "2026-07-14T12:36:00-07:00",
+  "posts": [
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "12:35 PM PT",
+      "type": "main",
+      "status": "RED",
+      "title": "Phase 1 — Keywords & TACOS",
+      "text": "[TEST] AMAZON Phase 1 — Keywords & TACOS — Jul 14, 2026 (2nd pass · duplicate guard DISABLED for testing)\n\nData: Supermetrics generated 2026-07-13 23:30 PT (~8h50m old, <12h). connectors 2026-07-14 07:55 PT. No new per-SKU Amazon data since 8:07 AM run — findings confirm prior staging.\n\nRED — Slicker Brush (B0FQ628KCH, LIQUIDATION): $1.05 spend today / $7.72 7d — violation of no-ad-funding rule (per L-2026-07-14-001). RED flag only; no bid/keyword/campaign rec per hard rule. Prior directive staged 8:07 AM — flag stands until Angelo confirms pause in Ad Console.\n\nNegative-keyword candidates: NOT STAGED — no keyword/search-term-level click data this run. Browser unavailable; Supermetrics C = ASIN-level 7d spend only.\n\nBid recs — Emergency Dematter (B0FQL56V99, YELLOW, ROAS 1.83 vs. 2.07 breakeven):\n- \"dematting tool for dogs\" (rank 5, vol 2,624): LOWER — organic top-5, trim paid to cut waste below breakeven\n- \"dematting comb for dogs\" (rank 25, vol 5,465): HOLD\n- \"detangler for dogs\" (rank 12, -4) / \"dog detangler\" (rank 13, -4): HOLD — organic sliding; per L-2026-07-08-001, don't cut into the gap\n(Rake Brush, Pin Brush, Detangling Treatment, Shampoo, Slicker: no H10 keyword coverage — pre-existing 3-of-6 tracker gap.)\n\nRank defense — Emergency Dematter: \"detangler for dogs\" (rank 12, -4) and \"dog detangler\" (rank 13, -4) — both 3+ spot drops. Plan: hold bids at current ceiling, don't cut. Per L-2026-07-08-001: keyword pair known-volatile; paid ROAS not collapsing alongside organic dip. TACOS 141.9% = no headroom to raise. Campaign ID/ceiling unavailable (no browser).\n\nTACOS guard (directional — 7d spend / single-day sales proxy; day-count mismatch):\n- Emergency Dematter: 141.9% RED HOT — reallocation discussion needed; Will + Angelo required (spend authority)\n- Detangling Treatment: 79.2% RED | Pin Brush: 52.1% RED | 4-in-1 Shampoo: 68.7% RED\n- Rake Brush: 11.2% OK | Slicker Brush: n/a (LIQUIDATE-VIOLATION)\nNo reallocation staged — data caveat holds; KILL-band pause (staged 8:07 AM) is the cleaner near-term lever.\nB0GT1H84JM unrecognized ASIN ($258.62/day, $1,405.94 7d, ROAS 0.00): prior directive stands — not duplicating.\n\nStaged by AMAZON routine (STG 033 v1.0, TEST MODE)"
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "12:35 PM PT",
+      "type": "main",
+      "status": "RED",
+      "title": "Phase 2 — Listings",
+      "text": "[TEST] AMAZON Phase 2 — Listings — Jul 14, 2026 (2nd pass · duplicate guard DISABLED for testing)\n\nListing-score triage: NOT PERFORMED — H10 Listing Analyzer still stale (last: 2026-07-06). No prioritized fix list stageable this run.\n\nReview-driven fixes: NOT STAGED. reviews.recent re-reviewed (15 entries). Emergency Dematter \"ineffective/didn't work\" theme: 2 confirmed instances with clear product attribution (Jun 19 2-star, Jul 6 2-star) — still below the 3+ threshold. Jun 24 1-star (product: null) not counted — product unattributed. No Gus cluster; review sheet unchanged since Jul 9; 0 new reviews this run.\n\nCOMPLIANCE FLAG — new this pass (not in 8:07 AM run):\nH10 product tracking shows: \"Skip The Groomer Detangling Spray\" — ASIN B0FQ4PY573\nTwo BRAND_RULES violations in the title:\n  1. \"Skip The Groomer\" prefix — Rule 1: brand name in logo/sign-off/URL only, never in product titles\n  2. \"Spray\" — Rule 2: banned for Detangling Treatment (never spray, mist, or spritz; application is always a small amount on the coat)\nNote: B0FQ4PY573 is NOT the tracked Detangling Treatment (B0GV5ZFLC2) — two different ASINs. Possible states: old/deprecated listing still live, duplicate, or mismatched H10 track.\n\nStructural — Will (Angelo has no Slack seat): Confirm whether B0FQ4PY573 is a live listing. If live: update title immediately — remove prefix and Spray.\nIf title requires full copy rewrite: routed to Anchor — Brief ID COMP-2026-07-14-001 (see #stg-creative-pipeline).\n\nPrior structural items still open (not yet 48h BLOCKED):\n- 7 unrecognized bundle ASINs from 8:07 AM run (per L-2026-07-08-003, ~4h elapsed)\n- B0FQFP2S9F FurFix De-Shed Brush from Jul 13 (~29h elapsed)\n\nHard rules held: Slicker Brush liquidation listing stands. Product moments unblurred. Walmart: out of scope v1.\n\nStaged by AMAZON routine (STG 033 v1.0, TEST MODE)"
+    },
+    {
+      "channel": "#stg-creative-pipeline",
+      "time": "12:35 PM PT",
+      "type": "route",
+      "status": null,
+      "title": "Anchor: COMP-2026-07-14-001",
+      "text": "Anchor: Brief ID COMP-2026-07-14-001\nPlatform: Amazon PDP (title + listing copy)\nTopic: Detangling Treatment title — remove banned prefix and Spray language\nProduct moment: ROUTINE (leave-in concentrate — never spray, mist, or spritz; application is a small amount on the coat)\nTarget keyword: detangling treatment for dogs\nASIN: B0FQ4PY573 (confirm live status with Will/Angelo first — may be deprecated)\nSource: AMAZON routine compliance sweep, Jul 14, 2026\nDo not act until Will confirms B0FQ4PY573 is a live listing (directive in #stg-ads-watchdog Phase 2, Jul 14 2nd pass).\nRouted by AMAZON routine (STG 033 v1.0, TEST MODE)"
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "12:36 PM PT",
+      "type": "closeout",
+      "status": null,
+      "title": "Close-out",
+      "text": "[TEST MODE] AMAZON pass complete (2nd pass, Jul 14): 0 negatives staged, 4 bid recs, 1 rank-defense plan, 0 listing fix lists, 1 directive routed (Anchor: COMP-2026-07-14-001 to #stg-creative-pipeline), 1 compliance flag (B0FQ4PY573 Skip The Groomer Detangling Spray — 2 title violations), 0 approved+logged, 0 blocked.\nBrowser connector unavailable — keyword-level negatives NOT staged.\nH10 Listing Analyzer stale (last 2026-07-06) — listing-score triage NOT performed.\nReview theme below 3+ threshold — no review-driven listing change staged.\nTACOS figures directional only — no reallocation staged; KILL-band pause from 8:07 AM is the cleaner lever.\nStep 3: prior staged items from 8:07 AM — 0 replies found, not yet 48h BLOCKED; no approvals logged.\nAngelo has no Slack seat — fallback @will per standing flag (same pattern as JJ — flag in every close-out until resolved).\n#stg-decisions-log: channel not found — Josh to create before go-live.\nAMAZON routine (STG 033 v1.0, TEST MODE)"
+    }
+  ]
+}
