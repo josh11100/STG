@@ -118,6 +118,28 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
 .spinner{width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--orange);border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
+/* ── CHANNEL REPORTS FEED ── */
+.ch-tabs{display:flex;gap:6px;flex-wrap:wrap;padding:10px 0 4px;}
+.ch-tab{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:5px 12px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;font-family:var(--font);transition:all .15s;}
+.ch-tab:hover{border-color:var(--teal);color:var(--navy);}
+.ch-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.ch-block{margin:12px 0 4px;}
+.ch-name{font-size:11px;font-weight:800;color:var(--navy);letter-spacing:.3px;padding:0 2px 6px;display:flex;align-items:center;gap:8px;}
+.ch-name .ch-count{font-size:10px;font-weight:600;color:var(--sub);}
+.msg{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 14px;margin-bottom:8px;}
+.msg-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;}
+.msg-badge{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:.3px;}
+.msg-agent{font-size:12.5px;font-weight:700;color:var(--navy);}
+.msg-time{font-size:10px;color:var(--sub);}
+.msg-text{font-size:12px;line-height:1.55;white-space:pre-wrap;word-break:break-word;color:var(--text);}
+.msg-text .mention{color:#1264a3;background:#e8f5fa;border-radius:3px;padding:0 3px;font-weight:600;}
+.thread-toggle{background:transparent;border:none;color:#1264a3;font-size:11px;font-weight:700;cursor:pointer;padding:6px 2px 0;font-family:var(--font);}
+.thread-toggle:hover{text-decoration:underline;}
+.thread-replies{display:none;margin-top:8px;border-left:3px solid var(--teal);padding-left:12px;}
+.thread-replies.open{display:block;}
+.thread-reply{padding:8px 0;border-bottom:1px dashed var(--border);}
+.thread-reply:last-child{border-bottom:none;}
+.rep-stale{font-size:10px;color:var(--amber);font-weight:700;}
 @media(max-width:860px){
   .sidebar{position:fixed;z-index:90;top:74px;bottom:0;box-shadow:4px 0 20px rgba(0,0,0,.4);}
   .sidebar.hidden{margin-left:-300px;}
@@ -181,6 +203,12 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
         <button class="nav-card" id="nav-daas" onclick="show('daas')">
       <span class="nav-num" style="font-size:8px;">DAAS<span class="nav-dot" id="dot-daas"></span></span>
       <span class="nav-text"><span class="nav-title">DAAS Report</span><span class="nav-desc">Patrick's TACOS &middot; true net &middot; SKU P&amp;L</span></span>
+    </button>
+
+    <div class="sb-label" style="margin-top:8px;">Agent Reports</div>
+    <button class="nav-card" id="nav-reports" onclick="show('reports')">
+      <span class="nav-num" style="font-size:9px;">💬<span class="nav-dot" id="dot-reports"></span></span>
+      <span class="nav-text"><span class="nav-title">Channel Reports</span><span class="nav-desc">Today's Slack posts — all agents, all channels</span></span>
     </button>
 
     <div class="sb-label" style="margin-top:8px;">Strategic</div>
@@ -466,6 +494,14 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div class="cards" id="rv-cards"></div>
           <div id="rv-alerts"></div>
           <div id="rv-recent"></div>
+        </div>
+
+        <!-- CHANNEL REPORTS (agent Slack mirror) -->
+        <div class="section" id="section-reports">
+          <div class="sec-head"><h2>Channel Reports — Agent Posts</h2><span class="tag" id="rep-tag">—</span><span class="when" id="rep-when"></span></div>
+          <div class="sec-desc">Mirror of what each agent posted to Slack this morning — same text, same threads. Each routine pushes its posts to <b>data/reports/&lt;agent&gt;.json</b> right after posting. Read-only: approvals still happen in Slack, not here.</div>
+          <div class="ch-tabs" id="rep-tabs"></div>
+          <div id="rep-feed"></div>
         </div>
 
         <!-- DAAS REPORT (Patrick Confirmed) -->
@@ -1337,6 +1373,7 @@ async function loadData(){
     $('error-state').style.display   = 'block';
     $('error-msg').textContent = err.message;
   }
+  loadReports(); // channel reports feed — independent of main data, never blocks
   startCountdown();
 }
 function startCountdown(){
@@ -1351,6 +1388,123 @@ function startCountdown(){
   countdownId = setInterval(tick, 1000);
 }
 loadData();
+
+// ─── CHANNEL REPORTS (agent Slack mirror) ────────────────────────────────────
+// Each routine pushes data/reports/<id>.json after posting to Slack.
+// To add a new agent (Jet, Score...), add its file id + color here — that's it.
+const REPORT_FILES = [
+  { id: 'morning',    color: '#F57E26' },  // JARVIS Morning Routine
+  { id: 'response',   color: '#15212E' },  // Response Routine
+  { id: 'blaze',      color: '#d2483f' },  // Blaze (044) paid ads watchdog
+  { id: 'amazon_033', color: '#4E2D82' },  // 033 Amazon (rename file when agent gets its name)
+  { id: 'radar',      color: '#2faa6a' }   // Radar (022)
+];
+const CH_ORDER = ['#stg-morning-brief','#stg-finance-alerts','#stg-ads-watchdog',
+  '#stg-content-alerts','#stg-creative-pipeline','#stg-inventory-alerts','#stg-decisions-log'];
+let REP_FILTER = 'ALL';
+
+const repStatusPill = s => {
+  if (!s) return '';
+  const S = String(s).toUpperCase();
+  const cls = (S==='RED'||S==='KILL'||S==='VIOLATION'||S==='BLOCKED') ? 'pill-crit'
+            : S==='YELLOW' ? 'pill-warn' : S==='GREEN' ? 'pill-ok' : 'pill-na';
+  return '<span class="pill '+cls+'">'+esc(S)+'</span>';
+};
+// escape first, then light Slack-mrkdwn: *bold*, @mentions
+function repText(t){
+  let h = esc(String(t||''));
+  h = h.replace(/\*([^*\n]{1,80})\*/g, '<b>$1</b>');
+  h = h.replace(/@([A-Za-z][\w-]*(?:\.[\w-]+)*)/g, '<span class="mention">@$1</span>');
+  return h;
+}
+const repInitials = id => ({morning:'JV',response:'RR',blaze:'BZ',amazon_033:'033',radar:'RD'}[id] || id.slice(0,3).toUpperCase());
+
+async function loadReports(){
+  const results = [];
+  await Promise.all(REPORT_FILES.map(async f => {
+    try{
+      const r = await fetch('./data/reports/' + f.id + '.json?_=' + Date.now(), {cache:'no-store'});
+      if (r.ok){ const j = await safeJson(r); j.__id = f.id; j.__color = f.color; results.push(j); }
+    }catch(e){}
+  }));
+  renderReports(results);
+}
+
+function renderReports(files){
+  const feed = $('rep-feed'), tabs = $('rep-tabs');
+  if (!feed) return;
+  const today = new Date().toLocaleDateString('en-CA', {timeZone:'America/Los_Angeles'}); // YYYY-MM-DD PT
+  if (!files.length){
+    tabs.innerHTML = '';
+    feed.innerHTML = alertBox('info','<b>No agent reports pushed yet.</b> Once each routine gets its mirror step, today\'s Slack posts appear here automatically — no Slack login needed.');
+    statusTag($('rep-tag'), null); dot('dot-reports',''); $('rep-when').textContent = '';
+    return;
+  }
+  files.sort((a,b) => String(a.generated_at||'').localeCompare(String(b.generated_at||'')));
+
+  // flatten: group main posts (with their thread replies) by channel
+  const byChannel = {};
+  let worst = 'GREEN', anyToday = false;
+  const sev = s => { const S=String(s||'').toUpperCase();
+    return (S==='RED'||S==='KILL'||S==='VIOLATION'||S==='BLOCKED')?3:S==='YELLOW'?2:S==='GREEN'?1:0; };
+  files.forEach(f => {
+    const stale = f.date && f.date !== today;
+    if (!stale) anyToday = true;
+    let current = null;
+    (f.posts||[]).forEach(p => {
+      const ch = p.channel || '#unknown';
+      if (p.type === 'thread' && current && current.channel === ch){
+        current.replies.push(p);
+      } else {
+        current = { agent:f.agent||f.__id, color:f.__color, stale, date:f.date,
+                    channel:ch, time:p.time||'', status:p.status||null, title:p.title||null,
+                    text:p.text||'', replies:[] };
+        (byChannel[ch] = byChannel[ch] || []).push(current);
+      }
+      if (!stale && sev(p.status) > sev(worst)) worst = ['','GREEN','YELLOW','RED'][sev(p.status)] || worst;
+    });
+  });
+
+  const channels = Object.keys(byChannel).sort((a,b) =>
+    (CH_ORDER.indexOf(a)+1||99) - (CH_ORDER.indexOf(b)+1||99));
+
+  tabs.innerHTML = ['ALL'].concat(channels).map(c =>
+    '<button class="ch-tab'+(REP_FILTER===c?' active':'')+'" onclick="REP_FILTER=\''+c+'\';renderReports(window.__REPORTS||[])">' +
+    esc(c==='ALL'?'All channels':c) + '</button>').join('');
+  window.__REPORTS = files;
+
+  feed.innerHTML = channels.filter(c => REP_FILTER==='ALL' || REP_FILTER===c).map(ch => {
+    const posts = byChannel[ch];
+    return '<div class="ch-block"><div class="ch-name">'+esc(ch)+
+      '<span class="ch-count">'+posts.length+' post'+(posts.length===1?'':'s')+'</span></div>' +
+      posts.map((p,i) => {
+        const tid = 'thr-'+esc(ch).replace(/[^a-z0-9]/gi,'')+'-'+i;
+        return '<div class="msg">' +
+          '<div class="msg-head">' +
+            '<span class="msg-badge" style="background:'+p.color+';">'+esc(repInitials((files.find(f=>f.agent===p.agent)||{}).__id||p.agent))+'</span>' +
+            '<span class="msg-agent">'+esc(p.agent)+'</span>' +
+            '<span class="msg-time">'+esc(p.time)+(p.stale?' · <span class="rep-stale">from '+esc(p.date||'?')+'</span>':'')+'</span>' +
+            repStatusPill(p.status) +
+            (p.title?'<span style="font-size:11px;color:var(--muted);font-weight:600;">'+esc(p.title)+'</span>':'') +
+          '</div>' +
+          '<div class="msg-text">'+repText(p.text)+'</div>' +
+          (p.replies.length ?
+            '<button class="thread-toggle" onclick="var t=document.getElementById(\''+tid+'\');t.classList.toggle(\'open\');this.textContent=t.classList.contains(\'open\')?\'▾ Hide '+p.replies.length+' repl'+(p.replies.length===1?'y':'ies')+'\':\'▸ '+p.replies.length+' repl'+(p.replies.length===1?'y':'ies')+' in thread\';">▸ '+p.replies.length+' repl'+(p.replies.length===1?'y':'ies')+' in thread</button>' +
+            '<div class="thread-replies" id="'+tid+'">' +
+              p.replies.map(r => '<div class="thread-reply"><div class="msg-head" style="margin-bottom:4px;">' +
+                '<span class="msg-time">'+esc(r.time||'')+'</span>'+repStatusPill(r.status)+
+                (r.title?'<span style="font-size:11px;color:var(--muted);font-weight:600;">'+esc(r.title)+'</span>':'')+
+                '</div><div class="msg-text">'+repText(r.text)+'</div></div>').join('') +
+            '</div>' : '') +
+        '</div>';
+      }).join('') + '</div>';
+  }).join('') || alertBox('info','No posts in this channel today.');
+
+  statusTag($('rep-tag'), anyToday ? worst : 'YELLOW');
+  dot('dot-reports', anyToday ? worst.toLowerCase() : 'yellow');
+  $('rep-when').textContent = anyToday ? 'Today · ' + files.length + ' agent file' + (files.length===1?'':'s')
+                                       : 'No posts dated today — showing last pushed';
+}
 </script>
 <script>
 (async function authorityPanel(){
