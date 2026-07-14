@@ -1,19 +1,57 @@
 {
-  "generated_at": "2026-07-13T14:48:06-07:00",
+  "generated_at": "2026-07-13T23:30:39-07:00",
   "query_date_yesterday": "2026-07-12",
   "query_date_sc": "2026-07-11",
   "queries": {
     "A": {
-      "status": "failed",
-      "error": "poll timeout 20m (polled extensively, still running)"
+      "status": "completed",
+      "requested_field_ids": ["cost", "roas"],
+      "rows": [
+        [586.72, 2.085]
+      ]
     },
     "B": {
-      "status": "failed",
-      "error": "poll timeout 20m (polled extensively, still running)"
+      "status": "completed",
+      "requested_field_ids": ["asin", "sku", "cost", "attributedSales14dSameSKU", "acos"],
+      "rows": [
+        ["B0FQL56V99", "3I-97VO-78X4", 300.75, 551.76, 54.5074],
+        ["B0GT1H84JM", "C8-VG2F-6714", 258.62, 0, 42.3433],
+        ["B0GV5ZFLC2", "8O-J63E-NJBR", 12.55, 0, 41.3101],
+        ["B0FQDHXSZ5", "7C-8EUF-79AF", 5.05, 0, null],
+        ["B0FQF2VTMJ", "W2-VFJG-FADR", 4.63, 0, null],
+        ["B0FQL16GH4", "6U-XVW9-2WBJ", 2.6, 0, null],
+        ["B0FQ628KCH", "6H-JCY0-JARS", 1.05, 0, null],
+        ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0.84, 0, 2.765],
+        ["B0GT5YFVB8", "YH-4KUE-9WQH", 0.42, 0, null],
+        ["B0GXLPJS4C", "STG-TANGLE-MAT-BUNDLE-V1", 0.21, 0, null],
+        ["B0GFGDTJ39", "99-8KLV-TU5S", 0, 0, null],
+        ["B0GT1MFCY5", "73-EY5E-UIBV", 0, 0, null],
+        ["B0GT1V7V8R", "HG-EGAG-1HO5", 0, 0, null],
+        ["B0GXH3JTK4", "STG-WASH-WEAR-BUNDLE-V2", 0, 0, null],
+        ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null]
+      ]
     },
     "C": {
-      "status": "failed",
-      "error": "poll timeout 20m (polled extensively, still running)"
+      "status": "completed",
+      "requested_field_ids": ["asin", "cost"],
+      "rows": [
+        ["B0FQL56V99", 1988.04],
+        ["B0GT1H84JM", 1405.94],
+        ["B0GV5ZFLC2", 57.17],
+        ["B0FQDHXSZ5", 39.55],
+        ["B0FQF2VTMJ", 35.27],
+        ["B0FQL16GH4", 12.36],
+        ["B0FQ628KCH", 7.72],
+        ["B0GY9WZWKH", 3.78],
+        ["B0GT5YFVB8", 0.69],
+        ["B0GXLPJS4C", 0.63],
+        ["B0GFGDTJ39", 0],
+        ["B0GRJ1366C", 0],
+        ["B0GT1MFCY5", 0],
+        ["B0GT1V7V8R", 0],
+        ["B0GXH3JTK4", 0],
+        ["B0GXLTZ495", 0]
+      ]
     },
     "D": {
       "status": "completed",
@@ -30,7 +68,7 @@
       "status": "completed",
       "requested_field_ids": ["sessions", "unit_session_percentage", "units_ordered"],
       "rows": [
-        [473, 21.35, 101]
+        [473, 21.14, 100]
       ]
     },
     "F": {
