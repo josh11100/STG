@@ -1,1 +1,31 @@
-
+{
+  "agent": "Blaze",
+  "date": "2026-07-14",
+  "generated_at": "2026-07-14T12:19:00-07:00",
+  "posts": [
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "12:19 PM PT",
+      "type": "main",
+      "status": "RED",
+      "title": "Blaze Ads Watchdog (3rd pass)",
+      "text": "[TEST] Blaze Ads Watchdog — Jul 14, 2026 (3rd pass · authority: CLASS_B_ONLY — STANDING_AUTHORITY_v1.0.md unsigned)\n\nRED Meta (live, account 2158768751536031, MTD Jul 1-14) — \"Save the Shave UGC Bill _UGC_070326\" spend $268.00, ROAS 0.75 — $75-KILL BREACH, STATUS: BLOCKED (7th day). ~$137.11 burned since first flag 7/10 (L-2026-07-10-001). @will re-tagged in 8:49 AM run — not duplicating that tag this pass.\nFATIGUE FLAG (new this pass): MTD ROAS decay now Day 3 of 3 consecutive — 0.84 -> 0.79 -> 0.75. Three-day decay rule triggered. Class B — recommending creative rotation via 022 pipeline (Story/Tailwind). Blaze does not brief creative in v1.0. Note: frequency 1.50 (not climbing), CTR ~6.0% (stable) — this flag is triggered by the 3-day ROAS decay rule only, not the frequency+CTR rule. Detail in thread.\nHygiene: duplicate-named campaign pair (IDs 120244295191790118 / 120244294919800118) still unresolved — PAUSED, $0 spend.\n\nGREEN Amazon PPC — Restored (Supermetrics A/B/C, generated 11 PM PT Jul 13, <12h). Slicker Brush violation ($1.05), B0GT1H84JM unrecognized ASIN ($258.62, 44% of account), and KILL-band SKUs (Detangling Treatment / Pin Brush / Rake Brush / 4-in-1 Shampoo) — all already staged by 033 + 8:49 AM Blaze run. A-2 check: $586.72 account spend vs 2x trailing-7d avg $1,014.62 — no breach.\n\nYELLOW Google — $0 spend, not running (expected). TikTok — no connector, manual visibility only.\n\n0 \"Blaze:\" directives found this run. No STG Jarvis persona post observed today.\n\nStaged by BLAZE routine (STG 044 v1.0, TEST MODE)"
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "12:19 PM PT",
+      "type": "thread",
+      "status": "RED",
+      "title": "FATIGUE FLAG detail — 022 pipeline note",
+      "text": "FATIGUE FLAG detail — Class B, routed to 022 pipeline\n\nTrigger rule: MTD ROAS 3 consecutive daily declines (0.84 -> 0.79 -> 0.75). Rule says recommend creative rotation after 3+ days of decay.\nCampaign: \"Save the Shave UGC Bill _UGC_070326\" (ID: 120248769281270118), ACTIVE, OUTCOME_SALES objective.\n\nWhat is not triggering fatigue: frequency 1.50 (flat, not climbing), CTR ~6.0% (stable). The classical frequency-climbing + CTR-falling signal is absent — this is a ROAS-decay-only trigger. The decay may reflect audience exhaustion or poor recent placements rather than creative fatigue specifically, but 3 days of MTD ROAS decline satisfies the rule.\n\nRecommendation: Concept refresh — route to 022 pipeline (Story/Tailwind) for a new hook or creative angle. Per the funnel playbook: visual-first, no price at top-of-funnel, proof over hype. Save the Shave is the hero frame.\n\nNote: this recommendation stands independent of the kill/revise decision on the campaign. If revised rather than killed, new creative is the natural next step. If killed, note the direction for the next launch.\n\nSTATUS: OPEN — routed to 022 pipeline (note only; no new campaign without Will's approval)\nBlaze routine (STG 044 v1.0, TEST MODE)"
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "12:20 PM PT",
+      "type": "main",
+      "status": null,
+      "title": "Blaze pass complete (close-out)",
+      "text": "[TEST] Blaze pass complete [authority: CLASS_B_ONLY]: 1 kill breach (BLOCKED — 7th day, ~$137.11 burned, staged 8:49 AM), 1 FATIGUE FLAG (new — 3-day ROAS decay confirmed, creative rotation note routed to 022 pipeline), 0 spend anomalies, 0 blind platforms, 0 directives answered, 1 blocked.\nMeta \"Save the Shave UGC Bill\": $268.00 MTD, ROAS 0.75 — BLOCKED. @will re-tagged in 8:49 AM run.\nAmazon PPC: all violations staged by 033/8:49 AM Blaze — not duplicated this pass.\nGoogle: $0/not running (expected). TikTok: no connector, manual only.\nDuplicate Meta campaign pair: unresolved hygiene (PAUSED, no spend impact).\n#stg-decisions-log: channel not found in workspace — note for Josh to create before go-live.\nNo STG Jarvis persona post today (last seen 7/13 06:29 PT — ignored per standing instruction).\nAngelo has no Slack seat — fallback to @will, per standing flag.\nSTANDING_AUTHORITY_v1.0.md: PENDING/unsigned -> all actions Class B this run.\nBlaze routine (STG 044 v1.0, TEST MODE)"
+    }
+  ]
+}
