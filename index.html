@@ -412,6 +412,31 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
   <div class="alert alert-info" id="auth-band-formula"></div>
 </div>
 
+        <!-- INVENTORY RUNWAY -->
+<div class="section" id="section-inventory">
+  <div class="sec-head">
+    <h2>Inventory Runway — Amazon FBA</h2>
+    <span class="tag" id="inv-tag">—</span>
+    <span class="when" id="inv-when"></span>
+  </div>
+  <div class="sec-desc">
+    Live Amazon on-hand ÷ trailing-14-day sales rate = days of supply.
+    <b>Status:</b> URGENT = hits Amazon's recommended minimum within 30 days ·
+    WATCH = within 60 · OK = beyond. Velocity comes from the daily Helium 10
+    profit emails; on-hand from the daily inventory pull.
+  </div>
+  <div id="inv-alerts"></div>
+  <div class="tbl-wrap" style="margin-top:8px;">
+    <div class="tbl-title">Days of supply per SKU (14-day trailing rate)</div>
+    <table id="inv-table"><thead><tr>
+      <th>SKU</th><th class="r">On-Hand</th><th class="r">Amazon Min.</th>
+      <th class="r">14d Rate/Day</th><th class="r">Days of Supply</th>
+      <th class="r">Hits Min.</th><th class="r">Stockout</th><th class="r">Status</th>
+    </tr></thead><tbody></tbody></table>
+  </div>
+  <div class="alert alert-info" id="inv-note" style="display:none;"></div>
+</div>
+
         <!-- GOOGLE ADS -->
         <div class="section" id="section-googleads">
           <div class="sec-head"><h2>Google Ads &mdash; Yesterday</h2><span class="tag" id="ga-tag">--</span></div>
@@ -1389,6 +1414,59 @@ loadData();
   } catch(e) {
     $a('auth-bands-table').querySelector('tbody').innerHTML =
       '<tr><td colspan="8">roas_bands.json unavailable (' + e + ')</td></tr>';
+  }
+})();
+</script>
+<script>
+(async function inventoryPanel(){
+  const $i = id => document.getElementById(id);
+  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
+  const tag = $i('inv-tag');
+  try {
+    const r = await fetch(RAW + 'data/inventory_data.json', {cache:'no-store'});
+    if (!r.ok) throw new Error('nofile');
+    const inv = await r.json();
+    const esc = s => String(s==null?'—':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const asof = new Date(inv.as_of);
+    const ageDays = (Date.now() - asof.getTime()) / 86400000;
+    $i('inv-when').textContent = 'on-hand as of ' + esc(inv.as_of) + (ageDays > 2 ? ' ⚠️ STALE' : '');
+
+    let worst = 'OK';
+    const alerts = [];
+    const rows = (inv.skus || []).map(s => {
+      const rate = s.rate_14d || 0;
+      const dos  = rate > 0 ? s.on_hand / rate : null;
+      const toMin = rate > 0 ? (s.on_hand - (s.amazon_min || 0)) / rate : null;
+      const dDate = d => d==null ? '—' : new Date(Date.now() + d*86400000).toISOString().slice(0,10);
+      const status = toMin == null ? 'NO SALES'
+        : toMin <= 30 ? 'URGENT' : toMin <= 60 ? 'WATCH' : 'OK';
+      if (status === 'URGENT') { worst = 'URGENT';
+        alerts.push(`${s.sku}: ~${Math.round(dos)} days of supply — hits Amazon min. level ${dDate(toMin)}, stockout ${dDate(dos)}. ${esc(s.note||'')}`);
+      } else if (status === 'WATCH' && worst !== 'URGENT') worst = 'WATCH';
+      const pill = status==='URGENT' ? 'pill-crit' : status==='WATCH' ? 'pill-warn' : status==='OK' ? 'pill-ok' : 'pill-na';
+      const liq = /slicker/i.test(s.sku||'');
+      return `<tr${status==='URGENT'?' style="background:rgba(192,0,0,.06)"':''}>`
+        + `<td><b>${esc(s.sku)}</b>${liq?' <span style="font-size:10px;color:var(--sub)">(liquidation)</span>':''}<br><span style="font-size:10px;color:var(--sub)">${esc(s.asin)}</span></td>`
+        + `<td class="r">${(s.on_hand??0).toLocaleString()}</td>`
+        + `<td class="r">${(s.amazon_min??0).toLocaleString()}</td>`
+        + `<td class="r">${rate.toFixed(1)}</td>`
+        + `<td class="r"><b>${dos==null?'—':Math.round(dos).toLocaleString()}</b></td>`
+        + `<td class="r">${dDate(toMin)}</td>`
+        + `<td class="r">${dDate(dos)}</td>`
+        + `<td class="r"><span class="pill ${pill}">${status}</span></td></tr>`;
+    });
+    $i('inv-table').querySelector('tbody').innerHTML = rows.join('');
+    tag.textContent = worst; tag.className = 'tag ' + (worst==='URGENT'?'tag-crit':worst==='WATCH'?'tag-warn':'tag-ok');
+    $i('inv-alerts').innerHTML = alerts.length
+      ? alerts.map(a=>`<div class="alert alert-crit">${a}</div>`).join('')
+      : '<div class="alert alert-ok">All SKUs beyond 60 days of supply at current run-rates.</div>';
+    if (inv.note) { const n=$i('inv-note'); n.style.display='block'; n.innerHTML='<b>Note:</b> '+esc(inv.note); }
+    if (ageDays > 2) $i('inv-alerts').insertAdjacentHTML('afterbegin',
+      '<div class="alert alert-warn"><b>On-hand data is '+Math.floor(ageDays)+' days old</b> — the daily inventory pull may have stopped. @josh</div>');
+  } catch(e) {
+    tag.textContent = 'NOT WIRED'; tag.className = 'tag tag-info';
+    $i('inv-alerts').innerHTML =
+      '<div class="alert alert-info"><b>Inventory pipeline not yet connected.</b> This panel reads data/inventory_data.json, which no routine writes yet. Last manual snapshot: InvRunway3.xlsx (on-hand as of Jul 10 — Rake Brush URGENT at ~41 days).</div>';
   }
 })();
 </script>
