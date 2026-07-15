@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-14 07:55:00 PT",
+  "last_updated": "2026-07-15 07:55:00 PT",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -17,11 +17,12 @@
         "2026-07-11: 'detangler for dogs' rank collapsed 7->23 (-16 spots), the largest single-day drop yet in this pattern (H10 Daily Keyword Tracker, report date 2026-07-10); other Dematter keywords ('dog detangler', 'dematting comb for dogs', 'dematting spray for dogs') all improved the same day, so this is isolated to one keyword, not a whole-listing decline. Paid ROAS impact still unverifiable - Supermetrics 3rd consecutive day of total outage",
         "2026-07-12: 'detangler for dogs' reversed sharply, 23->8 (+15 spots), the largest single-day recovery yet (H10 Daily Keyword Tracker, report date 2026-07-11) - the keyword is now more volatile in both directions than any other Dematter keyword. Paid ROAS impact still unverifiable - Supermetrics 4th consecutive day of total outage. This does not confirm the original 'decline' direction, but does reinforce that this specific keyword is unusually unstable; driver remains unidentified without paid-spend visibility.",
         "2026-07-13: 'detangler for dogs' and 'dog detangler' are absent entirely from today's Daily Keyword Tracker report (only 'dematting tool for dogs' and 'dematting comb for dogs' listed for this SKU) - report display gap, not a confirmed rank change either direction. Paid ROAS impact still unverifiable - Supermetrics 5th consecutive day of total outage.",
-        "2026-07-14: both keywords reappeared in the report (H10 Daily Keyword Tracker, report date 2026-07-13) - 'detangler for dogs' rank 12 (-4) and 'dog detangler' rank 13 (-4), both down vs H10's own day-over-day indicator. No Step 0 baseline available since both were absent the prior day. Paid ROAS is now verifiable again (Supermetrics pipeline resolved) - Dematter ROAS 1.83 (YELLOW, not RED) on $300.75 spend/$551.76 attributed sales (Supermetrics Query B, date 2026-07-12), so today's organic dip is NOT coinciding with a paid ROAS collapse - continues to weaken the original 'masking' hypothesis while confirming the keyword's volatility."
+        "2026-07-14: both keywords reappeared in the report (H10 Daily Keyword Tracker, report date 2026-07-13) - 'detangler for dogs' rank 12 (-4) and 'dog detangler' rank 13 (-4), both down vs H10's own day-over-day indicator. No Step 0 baseline available since both were absent the prior day. Paid ROAS is now verifiable again (Supermetrics pipeline resolved) - Dematter ROAS 1.83 (YELLOW, not RED) on $300.75 spend/$551.76 attributed sales (Supermetrics Query B, date 2026-07-12), so today's organic dip is NOT coinciding with a paid ROAS collapse - continues to weaken the original 'masking' hypothesis while confirming the keyword's volatility.",
+        "2026-07-15: 'detangler for dogs' organic rank dropped to 18 (-6 spots from 12, H10 Daily Keyword Tracker, report date 2026-07-14). Amazon Ads data unavailable today (Supermetrics A/B/C stalled again - regression from Jul 14 success), so paid ROAS impact cannot be verified. Continues the volatile pattern on this specific keyword (8->13->23->8->absent->12->18), now with rank 18 representing the lowest confirmed rank since the 2026-07-11 floor of 23."
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 3,
-      "last_confirmed": "2026-07-14",
+      "confirmations": 4,
+      "last_confirmed": "2026-07-15",
       "contradictions": 0,
       "source_brief_id": "jarvis_dematter_2026-07-08_red",
       "action_implication": "Before any Dematter budget increase, verify organic ranks are stable; if organic is sliding, fix the listing before adding spend. The 'detangler for dogs' keyword specifically needs investigation (competitor movement, listing/PPC change) since it swings far more sharply than the SKU's other keywords in either direction - worth checking for a competing promotion or algorithm test bucket rather than assuming steady decline. With paid ROAS now verifiable again and NOT collapsing alongside the organic swings, the 'masking' theory is weaker than originally framed - treat as two loosely-related signals rather than one causal chain until further evidence says otherwise.",
@@ -45,14 +46,15 @@
         "2026-07-13 (diagnosis): schedule_ids proven to be content-hashes of query parameters — identical IDs day-over-day for relative-date queries is EXPECTED, not evidence of failed resubmission; the old 'different hash = fix confirmed' check could never signal anything.",
         "2026-07-13 (v5 first run): Evening Pre-Run v5 polled to completion — D (Amazon SC sales), E (SC sessions), F (Google Ads) completed and pushed real data to supermetrics_data.json; A/B/C (all ds AA) hung 43 min and never completed. Fresh-hash AA test job (custom dates, unique schedule_id) also hung — rules out stuck-job pinning; the AA data source itself is broken.",
         "2026-07-13 (connection check): data_source_discovery ds AA returned authentication_status AUTHENTICATED and accounts_discovery listed all 4 marketplaces ('Connected via: Will Dryden') — token valid at metadata level while report generation fails silently. Supermetrics trace IDs if support is needed: fa024804dae1583ed581fa313a30d9db, 56214a5ea32dfa604bda663bef5521d6.",
-        "2026-07-14: for the first time since 7/8, Queries A/B/C (ds AA) all returned status 'completed' with real per-SKU data (account spend $586.72, ROAS 2.085; 15 SKU rows in Query B) - the predicted AA hang did NOT occur. This contradicts the 'AA data source is broken' driver as currently stated; suggests Will's re-auth (or another change) resolved it. One day of success is not yet conclusive - recommend confirming again tomorrow before declaring fix (2) complete."
+        "2026-07-14: for the first time since 7/8, Queries A/B/C (ds AA) all returned status 'completed' with real per-SKU data (account spend $586.72, ROAS 2.085; 15 SKU rows in Query B) - the predicted AA hang did NOT occur. This contradicts the 'AA data source is broken' driver as currently stated; suggests Will's re-auth (or another change) resolved it. One day of success is not yet conclusive - recommend confirming again tomorrow before declaring fix (2) complete.",
+        "2026-07-15: Queries A/B/C (ds AA) ALL FAILED again — 'Query stalled: data source reported running but no tasks scheduled' (Supermetrics Evening Pre-Run v5.2, generated_at 2026-07-14T23:09:08-07:00). The Jul 14 success was a single-day aberration; the pipeline has regressed to the same stall pattern. Fix (2) is NOT resolved. Queries D/E/F (ASELL, AW) completed normally, confirming the failure remains isolated to ds AA. Queries G/H/I (ASELL FBA fields) also submit_failed due to field availability error — a separate ASELL-side issue."
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 5,
-      "last_confirmed": "2026-07-13",
+      "confirmations": 6,
+      "last_confirmed": "2026-07-15",
       "contradictions": 1,
       "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
-      "action_implication": "ARCHITECTURAL RULE (survives this incident): never build a submit-now/collect-later handoff on Supermetrics schedule_ids — poll to completion in the same session and persist DATA, not IDs. DIAGNOSTIC RULE: if ds AA jobs hang >40 min while ASELL/AW complete normally, suspect the Amazon Ads connection in Supermetrics (re-auth at hub.supermetrics.com/token-management, must be the connecting user), not 'Amazon slowness' — AUTHENTICATED status does not prove report jobs work. UPDATE 2026-07-14: AA queries completed successfully today for the first time in 6 days - if this holds tomorrow, close out fix (2) as resolved and archive this learning.",
+      "action_implication": "ARCHITECTURAL RULE (survives this incident): never build a submit-now/collect-later handoff on Supermetrics schedule_ids — poll to completion in the same session and persist DATA, not IDs. DIAGNOSTIC RULE: if ds AA jobs hang >40 min while ASELL/AW complete normally, suspect the Amazon Ads connection in Supermetrics (re-auth at hub.supermetrics.com/token-management, must be the connecting user), not 'Amazon slowness' — AUTHENTICATED status does not prove report jobs work. UPDATE 2026-07-15: Jul 14 success was not sustained — pipeline stalled again on Jul 15. Re-auth by Will was either temporary or unrelated to the fix. Escalate to Supermetrics support with trace IDs if Will's re-auth does not hold. Additionally, Queries G/H/I (FBA inventory fields in ASELL) now also failing — separate field-availability error in Evening Pre-Run requiring ASELL query reconfiguration.",
       "retired_reason": null
     },
     {
@@ -92,7 +94,7 @@
       "last_confirmed": "2026-07-14",
       "contradictions": 0,
       "source_brief_id": "jarvis_unrecognized_2026-07-08_red",
-      "action_implication": "Launch checklist rule for Angelo: campaign live -> ASIN added to roas_bands.json same day. B0GT1H84JM specifically needs urgent identification (44% of account spend, unknown product) - recommend Will/Angelo identify this ASIN today. The 7 newly-seen bundle ASINs should be triaged next: confirm which are real launches vs. test/inactive listings and add the real ones to tracking.",
+      "action_implication": "Launch checklist rule for Angelo: campaign live -> ASIN added to roas_bands.json same day. B0GT1H84JM specifically needs urgent identification (44% of account spend, unknown product) - recommend Will/Angelo identify this ASIN today. The 7 newly-seen bundle ASINs should be triaged next: confirm which are real launches vs. test/inactive listings and add the real ones to tracking. NOTE: Slicker/unrecognized checks could not be run on 2026-07-15 (Supermetrics A/B/C stalled again) — next unrecognized-ASIN check depends on Evening Pre-Run AA pipeline fix.",
       "retired_reason": null
     },
     {
@@ -109,14 +111,15 @@
         "2026-07-11: $178.65 MTD spend (Jul 1-10), ROAS 0.38 - spend increased another $24.36 overnight, ROAS continuing to decline, still no kill/revise decision recorded. 3rd consecutive day flagged with no action taken.",
         "2026-07-12: $196.84 MTD spend (Jul 1-11), ROAS improved slightly to 0.52 on a strong single day (Jul 11: $18.19 spend, $34.18 purchase value, daily ROAS 1.88 - this was the Shopify order reported the same day). Still no kill/revise decision recorded. 4th consecutive day flagged with no action taken, despite one good day within the window.",
         "2026-07-13: $226.34 MTD spend (Jul 1-12), ROAS improved further to 0.84 on another strong single day (Jul 12: $29.50 spend, ~$87 purchase value, daily ROAS 2.96 - matches the 2-order Shopify day reported the same morning). Still no kill/revise decision recorded. 5th consecutive day flagged with no action taken - the campaign is trending toward breakeven (0.44 -> 0.52 -> 0.84) even though cumulative ROAS remains under 1.0.",
-        "2026-07-14: $253.27 MTD spend (Jul 1-13), ROAS ticked back down to 0.79 (from 0.84) - yesterday's (7/13) daily spend was $26.76 at a weak 0.37 daily ROAS, breaking the prior two days' strong-day pattern. Still no kill/revise decision recorded. 6th consecutive day flagged with no action taken."
+        "2026-07-14: $253.27 MTD spend (Jul 1-13), ROAS ticked back down to 0.79 (from 0.84) - yesterday's (7/13) daily spend was $26.76 at a weak 0.37 daily ROAS, breaking the prior two days' strong-day pattern. Still no kill/revise decision recorded. 6th consecutive day flagged with no action taken.",
+        "2026-07-15: ~$281.27 MTD spend (Jul 1-14), ROAS 0.71 - spend increased ~$28 overnight (Jul 14 daily spend ~$28, zero new attributed purchases), ROAS declined from 0.79 to 0.71. 7th consecutive day flagged with no kill/revise action taken. The two-day improvement trend (0.44->0.52->0.84) has fully reversed — cumulative ROAS has now dropped 0.84->0.79->0.71 for two consecutive sessions. Campaign is moving away from, not toward, breakeven."
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 5,
-      "last_confirmed": "2026-07-14",
+      "confirmations": 6,
+      "last_confirmed": "2026-07-15",
       "contradictions": 0,
       "source_brief_id": "jarvis_metaads_2026-07-10_red",
-      "action_implication": "A kill-threshold flag needs a same-day or next-day human decision (Will) to actually stop spend - repeated flags without follow-through just document the loss rather than prevent it. 6 days unresolved - recommend escalating directly to Will rather than re-flagging again. Cumulative ROAS has now ticked down for the first time (0.84->0.79) after 2 days of improvement - the breakeven trend is not consistent, weakening the case for 'hold and watch' vs. an outright kill/revise. Still Will's call.",
+      "action_implication": "A kill-threshold flag needs a same-day or next-day human decision (Will) to actually stop spend - repeated flags without follow-through just document the loss rather than prevent it. 7 days unresolved — cumulative ROAS now declining for 2nd consecutive day (0.84->0.79->0.71). This is no longer a 'hold and watch' situation — the breakeven trend reversed. Recommend immediate pause or restructure; escalate directly to Will rather than re-flagging again.",
       "retired_reason": null
     },
     {
@@ -170,14 +173,15 @@
       "learning": "Slicker Brush is flagged in roas_bands.json as liquidate=true with tacos_target 'LIQUIDATE' and an explicit note 'Any ad spend > $0 = immediate flag' (no ad funding). Despite this, it shows real ad spend today, the first day per-SKU Amazon Ads data has been available in 6 days - the underlying campaign/targeting was evidently never paused when the SKU was set to liquidate.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-14: Slicker Brush (B0FQ628KCH) spend $1.05, ROAS 0.00 (Supermetrics Query B, date 2026-07-12) - first per-SKU confirmation since the 5-day Supermetrics outage. Prior-day connectors_data.json (2026-07-13) already carried an unverified note referencing 'the Slicker Brush liquidation-SKU ad-spend violation flagged days ago' that could not be confirmed during the outage - this is the first hard data confirming it is still active."
+        "2026-07-14: Slicker Brush (B0FQ628KCH) spend $1.05, ROAS 0.00 (Supermetrics Query B, date 2026-07-12) - first per-SKU confirmation since the 5-day Supermetrics outage. Prior-day connectors_data.json (2026-07-13) already carried an unverified note referencing 'the Slicker Brush liquidation-SKU ad-spend violation flagged days ago' that could not be confirmed during the outage - this is the first hard data confirming it is still active.",
+        "2026-07-15: H10 Daily Keyword Tracker (report date 2026-07-14) shows 'slicker brush for dogs' as UNRANKED (organic change indicator -206, was rank 100 the prior day) - organic collapse consistent with liquidation trajectory. Amazon Ads data unavailable today (A/B/C stalled), so ad spend status for Jul 15 is unverified; last confirmed spend was $1.05 on 2026-07-14. Both organic collapse and ongoing (unverified) ad spend confirm the SKU is in advanced liquidation phase with no marketing support warranted."
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 1,
-      "last_confirmed": "2026-07-14",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-15",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-14_red",
-      "action_implication": "Angelo/Will should pause or remove ad targeting on B0FQ628KCH immediately - this is a liquidation SKU with an explicit no-ad-funding rule, and any spend on it is pure waste by definition.",
+      "action_implication": "Angelo/Will should pause or remove ad targeting on B0FQ628KCH immediately - this is a liquidation SKU with an explicit no-ad-funding rule, and any spend on it is pure waste by definition. Organic rank has now fully collapsed (UNRANKED as of 2026-07-15), which is consistent with liquidation but confirms no recovery thesis is viable.",
       "retired_reason": null
     },
     {
@@ -190,14 +194,15 @@
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-13 run: MTD period noted as 'Jul 1-12 (connector returned figures identical to yesterday's Jul 1-11 report - likely sync lag)', revenue $3,248.82",
-        "2026-07-14 run: MTD period Jul 1-13 still shows revenue $3,248.82 and COGS $1,441.47 - identical to the 2026-07-13 run's Jul 1-12 figures - despite Shopify reporting $87.35 (7/12) + $99.95 (7/13) in sales and H10 reporting $2,210.12 (7/12) + $1,759.05 (7/13) gross Amazon revenue in that window (profit_loss_quickbooks_account, periodStart 2026-07-01, periodEnd 2026-07-13). Operating expenses DID change day over day ($16,872.68 -> $18,810.32), so the lag is isolated to revenue/COGS, not the whole report."
+        "2026-07-14 run: MTD period Jul 1-13 still shows revenue $3,248.82 and COGS $1,441.47 - identical to the 2026-07-13 run's Jul 1-12 figures - despite Shopify reporting $87.35 (7/12) + $99.95 (7/13) in sales and H10 reporting $2,210.12 (7/12) + $1,759.05 (7/13) gross Amazon revenue in that window (profit_loss_quickbooks_account, periodStart 2026-07-01, periodEnd 2026-07-13). Operating expenses DID change day over day ($16,872.68 -> $18,810.32), so the lag is isolated to revenue/COGS, not the whole report.",
+        "2026-07-15 run: MTD period Jul 1-15 still shows revenue $3,248.82 and COGS $1,441.47 — identical for the 3rd consecutive daily run — while operating expenses updated again ($18,810.32 -> $23,269.57). H10 reported $1,537.79 gross Amazon revenue on Jul 14 alone, none of which appears in QB MTD. This is no longer consistent with a temporary sync lag — confirmed as a connector-level bug in the QuickBooks revenue/COGS feed. Escalated for technical investigation."
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 1,
-      "last_confirmed": "2026-07-14",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-15",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-14_red",
-      "action_implication": "Do not use QB MTD revenue as a same-day-accurate figure until this resolves - cross-check against Shopify/H10 native sales data instead. Flag to Will/bookkeeper to check QB's Amazon/Shopify bank-feed sync settings; if this repeats a 3rd day running, escalate as a connector-level bug rather than a one-off lag.",
+      "action_implication": "ESCALATED TO CONNECTOR BUG: Do not use QB MTD revenue or COGS as accurate figures until resolved — cross-check against Shopify/H10 native sales data. Action: @josh should check QuickBooks Online connector sync status, bank-feed import settings, and OAuth/API connection to Amazon Selling Partner and Shopify. The bookkeeper may need to manually import missing transactions to restore accuracy. Three consecutive days of unchanged revenue/COGS while expenses update normally = selective sync failure, not a data lag.",
       "retired_reason": null
     }
   ]
