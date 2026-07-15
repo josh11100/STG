@@ -1,88 +1,146 @@
 {
-  "generated_at": "2026-07-13T23:30:39-07:00",
-  "query_date_yesterday": "2026-07-12",
-  "query_date_sc": "2026-07-11",
+  "generated_at": "2026-07-14T23:09:08.957018-07:00Z",
+  "query_date_yesterday": "2026-07-13",
+  "query_date_sc": "2026-07-12",
   "queries": {
     "A": {
-      "status": "completed",
-      "requested_field_ids": ["cost", "roas"],
-      "rows": [
-        [586.72, 2.085]
-      ]
+      "status": "failed",
+      "requested_field_ids": [
+        "cost",
+        "roas"
+      ],
+      "rows": null,
+      "error": "Query stalled: data source reported running but no tasks scheduled"
     },
     "B": {
-      "status": "completed",
-      "requested_field_ids": ["asin", "sku", "cost", "attributedSales14dSameSKU", "acos"],
-      "rows": [
-        ["B0FQL56V99", "3I-97VO-78X4", 300.75, 551.76, 54.5074],
-        ["B0GT1H84JM", "C8-VG2F-6714", 258.62, 0, 42.3433],
-        ["B0GV5ZFLC2", "8O-J63E-NJBR", 12.55, 0, 41.3101],
-        ["B0FQDHXSZ5", "7C-8EUF-79AF", 5.05, 0, null],
-        ["B0FQF2VTMJ", "W2-VFJG-FADR", 4.63, 0, null],
-        ["B0FQL16GH4", "6U-XVW9-2WBJ", 2.6, 0, null],
-        ["B0FQ628KCH", "6H-JCY0-JARS", 1.05, 0, null],
-        ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0.84, 0, 2.765],
-        ["B0GT5YFVB8", "YH-4KUE-9WQH", 0.42, 0, null],
-        ["B0GXLPJS4C", "STG-TANGLE-MAT-BUNDLE-V1", 0.21, 0, null],
-        ["B0GFGDTJ39", "99-8KLV-TU5S", 0, 0, null],
-        ["B0GT1MFCY5", "73-EY5E-UIBV", 0, 0, null],
-        ["B0GT1V7V8R", "HG-EGAG-1HO5", 0, 0, null],
-        ["B0GXH3JTK4", "STG-WASH-WEAR-BUNDLE-V2", 0, 0, null],
-        ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null]
-      ]
+      "status": "failed",
+      "requested_field_ids": [
+        "asin",
+        "sku",
+        "cost",
+        "attributedSales14dSameSKU",
+        "acos"
+      ],
+      "rows": null,
+      "error": "Query stalled: data source reported running but no tasks scheduled"
     },
     "C": {
-      "status": "completed",
-      "requested_field_ids": ["asin", "cost"],
-      "rows": [
-        ["B0FQL56V99", 1988.04],
-        ["B0GT1H84JM", 1405.94],
-        ["B0GV5ZFLC2", 57.17],
-        ["B0FQDHXSZ5", 39.55],
-        ["B0FQF2VTMJ", 35.27],
-        ["B0FQL16GH4", 12.36],
-        ["B0FQ628KCH", 7.72],
-        ["B0GY9WZWKH", 3.78],
-        ["B0GT5YFVB8", 0.69],
-        ["B0GXLPJS4C", 0.63],
-        ["B0GFGDTJ39", 0],
-        ["B0GRJ1366C", 0],
-        ["B0GT1MFCY5", 0],
-        ["B0GT1V7V8R", 0],
-        ["B0GXH3JTK4", 0],
-        ["B0GXLTZ495", 0]
-      ]
+      "status": "failed",
+      "requested_field_ids": [
+        "asin",
+        "cost"
+      ],
+      "rows": null,
+      "error": "Query stalled: data source reported running but no tasks scheduled"
     },
     "D": {
       "status": "completed",
-      "requested_field_ids": ["asin", "ordered_product_sales"],
+      "requested_field_ids": [
+        "asin",
+        "ordered_product_sales"
+      ],
       "rows": [
-        ["B0FQL56V99", 1401.19],
-        ["B0FQF2VTMJ", 314.74],
-        ["B0FQDHXSZ5", 75.96],
-        ["B0GV5ZFLC2", 72.16],
-        ["B0FQL16GH4", 17.99]
-      ]
+        [
+          "B0FQL56V99",
+          1633.38
+        ],
+        [
+          "B0FQF2VTMJ",
+          391.18
+        ],
+        [
+          "B0FQDHXSZ5",
+          37.98
+        ],
+        [
+          "B0FQL16GH4",
+          17.99
+        ],
+        [
+          "B0GV5ZFLC2",
+          17.09
+        ]
+      ],
+      "error": null
     },
     "E": {
       "status": "completed",
-      "requested_field_ids": ["sessions", "unit_session_percentage", "units_ordered"],
+      "requested_field_ids": [
+        "sessions",
+        "unit_session_percentage",
+        "units_ordered"
+      ],
       "rows": [
-        [473, 21.14, 100]
-      ]
+        [
+          521,
+          21.69,
+          113
+        ]
+      ],
+      "error": null
     },
     "F": {
       "status": "completed",
-      "requested_field_ids": ["campaign_name", "cost", "conversions_value", "roas"],
-      "rows": []
+      "requested_field_ids": [
+        "campaign_name",
+        "cost",
+        "conversions_value",
+        "roas"
+      ],
+      "rows": [],
+      "error": null
+    },
+    "G": {
+      "status": "submit_failed",
+      "requested_field_ids": [
+        "asin",
+        "sku",
+        "afn_fulfillable_quantity",
+        "afn_inbound_working_quantity",
+        "afn_inbound_shipped_quantity",
+        "afn_inbound_receiving_quantity",
+        "afn_reserved_quantity",
+        "afn_unsellable_quantity"
+      ],
+      "rows": null,
+      "error": "Field 'afn_fulfillable_quantity' not available in ASELL data source"
+    },
+    "H": {
+      "status": "submit_failed",
+      "requested_field_ids": [
+        "asin",
+        "sku",
+        "item_name",
+        "price",
+        "quantity",
+        "fulfillment_channel",
+        "open_date",
+        "last_updated_date"
+      ],
+      "rows": null,
+      "error": "Field 'item_name' not available in ASELL data source"
+    },
+    "I": {
+      "status": "submit_failed",
+      "requested_field_ids": [
+        "asin",
+        "sku",
+        "item_name",
+        "status",
+        "your_price",
+        "buy_box_price",
+        "listing_suppressed"
+      ],
+      "rows": null,
+      "error": "Field 'item_name' not available in ASELL data source"
     }
   },
   "schedule_ids": {
-    "A": "cfaea56ee93e660a0903ff8b9c156d1b52c40c33a629d52be56acb2fb5c4cfcb",
-    "B": "351c98f122be5fa480ab78de733e900deb684b7279c82a8461898e0f1106ebea",
-    "C": "b5478f25f73c68d5d482ad27b76f81ee4233a13bfb5fc67f5bcb00ef7458465c",
-    "D": "cec066595773aa97bf801c5bd192757ec3de5b28633e091ecf40edc335451367",
-    "E": "111feb4a17856d1eea47110bc5c7277ac2df87797cafbb3a0e5a00af9348c13d",
-    "F": "b4772b679e1bdcf2f90cf1f8a1bcc5ffc5f62fc534e7194fe11be90142dd1661"
+    "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
+    "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
+    "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
+    "D": "b9b89233feb42031c8c1ceb9540941c2f74436a556ee14a35e0448d9137c4ea2",
+    "E": "0cec1d438d6309ed590ba94e8ca3a105c21be9a3215a486e6691e09850018b90",
+    "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
   }
 }
