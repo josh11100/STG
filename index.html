@@ -240,6 +240,10 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     </button>
 
     <div class="sb-label" style="margin-top:8px;">Agent Reports</div>
+    <button class="nav-card" id="nav-agentflags" onclick="show('agentflags')">
+      <span class="nav-num" style="font-size:9px;">🚩<span class="nav-dot" id="dot-agentflags"></span></span>
+      <span class="nav-text"><span class="nav-title">Agent Flags</span><span class="nav-desc">Problems + solutions — structured cards</span></span>
+    </button>
     <button class="nav-card" id="nav-reports" onclick="show('reports')">
       <span class="nav-num" style="font-size:9px;">💬<span class="nav-dot" id="dot-reports"></span></span>
       <span class="nav-text"><span class="nav-title">Channel Reports</span><span class="nav-desc">Today's Slack posts — all agents, all channels</span></span>
@@ -595,6 +599,12 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div id="rv-recent"></div>
         </div>
 
+        <!-- AGENT FLAGS (structured problem/solution cards) -->
+        <div class="section" id="section-agentflags">
+          <div class="sec-head"><h2>Agent Flags — Problems + Solutions</h2><span class="tag" id="af-tag">—</span></div>
+          <div class="sec-desc">Structured flag cards from Blaze and 033. Each card shows the problem, the solution, the exact action, and the cost of inaction. Approvals still happen in Slack.</div>
+          <div id="agent-flags-panel"></div>
+        </div>
         <!-- CHANNEL REPORTS (agent Slack mirror) -->
         <div class="section" id="section-reports">
           <div class="sec-head"><h2>Channel Reports — Agent Posts</h2><span class="tag" id="rep-tag">—</span><span class="when" id="rep-when"></span></div>
@@ -1473,6 +1483,7 @@ async function loadData(){
     $('error-msg').textContent = err.message;
   }
   loadReports(); // channel reports feed — independent of main data, never blocks
+  loadAgentFlags();
   startCountdown();
 }
 function startCountdown(){
@@ -1487,6 +1498,58 @@ function startCountdown(){
   countdownId = setInterval(tick, 1000);
 }
 loadData();
+
+// ─── AGENT FLAGS PANEL ───────────────────────────────────────────────────────
+const FLAG_FILES = [
+  { id: 'blaze',      label: 'Blaze',      color: '#d2483f' },
+  { id: 'amazon_033', label: '033 Amazon', color: '#4E2D82' }
+];
+
+async function loadAgentFlags() {
+  const results = [];
+  await Promise.all(FLAG_FILES.map(async f => {
+    try {
+      const r = await fetch('./data/reports/' + f.id + '.json?_=' + Date.now(), {cache:'no-store'});
+      if (r.ok) {
+        const j = await safeJson(r);
+        j.__id = f.id; j.__label = f.label; j.__color = f.color;
+        results.push(j);
+      }
+    } catch(e) {}
+  }));
+  renderAgentFlags(results);
+}
+
+function renderAgentFlags(files) {
+  const panel = $('agent-flags-panel');
+  if (!panel) return;
+  if (!files.length) {
+    panel.innerHTML = '<div class="alert alert-info">No agent flag data yet.</div>';
+    return;
+  }
+  let html = '';
+  files.forEach(f => {
+    const flags = f.flags || [], briefs = f.briefs || [], summary = f.summary || {};
+    html += `<div style="margin:18px 0 10px;"><div style="display:flex;align-items:center;gap:10px;border-bottom:2px solid ${f.__color};padding-bottom:8px;margin-bottom:12px;"><span style="background:${f.__color};color:#fff;font-size:11px;font-weight:800;padding:3px 9px;border-radius:6px;">${esc(f.__label)}</span><span style="font-size:11px;color:var(--muted);">${esc(f.generated_at ? f.generated_at.replace('T',' ').slice(0,16)+' PT' : f.date || '')}</span>${summary.authority ? `<span style="font-size:10px;color:var(--muted);">Authority: ${esc(summary.authority)}</span>` : ''}<span style="margin-left:auto;font-size:11px;color:var(--muted);">${summary.kills ? summary.kills+' kill · ' : ''}${summary.solutions ? summary.solutions+' solution(s) · ' : ''}${summary.blocked ? `<span style="color:var(--amber)">${summary.blocked} blocked</span>` : ''}</span></div>`;
+    if (flags.length) {
+      flags.forEach(flag => {
+        const isRed = String(flag.status||'').toUpperCase()==='RED';
+        const bc = isRed ? 'var(--red)' : 'var(--amber)', bg = isRed ? '#fdf3f2' : '#fffbf0';
+        html += `<div style="background:${bg};border:1px solid ${bc};border-left:4px solid ${bc};border-radius:8px;padding:14px 16px;margin-bottom:10px;"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px;"><div><span class="pill ${isRed ? 'pill-crit' : 'pill-warn'}" style="margin-right:6px;">${esc(flag.status||'')}</span><span style="font-size:11px;font-weight:600;color:var(--muted);">${esc(flag.platform||'')}${flag.phase ? ' · '+esc(flag.phase) : ''}</span></div><span class="pill pill-na" style="font-size:9px;">${esc(flag.slack_status||'OPEN')}</span></div><div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">${esc(flag.title||'')}</div><div style="font-size:12px;color:var(--text);margin-bottom:10px;line-height:1.5;"><b>🔴 Problem:</b> ${esc(flag.problem||'')}</div><div style="background:#fff;border:1px solid ${bc};border-radius:6px;padding:10px 13px;margin-bottom:8px;"><div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px;">💡 Solution</div><div style="font-size:12px;color:var(--text);margin-bottom:6px;">${esc(flag.solution||'')}</div><div style="font-size:11px;color:var(--muted);line-height:1.8;"><b>⚡ Action:</b> ${esc(flag.action||'')}<br><b>⏱ Deadline:</b> ${esc(flag.deadline||'')} — ${esc(flag.deadline_cost||'')}<br><b>👤 Approver:</b> ${esc(flag.approver||'@will')}</div></div><div style="font-size:10px;color:var(--sub);">Brief ID: ${esc(flag.brief_id||'')}</div></div>`;
+      });
+    } else {
+      html += '<div class="alert alert-ok" style="margin-bottom:10px;">✅ No flags this run.</div>';
+    }
+    if (briefs && briefs.length) {
+      html += '<div style="margin:14px 0 6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);">Creative Briefs Staged</div>';
+      briefs.forEach(brief => {
+        html += `<div style="background:#f0f4ff;border:1px solid #4a76d4;border-left:4px solid #4a76d4;border-radius:8px;padding:14px 16px;margin-bottom:10px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;"><span class="pill" style="background:#4a76d4;color:#fff;">BRIEF STAGED</span><span style="font-size:11px;color:var(--muted);">${esc(brief.platform||'')} · ${esc(brief.funnel_stage||'')} · ${esc(brief.audience||'')}</span></div><div style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:3px;">🎯 ${esc(brief.concept||'')}</div><div style="font-size:12px;color:var(--text);margin-bottom:8px;font-style:italic;">${esc(brief.one_liner||'')}</div><div style="font-size:11px;color:var(--muted);line-height:1.8;"><b>📊 Triggered by:</b> ${esc(brief.trigger||'')}<br><b>⏱ Hook:</b> ${esc(brief.hook||'')}<br><b>🧪 Test variable:</b> ${esc(brief.test_variable||'TBD')}<br><b>💀 Kill criteria:</b> ${esc(brief.kill_criteria||'$75 MTD + ROAS < 1.0')}<br><b>👤 Approver:</b> ${esc(brief.approver||'@will')} — reply approved in Slack</div></div>`;
+      });
+    }
+    html += '</div>';
+  });
+  panel.innerHTML = html;
+}
 
 // ─── CHANNEL REPORTS (agent Slack mirror) ────────────────────────────────────
 // Each routine pushes data/reports/<id>.json after posting to Slack.
