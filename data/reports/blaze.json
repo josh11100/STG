@@ -1,1 +1,111 @@
-{"agent":"Blaze","date":"2026-07-15","generated_at":"2026-07-15T11:20:00-07:00","authority":"CLASS_B_ONLY","summary":{"status":"RED","kills":1,"briefs":2,"solutions":1,"blind_platforms":1,"blocked":1},"flags":[{"id":"blaze_flag_20260715_001","status":"RED","platform":"Meta","title":"Save the Shave UGC Bill — Kill Breach Day 8","problem":"MTD spend $284.69, ROAS 0.70 — 8 consecutive days below 1.0 threshold. $153.80 burned since first flag Jul 9.","solution":"Kill or revise immediately — every day costs ~$22 at current burn rate.","action":"In Meta Ads Manager → Campaigns → Save the Shave UGC Bill → Pause campaign. Or reply revise with new creative direction.","deadline":"2026-07-16","deadline_cost":"$22/day burning","approver":"@will","brief_id":"blaze_rec_save_the_shave_2026-07-15","slack_status":"BLOCKED"}],"briefs":[{"id":"blaze_ten-oclock-mat_2026-07-15","status":"STAGED","concept":"Ten O'Clock Mat","one_liner":"Real owner, real mat, real Tuesday — Detangling Treatment saves the week","trigger":"Save the Shave kill breach — replacement concept","platform":"Meta Reels","funnel_stage":"TOF","audience":"Doodle owners 28-45","hook":"Kathy holds up a matted ear, looks at camera — Its Tuesday.","test_variable":"Hook only — chaos vs calm opening","kill_criteria":"$75 MTD + ROAS < 1.0","approver":"@will","slack_status":"STAGED"}],"posts":[{"channel":"#stg-ads-watchdog","time":"11:20 AM PT","type":"main","status":"RED","title":"Blaze Ads Watchdog","text":"Save the Shave UGC Bill — Day 8 kill breach. MTD $284.69, ROAS 0.70. Staged for @will."}]}
+{
+  "agent": "Blaze",
+  "date": "2026-07-15",
+  "generated_at": "2026-07-15T15:35:00-07:00",
+  "authority": "CLASS_B_ONLY",
+  "summary": {
+    "status": "RED",
+    "kills": 1,
+    "briefs": 3,
+    "solutions": 1,
+    "blind_platforms": 1,
+    "blocked": 1
+  },
+  "flags": [
+    {
+      "id": "blaze_flag_20260715_001",
+      "status": "RED",
+      "platform": "Meta",
+      "title": "Save the Shave UGC Bill — Kill Breach Day 7",
+      "problem": "MTD spend $284.69, ROAS 0.70 — 7 consecutive days below 1.0 threshold. ~$153.80 burned since first flag Jul 9.",
+      "solution": "Kill or revise immediately — every day costs ~$28.45 at current burn rate.",
+      "action": "In Meta Ads Manager → Campaigns → 'Save the Shave UGC Bill _UGC_070326' → Pause campaign. Or reply 'revise' with new creative direction.",
+      "deadline": "2026-07-16",
+      "deadline_cost": "~$28/day burning",
+      "approver": "@will",
+      "brief_id": "blaze_rec_savetheshave_kill_2026-07-15",
+      "slack_status": "BLOCKED"
+    }
+  ],
+  "briefs": [
+    {
+      "id": "blaze_ten-oclock-mat_2026-07-15",
+      "status": "STAGED",
+      "concept": "Ten O'Clock Mat",
+      "one_liner": "A dog owner finds a mat just before bed — no groomer available, one product at hand.",
+      "trigger": "$75-kill breach replacement — Save the Shave UGC Bill MTD ROAS 0.70, $284.69 spend (Jul 1–14)",
+      "platform": "Meta",
+      "funnel_stage": "TOF",
+      "audience": "Doodle owners 25–54, dog grooming / pet health interest",
+      "hook": "CU: fingers part fur revealing a tight mat near ear — evening home light. Spoken: 'It's almost ten. And there's a mat.'",
+      "test_variable": "Hook + concept vs. Save the Shave UGC Bill baseline",
+      "kill_criteria": "$75 MTD + ROAS < 1.0",
+      "approver": "@will",
+      "slack_status": "STAGED"
+    },
+    {
+      "id": "blaze_she-almost-got-the-shave_2026-07-15",
+      "status": "STAGED",
+      "concept": "She Almost Got the Shave",
+      "one_liner": "Kathy narrator, RESCUE scenario — tests whether voice/tone is driving ROAS decay vs. audience saturation.",
+      "trigger": "FATIGUE FLAG — MTD ROAS Day 5 decay: 0.84→0.79→0.75→0.71→0.70",
+      "platform": "Meta",
+      "funnel_stage": "TOF",
+      "audience": "Doodle owners 25–54, same segment as failing campaign",
+      "hook": "Wide: doodle mid-brush, coat held back. Kathy VO: 'She almost got the shave.' Text: 'Almost.'",
+      "test_variable": "Narrator voice/tone (Kathy VO vs. UGC creator Bill)",
+      "kill_criteria": "$75 MTD + ROAS < 1.0",
+      "approver": "@will",
+      "slack_status": "STAGED"
+    },
+    {
+      "id": "blaze_bath-day-bet_2026-07-15",
+      "status": "STAGED",
+      "concept": "Bath Day Bet",
+      "one_liner": "We cut the price in half on the only bottle that actually finishes the job.",
+      "trigger": "URGENT directive from @josh — Jul 15, 2026 · 50% off confidence-hook · 4-in-1 Shampoo (B0FQL16GH4)",
+      "platform": "Meta Reels",
+      "funnel_stage": "MOF/BOF",
+      "audience": "Warm + retargeting · Doodle and long-coat dog owners 25–54",
+      "hook": "Dog post-bath, damp coat not-quite-right · owner reaches for one bottle. Kathy (amused): 'Most bath days end the same way.' Text: 'Not anymore.'",
+      "test_variable": "Confidence-hook / late offer reveal — first 4-in-1 paid brief, no baseline",
+      "kill_criteria": "$75 MTD + ROAS < 1.0",
+      "approver": "@will",
+      "slack_status": "STAGED"
+    }
+  ],
+  "posts": [
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "11:19 AM PT",
+      "type": "main",
+      "status": "RED",
+      "title": "Blaze v1.1 Ads Watchdog — Jul 15, 2026",
+      "text": "Save the Shave UGC Bill — $75-KILL BREACH Day 7. MTD $284.69, ROAS 0.70. Amazon PPC BLIND. Staged for @will."
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "11:20 AM PT",
+      "type": "main",
+      "status": "RED",
+      "title": "Blaze v1.1 close-out",
+      "text": "1 kill breach (BLOCKED Day 7), 2 briefs staged, 1 solution posted, 1 blind platform, 1 blocked."
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "3:35 PM PT",
+      "type": "brief",
+      "status": null,
+      "title": "URGENT bypass — Bath Day Bet (blaze_bath-day-bet_2026-07-15)",
+      "text": "URGENT directive processed. 4-in-1 Shampoo confidence-hook at 50% off. 2 compliance flags fixed: Slicker removed from paid (liquidation rule), price-led hook moved to 0:31."
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "time": "3:35 PM PT",
+      "type": "main",
+      "status": null,
+      "title": "Blaze v1.1 URGENT bypass close-out",
+      "text": "URGENT bypass complete. 1 directive processed. 1 brief staged (bath-day-bet). Slicker liquidation compliance fix applied. TikTok no connector — Meta Reels only."
+    }
+  ]
+}
