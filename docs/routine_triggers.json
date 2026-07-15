@@ -22,5 +22,9 @@
   "spark": {
     "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01B431roe7qLdHPJABc1cic9/fire",
     "token": "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"
+  },
+  "blaze":{
+    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01VqrLZkWfnTGYjmuatnZRoE/fire",
+    "token": "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"
   }
 }
