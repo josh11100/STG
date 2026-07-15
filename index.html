@@ -146,6 +146,40 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
   .topbar .meta{display:none;}
   .menu-toggle{display:block;margin-left:auto;}
 }
+
+/* ── SUPPLY CHAIN SECTION ── */
+.sku-block{background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden;}
+.sku-header{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.sku-header.crit{background:#fdf2f1;border-bottom:3px solid var(--red);}
+.sku-header.warn{background:#fffbf0;border-bottom:3px solid var(--amber);}
+.sku-header.ok{background:#f0fbf5;border-bottom:3px solid var(--green);}
+.sku-header.hold{background:#f0f4ff;border-bottom:3px solid #4a76d4;}
+.sku-header.stop{background:#fdf0ff;border-bottom:3px solid #4E2D82;}
+.sku-title{font-size:14px;font-weight:700;color:var(--navy);}
+.sku-sub{font-size:10px;color:var(--muted);}
+.sku-body{padding:14px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;}
+.sku-stat-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;font-weight:600;}
+.sku-stat-val{font-size:16px;font-weight:700;margin-top:2px;color:var(--navy);}
+.sku-stat-val.down{color:var(--red);}.sku-stat-val.warn{color:var(--amber);}.sku-stat-val.up{color:var(--green);}
+.sku-stat-sub{font-size:10px;color:var(--muted);margin-top:2px;}
+.reorder-box{margin:0 16px 14px;padding:10px 14px;border-radius:6px;font-size:12px;line-height:1.5;}
+.rb-crit{background:#fbe6e3;border-left:4px solid var(--red);color:#7a2b24;}
+.rb-warn{background:#fff3cd;border-left:4px solid var(--amber);color:#7a5c00;}
+.rb-ok{background:#e3f5ec;border-left:4px solid var(--green);color:#1d6e46;}
+.rb-stop{background:#f3eeff;border-left:4px solid #4E2D82;color:#4a2070;}
+.rb-hold{background:#e8f0fe;border-left:4px solid #4a76d4;color:#1a4896;}
+.col-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+.col-card h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;}
+.col-card p{font-size:12px;line-height:1.55;color:var(--text);}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px;}
+@media(max-width:900px){.three{grid-template-columns:1fr;}}
+.formula{background:var(--card2,#fafbfc);border:1px dashed var(--border);border-radius:6px;padding:8px 12px;font-family:Consolas,Menlo,monospace;font-size:11px;color:var(--navy);margin:6px 0;}
+.sc-note{font-size:11px;color:var(--muted);margin:6px 2px;line-height:1.5;}
+.sc-foot{margin:24px 0 0;font-size:11px;color:var(--muted);line-height:1.7;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:13px 16px;}
+.sc-foot strong{color:var(--navy);}
+.pill-hold{background:#e8f0fe;color:#1a4896;}.pill-stop{background:#f3eeff;color:#4a2070;}
+.live-badge{display:inline-block;font-size:8px;font-weight:800;padding:1px 5px;border-radius:6px;background:#e3f5ec;color:#1d7d4d;vertical-align:middle;margin-left:4px;letter-spacing:.5px;}
+.manual-badge{display:inline-block;font-size:8px;font-weight:800;padding:1px 5px;border-radius:6px;background:#f0f2f5;color:#8a93a0;vertical-align:middle;margin-left:4px;letter-spacing:.5px;}
 </style>
 </head>
 <body>
@@ -215,6 +249,10 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
     <button class="nav-card" id="nav-bizhealth" onclick="show('bizhealth')">
       <span class="nav-num" style="font-size:9px;">BH<span class="nav-dot" id="dot-bizhealth"></span></span>
       <span class="nav-text"><span class="nav-title">Business Health</span><span class="nav-desc">Revenue &middot; margins &middot; inventory &middot; brand &middot; S&amp;S</span></span>
+    </button>
+    <button class="nav-card" id="nav-inventory" onclick="show('inventory')">
+      <span class="nav-num" style="font-size:9px;">SC<span class="nav-dot" id="dot-inventory"></span></span>
+      <span class="nav-text"><span class="nav-title">Inventory + Supply Chain</span><span class="nav-desc">Live FBA position &middot; POs &middot; lead times &middot; cash plan</span></span>
     </button>
   </div>
 
@@ -440,29 +478,90 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
   <div class="alert alert-info" id="auth-band-formula"></div>
 </div>
 
-        <!-- INVENTORY RUNWAY -->
+        <!-- INVENTORY + SUPPLY CHAIN -->
 <div class="section" id="section-inventory">
-  <div class="sec-head">
-    <h2>Inventory Runway — Amazon FBA</h2>
-    <span class="tag" id="inv-tag">—</span>
-    <span class="when" id="inv-when"></span>
+  <div class="sec-head"><h2>Inventory + Supply Chain — Replenishment Control Tower</h2><span class="tag" id="ct-tag">—</span><span class="tag tag-live" id="sc-live-tag">LOADING</span><span class="when" id="ct-when"></span></div>
+  <div class="sec-desc">Live Amazon FBA position (daily, from <b>data/inventory_data.json</b> — Morning Routine v10.7 Step 9b) merged with the supply-chain plan in <b>data/supply_chain.json</b> (Patrick/Marcelo — POs, vessels, lead times, WSA, cash). Inventory is depleted by forecast sales before inbound is added; inbound counts only from its Amazon-sellable date. Brush ocean direct-to-Amazon skips the WSA leg.</div>
+  <div id="sc-banners"></div>
+  <div id="sc-headline"></div>
+  <div class="cards" id="ct-cards"></div>
+
+  <div class="sec-head"><h2>1 — Inventory Risk by SKU</h2><span class="tag tag-live" id="risk-tag">DAILY · LIVE</span><span class="when" id="risk-when"></span></div>
+  <div class="tbl-wrap">
+    <table id="risk-table">
+      <thead><tr><th>Product</th><th class="r">Amazon Sellable</th><th class="r">Amazon Recommended</th><th class="r">Fcst Units/Day</th><th class="r">Days to Recommended</th><th class="r">WSA Available</th><th>Next Inbound (sellable date)</th><th>Recommended Action</th><th>Status</th></tr></thead>
+      <tbody></tbody>
+    </table>
   </div>
-  <div class="sec-desc">
-    Live Amazon on-hand ÷ trailing-14-day sales rate = days of supply.
-    <b>Status:</b> URGENT = hits Amazon's recommended minimum within 30 days ·
-    WATCH = within 60 · OK = beyond. Velocity comes from the daily Helium 10
-    profit emails; on-hand from the daily inventory pull.
+  <div class="sc-note">⚠ <b>SKUs below the Amazon recommended level are highlighted red.</b> "Amazon Recommended" is Seller Central's recommended minimum — it moves with velocity; refresh weekly in supply_chain.json. <b>Fcst Units/Day is Amazon's own implied forecast</b> from the weekly plan. LIVE badge = this morning's FBA pull; PLAN badge = last manual snapshot.</div>
+
+  <div class="sec-head"><h2>2 — Product &amp; Component Lead-Time Master</h2><span class="tag tag-warn">PATRICK MAINTAINS</span><span class="when">WSA + Amazon legs listed for every finished product</span></div>
+  <div class="tbl-wrap">
+    <table id="lt-table">
+      <thead><tr><th>Product / Component</th><th>Production</th><th>Origin Handling</th><th>Transit</th><th>Port / Delivery</th><th>WSA Processing</th><th>Amazon Transfer + Receiving</th><th class="r">Total Planning Lead Time</th><th class="r">Last Confirmed</th><th>Owner</th></tr></thead>
+      <tbody></tbody>
+    </table>
   </div>
-  <div id="inv-alerts"></div>
-  <div class="tbl-wrap" style="margin-top:8px;">
-    <div class="tbl-title">Days of supply per SKU (14-day trailing rate)</div>
-    <table id="inv-table"><thead><tr>
-      <th>SKU</th><th class="r">On-Hand</th><th class="r">Amazon Min.</th>
-      <th class="r">14d Rate/Day</th><th class="r">Days of Supply</th>
-      <th class="r">Hits Min.</th><th class="r">Stockout</th><th class="r">Status</th>
-    </tr></thead><tbody></tbody></table>
+  <div class="sc-note">📌 <b>WSA (~1 wk) + Amazon transfer &amp; receiving (~1 wk) apply to every finished product</b>, not to components. Liquids are <b>18 wks from order, no stage breakdown</b>; 6-wk accelerated blocked until the missing ingredient is in stock (Craig). Bottles/lids: 3-wk lead assumes stock — special run up to <b>120 days</b>. Patrick reports lead-time changes to Josh same-day.</div>
+
+  <div class="sec-head"><h2>3 — Open Purchase Orders &amp; Shipment Milestones</h2><span class="tag tag-info">EVENT-DRIVEN</span><span class="when">Long Beach ≠ WSA ≠ Amazon delivery ≠ sellable</span></div>
+  <div class="tbl-wrap">
+    <table id="po-table">
+      <thead><tr><th>PO / Product</th><th>Supplier</th><th>Route</th><th class="r">Units</th><th>Deposit / Wire</th><th>Production / Ready</th><th>ETD / Vessel</th><th>Port ETA</th><th class="r">Amazon Sellable ETA</th><th class="r">Last Verified</th><th>Next Action · Owner</th><th>Status</th></tr></thead>
+      <tbody></tbody>
+    </table>
   </div>
-  <div class="alert alert-info" id="inv-note" style="display:none;"></div>
+
+  <div class="sec-head" style="padding-top:14px;"><h2>Inventory Position — All Locations</h2><span class="tag tag-live" id="pos-tag">—</span><span class="when" id="pos-when"></span></div>
+  <div class="cards" id="pos-cards"></div>
+
+  <div class="sec-head"><h2>Forecasted Retail Value — Line Item per SKU at MSRP</h2><span class="tag tag-info">POTENTIAL</span></div>
+  <div class="tbl-wrap">
+    <table id="rv-table">
+      <thead><tr><th>SKU</th><th class="r">Total Units</th><th class="r">MSRP</th><th class="r">COGS/Unit</th><th class="r">COGS in Inventory</th><th class="r">Retail Value at MSRP</th><th class="r">Gross Profit Potential</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="sc-note">⚠ Retail value is potential — slow movers may sell below MSRP. Gross Profit Potential = MSRP − landed COGS only. Totals from the weekly plan (WSA counts are manual); live Amazon on-hand is in §1 and the SKU cards. Chews shown separately — in production, excluded from totals.</div>
+
+  <div class="sec-head"><h2>SKU Detail</h2><span class="tag tag-live">LIVE + PLAN</span><span class="when" id="sd-when"></span></div>
+  <div id="sku-details"></div>
+
+  <div class="sec-head"><h2>SKU Detail — Chews (Sep 1 Launch)</h2><span class="tag tag-warn">IN PRODUCTION</span><span class="when">Primo Health · per-SKU COGS varies</span></div>
+  <div class="three" id="chews"></div>
+
+  <div class="sec-head"><h2>Supplier List — Products, Lead Times &amp; Reorder Triggers</h2><span class="tag tag-info">COMBINED VIEW</span></div>
+  <div class="tbl-wrap">
+    <table id="sup-table">
+      <thead><tr><th>Supplier</th><th>Products / SKUs</th><th class="r">Lead Time</th><th class="r">Deposit Paid</th><th class="r">Balance Due</th><th>Units Ordered</th><th>Delivery</th><th>Reorder Trigger</th><th>Status</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="sec-head"><h2>30 / 60 / 90-Day Reorder Cash Summary</h2><span class="tag tag-info">CASH PLAN</span></div>
+  <div class="three" id="cash-cols"></div>
+  <div class="tbl-wrap" style="margin-top:12px;">
+    <div class="tbl-title" id="bal-title"></div>
+    <table id="bal-table"><tbody></tbody></table>
+  </div>
+
+  <div class="sec-head"><h2>Alert &amp; Action Logic</h2><span class="tag tag-live">ACTIVE</span></div>
+  <div class="three">
+    <div class="col-card" style="border-left:4px solid var(--red);"><h3 style="color:var(--red);">RED — Immediate Action</h3><p>On-hand below the Amazon recommended level (red in §1) · projected below recommended before next inventory is sellable · a PO order-by date has passed · a critical shipment milestone is missing.</p></div>
+    <div class="col-card" style="border-left:4px solid var(--amber);"><h3 style="color:#9a6c0a;">YELLOW — Decision Needed</h3><p>Next inventory arrives with &lt;14 days of safety above recommended · a WSA transfer is due · a lead time changed · required data is stale.</p></div>
+    <div class="col-card" style="border-left:4px solid var(--green);"><h3 style="color:var(--green);">GREEN — Healthy</h3><p>Confirmed inventory projected sellable while Amazon stock stays ≥14 days above the recommended level.</p></div>
+  </div>
+  <div class="col-card" style="margin-top:12px;">
+    <h3 style="color:var(--navy);">Core Formulas</h3>
+    <div class="formula">Days to Amazon recommended = (Amazon sellable − Amazon recommended) ÷ forecast units per day</div>
+    <div class="formula">Projected inventory on receipt date = current − forecast sales through date + inbound sellable that date</div>
+    <div class="formula">PO date = required sellable date − complete lead time − safety buffer</div>
+  </div>
+
+  <div class="sc-foot">
+    <strong>How this section updates:</strong> Amazon on-hand / listing numbers refresh automatically each morning when Step 9b pushes <b>data/inventory_data.json</b>. Recommended levels, forecasts, WSA counts, POs, lead times and the cash plan live in <b>data/supply_chain.json</b> — Patrick/Marcelo edit it when reality changes (vessel sails, deposit paid, lead time moves).<br>
+    <strong>COGS = landed cost</strong>; net/margin per unit is the US Amazon channel (34% all-in fee + $0.30 inbound). <strong>Owner:</strong> Daisy (report) · Josh (automation) · Patrick (lead times, POs, WSA).
+  </div>
 </div>
 
         <!-- GOOGLE ADS -->
@@ -1572,56 +1671,144 @@ function renderReports(files){
 })();
 </script>
 <script>
-(async function inventoryPanel(){
+(async function supplyChainPanel(){
   const $i = id => document.getElementById(id);
   const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
-  const tag = $i('inv-tag');
-  try {
-    const r = await fetch(RAW + 'data/inventory_data.json', {cache:'no-store'});
-    if (!r.ok) throw new Error('nofile');
-    const inv = await r.json();
-    const esc = s => String(s==null?'—':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    const asof = new Date(inv.as_of);
-    const ageDays = (Date.now() - asof.getTime()) / 86400000;
-    $i('inv-when').textContent = 'on-hand as of ' + esc(inv.as_of) + (ageDays > 2 ? ' ⚠️ STALE' : '');
+  const escS = s => String(s==null?'—':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const fmtN = n => n==null?'—':Number(n).toLocaleString();
+  const fmtDl = n => n==null?'—':'$'+Number(n).toLocaleString();
 
-    let worst = 'OK';
-    const alerts = [];
-    const rows = (inv.skus || []).map(s => {
-      const rate = s.rate_14d || 0;
-      const dos  = rate > 0 ? s.on_hand / rate : null;
-      const toMin = rate > 0 ? (s.on_hand - (s.amazon_min || 0)) / rate : null;
-      const dDate = d => d==null ? '—' : new Date(Date.now() + d*86400000).toISOString().slice(0,10);
-      const status = toMin == null ? 'NO SALES'
-        : toMin <= 30 ? 'URGENT' : toMin <= 60 ? 'WATCH' : 'OK';
-      if (status === 'URGENT') { worst = 'URGENT';
-        alerts.push(`${s.sku}: ~${Math.round(dos)} days of supply — hits Amazon min. level ${dDate(toMin)}, stockout ${dDate(dos)}. ${esc(s.note||'')}`);
-      } else if (status === 'WATCH' && worst !== 'URGENT') worst = 'WATCH';
-      const pill = status==='URGENT' ? 'pill-crit' : status==='WATCH' ? 'pill-warn' : status==='OK' ? 'pill-ok' : 'pill-na';
-      const liq = /slicker/i.test(s.sku||'');
-      return `<tr${status==='URGENT'?' style="background:rgba(192,0,0,.06)"':''}>`
-        + `<td><b>${esc(s.sku)}</b>${liq?' <span style="font-size:10px;color:var(--sub)">(liquidation)</span>':''}<br><span style="font-size:10px;color:var(--sub)">${esc(s.asin)}</span></td>`
-        + `<td class="r">${(s.on_hand??0).toLocaleString()}</td>`
-        + `<td class="r">${(s.amazon_min??0).toLocaleString()}</td>`
-        + `<td class="r">${rate.toFixed(1)}</td>`
-        + `<td class="r"><b>${dos==null?'—':Math.round(dos).toLocaleString()}</b></td>`
-        + `<td class="r">${dDate(toMin)}</td>`
-        + `<td class="r">${dDate(dos)}</td>`
-        + `<td class="r"><span class="pill ${pill}">${status}</span></td></tr>`;
-    });
-    $i('inv-table').querySelector('tbody').innerHTML = rows.join('');
-    tag.textContent = worst; tag.className = 'tag ' + (worst==='URGENT'?'tag-crit':worst==='WATCH'?'tag-warn':'tag-ok');
-    $i('inv-alerts').innerHTML = alerts.length
-      ? alerts.map(a=>`<div class="alert alert-crit">${a}</div>`).join('')
-      : '<div class="alert alert-ok">All SKUs beyond 60 days of supply at current run-rates.</div>';
-    if (inv.note) { const n=$i('inv-note'); n.style.display='block'; n.innerHTML='<b>Note:</b> '+esc(inv.note); }
-    if (ageDays > 2) $i('inv-alerts').insertAdjacentHTML('afterbegin',
-      '<div class="alert alert-warn"><b>On-hand data is '+Math.floor(ageDays)+' days old</b> — the daily inventory pull may have stopped. @josh</div>');
-  } catch(e) {
-    tag.textContent = 'NOT WIRED'; tag.className = 'tag tag-info';
-    $i('inv-alerts').innerHTML =
-      '<div class="alert alert-info"><b>Inventory pipeline not yet connected.</b> This panel reads data/inventory_data.json, which no routine writes yet. Last manual snapshot: InvRunway3.xlsx (on-hand as of Jul 10 — Rake Brush URGENT at ~41 days).</div>';
+  let sc=null, inv=null;
+  try{ const r=await fetch(RAW+'data/supply_chain.json',{cache:'no-store'}); if(r.ok) sc=await r.json(); }catch(e){}
+  try{ const r=await fetch(RAW+'data/inventory_data.json',{cache:'no-store'}); if(r.ok) inv=await r.json(); }catch(e){}
+
+  if(!sc){
+    $i('sc-live-tag').textContent='NOT WIRED'; $i('sc-live-tag').className='tag tag-info';
+    $i('sc-banners').innerHTML='<div class="alert alert-info"><b>Supply-chain layer not connected.</b> This section reads data/supply_chain.json (plan: POs, lead times, WSA, cash) + data/inventory_data.json (live Amazon FBA). Push supply_chain.json to the repo to activate.</div>';
+    return;
   }
+
+  const liveMap = {};
+  let invAge=null, invAsOf=null;
+  if(inv && Array.isArray(inv.skus)){
+    inv.skus.forEach(s=>{ if(s.asin) liveMap[s.asin]=s; });
+    invAsOf = inv.as_of;
+    invAge = (Date.now()-new Date(inv.as_of).getTime())/86400000;
+  }
+  const liveOK = inv && Object.keys(liveMap).length>0;
+
+  const banners=[];
+  if(!liveOK) banners.push('<div class="alert alert-info"><b>Live FBA feed not connected yet.</b> Amazon numbers below show the '+escS(sc.as_of)+' manual snapshot. The feed activates when Morning Routine v10.7 Step 9b pushes data/inventory_data.json.</div>');
+  else if(invAge>2) banners.push('<div class="alert alert-warn"><b>Live Amazon data is '+Math.floor(invAge)+' days old</b> (as of '+escS(invAsOf)+') — the daily inventory pull may have stopped. @josh</div>');
+  if(inv && inv.note) banners.push('<div class="alert alert-warn"><b>Feed note:</b> '+escS(inv.note)+'</div>');
+  const scAge=(Date.now()-new Date(sc.as_of).getTime())/86400000;
+  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> (last edit '+escS(sc.as_of)+') — Patrick\'s weekly review is overdue.</div>');
+  $i('sc-banners').innerHTML=banners.join('');
+  $i('sc-live-tag').textContent = liveOK ? '● LIVE '+invAsOf : '○ PLAN '+sc.as_of;
+  $i('sc-live-tag').className = 'tag '+(liveOK?'tag-live':'tag-na');
+
+  const ct=sc.control_tower||{};
+  $i('sc-headline').innerHTML = ct.headline ? '<div class="alert alert-'+(ct.headline_level||'warn')+'">⚠ '+ct.headline+'</div>' : '';
+  $i('ct-tag').textContent=ct.status||'—';
+  $i('ct-tag').className='tag '+(ct.status==='RED'?'tag-crit':ct.status==='YELLOW'?'tag-warn':'tag-live');
+  $i('ct-when').textContent='Plan: '+sc.as_of+(liveOK?' · Amazon: LIVE '+invAsOf:'');
+  $i('ct-cards').innerHTML=(ct.cards||[]).map(c=>'<div class="card bdr-'+c.border+'"><div class="c-lbl">'+escS(c.label)+'</div><div class="c-val '+(c.vclass||'')+'">'+escS(c.value)+'</div><div class="c-sub">'+escS(c.sub)+'</div></div>').join('');
+
+  let redCount=0;
+  $i('risk-when').textContent = liveOK ? 'Amazon sellable: LIVE '+invAsOf+' · plan: '+sc.as_of : 'All numbers: manual '+sc.as_of;
+  $i('risk-table').querySelector('tbody').innerHTML=(sc.skus||[]).map(s=>{
+    const live=liveMap[s.asin];
+    const sellable = live&&live.on_hand!=null ? live.on_hand : s.manual_sellable;
+    const isLive = !!(live&&live.on_hand!=null);
+    const rec = (live&&live.amazon_min!=null) ? live.amazon_min : s.amazon_recommended;
+    const rate = s.fcst_units_day;
+    const dtr = (rate>0&&sellable!=null&&rec!=null) ? (sellable-rec)/rate : null;
+    const below = sellable!=null&&rec!=null&&sellable<rec;
+    if(below) redCount++;
+    const liveNote = live&&live.note ? ' · '+escS(live.note) : '';
+    const statusPill = below ? '<span class="pill pill-crit">BELOW REC</span>' : '<span class="pill pill-'+(s.pill||'na')+'">'+escS(s.status)+'</span>';
+    return '<tr'+(below?' style="background:#fbe6e3;"':'')+'>'
+      +'<td><b>'+escS(s.name)+'</b>'+(s.star?' ⭐':'')+'<br><span class="sku-sub">'+(isLive?invAsOf+' live'+liveNote:sc.as_of+' plan')+'</span></td>'
+      +'<td class="r"><b'+(below?' style="color:var(--red);"':'')+'>'+fmtN(sellable)+'</b>'+(isLive?'<span class="live-badge">LIVE</span>':'<span class="manual-badge">PLAN</span>')+'</td>'
+      +'<td class="r">'+fmtN(rec)+'</td>'
+      +'<td class="r">'+(rate!=null?rate.toFixed(1):'—')+'<br><span class="sku-sub">Amazon fcst</span></td>'
+      +'<td class="r">'+(dtr==null?'—':(below?'<b style="color:var(--red);">':'')+(dtr<0?'−':'~')+Math.abs(dtr).toFixed(dtr<0?1:0)+(below?'</b><br><span class="sku-sub">'+fmtN(rec-sellable)+' below</span>':''))+'</td>'
+      +'<td class="r">'+fmtN(s.wsa_available)+'</td>'
+      +'<td>'+(s.next_inbound||'—')+'</td>'
+      +'<td>'+(s.action||'—')+'</td>'
+      +'<td>'+statusPill+'</td></tr>';
+  }).join('');
+  $i('risk-tag').textContent = redCount>0 ? redCount+' BELOW REC' : 'ALL CLEAR';
+  $i('risk-tag').className = 'tag '+(redCount>0?'tag-crit':'tag-live');
+
+  $i('lt-table').querySelector('tbody').innerHTML=(sc.lead_times||[]).map(l=>
+    '<tr'+(l.highlight==='amber'?' style="background:#fffbf0;"':'')+'><td><b>'+escS(l.product)+'</b><br><span class="sku-sub">'+escS(l.sub)+'</span></td>'
+    +'<td>'+escS(l.production)+'</td><td>'+escS(l.origin)+'</td><td>'+escS(l.transit)+'</td><td>'+escS(l.port)+'</td>'
+    +'<td>'+(l.wsa==='n/a'?'<span class="pill pill-na">n/a</span>':escS(l.wsa))+'</td>'
+    +'<td>'+(l.amazon==='n/a'?'<span class="pill pill-na">n/a</span>':escS(l.amazon))+'</td>'
+    +'<td class="r"><b>'+escS(l.total)+'</b>'+(l.total_sub?'<br><span class="sku-sub">'+escS(l.total_sub)+'</span>':'')+'</td>'
+    +'<td class="r">'+escS(l.confirmed)+'</td><td>'+escS(l.owner)+'</td></tr>').join('');
+
+  $i('po-table').querySelector('tbody').innerHTML=(sc.purchase_orders||[]).map(p=>
+    '<tr'+(p.highlight==='amber'?' style="background:#fffbf0;"':p.highlight==='red'?' style="background:#fdf6f5;"':'')+'>'
+    +'<td><b>'+escS(p.po)+'</b></td><td>'+escS(p.supplier)+'</td><td>'+p.route+'</td><td class="r">'+p.units+'</td>'
+    +'<td>'+p.deposit+'</td><td>'+p.production+'</td><td>'+p.etd+'</td><td>'+escS(p.port_eta)+'</td>'
+    +'<td class="r"><b>'+p.sellable_eta+'</b></td><td class="r">'+escS(p.verified)+'</td>'
+    +'<td>'+p.next_action+'</td><td><span class="pill pill-'+p.pill+'">'+escS(p.status)+'</span></td></tr>').join('');
+
+  const ps=sc.position_summary||{};
+  $i('pos-tag').textContent='PLAN '+sc.as_of+(liveOK?' + LIVE AMAZON':'');
+  $i('pos-when').textContent='Amazon (Seller Central'+(liveOK?' + daily FBA feed':'')+') + WSA (warehouse export)';
+  $i('pos-cards').innerHTML=(ps.cards||[]).map(c=>'<div class="card bdr-'+c.border+'"><div class="c-lbl">'+escS(c.label)+'</div><div class="c-val '+(c.vclass||'')+'">'+escS(c.value)+'</div><div class="c-sub">'+escS(c.sub)+'</div></div>').join('');
+  const stt=ps.subtotal||{};
+  $i('rv-table').querySelector('tbody').innerHTML=(sc.skus||[]).map(s=>{
+    const l=liveMap[s.asin]; const sell=l&&l.on_hand!=null?l.on_hand:s.manual_sellable;
+    const rec=(l&&l.amazon_min!=null)?l.amazon_min:s.amazon_recommended;
+    const below=sell!=null&&rec!=null&&sell<rec;
+    return '<tr'+(below?' style="background:#fbe6e3;"':'')+'><td>'+(below?'<b>':'')+escS(s.name)+(below?'</b>':'')+'</td><td class="r">'+fmtN(s.total_all_locations)+'</td><td class="r">$'+s.msrp.toFixed(2)+'</td><td class="r">$'+s.cogs.toFixed(2)+'</td><td class="r">'+fmtDl(Math.round(s.total_all_locations*s.cogs))+'</td><td class="r">'+fmtDl(s.retail_value)+'</td><td class="r">'+fmtDl(s.gross_profit_potential)+'</td></tr>';
+  }).join('')
+  +'<tr style="background:var(--card2,#fafbfc);font-weight:700;"><td>SUBTOTAL — In Inventory</td><td class="r">'+fmtN(stt.units)+'</td><td class="r">—</td><td class="r">—</td><td class="r">'+fmtDl(stt.cogs)+'</td><td class="r">'+fmtDl(stt.retail)+'</td><td class="r">'+fmtDl(stt.gross_profit)+'</td></tr>'
+  +(sc.launches||[]).map(l=>'<tr><td>'+escS(l.name)+' <span class="sku-sub">(Sep 1)</span></td><td class="r">'+fmtN(l.units_ordered)+' ord.</td><td class="r">$'+l.msrp.toFixed(2)+'</td><td class="r">$'+l.cogs.toFixed(2)+'</td><td class="r">in dep.</td><td class="r">'+fmtDl(l.retail_potential)+'</td><td class="r">'+fmtDl(l.gross_profit_potential)+'</td></tr>').join('');
+
+  $i('sd-when').textContent=(liveOK?'Amazon sellable LIVE '+invAsOf+' · ':'')+'plan '+sc.as_of;
+  $i('sku-details').innerHTML=(sc.skus||[]).map(s=>{
+    const live=liveMap[s.asin];
+    const sellable = live&&live.on_hand!=null ? live.on_hand : s.manual_sellable;
+    const isLive = !!(live&&live.on_hand!=null);
+    const rec = (live&&live.amazon_min!=null) ? live.amazon_min : s.amazon_recommended;
+    const below = sellable!=null&&rec!=null&&sellable<rec;
+    const hdr = below ? 'crit' : s.header_class;
+    const dtr = s.fcst_units_day>0 ? (sellable-rec)/s.fcst_units_day : null;
+    const dos = s.fcst_units_day>0&&sellable!=null ? Math.round(sellable/s.fcst_units_day) : null;
+    let stats='';
+    stats+='<div><div class="sku-stat-lbl">Amazon Sellable'+(isLive?'<span class="live-badge">LIVE</span>':'<span class="manual-badge">PLAN</span>')+'</div><div class="sku-stat-val'+(below?' down':'')+'">'+fmtN(sellable)+'</div><div class="sku-stat-sub">Recommended: '+fmtN(rec)+(below?' · '+fmtN(rec-sellable)+' below':'')+'</div></div>';
+    stats+='<div><div class="sku-stat-lbl">Velocity (Amazon fcst)</div><div class="sku-stat-val">'+(s.fcst_units_day!=null?'~'+s.fcst_units_day+'/day':'—')+'</div><div class="sku-stat-sub">'+(dos!=null?'on-hand DoS ~'+dos+' days':'')+'</div></div>';
+    if(dtr!=null) stats+='<div><div class="sku-stat-lbl">Days to Recommended</div><div class="sku-stat-val'+(below?' down':'')+'">'+(dtr<0?'−'+Math.abs(dtr).toFixed(1):'~'+Math.round(dtr))+'</div><div class="sku-stat-sub">('+fmtN(sellable)+' − '+fmtN(rec)+') ÷ '+s.fcst_units_day+'</div></div>';
+    stats+='<div><div class="sku-stat-lbl">WSA (3PL)</div><div class="sku-stat-val">'+fmtN(s.wsa_available)+'</div></div>';
+    stats+='<div><div class="sku-stat-lbl">Total All Locations</div><div class="sku-stat-val">'+fmtN(s.total_all_locations)+'</div><div class="sku-stat-sub">'+fmtDl(s.retail_value)+' at MSRP</div></div>';
+    (s.detail_stats||[]).forEach(d=>{ stats+='<div><div class="sku-stat-lbl">'+escS(d.label)+'</div><div class="sku-stat-val '+(d.vclass||'')+'">'+escS(d.value)+'</div><div class="sku-stat-sub">'+escS(d.sub)+'</div></div>'; });
+    stats+='<div><div class="sku-stat-lbl">COGS / MSRP</div><div class="sku-stat-val">$'+s.cogs.toFixed(2)+' / $'+s.msrp.toFixed(2)+'</div><div class="sku-stat-sub">Net $'+s.net_per_unit.toFixed(2)+' · '+s.margin_pct+'% (US Amazon)</div></div>';
+    return '<div class="sku-block"><div class="sku-header '+hdr+'"><div><div class="sku-title">'+escS(s.name)+(s.star?' ⭐':'')+'</div><div class="sku-sub">ASIN: '+escS(s.asin)+' · '+escS(s.detail_sub)+'</div></div><span class="pill pill-'+(below?'crit':s.pill)+'">'+escS(s.detail_pill)+'</span></div><div class="sku-body">'+stats+'</div><div class="reorder-box '+s.reorder_class+'">'+s.reorder_box+'</div></div>';
+  }).join('');
+
+  $i('chews').innerHTML=(sc.launches||[]).map(l=>'<div class="col-card" style="border-left:4px solid #4E2D82;"><h3 style="color:#4E2D82;">'+escS(l.name)+'</h3><p><b>'+fmtN(l.units_ordered)+' units</b> ordered · ready '+escS(l.ready)+'<br>COGS <b>$'+l.cogs.toFixed(2)+'</b> / MSRP $'+l.msrp.toFixed(2)+'<br>Retail potential '+fmtDl(l.retail_potential)+'<br><span class="sc-note">'+escS(l.route)+'</span></p></div>').join('');
+
+  $i('sup-table').querySelector('tbody').innerHTML=(sc.suppliers||[]).map(s=>
+    '<tr'+(s.highlight==='red'?' style="background:#fdf6f5;"':'')+'><td><b>'+escS(s.name)+'</b><br><span class="sku-sub">'+escS(s.sub)+'</span></td>'
+    +'<td>'+escS(s.products)+'</td><td class="r">'+s.lead+'</td>'
+    +'<td class="r">'+(s.deposit==='N/A'?'<span class="pill pill-na">N/A</span>':escS(s.deposit))+'</td>'
+    +'<td class="r">'+(s.balance==='N/A'?'<span class="pill pill-na">N/A</span>':escS(s.balance))+'</td>'
+    +'<td>'+escS(s.ordered)+'</td><td>'+escS(s.delivery)+'</td><td>'+escS(s.trigger)+'</td>'
+    +'<td><span class="pill pill-'+s.pill+'">'+escS(s.status)+'</span></td></tr>').join('');
+
+  const cp=sc.cash_plan||{};
+  $i('cash-cols').innerHTML=['d30','d60','d90'].map(k=>{ const c=cp[k]; if(!c)return '';
+    return '<div class="col-card"><h3 style="color:var(--navy);">'+escS(c.title)+'</h3><table><tbody>'
+      +c.rows.map(r=>'<tr><td>'+r[0]+'</td><td class="r">'+r[1]+'</td></tr>').join('')
+      +'<tr style="background:var(--card2,#fafbfc);"><td>'+c.total[0]+'</td><td class="r">'+c.total[1]+'</td></tr></tbody></table></div>'; }).join('');
+  if(cp.balances){ $i('bal-title').textContent=cp.balances.title;
+    $i('bal-table').querySelector('tbody').innerHTML=cp.balances.rows.map(r=>'<tr><td>'+r[0]+'</td><td class="r">'+r[1]+'</td></tr>').join('')
+      +'<tr style="background:var(--card2,#fafbfc);font-weight:700;"><td>'+cp.balances.total[0]+'</td><td class="r">'+cp.balances.total[1]+'</td></tr>'; }
 })();
 </script>
 </body>
