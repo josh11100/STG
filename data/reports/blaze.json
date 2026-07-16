@@ -53,6 +53,34 @@
   },
   "creative_briefs": [
     {
+      "id": "blaze_male-targeting-test_2026-07-16",
+      "title": "Male-Only Targeting Test — UGC Bill (duplicate campaign)",
+      "product": "Save the Shave Bundle",
+      "platform": "Meta",
+      "type": "TARGETING_TEST",
+      "source_campaign": "Save the Shave UGC Bill _UGC_070326",
+      "source_ad_id": "120248769281250118",
+      "source_creative_id": "1308215537967394",
+      "creative": "REUSE existing — New Sales Ad (no new creative needed)",
+      "targeting": {
+        "gender": ["male"],
+        "age_min": 25,
+        "age_max": 64,
+        "note": "Exclude 45-54 if Meta allows — ROAS 0.31, worst segment per L-2026-07-16-004. Exclude Advantage+ auto-audience."
+      },
+      "budget_daily_usd": 25,
+      "budget_range": "20-30",
+      "test_variable": "Gender targeting (male-only) vs. Advantage+ female-dominant delivery",
+      "hypothesis": "Male ROAS 2.34 on $26.96 sample will hold or improve at $25/day scale (L-2026-07-16-003)",
+      "success_criteria": "7-day ROAS ≥ 1.5 at ≥ $25/day spend",
+      "kill_criteria": "7-day ROAS < 0.75 at ≥ $50 cumulative spend",
+      "learning_ref": "L-2026-07-16-003",
+      "status": "STAGED",
+      "staged_at": "2026-07-16 13:45 PT",
+      "approval_required": "B-1 — @will reply 'approved' in #stg-ads-watchdog audit thread",
+      "approval_thread_ts": "1784232131.739439"
+    },
+    {
       "id": "blaze_appointment-cancelled_2026-07-16",
       "title": "Appointment Cancelled",
       "product": "Save the Shave Bundle",
