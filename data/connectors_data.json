@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-16 QB-PATCHED PT",
+  "last_updated": "2026-07-16 QB+Meta-PATCHED PT",
   "run_version": "v10.9",
   "quickbooks": {
     "status": "RED",
@@ -346,51 +346,58 @@
   "meta_ads": {
     "available": true,
     "account_id": "2158768751536031",
-    "period": "MTD Jul 1 \u2013 Jul 16",
-    "mtd": {
+    "period": "Last 30 days (trailing)",
+    "yesterday": {
+      "spend": null
+    },
+    "flags": [
+      "Save the Shave UGC Bill: kill breach Day 8 \u2014 $313.87 MTD, ROAS 0.64 \u2014 action overdue (L-2026-07-10-001 VALIDATED)",
+      "Duplicate campaign: STG_Meta_Detangling_30sUGC_2026-04 appears twice (IDs 120244295191790118 / 120244294919800118) \u2014 hygiene"
+    ],
+    "l30d": {
       "spend": 313.87,
       "purchase_value": 199.89,
       "roas": 0.64
     },
-    "yesterday": {
-      "spend": null
-    },
-    "campaigns_mtd": [
+    "campaigns_l30d": [
       {
         "name": "Save the Shave UGC Bill _UGC_070326",
         "status": "ACTIVE",
         "spend": 313.87,
-        "results": "6 purchases"
+        "results": "6 purchases",
+        "roas": null
       },
       {
         "name": "STG_META_DEMATTER_UGC_2026-04",
         "status": "PAUSED",
         "spend": 0.0,
-        "results": "0"
+        "results": "0",
+        "roas": null
       },
       {
         "name": "STG_Meta_Detangling_30sUGC_2026-04",
         "status": "PAUSED",
         "spend": 0.0,
-        "results": "0"
+        "results": "0",
+        "roas": null
       },
       {
         "name": "STG_Meta_Detangling_30sUGC_2026-04 (duplicate)",
         "status": "PAUSED",
         "spend": 0.0,
-        "results": "0"
+        "results": "0",
+        "roas": null
       },
       {
         "name": "STG_Meta_SaveTheShave_22sUGC_2026-04",
         "status": "PAUSED",
         "spend": 0.0,
-        "results": "0"
+        "results": "0",
+        "roas": null
       }
     ],
-    "flags": [
-      "Save the Shave UGC Bill: kill breach Day 8 \u2014 $313.87 MTD, ROAS 0.64 \u2014 action overdue (L-2026-07-10-001 VALIDATED)",
-      "Duplicate campaign: STG_Meta_Detangling_30sUGC_2026-04 appears twice (IDs 120244295191790118 / 120244294919800118) \u2014 hygiene"
-    ]
+    "date_since": "2026-06-16",
+    "date_until": "2026-07-16"
   },
   "reviews": {
     "status": "RED",
