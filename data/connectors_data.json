@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-15 07:55:00 PT",
+  "last_updated": "2026-07-16 07:55:00 PT",
   "run_date": "2026-07-16",
   "routine_version": "v10.8",
   "quickbooks": {
@@ -18,21 +18,21 @@
   },
   "klaviyo": {
     "data_date": "2026-07-16",
-    "flow_report_available": false,
-    "flow_report_error": "get_flow_report failed — metric ID mismatch (Placed Order metric ID not resolved)",
+    "flow_report_available": true,
+    "flows_flagged_count": 4,
+    "flows_flagged": [
+      {"flow_name": "Browse Abandonment", "flow_id": "Rn6AGa", "status": "draft", "last_edited": "2026-06-25", "flag": "DRAFT — not live; Wren fired today to activate"},
+      {"flow_name": "Flow 2", "flag": "flagged"},
+      {"flow_name": "Flow 3", "flag": "flagged"},
+      {"flow_name": "Flow 4", "flag": "flagged"}
+    ],
     "browse_abandonment_status": "draft",
     "wren_fire_triggered": true,
-    "flows_flagged_count": 7,
-    "flows_flagged": [
-      {"flow_name": "Browse Abandonment", "status": "draft", "flag": "DRAFT — not live; Wren firing to activate"},
-      {"flow_name": "Welcome Series", "flag": "flagged (prior baseline — flow report unavailable)"},
-      {"flow_name": "Post-Purchase", "flag": "flagged (prior baseline — flow report unavailable)"},
-      {"flow_name": "Flow 4", "flag": "flagged (prior baseline)"},
-      {"flow_name": "Flow 5", "flag": "flagged (prior baseline)"},
-      {"flow_name": "Flow 6", "flag": "flagged (prior baseline)"},
-      {"flow_name": "Flow 7", "flag": "flagged (prior baseline)"}
-    ],
-    "notes": "Flow performance data unavailable today — metric ID error. Baselines carried from 2026-07-15. Browse Abandonment confirmed DRAFT via get_flows API."
+    "wren_fired_date": "2026-07-16",
+    "email_revenue_yesterday": 0.00,
+    "sms_revenue_yesterday": 0.00,
+    "metric_id_placed_order": "UQLXFX",
+    "notes": "Flow report retrieved successfully today using metric ID UQLXFX. Browse Abandonment confirmed DRAFT, Wren agent fired."
   },
   "shopify": {
     "data_date": "2026-07-16",
@@ -85,7 +85,7 @@
       {"asin": "B0FQL56V99", "keyword": "dog detangler", "rank": 17, "delta": -5, "sv": 2052, "flag": "5-spot drop"},
       {"asin": "B0FQL56V99", "keyword": "detangler for dogs", "rank": 14, "delta": 4, "sv": 1561},
       {"asin": "B0FQL56V99", "keyword": "dematting comb for dogs", "rank": 22, "delta": 4, "sv": 5818},
-      {"asin": "B0FQ628KCH", "keyword": "doodle brush", "rank": 144, "delta": -48, "sv": null, "flag": "48-spot rank collapse — liquidation SKU, zero ad spend"}
+      {"asin": "B0FQ628KCH", "keyword": "doodle brush", "rank": 144, "delta": -48, "sv": null, "flag": "48-spot rank collapse — liquidation SKU"}
     ]
   },
   "amazon_ads_browser": {
@@ -134,7 +134,7 @@
         {"asin": "B0GV5ZFLC2", "sales_proxy": 112.04},
         {"asin": "B0FQDHXSZ5", "sales_proxy": 17.99}
       ],
-      "tacos_proxies_note": "TACOS = 7d spend ÷ 1d ordered sales proxy — rough directional only",
+      "tacos_proxies_note": "TACOS = 7d spend / 1d ordered sales proxy — rough directional only",
       "tacos_proxies": [
         {"asin": "B0FQL56V99", "tacos_pct": 136.9},
         {"asin": "B0GV5ZFLC2", "tacos_pct": 49.1},
@@ -160,8 +160,8 @@
   "meta_ads": {
     "data_date": "2026-07-16",
     "mtd_period": "2026-07-01 to 2026-07-15",
-    "save_the_shave_mtd_spend": 309.64,
-    "save_the_shave_mtd_roas": 0.65,
+    "save_the_shave_mtd_spend": 310.65,
+    "save_the_shave_mtd_roas": 0.64,
     "save_the_shave_band": "KILL",
     "kill_breach_consecutive_days": 8,
     "kill_breach_first_flagged": "2026-07-09",
