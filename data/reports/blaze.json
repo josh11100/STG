@@ -1,28 +1,37 @@
 {
   "run_date": "2026-07-16",
   "run_time_pt": "08:10",
-  "routine_version": "Blaze v1.1",
-  "authority_mode": "CLASS_B_ONLY",
-  "standing_authority_signature": "PENDING",
+  "audit_run_time_pt": "12:14",
+  "routine_version": "Blaze v1.4",
+  "authority_mode": "CLASS_A_ACTIVE",
+  "standing_authority_signature": "SIGNED_2026-07-16",
+  "blaze_write_path_verified": false,
   "status": "RED",
   "auto_executions": 0,
   "platforms_swept": ["Meta", "Amazon", "Google"],
   "meta": {
     "account": "2158768751536031",
     "kill_breach": {
-      "campaign": "Save the Shave™ Bundle",
-      "mtd_spend": 309.85,
-      "mtd_roas": 0.65,
+      "campaign": "Save the Shave UGC Bill _UGC_070326",
+      "mtd_spend": 313.87,
+      "mtd_roas": 0.64,
       "breakeven_roas_est": 2.40,
       "days_in_breach": 8,
       "first_flagged": "2026-07-09",
       "learning_id": "L-2026-07-10-001",
       "status": "BLOCKED",
-      "block_reason": "STANDING_AUTHORITY_PENDING"
+      "block_reason": "blaze_write_path_verified ABSENT — A-1 staged as Class B per STANDING_AUTHORITY_v1.1.md prerequisite"
     },
     "fatigue_flag": {
       "status": "ACTIVE",
-      "days_decay": 6
+      "days_decay": 8,
+      "note": "ROAS-only decay; CTR 6.05% stable; frequency 1.53 (below fatigue threshold)"
+    },
+    "duplicate_campaign_hygiene": {
+      "pair": ["STG_Meta_Detangling_30sUGC_2026-04 (ID: 120244295191790118)", "STG_Meta_Detangling_30sUGC_2026-04 (ID: 120244294919800118)"],
+      "status": "PAUSED",
+      "spend": 0,
+      "resolution": "OPEN"
     }
   },
   "amazon": {
@@ -46,7 +55,7 @@
     {
       "id": "blaze_appointment-cancelled_2026-07-16",
       "title": "Appointment Cancelled",
-      "product": "Save the Shave™ Bundle",
+      "product": "Save the Shave Bundle",
       "platform": "Meta",
       "format": "Talking head / confessional",
       "narrator": "Will",
@@ -56,33 +65,66 @@
     {
       "id": "blaze_worth-2-minutes_2026-07-16",
       "title": "Worth the 2 Minutes",
-      "product": "Save the Shave™ Bundle",
+      "product": "Save the Shave Bundle",
       "platform": "Meta",
       "format": "Text card sequence — no narrator",
       "narrator": "None",
       "test_variable": "Format (text-card vs. talking head)",
+      "status": "STAGED"
+    },
+    {
+      "id": "blaze_ten-oclock-mat_2026-07-15",
+      "title": "Ten O'Clock Mat",
+      "product": "Emergency Dematter",
+      "platform": "Meta",
+      "format": "UGC / doc style",
+      "narrator": null,
+      "test_variable": "Product (Dematter RESCUE vs. Bundle)",
+      "status": "STAGED"
+    },
+    {
+      "id": "blaze_she-almost-got-the-shave_2026-07-15",
+      "title": "She Almost Got the Shave",
+      "product": "Emergency Dematter",
+      "platform": "Meta",
+      "format": "Kathy voiceover",
+      "narrator": "Kathy",
+      "test_variable": "Narrator voice vs. UGC creator Bill",
       "status": "STAGED"
     }
   ],
   "slack_posts": {
     "channel_id": "C0BDU52NV61",
     "main_post_ts": "1784215184.446639",
-    "thread_reply_ts": "1784215406.887369",
-    "brief_1_ts": "1784215468.847069",
-    "brief_2_ts": "1784215484.707759",
-    "closeout_ts": "1784215506.066639"
+    "closeout_ts": "1784215506.066639",
+    "audit_directive_ts": "1784229224.053289",
+    "audit_thread_parent_ts": "1784217683.348489"
   },
   "warnings": [
     "stg-decisions-log channel not found",
     "stg-creative-pipeline channel not found",
-    "blaze_write_path_verified learning absent — write path unverified"
+    "blaze_write_path_verified learning absent — A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path"
   ],
   "weekly_watchdog": "NOT_DUE",
   "urgent_action_required": {
-    "item": "Meta $75-Kill breach Day 8",
-    "mtd_spend": 309.85,
-    "mtd_roas": 0.65,
-    "recommendation": "KILL",
+    "item": "Meta $75-Kill breach Day 8 — Save the Shave UGC Bill",
+    "mtd_spend": 313.87,
+    "mtd_roas": 0.64,
+    "recommendation": "KILL or REVISE immediately",
     "tagged_user": "U0BDV0HT2TY"
+  },
+  "audit_summary": {
+    "ran": true,
+    "triggered_by": "Blaze: run a performance audit",
+    "trigger_ts": "1784229224.053289",
+    "top_performer": "Save the Shave UGC Bill — CTR 6.05% (hook working)",
+    "top_roas": 0.64,
+    "bottom_performer": "Save the Shave UGC Bill — only active campaign",
+    "bottom_roas": 0.64,
+    "root_cause": "CTR 6.05% (hook working) but CVR low — post-click offer/landing page mismatch, not creative failure",
+    "next_creative_direction": "Emergency Dematter RESCUE ad — single product, clearer use case, strongest cross-channel signal; 'Ten O'Clock Mat' brief is staged and ready",
+    "meta_opportunity_score": 96,
+    "top_meta_recommendation": "Add mixed image + video formats to current ad set — +2 score lift, 'more conversions per dollar'",
+    "learnings_written": ["L-2026-07-16-001", "L-2026-07-16-002"]
   }
 }
