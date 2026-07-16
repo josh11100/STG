@@ -1822,14 +1822,13 @@ function renderReports(files){
 <script>
 (async function supplyChainPanel(){
   const $i = id => document.getElementById(id);
-  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
   const escS = s => String(s==null?'—':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   const fmtN = n => n==null?'—':Number(n).toLocaleString();
   const fmtDl = n => n==null?'—':'$'+Number(n).toLocaleString();
 
   let sc=null, inv=null;
-  try{ const r=await fetch(RAW+'data/supply_chain.json',{cache:'no-store'}); if(r.ok) sc=await r.json(); }catch(e){}
-  try{ const r=await fetch(RAW+'data/inventory_data.json',{cache:'no-store'}); if(r.ok) inv=await r.json(); }catch(e){}
+  try{ const r=await fetch('./data/supply_chain.json?_='+Date.now(),{cache:'no-store'}); if(r.ok) sc=await r.json(); }catch(e){}
+  try{ const r=await fetch('./data/inventory_data.json?_='+Date.now(),{cache:'no-store'}); if(r.ok) inv=await r.json(); }catch(e){}
 
   const tag=$i('ct-tag'), liveTag=$i('sc-live-tag');
 
