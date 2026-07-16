@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-16 07:55:00 PT",
+  "last_updated": "2026-07-16 12:14:00 PT",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -232,6 +232,48 @@
       "contradictions": 0,
       "source_brief_id": "jarvis_inventory_2026-07-15_degraded",
       "action_implication": "FBA inventory retrieval requires Chrome access to Seller Central — it cannot be satisfied by Supermetrics ASELL. In automated cloud runs without Chrome, inventory_data.json will be written as degraded every run. Options: (1) provision Chrome/browser in the cloud environment for automated scrape, (2) add a separate manual SC inventory check to the daily workflow and feed results to inventory_data.json out-of-band, (3) evaluate SP-API GetFBAInventory as a direct API alternative that does not require a browser or Supermetrics. PRIORITY items for manual check today: B0FQ4PY573 (Detangling Spray, LIF ≤ 0) and B0FQFP2S9F (FurFix, LIF ≤ 0, STRANDED).",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-16-001",
+      "date_observed": "2026-07-16",
+      "subject": "Meta CTR vs. ROAS mismatch — Save the Shave UGC Bill",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "Save the Shave UGC Bill has a 6.05% CTR (3× the 1%+ video benchmark) but L30D ROAS 0.64 — the creative hook is stopping the scroll but the post-click conversion chain (landing page, offer clarity, bundle price, checkout friction) is failing. This is a landing page/offer problem, not a creative hook problem.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "2026-07-16 Blaze 2F audit: CTR 6.05% (stable per prior watchdog data), Frequency 1.53 (below 3.0 fatigue threshold), Engagement Rate Ranking: Above Average (Meta MCP auction data) — creative hook confirmed working",
+        "L30D ROAS 0.64 on $313.87 spend → 6 purchases → ~$52 cost per purchase. Meta Conversion Rate Ranking: Average. Diagnosis pattern: CTR ok + CVR low = offer/landing page mismatch",
+        "ROAS declined 6+ consecutive days (0.84→0.79→0.75→0.71→0.70→0.65→0.64) despite stable CTR and low frequency — rules out audience exhaustion and creative fatigue as root causes; confirms the problem is post-click"
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-16",
+      "contradictions": 0,
+      "source_brief_id": "blaze_2f_audit_2026-07-16",
+      "action_implication": "Before launching new creative hooks, audit the Save the Shave Bundle landing page: URL accuracy, price clarity, mobile checkout experience, product-ad alignment. Consider testing Emergency Dematter (single product, lower price point, clearer rescue use case) vs. the bundle to isolate whether offer complexity or price is driving poor CVR. Do not conclude the hook is broken based on ROAS alone — CTR data confirms the hook works.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-16-002",
+      "date_observed": "2026-07-16",
+      "subject": "Emergency Dematter — cross-channel performance leader",
+      "asin": "B0FQL56V99",
+      "scope": "meta_creative",
+      "learning": "Emergency Dematter is the strongest performing STG SKU across both channels. Amazon: ROAS 1.993 (YELLOW, closest to breakeven of any actively-spending SKU), organic rank #3 for 'dematting spray for dogs' (SV 1,829). Meta: two RESCUE-format creative concepts already staged and production-ready. The Save the Shave Bundle (current Meta hero) underperforms (ROAS 0.64) while Dematter shows the clearest cross-channel conversion signal.",
+      "driver_type": "SUCCESS",
+      "evidence": [
+        "2026-07-16 Blaze 2F audit: Amazon Dematter ROAS 1.993 (Supermetrics Query B, Jul 14 data) — highest ROAS of any actively-spending SKU in the account",
+        "H10 Jul 15: 'dematting spray for dogs' rank 3 (SV 1,829), 'detangler for dogs' rank 14 (+4 improvement), 'dematting comb for dogs' rank 22 (+4 improvement) — three of four tracked Dematter keywords stable or improving",
+        "Two Dematter RESCUE creative briefs already staged for Meta: blaze_ten-oclock-mat_2026-07-15 and blaze_she-almost-got-the-shave_2026-07-15 — production-ready pending Will approval"
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-16",
+      "contradictions": 0,
+      "source_brief_id": "blaze_2f_audit_2026-07-16",
+      "action_implication": "Prioritize Emergency Dematter as the hero SKU for the next Meta ad test. 'Ten O'Clock Mat' and 'She Almost Got the Shave' are staged and production-ready — approve one to test Dematter vs. Bundle on Meta. Dematter's lower price point and single-product rescue narrative may resolve the landing page/CVR mismatch identified in L-2026-07-16-001.",
       "retired_reason": null
     }
   ]
