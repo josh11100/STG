@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-16 12:14:00 PT",
+  "last_updated": "2026-07-16 13:30:00 PT",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -274,6 +274,50 @@
       "contradictions": 0,
       "source_brief_id": "blaze_2f_audit_2026-07-16",
       "action_implication": "Prioritize Emergency Dematter as the hero SKU for the next Meta ad test. 'Ten O'Clock Mat' and 'She Almost Got the Shave' are staged and production-ready — approve one to test Dematter vs. Bundle on Meta. Dematter's lower price point and single-product rescue narrative may resolve the landing page/CVR mismatch identified in L-2026-07-16-001.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-16-003",
+      "date_observed": "2026-07-16",
+      "subject": "Meta gender audience split — male vs. female ROAS divergence",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "Advantage+ is allocating 90% of Save the Shave UGC Bill budget to female audiences (ROAS 0.50) while male audiences receive 9% of budget and convert at ROAS 2.34 — a 4.7× gap. The algorithm is self-reinforcing a losing allocation because it optimizes on click volume and delivery efficiency rather than revenue. Manual gender targeting is required to test whether the male ROAS signal holds at greater spend.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "2026-07-16 Blaze 2F audit (L30D Jun 16–Jul 15, Meta MCP demographic breakdown): Female total spend $272.21 (90%), CTR 6.36%, ROAS 0.50; Male total spend $26.96 (9%), CTR 3.46%, ROAS 2.34; Unknown $1.58 (1%)",
+        "Female 65+ sub-segment: $198.23 spend (66% of all budget), CTR 6.88%, ROAS 0.96 — near-breakeven but still sub-1.0; absorbs the largest single spend block",
+        "Male CTR (3.46%) is 45% lower than female (6.36%) but male ROAS (2.34) is 4.7× higher than female (0.50) — confirms the algorithmic bias toward female audiences is click-volume driven, not revenue driven",
+        "Advantage+ campaign type confirmed: 'New Sales Ad Set' uses automated audience delivery with OFFSITE_CONVERSIONS optimization — no manual demographic guardrails active"
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-16",
+      "contradictions": 0,
+      "source_brief_id": "blaze_2f_audit_2026-07-16_second",
+      "action_implication": "Test a male-only targeted duplicate campaign at $20–30/day using the existing UGC Bill video to validate whether the 2.34 ROAS signal holds at scale. If confirmed over 7+ days, reallocate budget away from Advantage+ female-dominant delivery. Do not conclude from one L30D window — the male sample ($26.96) is small; this is a hypothesis requiring a controlled test, not a definitive audience mandate.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-16-004",
+      "date_observed": "2026-07-16",
+      "subject": "Meta age distribution — 65+ dominant delivery at near-breakeven ROAS",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "65+ receives 66% of Save the Shave UGC Bill budget ($198.23 of $300.75 L30D) at ROAS 0.96 — near breakeven but not profitable. The 45–54 bracket receives 11% of budget at ROAS 0.31, the worst-performing age segment. Advantage+ is concentrating delivery in the 55+ demographic, consistent with a self-grooming or senior-pet-owner audience skew that may not reflect the product's ideal buyer.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "2026-07-16 Blaze 2F audit (L30D Jun 16–Jul 15, Meta MCP demographic age breakdown): 65+ $198.23 spend (66%), CTR 6.88%, ROAS 0.96; 55–64 $57.55 (19%), CTR 5.34%; 45–54 $32.12 (11%), CTR 4.59%, ROAS 0.31; 35–44 $9.36 (3%); 18–34 $3.49 (<2%)",
+        "45–54 age bracket ROAS 0.31 is the single worst-performing demographic segment by ROAS — spending $3.23 to return $1.00",
+        "65+ segment is near breakeven (0.96) but represents the majority of spend; if ROAS does not reach 1.0+, this segment is the primary driver of the campaign's cumulative loss",
+        "18–34 and 35–44 together account for only $12.85 combined spend (4% of budget) — insufficient data to evaluate ROAS for younger segments"
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-16",
+      "contradictions": 0,
+      "source_brief_id": "blaze_2f_audit_2026-07-16_second",
+      "action_implication": "If running a male-targeted duplicate (per L-2026-07-16-003), layer in an age restriction excluding 45–54 to suppress the worst-performing demographic. The 65+ near-breakeven signal is worth monitoring — if landing page optimization improves CVR, this segment could become profitable at its current delivery volume. Do not exclude 65+ without testing; exclude 45–54 first as the clearest underperformer. Insufficient data on 18–34 and 35–44 to make age-exclusion decisions for younger brackets.",
       "retired_reason": null
     }
   ]

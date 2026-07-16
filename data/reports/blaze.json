@@ -1,7 +1,7 @@
 {
   "run_date": "2026-07-16",
   "run_time_pt": "08:10",
-  "audit_run_time_pt": "12:14",
+  "audit_run_time_pt": "12:14 (first), 13:15 (second)",
   "routine_version": "Blaze v1.4",
   "authority_mode": "CLASS_A_ACTIVE",
   "standing_authority_signature": "SIGNED_2026-07-16",
@@ -16,7 +16,7 @@
       "mtd_spend": 313.87,
       "mtd_roas": 0.64,
       "breakeven_roas_est": 2.40,
-      "days_in_breach": 8,
+      "days_in_breach": 9,
       "first_flagged": "2026-07-09",
       "learning_id": "L-2026-07-10-001",
       "status": "BLOCKED",
@@ -98,7 +98,11 @@
     "main_post_ts": "1784215184.446639",
     "closeout_ts": "1784215506.066639",
     "audit_directive_ts": "1784229224.053289",
-    "audit_thread_parent_ts": "1784217683.348489"
+    "audit_thread_parent_ts": "1784217683.348489",
+    "second_audit_directive_ts": "1784232061.739439",
+    "second_audit_main_post_ts": "1784232131.739439",
+    "demographics_thread_reply_ts": "1784232122.667079",
+    "second_audit_debrief_ts": "1784232359.562399"
   },
   "warnings": [
     "stg-decisions-log channel not found",
@@ -115,16 +119,34 @@
   },
   "audit_summary": {
     "ran": true,
-    "triggered_by": "Blaze: run a performance audit",
-    "trigger_ts": "1784229224.053289",
-    "top_performer": "Save the Shave UGC Bill — CTR 6.05% (hook working)",
-    "top_roas": 0.64,
-    "bottom_performer": "Save the Shave UGC Bill — only active campaign",
-    "bottom_roas": 0.64,
-    "root_cause": "CTR 6.05% (hook working) but CVR low — post-click offer/landing page mismatch, not creative failure",
-    "next_creative_direction": "Emergency Dematter RESCUE ad — single product, clearer use case, strongest cross-channel signal; 'Ten O'Clock Mat' brief is staged and ready",
+    "runs": 2,
+    "first_run": {
+      "triggered_by": "Blaze: run a performance audit",
+      "trigger_ts": "1784229224.053289",
+      "time_pt": "12:14"
+    },
+    "second_run": {
+      "triggered_by": "Blaze run audit only on meta ads (Will 12:51 PM + Josh 12:52 PM)",
+      "trigger_ts": "1784232061.739439",
+      "time_pt": "13:15"
+    },
+    "top_performer": "Save the Shave UGC Bill — CTR 6.01%, Male audience ROAS 2.34",
+    "top_roas": 0.66,
+    "bottom_performer": "Female 45–54 demographic segment — ROAS 0.31",
+    "bottom_roas": 0.31,
+    "root_cause": "CTR 6.01% (hook working) but CVR low — post-click offer/landing page mismatch; Advantage+ over-indexing female 65+ (66% of budget, ROAS 0.96) while male converts at ROAS 2.34",
+    "demographic_finding": {
+      "female_spend_pct": 90,
+      "female_roas": 0.50,
+      "male_spend_pct": 9,
+      "male_roas": 2.34,
+      "age_65plus_spend_pct": 66,
+      "age_65plus_roas": 0.96,
+      "age_45_54_roas": 0.31
+    },
+    "next_creative_direction": "Test male-only targeted campaign $20–30/day (same UGC Bill video); next creative: Emergency Dematter 'Ten O'Clock Mat' (staged, needs Will approval B-1)",
     "meta_opportunity_score": 96,
-    "top_meta_recommendation": "Add mixed image + video formats to current ad set — +2 score lift, 'more conversions per dollar'",
-    "learnings_written": ["L-2026-07-16-001", "L-2026-07-16-002"]
+    "top_meta_recommendation": "Switch to Maximize Conversions optimization (-17% CPR projected); test mixed formats (+2 lift)",
+    "learnings_written": ["L-2026-07-16-001", "L-2026-07-16-002", "L-2026-07-16-003", "L-2026-07-16-004"]
   }
 }
