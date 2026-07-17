@@ -1,7 +1,7 @@
 {
-  "as_of": "2026-07-16",
+  "as_of": "2026-07-17",
   "available": false,
-  "note": "FBA inventory unavailable — Seller Central scrape failed (Chrome not available in cloud env, L-2026-07-15-001 DOCTRINE). @josh — manual check required. See #stg-inventory-alerts.",
+  "note": "FBA inventory unavailable — Seller Central scrape requires Chrome (L-2026-07-15-001 DOCTRINE). SKU data below is last-known from Jul 15 SC scrape. Manual SC check required today. @josh",
   "last_known_sc_scrape": "2026-07-15",
   "skus": [
     {
@@ -11,7 +11,7 @@
       "amazon_min": 1379,
       "rate_14d": 48,
       "status": "HEALTHY",
-      "note": "HEALTHY — 294 days supply (Jul 15 data)"
+      "note": "HEALTHY — 294 days supply (Jul 15 data — stale)"
     },
     {
       "asin": "B0FQF2VTMJ",
@@ -20,7 +20,7 @@
       "amazon_min": 942,
       "rate_14d": 19,
       "status": "LOW_STOCK",
-      "note": "LOW STOCK — 129 days supply, 1650 inbound (Jul 15 data)"
+      "note": "LOW STOCK — 129 days supply, 1650 inbound (Jul 15 data — stale)"
     },
     {
       "asin": "B0GV5ZFLC2",
@@ -29,7 +29,7 @@
       "amazon_min": 287,
       "rate_14d": 5,
       "status": "HEALTHY",
-      "note": "HEALTHY — 365+ days supply (Jul 15 data)"
+      "note": "HEALTHY — 365+ days supply (Jul 15 data — stale)"
     },
     {
       "asin": "B0FQL16GH4",
@@ -38,7 +38,7 @@
       "amazon_min": 66,
       "rate_14d": 0,
       "status": "EXCESS",
-      "note": "EXCESS — 3522 est. excess units (Jul 15 data)"
+      "note": "EXCESS — 3522 est. excess units (Jul 15 data — stale)"
     },
     {
       "asin": "B0FQDHXSZ5",
@@ -47,7 +47,7 @@
       "amazon_min": 127,
       "rate_14d": 3,
       "status": "EXCESS",
-      "note": "EXCESS — 1870 est. excess units (Jul 15 data)"
+      "note": "EXCESS — 1870 est. excess units (Jul 15 data — stale)"
     },
     {
       "asin": "B0FQ628KCH",
@@ -56,7 +56,7 @@
       "amazon_min": 69,
       "rate_14d": 0,
       "status": "EXCESS",
-      "note": "EXCESS — 2472 est. excess units — liquidation (Jul 15 data)"
+      "note": "EXCESS — 2472 est. excess units — liquidation (Jul 15 data — stale)"
     },
     {
       "asin": "B0FQ4PY573",
@@ -65,7 +65,7 @@
       "amazon_min": 52,
       "rate_14d": null,
       "status": "CLOSED",
-      "note": "CLOSED listing (Jul 15 data) — H10 LIF 0 days CRITICAL"
+      "note": "CLOSED listing (Jul 15 data — stale) — H10 LIF 0 days CRITICAL — manual SC check required"
     },
     {
       "asin": "B0FQFP2S9F",
@@ -74,7 +74,7 @@
       "amazon_min": null,
       "rate_14d": null,
       "status": "STRANDED",
-      "note": "STRANDED — fix listing (Jul 15 data) — H10 LIF 0 days CRITICAL"
+      "note": "STRANDED — fix listing (Jul 15 data — stale) — H10 LIF 0 days CRITICAL — manual SC check required"
     }
   ],
   "summary": {
