@@ -120,14 +120,14 @@
         "2026-07-14: $253.27 MTD spend (Jul 1-13), ROAS ticked back down to 0.79 (from 0.84) - yesterday's (7/13) daily spend was $26.76 at a weak 0.37 daily ROAS, breaking the prior two days' strong-day pattern. Still no kill/revise decision recorded. 6th consecutive day flagged with no action taken.",
         "2026-07-15: $284.69 MTD spend (Jul 1-14), ROAS declined further to 0.70 (from 0.79) - 7th consecutive day flagged with no human action taken. ROAS has now dropped for two straight days after the brief Jul 12-13 improvement window, and the cumulative loss from threshold-breach through today is approximately $205 in spend at sub-1.0 ROAS.",
         "2026-07-16 (data MTD): $309.64 MTD spend, ROAS 0.65 — 8th consecutive day with no human action taken. ROAS declined again (0.70 -> 0.65). Cumulative loss from threshold-breach continues to grow; pattern is unambiguous and consistent — the campaign is bleeding spend at KILL-band ROAS with no intervention.",
-        "2026-07-17 (data L30D Jun 17-Jul 17): $338.69 L30D spend, ROAS 0.67 — Day 9 with no human action recorded. Slight ROAS uptick (0.65→0.67) does not change KILL-band classification. Cumulative spend above kill threshold now ~$264. A new copy campaign (ID 120249157571500118) shows ACTIVE status at $0 spend — hygiene concern, verify this is intentional and not a duplicate launch. CTR remains 6.05% (hook works per L-2026-07-16-001) — the failure is post-click, not creative."
+        "2026-07-17 (data L30D Jun 17–Jul 17): $338.69 L30D spend, ROAS 0.67 — Day 10 with no human action recorded. Slight ROAS uptick (0.65→0.67) does not change KILL-band classification. Cumulative spend above kill threshold now ~$264. A new copy campaign (ID 120249157571500118) shows ACTIVE status at $0 spend — hygiene concern, verify this is intentional and not a duplicate launch. CTR remains 6.05% (hook works per L-2026-07-16-001) — the failure is post-click, not creative."
       ],
       "status": "VALIDATED",
-      "confirmations": 8,
+      "confirmations": 9,
       "last_confirmed": "2026-07-17",
       "contradictions": 0,
       "source_brief_id": "jarvis_metaads_2026-07-10_red",
-      "action_implication": "VALIDATED (8 confirmations, 0 contradictions, 9 days unresolved): A kill-threshold flag produces no spend reduction without a same-day human decision — the flag alone is not a control mechanism. This campaign has now spent ~$264 above the kill threshold with ROAS in KILL band. This is not a watch situation — it is an overdue @Will decision. Recommend immediate pause or budget-zero on the Meta Save the Shave campaign. If kept running, document the business reason. Also verify the new copy campaign (120249157571500118) is intentional and not a hygiene issue. If paused and Dematter creative is ready (L-2026-07-16-002), launch the staged Dematter creative as the replacement test.",
+      "action_implication": "VALIDATED (9 confirmations, 0 contradictions, 10 days unresolved): A kill-threshold flag produces no spend reduction without a same-day human decision — the flag alone is not a control mechanism. This campaign has now spent ~$264 above the kill threshold with ROAS in KILL band. This is not a watch situation — it is an overdue @Will decision. Recommend immediate pause or budget-zero on the Meta Save the Shave campaign. If kept running, document the business reason. Also verify the new copy campaign (120249157571500118) is intentional and not a hygiene issue. If paused and Dematter creative is ready (L-2026-07-16-002), launch the staged Dematter creative as the replacement test.",
       "retired_reason": null
     },
     {
@@ -253,14 +253,15 @@
       "evidence": [
         "2026-07-16 Blaze 2F audit: CTR 6.05% (stable per prior watchdog data), Frequency 1.53 (below 3.0 fatigue threshold), Engagement Rate Ranking: Above Average (Meta MCP auction data) — creative hook confirmed working",
         "L30D ROAS 0.64 on $313.87 spend → 6 purchases → ~$52 cost per purchase. Meta Conversion Rate Ranking: Average. Diagnosis pattern: CTR ok + CVR low = offer/landing page mismatch",
-        "ROAS declined 6+ consecutive days (0.84→0.79→0.75→0.71→0.70→0.65→0.64) despite stable CTR and low frequency — rules out audience exhaustion and creative fatigue as root causes; confirms the problem is post-click"
+        "ROAS declined 6+ consecutive days (0.84→0.79→0.75→0.71→0.70→0.65→0.64) despite stable CTR and low frequency — rules out audience exhaustion and creative fatigue as root causes; confirms the problem is post-click",
+        "2026-07-17 (Day 10, L30D Jun 17–Jul 17): L30D spend $338.69, ROAS 0.67 — slight uptick from 0.65 (Day 9) but remains firmly in KILL band. CTR confirmed stable. Engagement Rate Ranking: Above Average (Meta MCP auction benchmarks). CPR trend +30.23% GOOD (Meta MCP performance trend for ad ID 120248769281250118) — the creative is maintaining engagement velocity. Frequency 1.53, well below fatigue threshold. Second consecutive data point confirming: high CTR + stable engagement + low ROAS = post-click failure, not creative hook failure."
       ],
       "status": "HYPOTHESIS",
-      "confirmations": 1,
-      "last_confirmed": "2026-07-16",
+      "confirmations": 2,
+      "last_confirmed": "2026-07-17",
       "contradictions": 0,
       "source_brief_id": "blaze_2f_audit_2026-07-16",
-      "action_implication": "Before launching new creative hooks, audit the Save the Shave Bundle landing page: URL accuracy, price clarity, mobile checkout experience, product-ad alignment. Consider testing Emergency Dematter (single product, lower price point, clearer rescue use case) vs. the bundle to isolate whether offer complexity or price is driving poor CVR. Do not conclude the hook is broken based on ROAS alone — CTR data confirms the hook works.",
+      "action_implication": "2 confirmations (approaching VALIDATED): CTR/ROAS mismatch pattern confirmed on Day 9 and Day 10. The creative hook is not degrading — CPR trend is GOOD (+30.23%), engagement Above Average, frequency 1.53. The failure is consistently post-click. Audit the Save the Shave Bundle landing page before any new creative tests — URL accuracy, price clarity, mobile checkout experience, product-ad alignment. BLZ-20260717-001 (male-targeted campaign) tests audience allocation, not the landing page issue — the landing page audit should run in parallel. Will's landing page audit guidance staged in thread reply to Jul 17 main post (ts: 1784301762.602309).",
       "retired_reason": null
     },
     {
@@ -283,6 +284,44 @@
       "contradictions": 0,
       "source_brief_id": "blaze_2f_audit_2026-07-16",
       "action_implication": "Prioritize Emergency Dematter as the hero SKU for the next Meta ad test, but monitor: paid ROAS dropped to RED (1.578) on Jul 15 after YELLOW (1.993) on Jul 14 — confirm recovery before committing Meta budget. 'Ten O'Clock Mat' and 'She Almost Got the Shave' are staged and production-ready — approve one to test Dematter vs. Bundle on Meta. Dematter's lower price point and single-product rescue narrative may resolve the landing page/CVR mismatch identified in L-2026-07-16-001.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-16-003",
+      "date_observed": "2026-07-16",
+      "subject": "Meta Advantage+ gender distribution — male vs. female ROAS divergence",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "Meta Advantage+ is allocating ~90% of budget to female audiences (ROAS 0.50) while male audiences at ~9% of budget are delivering ROAS 2.34 — a 4.7× ROAS gap. The algorithm is over-indexing female at the expense of the highest-converting segment. A male-targeted campaign is warranted to test whether the ROAS gap holds under dedicated spend.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "2026-07-16 Blaze 2F audit (source: blaze_2f_audit_2026-07-16_second): gender breakdown — female ~90% of budget, ROAS 0.50; male ~9% of budget, ROAS 2.34. ROAS gap: 4.7×. Meta Advantage+ cannot be overridden at the gender level; only a separate male-targeted campaign forces male allocation. Will confirmed awareness and issued directive to test male-targeted campaign (Slack #stg-ads-watchdog, Jul 16 13:53)."
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-16",
+      "contradictions": 0,
+      "source_brief_id": "blaze_2f_audit_2026-07-16_second",
+      "action_implication": "Stage a male-targeted campaign at $20-30/day with the same UGC Bill video. If male ROAS holds at 2.34 under dedicated budget, this confirms Advantage+ is suppressing the highest-value segment and the male-targeted campaign should become the primary test vehicle. BLZ-20260717-001 staged Jul 17, pending Will's approved reply in thread + video_id. Do not launch until both prerequisites are met.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-16-004",
+      "date_observed": "2026-07-16",
+      "subject": "Meta Advantage+ age distribution — 65+ best segment, 45-54 worst",
+      "asin": null,
+      "scope": "meta_ads",
+      "learning": "Meta Advantage+ is allocating 66% of budget to the 65+ age group (ROAS 0.96, near breakeven and best segment in the account) while 45-54 is the worst-performing segment at ROAS 0.31. The 65+ cohort is the least-loss segment despite the largest budget share; mid-age segments underperform significantly.",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "2026-07-16 Blaze 2F audit (source: blaze_2f_audit_2026-07-16_second): age breakdown — 65+ at 66% of budget, ROAS 0.96 (near breakeven, best segment in account); 45-54 at ROAS 0.31 (worst segment, budget share not separately recorded). Advantage+ distributes budget across age groups automatically; cannot be overridden without a separate age-targeted campaign."
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 1,
+      "last_confirmed": "2026-07-16",
+      "contradictions": 0,
+      "source_brief_id": "blaze_2f_audit_2026-07-16_second",
+      "action_implication": "65+ is the nearest-breakeven age segment — if budget is to be concentrated manually, this cohort is the least-loss option. Consider testing a 65+-targeted campaign only after the male-targeted test (L-2026-07-16-003 / BLZ-20260717-001) returns results — one audience variable at a time. A 65+ male overlap segment would be the ideal second test if BLZ-20260717-001 confirms male ROAS holds.",
       "retired_reason": null
     }
   ]
