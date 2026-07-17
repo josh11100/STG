@@ -1462,21 +1462,23 @@ async function loadData(){
     const res = await fetch(DATA_URL + '?_=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
     const data = await safeJson(res);
-    $('loading-state').style.display = 'none';
-    $('error-state').style.display   = 'none';
-    $('dashboard').style.display     = 'block';
-    render(data);
-
-    try{
-      const bhres = await fetch(BH_URL + '?_=' + Date.now());
-      if (bhres.ok) renderBizHealth(await safeJson(bhres));
-      else renderBizHealth(null);
-    }catch(e){ renderBizHealth(null); }
+    // Fetch DAAS *before* render() so window.__DAAS is set when the
+    // overview table builds its DAAS row (fixes "routine not yet live" bug)
     try{
       const daasRes = await fetch(DAAS_URL + '?_=' + Date.now());
       if (daasRes.ok) renderDaas(await safeJson(daasRes));
       else renderDaas(null);
     }catch(e){ renderDaas(null); }
+    $('loading-state').style.display = 'none';
+    $('error-state').style.display   = 'none';
+    $('dashboard').style.display     = 'block';
+    render(data);
+    // BH after render() — needs window.__LIVE (set inside render)
+    try{
+      const bhres = await fetch(BH_URL + '?_=' + Date.now());
+      if (bhres.ok) renderBizHealth(await safeJson(bhres));
+      else renderBizHealth(null);
+    }catch(e){ renderBizHealth(null); }
   }catch(err){
     $('loading-state').style.display = 'none';
     $('dashboard').style.display     = 'none';
@@ -1856,7 +1858,7 @@ function renderReports(files){
   else if(invAge>2) banners.push('<div class="alert alert-warn"><b>Live data is '+Math.floor(invAge)+' days old</b> (as of '+escS(invAsOf)+') — the daily inventory pull may have stopped. @josh</div>');
   if(inv&&inv.note) banners.push('<div class="alert alert-warn"><b>Feed note:</b> '+escS(inv.note)+'</div>');
   const scAge=(Date.now()-new Date(sc.as_of).getTime())/86400000;
-  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick's weekly review is overdue.</div>');
+  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick\u2019s weekly review is overdue.</div>');
   const bEl=$i('sc-banners'); if(bEl) bEl.innerHTML=banners.join('');
 
   const ct=sc.control_tower||{};
