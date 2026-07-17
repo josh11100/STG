@@ -1,34 +1,32 @@
 {
-  "generated_at": "2026-07-15T23:07:34-07:00",
-  "query_date_yesterday": "2026-07-14",
-  "query_date_sc": "2026-07-13",
+  "generated_at": "2026-07-16T23:04:27-07:00",
+  "query_date_yesterday": "2026-07-15",
+  "query_date_sc": "2026-07-14",
   "queries": {
     "A": {
       "status": "completed",
       "requested_field_ids": ["cost", "roas"],
-      "rows": [[394.5, 1.6954]],
+      "rows": [[350.52, 1.7952]],
       "error": null
     },
     "B": {
       "status": "completed",
       "requested_field_ids": ["asin", "sku", "cost", "attributedSales14dSameSKU", "acos"],
       "rows": [
-        ["B0GT1H84JM", "C8-VG2F-6714", 206.97, 0, 80.0224],
-        ["B0FQL56V99", "3I-97VO-78X4", 161.52, 321.86, 47.3874],
-        ["B0GV5ZFLC2", "8O-J63E-NJBR", 11.4, 18.99, 23.0909],
-        ["B0FQDHXSZ5", "7C-8EUF-79AF", 9.45, 19.99, 47.2736],
-        ["B0FQF2VTMJ", "W2-VFJG-FADR", 4.06, 0, null],
-        ["B0FQL16GH4", "6U-XVW9-2WBJ", 1.1, 0, null],
-        ["B0FQ628KCH", "6H-JCY0-JARS", 0, 0, null],
+        ["B0GT1H84JM", "C8-VG2F-6714", 164.32, 0, 52.665],
+        ["B0FQL56V99", "3I-97VO-78X4", 157.35, 248.29, 56.3433],
+        ["B0GV5ZFLC2", "8O-J63E-NJBR", 12.30, 37.98, 32.3855],
+        ["B0FQDHXSZ5", "7C-8EUF-79AF", 7.60, 0, null],
+        ["B0FQF2VTMJ", "W2-VFJG-FADR", 4.85, 0, null],
+        ["B0FQL16GH4", "6U-XVW9-2WBJ", 2.10, 0, null],
+        ["B0FQ628KCH", "6H-JCY0-JARS", 1.37, 0, null],
+        ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0.63, 0, null],
         ["B0GFGDTJ39", "99-8KLV-TU5S", 0, 0, null],
-        ["B0GRJ1366C", "BF-U1I9-TB25", 0, 0, null],
-        ["B0GT1MFCY5", "73-EY5E-UIBV", 0, 0, null],
         ["B0GT1V7V8R", "HG-EGAG-1HO5", 0, 0, null],
         ["B0GT5YFVB8", "YH-4KUE-9WQH", 0, 0, null],
         ["B0GXH3JTK4", "STG-WASH-WEAR-BUNDLE-V2", 0, 0, null],
         ["B0GXLPJS4C", "STG-TANGLE-MAT-BUNDLE-V1", 0, 0, null],
-        ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null],
-        ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0, 0, null]
+        ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null]
       ],
       "error": null
     },
@@ -36,14 +34,14 @@
       "status": "completed",
       "requested_field_ids": ["asin", "cost"],
       "rows": [
-        ["B0FQL56V99", 1611.32],
-        ["B0GT1H84JM", 1443.99],
-        ["B0GV5ZFLC2", 54.97],
-        ["B0FQDHXSZ5", 43.8],
-        ["B0FQF2VTMJ", 35.54],
+        ["B0FQL56V99", 1489.42],
+        ["B0GT1H84JM", 1442.09],
+        ["B0GV5ZFLC2", 64.00],
+        ["B0FQDHXSZ5", 45.99],
+        ["B0FQF2VTMJ", 37.46],
         ["B0FQL16GH4", 11.54],
-        ["B0FQ628KCH", 3.61],
-        ["B0GY9WZWKH", 2.31],
+        ["B0FQ628KCH", 5.51],
+        ["B0GY9WZWKH", 2.52],
         ["B0GT5YFVB8", 0.69],
         ["B0GXLPJS4C", 0.21],
         ["B0GFGDTJ39", 0],
@@ -59,17 +57,18 @@
       "status": "completed",
       "requested_field_ids": ["asin", "ordered_product_sales"],
       "rows": [
-        ["B0FQL56V99", 1177.04],
-        ["B0FQF2VTMJ", 362.71],
-        ["B0GV5ZFLC2", 112.04],
-        ["B0FQDHXSZ5", 17.99]
+        ["B0FQL56V99", 1057.50],
+        ["B0FQF2VTMJ", 299.76],
+        ["B0GV5ZFLC2", 55.07],
+        ["B0FQDHXSZ5", 37.98],
+        ["B0FQL16GH4", 19.99]
       ],
       "error": null
     },
     "E": {
       "status": "completed",
       "requested_field_ids": ["sessions", "unit_session_percentage", "units_ordered"],
-      "rows": [[440, 21.14, 93]],
+      "rows": [[460, 17.61, 81]],
       "error": null
     },
     "F": {
@@ -83,8 +82,8 @@
     "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
     "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
     "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
-    "D": "3b783e082c2c18456d61888e042b35bd7f4f73fa613d7baba91f3ba88e875490",
-    "E": "03726eff22313b38728f29517c29aed7f0cf0c7cf58ffa33e488257d18dd9045",
+    "D": "31137ea4d05fb128b75dbae116f69757a417521767f6accc734c6800a0809a77",
+    "E": "c165e4f3f0054bc7bf7b4a9b0a5b79a3e9b9183ffba8280afc4a196ba6ad4648",
     "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
   }
 }
