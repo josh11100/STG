@@ -1,55 +1,157 @@
 {
-  "run_date": "2026-07-16",
+  "run_date": "2026-07-17",
   "run_time_pt": "08:10",
-  "audit_run_time_pt": "12:14",
   "routine_version": "Blaze v1.4",
   "authority_mode": "CLASS_A_ACTIVE",
   "standing_authority_signature": "SIGNED_2026-07-16",
   "blaze_write_path_verified": false,
   "status": "RED",
   "auto_executions": 0,
-  "platforms_swept": ["Meta", "Amazon", "Google"],
+  "platforms_swept": ["Meta", "Amazon"],
   "meta": {
     "account": "2158768751536031",
+    "data_source": "connectors_data.json (L30D Jun 17–Jul 17) + Meta MCP live",
     "kill_breach": {
-      "campaign": "Save the Shave UGC Bill _UGC_070326",
-      "mtd_spend": 313.87,
-      "mtd_roas": 0.64,
+      "campaign": "Save the Shave UGC Bill _UGC_070306",
+      "l30d_spend": 338.69,
+      "l30d_roas": 0.67,
       "breakeven_roas_est": 2.40,
-      "days_in_breach": 8,
+      "days_in_breach": 10,
       "first_flagged": "2026-07-09",
       "learning_id": "L-2026-07-10-001",
-      "status": "BLOCKED",
-      "block_reason": "blaze_write_path_verified ABSENT — A-1 staged as Class B per STANDING_AUTHORITY_v1.1.md prerequisite"
+      "status": "STAGED_CLASS_B",
+      "block_reason": "blaze_write_path_verified ABSENT — A-1 prerequisite unmet per STANDING_AUTHORITY_v1.1.md; staged as Class B pending Josh write-path verification"
+    },
+    "live_signals": {
+      "cpr_trend": "+30.23% GOOD (Meta MCP ads_insights_performance_trend, ad 120248769281250118)",
+      "anomaly_signals": "NONE (Meta MCP ads_insights_anomaly_signal)",
+      "opportunity_score": 75,
+      "top_recommendation": "budget_limited — increase budget on ad set 120248769281260118 (+21 pts)",
+      "auction_quality_ranking": "Average",
+      "auction_engagement_ranking": "Above Average",
+      "auction_cvr_ranking": "Average",
+      "auction_verdict": "You are all good!"
     },
     "fatigue_flag": {
-      "status": "ACTIVE",
-      "days_decay": 8,
-      "note": "ROAS-only decay; CTR 6.05% stable; frequency 1.53 (below fatigue threshold)"
+      "status": "NONE",
+      "frequency": 1.53,
+      "threshold": 3.0,
+      "note": "Well below fatigue threshold; CTR 6.05% stable"
     },
-    "duplicate_campaign_hygiene": {
-      "pair": ["STG_Meta_Detangling_30sUGC_2026-04 (ID: 120244295191790118)", "STG_Meta_Detangling_30sUGC_2026-04 (ID: 120244294919800118)"],
-      "status": "PAUSED",
+    "new_campaign_hygiene": {
+      "campaign_id": "120249157571500118",
       "spend": 0,
-      "resolution": "OPEN"
-    }
+      "status": "ACTIVE",
+      "flag": "OPEN — zero-spend active campaign; verify this is intentional and not a duplicate launch"
+    },
+    "directives_processed": [
+      {
+        "slack_ts": "1784235209.723659",
+        "from_user": "U0BDV0HT2TY",
+        "received": "2026-07-16 13:53 PT",
+        "processed_in_run": "2026-07-17 08:10 PT",
+        "note": "Arrived after Jul 16 close-out; first processed this run",
+        "action": "BLZ-20260717-001 staged — male-targeted campaign brief; 3 prerequisites before launch"
+      }
+    ]
   },
   "amazon": {
-    "data_date": "2026-07-14",
+    "data_date": "2026-07-15",
+    "data_source": "data/supermetrics_data.json (generated 2026-07-16T23:04-07:00, ~9h old, FRESH)",
     "solutions": "DEFERRED_TO_ROUTINE_033",
+    "account_spend": 350.52,
+    "account_roas": 1.7952,
     "skus": [
-      {"asin": "B0GT1H84JM", "spend": 206.97, "sales": 0.00, "roas": 0.00, "band": "KILL"},
-      {"asin": "B0FQL56V99", "spend": 161.52, "sales": 321.86, "roas": 1.993, "band": "YELLOW"},
-      {"asin": "B0GV5ZFLC2", "spend": 11.40, "sales": 18.99, "roas": 1.666, "band": "RED"},
-      {"asin": "B0FQDHXSZ5", "spend": 9.45, "sales": 19.99, "roas": 2.115, "band": "YELLOW"},
-      {"asin": "B0FQF2VTMJ", "spend": 4.06, "sales": 0.00, "roas": 0.00, "band": "KILL"},
-      {"asin": "B0FQL16GH4", "spend": 1.10, "sales": 0.00, "roas": 0.00, "band": "KILL"},
-      {"asin": "B0FQ628KCH", "spend": 0.00, "sales": 0.00, "roas": null, "band": "CLEAR"}
-    ]
+      {
+        "asin": "B0GT1H84JM",
+        "name": "Save the Shave Bundle",
+        "spend": 164.32,
+        "sales": 0.00,
+        "roas": 0.00,
+        "band": "KILL",
+        "flag": "KILL band — deferred to Routine 033"
+      },
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "spend": 157.35,
+        "sales": 248.29,
+        "roas": 1.578,
+        "band": "RED",
+        "flag": "Band change YELLOW→RED vs Jul 14 data (1.993→1.578); organic keywords also dropping"
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment",
+        "spend": 12.30,
+        "sales": 37.98,
+        "roas": 3.087,
+        "band": "GREEN",
+        "flag": "Band change RED→GREEN vs Jul 14 data; consecutive conversion day"
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "spend": 7.60,
+        "sales": 0.00,
+        "roas": 0.00,
+        "band": "KILL",
+        "flag": "Band change YELLOW→KILL vs Jul 14 data; high variance pattern"
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "Rake Brush",
+        "spend": 4.85,
+        "sales": 0.00,
+        "roas": 0.00,
+        "band": "KILL",
+        "flag": "Consistent KILL band — deferred to Routine 033"
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "4-in-1 Shampoo",
+        "spend": 2.10,
+        "sales": 0.00,
+        "roas": 0.00,
+        "band": "KILL",
+        "flag": "Consistent KILL band — deferred to Routine 033"
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "spend": 1.37,
+        "sales": 0.00,
+        "roas": 0.00,
+        "band": "LIQUIDATION_VIOLATION",
+        "flag": "ACTIVE VIOLATION — liquidate=true, roas_bands.json: 'Any ad spend > $0 = immediate flag'. Jul 14 $0 was a one-day gap, NOT a pause. Violation ongoing."
+      }
+    ],
+    "slicker_violation": {
+      "status": "ACTIVE",
+      "asin": "B0FQ628KCH",
+      "spend_jul15": 1.37,
+      "spend_7d": 5.51,
+      "organic_rank_doodle_brush": 149,
+      "organic_rank_slicker_brush_for_dogs": 142,
+      "required_action": "@Will must pause Slicker Brush ad campaign immediately"
+    }
   },
   "google": {
     "status": "NOT_RUNNING",
     "spend": 0
+  },
+  "shopify": {
+    "date": "2026-07-16",
+    "revenue": 18.99,
+    "orders": 1,
+    "klaviyo_7d_sends": 0,
+    "klaviyo_flag": "ESCALATION — 0 sends across ALL flows (Welcome Series, Abandoned Cart, Warranty Registration, Registration) in past 7 days. Prior baseline was 1-2 sends/week. All email activity has gone to zero."
+  },
+  "h10": {
+    "date": "2026-07-16",
+    "gross_revenue": 1721.89,
+    "net_revenue": 864.57,
+    "units": 94
   },
   "creative_briefs": [
     {
@@ -91,40 +193,77 @@
       "narrator": "Kathy",
       "test_variable": "Narrator voice vs. UGC creator Bill",
       "status": "STAGED"
+    },
+    {
+      "id": "BLZ-20260717-001",
+      "title": "Male-Targeted Save the Shave — Audience Test",
+      "product": "Save the Shave Bundle",
+      "platform": "Meta",
+      "format": "UGC Bill (same video, male-only targeting)",
+      "narrator": "Bill (UGC)",
+      "test_variable": "Audience gender targeting — male-only vs. Advantage+ mixed",
+      "budget_day": 25,
+      "budget_range": "$20-30/day per Will directive",
+      "targeting": "Male, 35-65+, US, interests: dog grooming / dog owner",
+      "ad_set_strategy": "Separate campaign from existing Advantage+; manual targeting, male-only",
+      "creative_source": "Same video as current UGC Bill campaign — no new creative needed",
+      "video_id": "MISSING — required before launch",
+      "prerequisites": [
+        "Will's 'approved' reply in this Slack thread (ts: 1784301745.922089)",
+        "video_id confirmed for UGC Bill creative",
+        "blaze_write_path_verified learning validated in learnings.json"
+      ],
+      "launch_authority": "B-1 (Will approval required in thread)",
+      "status": "STAGED",
+      "staged_at": "2026-07-17 08:10 PT",
+      "staged_by": "Blaze v1.4",
+      "source_directive_ts": "1784235209.723659",
+      "source_directive_user": "U0BDV0HT2TY"
     }
   ],
   "slack_posts": {
     "channel_id": "C0BDU52NV61",
-    "main_post_ts": "1784215184.446639",
-    "closeout_ts": "1784215506.066639",
-    "audit_directive_ts": "1784229224.053289",
-    "audit_thread_parent_ts": "1784217683.348489"
+    "main_post_ts": "1784301638.115089",
+    "thread_reply_1_ts": "1784301745.922089",
+    "thread_reply_2_ts": "1784301754.565379",
+    "thread_reply_3_ts": "1784301762.602309",
+    "closeout_ts": null
   },
+  "learnings_updated": [
+    "L-2026-07-16-001 confirmations 1→2 (CTR/ROAS mismatch confirmed Day 10)",
+    "L-2026-07-16-003 ADDED (gender split — male ROAS 2.34 vs female 0.50, HYPOTHESIS)",
+    "L-2026-07-16-004 ADDED (age distribution — 65+ best, 45-54 worst, HYPOTHESIS)"
+  ],
   "warnings": [
-    "stg-decisions-log channel not found",
-    "stg-creative-pipeline channel not found",
-    "blaze_write_path_verified learning absent — A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path"
+    "blaze_write_path_verified learning absent — A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via connector",
+    "Slicker Brush (B0FQ628KCH) violation ACTIVE — $1.37 spend Jul 15 on liquidate=true SKU; @Will must pause immediately",
+    "Klaviyo ALL flows at 0 sends past 7 days — escalation from prior low volume; email list health investigation needed",
+    "FBA inventory data degraded — Chrome unavailable in cloud environment (3rd consecutive day); last-known SC data now 2 days stale",
+    "QB MTD revenue sync lag 5th consecutive day — do not use QB revenue for decision-making; use H10 for Amazon revenue"
+  ],
+  "urgent_action_required": [
+    {
+      "priority": 1,
+      "item": "Meta $75-Kill breach Day 10 — Save the Shave UGC Bill",
+      "l30d_spend": 338.69,
+      "l30d_roas": 0.67,
+      "recommendation": "KILL or REVISE immediately — staged Class B, awaiting write path verification OR Will manual pause",
+      "tagged_user": "U0BDV0HT2TY"
+    },
+    {
+      "priority": 2,
+      "item": "Slicker Brush campaign — active spend on liquidation SKU",
+      "spend_jul15": 1.37,
+      "recommendation": "Pause Slicker Brush ad campaign immediately",
+      "tagged_user": "U0BDV0HT2TY"
+    },
+    {
+      "priority": 3,
+      "item": "BLZ-20260717-001 pending approval",
+      "note": "Male-targeted campaign brief staged — needs Will's approved reply in thread + video_id to launch",
+      "tagged_user": "U0BDV0HT2TY"
+    }
   ],
   "weekly_watchdog": "NOT_DUE",
-  "urgent_action_required": {
-    "item": "Meta $75-Kill breach Day 8 — Save the Shave UGC Bill",
-    "mtd_spend": 313.87,
-    "mtd_roas": 0.64,
-    "recommendation": "KILL or REVISE immediately",
-    "tagged_user": "U0BDV0HT2TY"
-  },
-  "audit_summary": {
-    "ran": true,
-    "triggered_by": "Blaze: run a performance audit",
-    "trigger_ts": "1784229224.053289",
-    "top_performer": "Save the Shave UGC Bill — CTR 6.05% (hook working)",
-    "top_roas": 0.64,
-    "bottom_performer": "Save the Shave UGC Bill — only active campaign",
-    "bottom_roas": 0.64,
-    "root_cause": "CTR 6.05% (hook working) but CVR low — post-click offer/landing page mismatch, not creative failure",
-    "next_creative_direction": "Emergency Dematter RESCUE ad — single product, clearer use case, strongest cross-channel signal; 'Ten O'Clock Mat' brief is staged and ready",
-    "meta_opportunity_score": 96,
-    "top_meta_recommendation": "Add mixed image + video formats to current ad set — +2 score lift, 'more conversions per dollar'",
-    "learnings_written": ["L-2026-07-16-001", "L-2026-07-16-002"]
-  }
+  "duplicate_guard": "2026-07-17-blaze-complete"
 }
