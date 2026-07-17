@@ -1,87 +1,88 @@
 {
   "as_of": "2026-07-17",
-  "available": false,
-  "note": "FBA inventory unavailable — Seller Central scrape requires Chrome (L-2026-07-15-001 DOCTRINE). SKU data below is last-known from Jul 15 SC scrape. Manual SC check required today. @josh",
-  "last_known_sc_scrape": "2026-07-15",
+  "available": true,
+  "source": "Manual pull from Seller Central FBA Inventory — Josh, Jul 17 2026 ~11 AM PT",
+  "note": "Chrome scrape unavailable this morning — Josh manually pulled FBA Inventory page. Numbers current as of Jul 17.",
+  "last_known_sc_scrape": "2026-07-17",
   "skus": [
     {
       "asin": "B0FQL56V99",
       "name": "Emergency Dematter",
-      "on_hand": 22416,
-      "amazon_min": 1379,
-      "rate_14d": 48,
+      "on_hand": 22105,
+      "amazon_min": 1726,
+      "rate_14d": 49.8,
       "status": "HEALTHY",
-      "note": "HEALTHY — 294 days supply (Jul 15 data — stale)"
+      "note": "HEALTHY — 291 DoS on-hand · 4,483 units / 90d"
     },
     {
       "asin": "B0FQF2VTMJ",
       "name": "Rake Brush",
-      "on_hand": 668,
-      "amazon_min": 942,
-      "rate_14d": 19,
+      "on_hand": 624,
+      "amazon_min": 1019,
+      "rate_14d": 15.0,
       "status": "LOW_STOCK",
-      "note": "LOW STOCK — 129 days supply, 1650 inbound (Jul 15 data — stale)"
+      "note": "LOW STOCK — 32 DoS on-hand · 1,650 inbound (shipped) · 1,349 units / 90d"
     },
     {
       "asin": "B0GV5ZFLC2",
       "name": "Detangling Treatment",
-      "on_hand": 8397,
-      "amazon_min": 287,
-      "rate_14d": 5,
-      "status": "HEALTHY",
-      "note": "HEALTHY — 365+ days supply (Jul 15 data — stale)"
+      "on_hand": 8344,
+      "amazon_min": 312,
+      "rate_14d": 7.7,
+      "status": "EXCESS",
+      "note": "EXCESS — 7,550 est. excess units · 689 units / 90d"
     },
     {
       "asin": "B0FQL16GH4",
       "name": "4-in-1 Shampoo",
-      "on_hand": 4055,
-      "amazon_min": 66,
-      "rate_14d": 0,
+      "on_hand": 4033,
+      "amazon_min": 56,
+      "rate_14d": 1.6,
       "status": "EXCESS",
-      "note": "EXCESS — 3522 est. excess units (Jul 15 data — stale)"
+      "note": "EXCESS — 3,520 est. excess units · 145 units / 90d"
     },
     {
       "asin": "B0FQDHXSZ5",
       "name": "Pin Brush",
-      "on_hand": 2062,
-      "amazon_min": 127,
-      "rate_14d": 3,
+      "on_hand": 2039,
+      "amazon_min": 116,
+      "rate_14d": 3.3,
       "status": "EXCESS",
-      "note": "EXCESS — 1870 est. excess units (Jul 15 data — stale)"
+      "note": "EXCESS — 1,852 est. excess units · 294 units / 90d"
     },
     {
       "asin": "B0FQ628KCH",
       "name": "Slicker Brush",
-      "on_hand": 2594,
-      "amazon_min": 69,
-      "rate_14d": 0,
+      "on_hand": 2590,
+      "amazon_min": 26,
+      "rate_14d": 0.8,
       "status": "EXCESS",
-      "note": "EXCESS — 2472 est. excess units — liquidation (Jul 15 data — stale)"
+      "note": "EXCESS — 2,471 est. excess units — liquidation · 75 units / 90d"
     },
     {
       "asin": "B0FQ4PY573",
       "name": "Detangling Spray",
-      "on_hand": 324,
+      "on_hand": 323,
       "amazon_min": 52,
       "rate_14d": null,
       "status": "CLOSED",
-      "note": "CLOSED listing (Jul 15 data — stale) — H10 LIF 0 days CRITICAL — manual SC check required"
+      "note": "CLOSED listing — 0 sales · 323 units idle"
     },
     {
       "asin": "B0FQFP2S9F",
       "name": "FurFix De-Shed Brush",
-      "on_hand": 0,
+      "on_hand": 60,
       "amazon_min": null,
       "rate_14d": null,
       "status": "STRANDED",
-      "note": "STRANDED — fix listing (Jul 15 data — stale) — H10 LIF 0 days CRITICAL — manual SC check required"
+      "note": "STRANDED — fix listing"
     }
   ],
   "summary": {
     "total": 8,
-    "healthy": 2,
+    "healthy": 1,
     "low_stock": 1,
-    "excess": 3,
+    "excess": 4,
     "stranded": 1,
     "closed": 1
   }
