@@ -1,246 +1,242 @@
 {
-  "agent": "033 Amazon",
-  "date": "2026-07-17",
-  "generated_at": "2026-07-17T08:22:00-07:00",
-  "degraded_mode": {
-    "negatives": "NOT STAGED — browser/Ad Console unavailable (L-2026-07-15-001 DOCTRINE)",
-    "listing_score_triage": "NOT PERFORMED — H10 Listing Analyzer unavailable",
-    "compliance_sweep": "NOT PERFORMED — live listing text unavailable",
-    "inventory": "STALE — last known Jul 15; Chrome unavailable per L-2026-07-15-001"
-  },
-  "summary": {
-    "status": "RED",
+  "run_date": "2026-07-18",
+  "generated_at": "2026-07-18T08:20:00-07:00",
+  "routine": "STG 033 Amazon v1.1",
+  "data_date": "2026-07-16",
+  "supermetrics_generated_at": "2026-07-17T23:06:24-07:00",
+
+  "phase1_keywords_bids": {
     "negatives_staged": 0,
-    "bid_recs": 7,
-    "rank_defense": 1,
-    "listing_fixes": 0,
-    "solutions": 11,
-    "blocked": 2,
-    "approved": 0
+    "negatives_reason": "Browser/Ad Console unavailable (L-2026-07-15-001 DOCTRINE)",
+    "bid_recommendations": [
+      {
+        "sku": "Slicker Brush",
+        "asin": "B0FQ628KCH",
+        "action": "VIOLATION/PAUSE",
+        "note": "LIQUIDATION — any ad spend >$0 is an immediate flag. $6.00 7d spend observed.",
+        "status": "STAGED"
+      },
+      {
+        "sku": "Save the Shave Bundle",
+        "action": "PAUSE",
+        "roas_yesterday": 0,
+        "spend_yesterday": 165.24,
+        "revenue_yesterday": 0,
+        "band": "KILL",
+        "spend_7d": 1470.61,
+        "revenue_7d_sc": null,
+        "status": "STAGED",
+        "rec_id": "033_rec_20260716_002",
+        "blocked_hours": 48
+      },
+      {
+        "sku": "Emergency Dematter",
+        "action": "LOWER + rank-defense",
+        "roas_yesterday": 1.589,
+        "spend_yesterday": 156.23,
+        "revenue_yesterday": 248.29,
+        "band": "RED",
+        "breakeven": 2.07,
+        "yellow_min": 1.66,
+        "red_min": 1.14,
+        "spend_7d": 1454.59,
+        "revenue_7d_sc": 1029.92,
+        "tacos_pct": 141.2,
+        "rank_drops": [
+          {"keyword": "dematting comb", "drop": -4, "rank": 26, "sv": 5818},
+          {"keyword": "detangler for dogs", "drop": -3, "rank": 17, "sv": 1561}
+        ],
+        "status": "STAGED"
+      },
+      {
+        "sku": "Detangling Treatment",
+        "action": "HOLD",
+        "roas_yesterday": 0,
+        "spend_yesterday": 7.80,
+        "revenue_yesterday": 0,
+        "band": "KILL",
+        "breakeven": 2.74,
+        "yellow_min": 2.20,
+        "red_min": 1.51,
+        "spend_7d": 68.09,
+        "revenue_7d_sc": 94.95,
+        "tacos_pct": 71.7,
+        "inventory": "EXCESS",
+        "note": "HOLD not PAUSE — low spend, excess inventory, moment=ROUTINE",
+        "status": "STAGED"
+      },
+      {
+        "sku": "Pin Brush",
+        "action": "HOLD",
+        "roas_yesterday": 4.47,
+        "spend_yesterday": 4.47,
+        "revenue_yesterday": 19.99,
+        "band": "GREEN",
+        "breakeven": 2.61,
+        "yellow_min": 2.09,
+        "red_min": 1.43,
+        "spend_7d": 46.12,
+        "revenue_7d_sc": 59.97,
+        "tacos_pct": 76.9,
+        "inventory": "EXCESS",
+        "note": "GREEN yesterday but 7d TACOS critical; HOLD pending trend",
+        "status": "STAGED"
+      },
+      {
+        "sku": "Rake Brush",
+        "action": "PAUSE",
+        "roas_yesterday": 0,
+        "spend_yesterday": 3.99,
+        "revenue_yesterday": 0,
+        "band": "KILL",
+        "breakeven": 3.12,
+        "yellow_min": 2.49,
+        "red_min": 1.71,
+        "spend_7d": 36.71,
+        "revenue_7d_sc": 236.81,
+        "tacos_pct": 15.5,
+        "inventory": "LOW_STOCK",
+        "note": "PAUSE — LOW_STOCK + KILL band; preserve units for organic",
+        "status": "STAGED"
+      },
+      {
+        "sku": "4-in-1 Shampoo",
+        "action": "HOLD",
+        "roas_yesterday": 18.17,
+        "spend_yesterday": 1.10,
+        "revenue_yesterday": 19.99,
+        "band": "GREEN",
+        "breakeven": 3.75,
+        "yellow_min": 3.00,
+        "red_min": 2.06,
+        "spend_7d": 8.98,
+        "revenue_7d_sc": null,
+        "inventory": "EXCESS",
+        "ltsf_risk": true,
+        "note": "GREEN but LTSF risk on 4,033 units; monitor",
+        "status": "STAGED"
+      }
+    ],
+    "rank_defense_keywords": [
+      {"keyword": "dematting comb", "drop": -4, "rank": 26, "sv": 5818},
+      {"keyword": "detangler for dogs", "drop": -3, "rank": 17, "sv": 1561}
+    ],
+    "creative_signals_count": 0,
+    "creative_reason": "CTR data unavailable"
   },
-  "flags": [
-    {
-      "id": "033_flag_20260717_001",
-      "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Slicker Brush ad spend detected (LIQUIDATION violation — Day 2)",
-      "problem": "B0FQ628KCH received $1.37 in spend on Jul 15 (Query B) — continuing violation after Jul 16 flag. 7d total: $5.51. LIQUIDATION SKU must generate zero ad cost.",
-      "solution": "Pause all campaigns targeting B0FQ628KCH immediately.",
-      "action": "Ad Console → Campaigns → filter ASIN B0FQ628KCH → set all active campaigns to Paused.",
-      "deadline": "2026-07-17",
-      "deadline_cost": "$1.37/day forbidden spend on liquidation SKU",
-      "approver": "@will",
-      "brief_id": "033_rec_slicker_pause_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_002",
-      "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Save the Shave Bundle (B0GT1H84JM) KILL band — ROAS 0.00 on $164.32 Jul 15 spend",
-      "problem": "Bundle spent $164.32 on Jul 15 with $0 attributed sales (ROAS 0.00). 7d spend $1,442.09 at zero return. KILL band.",
-      "solution": "Pause all Bundle campaigns immediately.",
-      "action": "Ad Console → Campaigns → filter ASIN B0GT1H84JM → Status: Paused.",
-      "deadline": "2026-07-17",
-      "deadline_cost": "$164.32/day burned at ROAS 0.00",
-      "approver": "@will",
-      "brief_id": "033_rec_Bundle_pause_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_003",
-      "status": "YELLOW",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Dematter YELLOW band — ROAS 1.578; lower bids + rank defense 'dematting comb for dogs' (rank 26, down 4)",
-      "problem": "Dematter ROAS 1.578 on Jul 15 ($157.35 spend, $248.29 sales) — YELLOW band (breakeven 2.07, yellow_min 1.66). H10 Jul 16: 'dematting comb for dogs' dropped 4 spots to rank 26 (SV 5,818). 'detangler for dogs' dropped 3 spots to rank 17 (SV 1,561).",
-      "solution": "Lower Dematter bids 15-20% to pull ROAS toward breakeven; hold 'dematting comb for dogs' bid at ceiling — do not cut during rank slide on SV 5,818 keyword.",
-      "action": "Ad Console → Dematter campaigns → lower all keyword bids 15-20% EXCEPT 'dematting comb for dogs' → hold that bid at current ceiling.",
-      "deadline": "2026-07-18",
-      "deadline_cost": "$157.35/day in YELLOW band; rank 26 slide risk on SV 5,818 keyword if underfunded",
-      "approver": "@will",
-      "brief_id": "033_rec_Dematter_lower_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_004",
-      "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Pin Brush (B0FQDHXSZ5) KILL band — ROAS 0.00 on $7.60 Jul 15 spend",
-      "problem": "Pin Brush spent $7.60 on Jul 15 with $0 attributed sales (ROAS 0.00). 7d spend $45.99. EXCESS inventory: 2,062 FBA units, rate_14d 3.",
-      "solution": "Pause Pin Brush campaigns — KILL band spend on excess-inventory SKU.",
-      "action": "Ad Console → campaigns targeting B0FQDHXSZ5 → Status: Paused.",
-      "deadline": "2026-07-17",
-      "deadline_cost": "$7.60/day waste on KILL-band SKU with excess stock",
-      "approver": "@will",
-      "brief_id": "033_rec_Pin_pause_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_005",
-      "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Rake Brush (B0FQF2VTMJ) KILL band — ROAS 0.00 on $4.85 Jul 15; LOW STOCK",
-      "problem": "Rake spent $4.85 on Jul 15 with $0 attributed sales (ROAS 0.00). 7d SC sales $299.76 — strong organic velocity. LOW STOCK: 668 FBA vs amazon_min 942 (below threshold); 1,650 inbound, ETA unknown.",
-      "solution": "Pause Rake campaigns — organic is driving sales; ads add pure cost on constrained stock. Confirm inbound ETA separately.",
-      "action": "Ad Console → campaigns targeting B0FQF2VTMJ → Status: Paused. Seller Central → Shipments → confirm 1,650-unit inbound ETA.",
-      "deadline": "2026-07-17",
-      "deadline_cost": "$4.85/day waste; stock-out risk on $299.76/7d SKU if inbound delayed",
-      "approver": "@will",
-      "brief_id": "033_rec_Rake_pause_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_006",
-      "status": "RED",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "4-in-1 Shampoo (B0FQL16GH4) KILL band — ROAS 0.00 on $2.10 Jul 15; EXCESS inventory",
-      "problem": "Shampoo spent $2.10 on Jul 15 with $0 attributed sales (ROAS 0.00). 7d spend $11.54. EXCESS: 4,055 FBA units, rate_14d 0 — dead velocity.",
-      "solution": "Pause Shampoo campaigns — KILL band with zero velocity and excess stock.",
-      "action": "Ad Console → campaigns targeting B0FQL16GH4 → Status: Paused.",
-      "deadline": "2026-07-17",
-      "deadline_cost": "$2.10/day waste on zero-velocity EXCESS SKU",
-      "approver": "@will",
-      "brief_id": "033_rec_Shampoo_pause_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_007",
-      "status": "YELLOW",
-      "phase": "Phase 1 Keywords",
-      "platform": "Amazon",
-      "title": "Detangling Treatment (B0GV5ZFLC2) HOLD — ROAS 3.087 GREEN Jul 15 but 7d TACOS 116.2%",
-      "problem": "Detangling ROAS 3.087 on Jul 15 ($12.30 spend, $37.98 sales) — GREEN. But 7d TACOS proxy 116.2%: $64.00 spend / $55.07 7d SC sales. Jul 15 was a single strong day; prior 6 days were weak. TACOS target is <35%.",
-      "solution": "HOLD current bids — do not increase budget. Monitor 7d rolling ROAS. If next 3 days sustain GREEN, revert to normal bid schedule.",
-      "action": "Ad Console → Detangling campaigns → no change. Log Jul 15 as positive data point. Revisit 2026-07-20.",
-      "deadline": "2026-07-20",
-      "deadline_cost": "Increasing bids risks amplifying 116.2% 7d TACOS; HOLD protects margin until pattern confirmed",
-      "approver": "@will",
-      "brief_id": "033_rec_Detangling_hold_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_008",
-      "status": "RED",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "FurFix De-Shed Brush (B0FQFP2S9F) STRANDED — BLOCKED >96h (re-tagged Jul 16, no response)",
-      "problem": "B0FQFP2S9F STRANDED (0 FBA units, LTSF >=181d); first flagged Jul 13 11:25 AM — 96h+ elapsed. Once-only BLOCKED re-tag posted Jul 16 per protocol. No Will response. Listing suppressed 4+ days.",
-      "solution": "Fix or close B0FQFP2S9F listing immediately — 4+ days suppressed organic visibility and LTSF accrual.",
-      "action": "Seller Central → Manage Inventory → Fix Stranded Inventory → B0FQFP2S9F → follow fix wizard or close listing.",
-      "deadline": "2026-07-17",
-      "deadline_cost": "4+ days listing suppression; LTSF fees accruing; -$23.95 net with zero revenue",
-      "approver": "@will",
-      "brief_id": "033_rec_FurFix_stranded_2026-07-17",
-      "slack_status": "BLOCKED"
-    },
-    {
-      "id": "033_flag_20260717_009",
-      "status": "RED",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "COMP-2026-07-14-001 compliance violation — BLOCKED; first 033 re-tag Jul 17",
-      "problem": "Compliance flag COMP-2026-07-14-001 staged Jul 14 — 72h+ elapsed with no Will response. First 033 BLOCKED re-tag posted today Jul 17 in Phase 2 post with @will and cumulative cost.",
-      "solution": "Address the compliance violation per COMP-2026-07-14-001 immediately.",
-      "action": "Seller Central → Manage Inventory → Edit listing for flagged ASIN → fix compliance issue per COMP-2026-07-14-001 detail.",
-      "deadline": "2026-07-17",
-      "deadline_cost": "Compliance exposure cumulative 72h+; risk compounds daily",
-      "approver": "@will",
-      "brief_id": "033_rec_COMP_20260714_001_retag_2026-07-17",
-      "slack_status": "BLOCKED"
-    },
-    {
-      "id": "033_flag_20260717_010",
-      "status": "YELLOW",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "Rake Brush (B0FQF2VTMJ) LOW STOCK — 668 FBA vs amazon_min 942, 1,650 inbound ETA unknown",
-      "problem": "Rake at 668 FBA units vs. amazon_min 942 (below threshold). 1,650 units inbound; ETA unknown. Highest-velocity non-Dematter SKU: 7d SC sales $299.76. Ads paused (FLAG 005).",
-      "solution": "Confirm inbound 1,650-unit shipment ETA — if >14 days out, assess bridge reorder immediately to prevent stock-out.",
-      "action": "Seller Central → Manage Inventory → Shipments → find Rake Brush inbound → confirm ETA. If >14 days: fast-track reorder.",
-      "deadline": "2026-07-18",
-      "deadline_cost": "Stock-out risk on $299.76/7d SKU; rank loss if OOS on highest-velocity non-Dematter product",
-      "approver": "@will",
-      "brief_id": "033_rec_Rake_lowstock_2026-07-17",
-      "slack_status": "OPEN"
-    },
-    {
-      "id": "033_flag_20260717_011",
-      "status": "YELLOW",
-      "phase": "Phase 2 Listings",
-      "platform": "Amazon",
-      "title": "Pin Brush (B0FQDHXSZ5) EXCESS — 2,062 units, rate_14d 3, LTSF risk",
-      "problem": "2,062 FBA units with amazon_min ~127; estimated excess ~1,870 units. rate_14d 3 — 49+ weeks to clear. Ads paused (FLAG 004). LTSF >=181d risk.",
-      "solution": "Add a promotional coupon or run a price reduction to accelerate Pin Brush velocity and reduce LTSF exposure.",
-      "action": "Seller Central → Advertising → Coupons → Create 10-15% coupon for B0FQDHXSZ5 (30-day), or reduce price 10% for velocity test.",
-      "deadline": "2026-07-24",
-      "deadline_cost": "LTSF fees accruing; 49+ weeks to clear at current 3/14d velocity",
-      "approver": "@will",
-      "brief_id": "033_rec_Pin_excess_2026-07-17",
-      "slack_status": "OPEN"
-    }
-  ],
-  "posts": [
-    {
-      "channel": "#stg-ads-watchdog",
-      "channel_id": "C0BDU52NV61",
-      "time": "8:19 AM PT",
-      "type": "main",
-      "phase": "Phase 1",
-      "ts": "1784301153.410099",
-      "status": "RED",
-      "title": "Phase 1 — Keywords & Search Terms",
-      "text": "Phase 1 posted: 7 bid recs (Slicker RED, Bundle PAUSE, Dematter LOWER, Pin PAUSE, Rake PAUSE, Shampoo PAUSE, Detangling HOLD) + rank defense plan for 'dematting comb for dogs' (rank 26, down 4, SV 5,818). Negatives NOT STAGED (browser unavailable, L-2026-07-15-001 DOCTRINE)."
-    },
-    {
-      "channel": "#stg-ads-watchdog",
-      "channel_id": "C0BDU52NV61",
-      "time": "8:20 AM PT",
-      "type": "main",
-      "phase": "Phase 2",
-      "ts": "1784301239.082089",
-      "status": "YELLOW",
-      "title": "Phase 2 — Listings & Inventory",
-      "text": "Phase 2 posted: FurFix STRANDED BLOCKED >96h, COMP-2026-07-14-001 first 033 re-tag, Rake LOW STOCK ETA check, Pin Brush EXCESS coupon rec. Listing-score triage NOT PERFORMED (H10 unavailable). Compliance sweep NOT PERFORMED (live text unavailable). Inventory data stale (last known Jul 15)."
-    },
-    {
-      "channel": "#stg-ads-watchdog",
-      "channel_id": "C0BDU52NV61",
-      "time": "8:21 AM PT",
-      "type": "solution_thread",
-      "phase": "Phase 1",
-      "ts": "1784301301.848589",
-      "parent_ts": "1784301153.410099",
-      "status": "RED",
-      "title": "Step 2C Solutions — Phase 1 (7 flags)",
-      "text": "Thread reply to Phase 1 main post: 7 solutions in Step 2C format (Slicker, Bundle, Dematter, Pin, Rake, Shampoo, Detangling)."
-    },
-    {
-      "channel": "#stg-ads-watchdog",
-      "channel_id": "C0BDU52NV61",
-      "time": "8:21 AM PT",
-      "type": "solution_thread",
-      "phase": "Phase 2",
-      "ts": "1784301331.976539",
-      "parent_ts": "1784301239.082089",
-      "status": "YELLOW",
-      "title": "Step 2C Solutions — Phase 2 (4 flags)",
-      "text": "Thread reply to Phase 2 main post: 4 solutions (FurFix STRANDED, COMP re-tag, Rake LOW STOCK, Pin EXCESS)."
-    },
-    {
-      "channel": "#stg-ads-watchdog",
-      "channel_id": "C0BDU52NV61",
-      "time": "8:21 AM PT",
-      "type": "close_out",
-      "ts": "1784301498.518389",
-      "status": null,
-      "title": "Close-out — 033 Amazon v1.1 pass complete",
-      "text": "Phase 1: 0 negatives staged · 7 bid recs · 1 rank defense · 0 creative signals. Phase 2: 0 listing fixes · 0 Anchor · 0 Tailwind · 1 compliance BLOCKED re-tag. Solutions: 11 posted · 0 approved+logged · 2 BLOCKED (FurFix >96h, COMP first re-tag Jul 17). Negatives NOT STAGED. Listing-score triage NOT PERFORMED. Compliance sweep NOT PERFORMED. FBA inventory data stale (last known Jul 15)."
-    }
-  ]
+
+  "phase2_listings": {
+    "listing_score_triage": "NOT PERFORMED — H10 Listing Analyzer unavailable",
+    "review_driven_fixes": 0,
+    "anchor_directives": 0,
+    "tailwind_directives": 0,
+    "compliance_sweep": "NOT PERFORMED — live listing text unavailable",
+    "retags": [
+      {
+        "id": "COMP-2026-07-14-001",
+        "type": "compliance",
+        "first_flagged": "2026-07-14",
+        "elapsed_hours": 96,
+        "status": "2nd 033 re-tag posted today"
+      },
+      {
+        "id": "FurFix-STRANDED",
+        "type": "stranded",
+        "first_flagged": "2026-07-13",
+        "elapsed_hours": 120,
+        "status": "2nd 033 re-tag posted today"
+      }
+    ],
+    "inventory_flags": [
+      {
+        "sku": "Rake Brush",
+        "status": "LOW_STOCK",
+        "on_hand": 624,
+        "dos": 32,
+        "amazon_min": 1019,
+        "inbound": 1650
+      },
+      {
+        "sku": "4-in-1 Shampoo",
+        "status": "EXCESS",
+        "on_hand": 4033,
+        "excess_units": 3520,
+        "ltsf_risk": true,
+        "ltsf_days": ">=181d"
+      },
+      {
+        "sku": "Detangling Treatment",
+        "status": "EXCESS",
+        "on_hand": 8344,
+        "excess_units": 7550
+      },
+      {
+        "sku": "Pin Brush",
+        "status": "EXCESS",
+        "on_hand": 2039,
+        "excess_units": 1852
+      }
+    ]
+  },
+
+  "solutions_summary": {
+    "posted": 9,
+    "approved_and_logged": 0,
+    "blocked": [
+      {
+        "id": "033_rec_20260716_002",
+        "description": "Bundle PAUSE — $0 revenue on $1,470.61 7d spend",
+        "first_staged": "2026-07-16",
+        "elapsed_hours": 48,
+        "retag_sent": true,
+        "retag_count": 1
+      },
+      {
+        "id": "COMP-2026-07-14-001",
+        "description": "Compliance sweep blocked",
+        "first_flagged": "2026-07-14",
+        "elapsed_hours": 96,
+        "retag_count": 2
+      },
+      {
+        "id": "FurFix-STRANDED",
+        "description": "FurFix 60 units stranded — no ASIN, no velocity",
+        "first_flagged": "2026-07-13",
+        "elapsed_hours": 120,
+        "retag_count": 2
+      }
+    ]
+  },
+
+  "approval_sweep": {
+    "retag_sent": true,
+    "retag_target_id": "033_rec_20260716_002",
+    "retag_thread_ts": "1784214808.049869",
+    "retag_reply_ts": "1784387683.130469"
+  },
+
+  "slack_posts": {
+    "phase1_main_ts": "1784387647.226299",
+    "phase2_main_ts": "1784387678.134669",
+    "approval_retag_ts": "1784387683.130469",
+    "channel": "C0BDU52NV61"
+  },
+
+  "tacos_7d": {
+    "emergency_dematter": {"spend": 1454.59, "sc_sales": 1029.92, "tacos_pct": 141.2, "band": "CRITICAL"},
+    "rake_brush": {"spend": 36.71, "sc_sales": 236.81, "tacos_pct": 15.5, "band": "GREEN"},
+    "detangling_treatment": {"spend": 68.09, "sc_sales": 94.95, "tacos_pct": 71.7, "band": "CRITICAL"},
+    "pin_brush": {"spend": 46.12, "sc_sales": 59.97, "tacos_pct": 76.9, "band": "CRITICAL"},
+    "bundle": {"spend": 1470.61, "sc_sales": null, "tacos_pct": null, "note": "No SC sales data"},
+    "shampoo": {"spend": 8.98, "sc_sales": null, "tacos_pct": null, "note": "No SC sales data"},
+    "tacos_target": "<35% by August"
+  },
+
+  "data_sources": {
+    "supermetrics": {"status": "CURRENT", "data_date": "2026-07-16", "generated_at": "2026-07-17T23:06:24-07:00"},
+    "inventory": {"status": "CURRENT", "as_of": "2026-07-17", "source": "manual pull Josh"},
+    "helium10": {"status": "AVAILABLE", "as_of": "2026-07-17", "source": "connectors_data.json"},
+    "browser_scrape": {"status": "UNAVAILABLE", "reason": "L-2026-07-15-001 DOCTRINE"},
+    "ad_console": {"status": "UNAVAILABLE", "reason": "Chrome dependency blocked"}
+  }
 }
