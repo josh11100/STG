@@ -1,8 +1,8 @@
 {
-  "as_of": "2026-07-17",
+  "as_of": "2026-07-18",
   "available": true,
   "source": "Manual pull from Seller Central FBA Inventory — Josh, Jul 17 2026 ~11 AM PT",
-  "note": "Chrome scrape unavailable this morning — Josh manually pulled FBA Inventory page. Numbers current as of Jul 17.",
+  "note": "Automated cloud scrape unavailable today (Day 4 — L-2026-07-15-001 DOCTRINE). Data below is from Josh's manual Jul 17 SC pull (1 day stale). Next manual check needed: B0FQ4PY573 (Detangling Spray, LIF≤0), B0FQFP2S9F (FurFix, STRANDED), B0FQF2VTMJ (Rake Brush, LOW STOCK ~32 DoS).",
   "last_known_sc_scrape": "2026-07-17",
   "skus": [
     {
@@ -21,7 +21,7 @@
       "amazon_min": 1019,
       "rate_14d": 15.0,
       "status": "LOW_STOCK",
-      "note": "LOW STOCK — 32 DoS on-hand · 1,650 inbound (shipped) · 1,349 units / 90d"
+      "note": "LOW STOCK — 32 DoS on-hand · 1,650 inbound (shipped) · 1,349 units / 90d. Reorder decision with Graham still pending."
     },
     {
       "asin": "B0GV5ZFLC2",
@@ -66,7 +66,7 @@
       "amazon_min": 52,
       "rate_14d": null,
       "status": "CLOSED",
-      "note": "CLOSED listing — 0 sales · 323 units idle"
+      "note": "CLOSED listing — 0 sales · 323 units idle. Manual SC check needed."
     },
     {
       "asin": "B0FQFP2S9F",
@@ -75,7 +75,7 @@
       "amazon_min": null,
       "rate_14d": null,
       "status": "STRANDED",
-      "note": "STRANDED — fix listing"
+      "note": "STRANDED — fix listing. Manual SC check needed."
     }
   ],
   "summary": {
