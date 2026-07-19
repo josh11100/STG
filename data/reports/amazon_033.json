@@ -1,9 +1,9 @@
 {
-  "run_date": "2026-07-18",
-  "generated_at": "2026-07-18T08:20:00-07:00",
+  "run_date": "2026-07-19",
+  "generated_at": "2026-07-19T08:20:00-07:00",
   "routine": "STG 033 Amazon v1.1",
-  "data_date": "2026-07-16",
-  "supermetrics_generated_at": "2026-07-17T23:06:24-07:00",
+  "data_date": "2026-07-17",
+  "supermetrics_generated_at": "2026-07-18T23:07:36-07:00",
 
   "phase1_keywords_bids": {
     "negatives_staged": 0,
@@ -12,149 +12,195 @@
       {
         "sku": "Slicker Brush",
         "asin": "B0FQ628KCH",
-        "action": "VIOLATION/PAUSE",
-        "note": "LIQUIDATION — any ad spend >$0 is an immediate flag. $6.00 7d spend observed.",
-        "status": "STAGED"
+        "action": "VIOLATION",
+        "roas_yesterday": 0.0,
+        "spend_yesterday": 1.37,
+        "revenue_yesterday": 0.0,
+        "spend_7d": 7.37,
+        "band": "LIQUIDATION",
+        "note": "LIQUIDATION — any ad spend >$0 is immediate flag. Day 12 of violation. $7.37 7d spend observed.",
+        "status": "BLOCKED",
+        "violation_day": 12
       },
       {
         "sku": "Save the Shave Bundle",
-        "action": "PAUSE",
-        "roas_yesterday": 0,
-        "spend_yesterday": 165.24,
-        "revenue_yesterday": 0,
+        "asin": "B0GT1H84JM",
+        "action": "KILL/PAUSE",
+        "roas_yesterday": 0.0,
+        "spend_yesterday": 213.47,
+        "revenue_yesterday": 0.0,
         "band": "KILL",
-        "spend_7d": 1470.61,
+        "breakeven_est": 2.40,
+        "spend_7d": 1463.28,
         "revenue_7d_sc": null,
+        "tacos_pct": null,
+        "note": "No attributed revenue 7d. $1,463.28 7d spend with zero return.",
         "status": "STAGED",
-        "rec_id": "033_rec_20260716_002",
-        "blocked_hours": 48
+        "rec_id": "033_rec_20260719_001"
       },
       {
         "sku": "Emergency Dematter",
-        "action": "LOWER + rank-defense",
-        "roas_yesterday": 1.589,
-        "spend_yesterday": 156.23,
-        "revenue_yesterday": 248.29,
-        "band": "RED",
+        "asin": "B0FMBHBZXH",
+        "action": "LOWER + TACOS guard",
+        "roas_yesterday": 2.581,
+        "spend_yesterday": 274.27,
+        "revenue_yesterday": 708.09,
+        "band": "GREEN",
         "breakeven": 2.07,
         "yellow_min": 1.66,
         "red_min": 1.14,
-        "spend_7d": 1454.59,
-        "revenue_7d_sc": 1029.92,
-        "tacos_pct": 141.2,
-        "rank_drops": [
-          {"keyword": "dematting comb", "drop": -4, "rank": 26, "sv": 5818},
-          {"keyword": "detangler for dogs", "drop": -3, "rank": 17, "sv": 1561}
+        "spend_7d": 1490.61,
+        "revenue_7d_sc": 1062.08,
+        "tacos_pct": 140.4,
+        "tacos_band": "CRITICAL",
+        "rank_recovery": [
+          {"keyword": "dematting comb", "change": "+3", "rank": 23, "sv": 5818},
+          {"keyword": "detangler for dogs", "change": "+3", "rank": 14, "sv": 1561}
         ],
-        "status": "STAGED"
+        "learning_cite": "L-2026-07-08-001",
+        "note": "ROAS GREEN (2.581 > 2.07 breakeven). HOLD for 1st GREEN day per L-2026-07-08-001. TACOS 140.4% CRITICAL — lower bids to reduce spend; observe 2 more data points before scaling.",
+        "status": "STAGED",
+        "rec_id": "033_rec_20260719_002"
       },
       {
         "sku": "Detangling Treatment",
-        "action": "HOLD",
-        "roas_yesterday": 0,
-        "spend_yesterday": 7.80,
-        "revenue_yesterday": 0,
+        "asin": "B0FQFJQB7V",
+        "action": "HOLD/LOWER",
+        "roas_yesterday": 0.0,
+        "spend_yesterday": 17.49,
+        "revenue_yesterday": 0.0,
         "band": "KILL",
         "breakeven": 2.74,
         "yellow_min": 2.20,
         "red_min": 1.51,
-        "spend_7d": 68.09,
-        "revenue_7d_sc": 94.95,
-        "tacos_pct": 71.7,
+        "spend_7d": 83.06,
+        "revenue_7d_sc": 93.95,
+        "tacos_pct": 88.4,
+        "tacos_band": "CRITICAL",
         "inventory": "EXCESS",
-        "note": "HOLD not PAUSE — low spend, excess inventory, moment=ROUTINE",
-        "status": "STAGED"
+        "excess_units": 7550,
+        "note": "KILL band 2nd consecutive. EXCESS inventory. TACOS 88.4%. Lower bids — do not pause (organic still present per SC sales).",
+        "status": "STAGED",
+        "rec_id": "033_rec_20260719_003"
       },
       {
         "sku": "Pin Brush",
+        "asin": "B0FQFJXV4L",
         "action": "HOLD",
-        "roas_yesterday": 4.47,
-        "spend_yesterday": 4.47,
-        "revenue_yesterday": 19.99,
+        "roas_yesterday": 4.37,
+        "spend_yesterday": 9.14,
+        "revenue_yesterday": 39.98,
         "band": "GREEN",
         "breakeven": 2.61,
         "yellow_min": 2.09,
         "red_min": 1.43,
-        "spend_7d": 46.12,
+        "spend_7d": 49.72,
         "revenue_7d_sc": 59.97,
-        "tacos_pct": 76.9,
+        "tacos_pct": 82.9,
+        "tacos_band": "CRITICAL",
         "inventory": "EXCESS",
-        "note": "GREEN yesterday but 7d TACOS critical; HOLD pending trend",
-        "status": "STAGED"
+        "excess_units": 1852,
+        "learning_cite": "L-2026-07-08-002",
+        "note": "GREEN (3rd time in last 5 days). HOLD — do not scale on single day per L-2026-07-08-002. TACOS 82.9% CRITICAL.",
+        "status": "STAGED",
+        "rec_id": "033_rec_20260719_004"
       },
       {
         "sku": "Rake Brush",
-        "action": "PAUSE",
-        "roas_yesterday": 0,
-        "spend_yesterday": 3.99,
-        "revenue_yesterday": 0,
-        "band": "KILL",
+        "asin": "B0FQFJRQ2X",
+        "action": "HOLD",
+        "roas_yesterday": 2.91,
+        "spend_yesterday": 5.15,
+        "revenue_yesterday": 14.99,
+        "band": "YELLOW",
         "breakeven": 3.12,
         "yellow_min": 2.49,
         "red_min": 1.71,
-        "spend_7d": 36.71,
-        "revenue_7d_sc": 236.81,
-        "tacos_pct": 15.5,
+        "spend_7d": 37.76,
+        "revenue_7d_sc": 392.68,
+        "tacos_pct": 9.6,
+        "tacos_band": "GREEN",
         "inventory": "LOW_STOCK",
-        "note": "PAUSE — LOW_STOCK + KILL band; preserve units for organic",
-        "status": "STAGED"
+        "on_hand": 624,
+        "dos": 32,
+        "inbound": 1650,
+        "learning_cite": "L-2026-07-08-002",
+        "note": "YELLOW (first non-KILL day). TACOS 9.6% GREEN. LOW_STOCK — hold bids, do not increase spend. Watch inbound arrival.",
+        "status": "STAGED",
+        "rec_id": "033_rec_20260719_005"
       },
       {
         "sku": "4-in-1 Shampoo",
+        "asin": "B0FQFK2P8M",
         "action": "HOLD",
-        "roas_yesterday": 18.17,
-        "spend_yesterday": 1.10,
-        "revenue_yesterday": 19.99,
+        "roas_yesterday": 12.53,
+        "spend_yesterday": 3.19,
+        "revenue_yesterday": 39.98,
         "band": "GREEN",
         "breakeven": 3.75,
         "yellow_min": 3.00,
         "red_min": 2.06,
-        "spend_7d": 8.98,
+        "spend_7d": 12.17,
         "revenue_7d_sc": null,
+        "tacos_pct": null,
         "inventory": "EXCESS",
+        "excess_units": 3520,
         "ltsf_risk": true,
-        "note": "GREEN but LTSF risk on 4,033 units; monitor",
-        "status": "STAGED"
+        "ltsf_days": ">=181d",
+        "learning_cite": "L-2026-07-08-002",
+        "note": "GREEN 2nd consecutive. HOLD — low spend, EXCESS + LTSF risk. Do not scale.",
+        "status": "STAGED",
+        "rec_id": "033_rec_20260719_006"
       }
     ],
-    "rank_defense_keywords": [
-      {"keyword": "dematting comb", "drop": -4, "rank": 26, "sv": 5818},
-      {"keyword": "detangler for dogs", "drop": -3, "rank": 17, "sv": 1561}
-    ],
+    "rank_defense_keywords": [],
+    "rank_defense_note": "Prior drops reversed per H10 Jul 16 data (+3 on both primary keywords). No new defense plan needed; standing HOLD remains.",
     "creative_signals_count": 0,
-    "creative_reason": "CTR data unavailable"
+    "creative_reason": "CTR data unavailable; UGC gap_flag true on all 6 SKUs"
   },
 
   "phase2_listings": {
-    "listing_score_triage": "NOT PERFORMED — H10 Listing Analyzer unavailable",
+    "listing_score_triage": "NOT PERFORMED — H10 Listing Analyzer report_found: false (Jul 16 data stale)",
     "review_driven_fixes": 0,
     "anchor_directives": 0,
     "tailwind_directives": 0,
-    "compliance_sweep": "NOT PERFORMED — live listing text unavailable",
+    "compliance_sweep": "NOT PERFORMED — live listing text unavailable; browser unavailable",
     "retags": [
       {
         "id": "COMP-2026-07-14-001",
         "type": "compliance",
         "first_flagged": "2026-07-14",
-        "elapsed_hours": 96,
-        "status": "2nd 033 re-tag posted today"
+        "elapsed_days": 5,
+        "retag_count": 3,
+        "status": "OPEN — pending @will"
       },
       {
-        "id": "FurFix-STRANDED",
+        "id": "FurFix-STRANDED-L-2026-07-13-001",
         "type": "stranded",
+        "asin": "B0FQFP2S9F",
+        "on_hand": 60,
         "first_flagged": "2026-07-13",
-        "elapsed_hours": 120,
-        "status": "2nd 033 re-tag posted today"
+        "elapsed_days": 6,
+        "retag_count": 3,
+        "status": "BLOCKED — Day 6, action overdue"
       }
     ],
     "inventory_flags": [
       {
-        "sku": "Rake Brush",
-        "status": "LOW_STOCK",
-        "on_hand": 624,
-        "dos": 32,
-        "amazon_min": 1019,
-        "inbound": 1650
+        "sku": "FurFix",
+        "asin": "B0FQFP2S9F",
+        "status": "STRANDED",
+        "on_hand": 60,
+        "lif": "<=0",
+        "ltsf_days": ">=181d",
+        "note": "Stranded 6+ days. No active listing. Immediate resolution required."
+      },
+      {
+        "sku": "Detangling Treatment",
+        "status": "EXCESS",
+        "on_hand": 8344,
+        "excess_units": 7550,
+        "note": "Demand-side + ad-side reduction needed; do not run removal until @will approves"
       },
       {
         "sku": "4-in-1 Shampoo",
@@ -162,81 +208,101 @@
         "on_hand": 4033,
         "excess_units": 3520,
         "ltsf_risk": true,
-        "ltsf_days": ">=181d"
+        "ltsf_days": ">=181d",
+        "note": "LTSF fee trigger imminent; check removal cost vs fee cost"
       },
       {
-        "sku": "Detangling Treatment",
-        "status": "EXCESS",
-        "on_hand": 8344,
-        "excess_units": 7550
-      },
-      {
-        "sku": "Pin Brush",
-        "status": "EXCESS",
-        "on_hand": 2039,
-        "excess_units": 1852
+        "sku": "Rake Brush",
+        "status": "LOW_STOCK",
+        "on_hand": 624,
+        "dos": 32,
+        "amazon_min_estimate": 1019,
+        "inbound": 1650,
+        "note": "Inbound 1,650 units in transit; monitor arrival. DoS 32 days."
       }
     ]
   },
 
   "solutions_summary": {
-    "posted": 9,
+    "posted": 8,
     "approved_and_logged": 0,
     "blocked": [
       {
-        "id": "033_rec_20260716_002",
-        "description": "Bundle PAUSE — $0 revenue on $1,470.61 7d spend",
-        "first_staged": "2026-07-16",
-        "elapsed_hours": 48,
-        "retag_sent": true,
-        "retag_count": 1
+        "id": "Slicker-violation-Day12",
+        "description": "Slicker Brush LIQUIDATION — $7.37 7d spend observed. Day 12 of active violation.",
+        "first_flagged": "2026-07-08",
+        "elapsed_days": 12,
+        "retag_count": 12,
+        "status": "BLOCKED — requires @will to halt Slicker campaigns"
       },
       {
-        "id": "COMP-2026-07-14-001",
-        "description": "Compliance sweep blocked",
-        "first_flagged": "2026-07-14",
-        "elapsed_hours": 96,
-        "retag_count": 2
-      },
-      {
-        "id": "FurFix-STRANDED",
-        "description": "FurFix 60 units stranded — no ASIN, no velocity",
+        "id": "FurFix-STRANDED-Day6",
+        "description": "FurFix B0FQFP2S9F — 60 units stranded, no active listing, LTSF accruing",
         "first_flagged": "2026-07-13",
-        "elapsed_hours": 120,
-        "retag_count": 2
+        "elapsed_days": 6,
+        "retag_count": 3,
+        "status": "BLOCKED — action overdue"
       }
     ]
   },
 
   "approval_sweep": {
-    "retag_sent": true,
-    "retag_target_id": "033_rec_20260716_002",
-    "retag_thread_ts": "1784214808.049869",
-    "retag_reply_ts": "1784387683.130469"
+    "approvals_received": 0,
+    "all_items_open": true,
+    "decisions_log_channel": "NOT FOUND — channel lookup failed this run",
+    "note": "All staged items remain OPEN/BLOCKED pending @will"
   },
 
   "slack_posts": {
-    "phase1_main_ts": "1784387647.226299",
-    "phase2_main_ts": "1784387678.134669",
-    "approval_retag_ts": "1784387683.130469",
+    "phase1_main_ts": "1784474182.131649",
+    "phase2_main_ts": "1784474209.723269",
+    "phase1_solutions_ts": "1784474247.602649",
+    "phase2_solutions_ts": "1784474272.160889",
+    "close_out_ts": "1784474461.227319",
     "channel": "C0BDU52NV61"
   },
 
   "tacos_7d": {
-    "emergency_dematter": {"spend": 1454.59, "sc_sales": 1029.92, "tacos_pct": 141.2, "band": "CRITICAL"},
-    "rake_brush": {"spend": 36.71, "sc_sales": 236.81, "tacos_pct": 15.5, "band": "GREEN"},
-    "detangling_treatment": {"spend": 68.09, "sc_sales": 94.95, "tacos_pct": 71.7, "band": "CRITICAL"},
-    "pin_brush": {"spend": 46.12, "sc_sales": 59.97, "tacos_pct": 76.9, "band": "CRITICAL"},
-    "bundle": {"spend": 1470.61, "sc_sales": null, "tacos_pct": null, "note": "No SC sales data"},
-    "shampoo": {"spend": 8.98, "sc_sales": null, "tacos_pct": null, "note": "No SC sales data"},
+    "emergency_dematter": {"spend": 1490.61, "sc_sales": 1062.08, "tacos_pct": 140.4, "band": "CRITICAL"},
+    "save_the_shave_bundle": {"spend": 1463.28, "sc_sales": null, "tacos_pct": null, "note": "No SC sales data"},
+    "detangling_treatment": {"spend": 83.06, "sc_sales": 93.95, "tacos_pct": 88.4, "band": "CRITICAL"},
+    "pin_brush": {"spend": 49.72, "sc_sales": 59.97, "tacos_pct": 82.9, "band": "CRITICAL"},
+    "rake_brush": {"spend": 37.76, "sc_sales": 392.68, "tacos_pct": 9.6, "band": "GREEN"},
+    "shampoo_4in1": {"spend": 12.17, "sc_sales": null, "tacos_pct": null, "note": "No SC sales data"},
+    "slicker_brush": {"spend": 7.37, "sc_sales": null, "tacos_pct": null, "note": "LIQUIDATION violation — no optimization"},
     "tacos_target": "<35% by August"
   },
 
+  "roas_bands_summary": {
+    "dematter": {"roas": 2.581, "band": "GREEN", "breakeven": 2.07},
+    "bundle": {"roas": 0.0, "band": "KILL", "breakeven_est": 2.40},
+    "detangling": {"roas": 0.0, "band": "KILL", "breakeven": 2.74},
+    "pin": {"roas": 4.37, "band": "GREEN", "breakeven": 2.61},
+    "rake": {"roas": 2.91, "band": "YELLOW", "breakeven": 3.12},
+    "shampoo": {"roas": 12.53, "band": "GREEN", "breakeven": 3.75},
+    "slicker": {"band": "LIQUIDATION", "violation": true, "spend_7d": 7.37}
+  },
+
+  "learnings_cited": [
+    "L-2026-07-08-001",
+    "L-2026-07-08-002",
+    "L-2026-07-09-001",
+    "L-2026-07-13-001",
+    "L-2026-07-14-001",
+    "L-2026-07-15-001"
+  ],
+
+  "degraded_mode": {
+    "h10_listing_analyzer": {"status": "STALE", "reason": "report_found: false", "impact": "Listing-score triage not performed"},
+    "browser_scrape": {"status": "UNAVAILABLE", "reason": "L-2026-07-15-001 DOCTRINE", "impact": "Keyword-level negatives not staged; ad console inaccessible"},
+    "decisions_log": {"status": "NOT FOUND", "reason": "Channel lookup returned no match", "impact": "No items logged to decisions log"}
+  },
+
   "data_sources": {
-    "supermetrics": {"status": "CURRENT", "data_date": "2026-07-16", "generated_at": "2026-07-17T23:06:24-07:00"},
-    "inventory": {"status": "CURRENT", "as_of": "2026-07-17", "source": "manual pull Josh"},
-    "helium10": {"status": "AVAILABLE", "as_of": "2026-07-17", "source": "connectors_data.json"},
-    "browser_scrape": {"status": "UNAVAILABLE", "reason": "L-2026-07-15-001 DOCTRINE"},
-    "ad_console": {"status": "UNAVAILABLE", "reason": "Chrome dependency blocked"}
+    "supermetrics": {"status": "CURRENT", "data_date": "2026-07-17", "generated_at": "2026-07-18T23:07:36-07:00", "age_hours": 8.5},
+    "inventory": {"status": "CURRENT", "as_of": "2026-07-17", "source": "inventory_data.json"},
+    "helium10": {"status": "AVAILABLE", "as_of": "2026-07-16", "source": "connectors_data.json", "age_days": 1},
+    "ugc": {"status": "ALL_GAP", "gap_flag_all_skus": true, "source": "ugc_data.json"},
+    "browser_scrape": {"status": "UNAVAILABLE", "reason": "L-2026-07-15-001 DOCTRINE"}
   }
 }
