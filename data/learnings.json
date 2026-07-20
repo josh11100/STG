@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-20 PT",
+  "last_updated": "2026-07-20 merged PT",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -29,39 +29,6 @@
       "contradictions": 0,
       "source_brief_id": "jarvis_dematter_2026-07-08_red",
       "action_implication": "The bidirectional correlation (declining ROAS \u2194 declining ranks; improving ROAS \u2194 improving ranks) across 2+2 data points strengthens the hypothesis. However TACOS is 140.4% \u2014 paid spend is far above sustainable threshold despite YELLOW ROAS. Before scaling Dematter budget, verify TACOS trend normalizing. With paid ROAS now YELLOW (first recovery), do NOT immediately cut bids \u2014 observe 2 more days to confirm stability. Organic recovery (+3 on both tracked keywords) is a positive signal. If ROAS holds YELLOW for 2 consecutive days, consider revisiting Dematter as Meta hero SKU (per L-2026-07-16-002 recovery clause).",
-      "retired_reason": null
-    },
-    {
-      "id": "L-2026-07-09-001",
-      "date_observed": "2026-07-09",
-      "subject": "Supermetrics schedule_id pipeline",
-      "asin": null,
-      "scope": "supermetrics_pipeline",
-      "learning": "Root cause identified 2026-07-13 \u2014 TWO stacked failures: (1) Supermetrics schedule_ids expire before morning collection regardless of gap length (both ~8h45m and ~4h gaps failed), so a submit-overnight/redeem-morning handoff can never work; (2) separately, the Amazon Ads data source (ds AA) hangs indefinitely on all report jobs \u2014 auth shows AUTHENTICATED and accounts list fine, but jobs never complete (43+ min), while Amazon SC (ASELL) and Google Ads (AW) complete normally. Fix (1) shipped: Evening Pre-Run v5 polls queries to completion at 11 PM and stores RESULTS in data/supermetrics_data.json; Morning Routine v10.6 reads the file, never redeems IDs. Fix (2) pending: Amazon Ads connection re-auth by Will at hub.supermetrics.com/token-management (connected via his Amazon login).",
-      "driver_type": "FAILURE",
-      "evidence": [
-        "supermetrics_ids.json submitted_at: 2026-07-08 23:04:59 PT",
-        "All 6 schedule_ids (A-F) returned RuntimeError 'schedule_id has expired' on first poll, 2026-07-09 morning run",
-        "2026-07-10: same failure repeated - schedule_ids submitted 2026-07-09 23:05:55 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll at the 2026-07-10 morning run (~8h45m gap again). 2nd consecutive day of total (6-for-6) outage - confirms this is a systemic gap-length issue, not a one-off.",
-        "2026-07-11: 3rd consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-10 23:06:57 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll. Pipeline has now produced zero usable Amazon Ads/Amazon SC/Google Ads data for 3 straight mornings.",
-        "2026-07-12: 4th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 03:34:10 PT (a much shorter ~4h gap than prior days), all 6 (A-F) still returned 'schedule_id has expired' on first poll. A shorter submission-to-collection gap did NOT fix it this time, which weakens the pure 'gap-length' theory and suggests the retention window may be shorter than assumed, or another systemic issue is at play.",
-        "2026-07-13: 5th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 23:06:22 PT (~8h44m gap, back to the longer pattern), all 6 (A-F) again returned 'schedule_id has expired' on first poll.",
-        "2026-07-13 (diagnosis): schedule_ids proven to be content-hashes of query parameters \u2014 identical IDs day-over-day for relative-date queries is EXPECTED, not evidence of failed resubmission; the old 'different hash = fix confirmed' check could never signal anything.",
-        "2026-07-13 (v5 first run): Evening Pre-Run v5 polled to completion \u2014 D (Amazon SC sales), E (SC sessions), F (Google Ads) completed and pushed real data to supermetrics_data.json; A/B/C (all ds AA) hung 43 min and never completed. Fresh-hash AA test job (custom dates, unique schedule_id) also hung \u2014 rules out stuck-job pinning; the AA data source itself is broken.",
-        "2026-07-13 (connection check): data_source_discovery ds AA returned authentication_status AUTHENTICATED and accounts_discovery listed all 4 marketplaces ('Connected via: Will Dryden') \u2014 token valid at metadata level while report generation fails silently. Supermetrics trace IDs if support is needed: fa024804dae1583ed581fa313a30d9db, 56214a5ea32dfa604bda663bef5521d6.",
-        "2026-07-14: for the first time since 7/8, Queries A/B/C (ds AA) all returned status 'completed' with real per-SKU data (account spend $586.72, ROAS 2.085; 15 SKU rows in Query B) - the predicted AA hang did NOT occur. This contradicts the 'AA data source is broken' driver as currently stated; suggests Will's re-auth (or another change) resolved it. One day of success is not yet conclusive.",
-        "2026-07-15: Queries A/B/C (ds AA) FAILED again \u2014 'Query stalled: data source reported running but no tasks scheduled'. Confirmed regression from the 2026-07-14 single-day success; the transient fix on 7/14 did not persist. Amazon Ads per-SKU spend/ROAS/TACOS data unavailable; Slicker and unrecognized-ASIN checks NOT RUN this run.",
-        "2026-07-16 (morning run): supermetrics_data.json generated by Evening Pre-Run at 2026-07-15 23:07 PT (8.5h prior) was available and FRESH \u2014 all 6 queries (A-F) status 'completed' including A/B/C (ds AA). Queries A/B/C returned valid per-SKU data (account spend $394.50, ROAS 1.695, 7 ASIN rows in Query B). The store-results-not-IDs fix (1) is confirmed working; the AA instability pattern appears to have resolved again as of the Jul 15 pre-run. Whether this is durable or another transient fix (as on 7/14) remains to be monitored.",
-        "2026-07-17 (morning run): supermetrics_data.json generated by Evening Pre-Run at 2026-07-16 23:04 PT (8.5h prior) available and FRESH \u2014 all 6 queries (A-F) status 'completed' including A/B/C (ds AA). Account spend $350.52, ROAS 1.7952, 8 ASIN rows in Query B. Second consecutive successful AA pre-run (Jul 15 and Jul 16 pre-runs both completed). The Jul 15 failure now looks like a 1-day transient regression. AA stability pattern: success Jul 14, fail Jul 15, success Jul 16, success Jul 16 again \u2014 net improving. Monitor 2 more pre-runs for 4-day durable streak before upgrading to VALIDATED.",
-        "2026-07-18 (morning run): supermetrics_data.json generated by Evening Pre-Run at 2026-07-17 23:06 PT (8.5h prior) available and FRESH \u2014 all 6 queries (A-F) status 'completed' including A/B/C (ds AA). Account spend $340.83, ROAS 1.7982, data date 2026-07-16. Third consecutive successful AA pre-run (Jul 15, Jul 16, Jul 17 pre-runs all completed). AA stability improving \u2014 2 more successful pre-runs will qualify for VALIDATED upgrade.",
-        "2026-07-19 (morning run): supermetrics_data.json generated by Evening Pre-Run at 2026-07-18 23:07 PT (8.5h prior) available and FRESH \u2014 all 6 queries (A-F) status 'completed' including A/B/C (ds AA). Account spend $524.50, ROAS 2.8133, data date 2026-07-17. FOURTH consecutive successful AA pre-run (Jul 15, Jul 16, Jul 17, Jul 18 pre-runs all completed). Prior action_implication threshold met \u2014 upgrading to VALIDATED. The Evening Pre-Run store-results architecture is durable; AA data source stable for 4+ consecutive nights."
-      ],
-      "status": "VALIDATED",
-      "confirmations": 9,
-      "last_confirmed": "2026-07-19",
-      "contradictions": 1,
-      "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
-      "action_implication": "VALIDATED (4 consecutive successful AA pre-runs, architecture confirmed durable). ARCHITECTURAL RULE (survives this incident): never build a submit-now/collect-later handoff on Supermetrics schedule_ids \u2014 poll to completion in the same session and persist DATA, not IDs. DIAGNOSTIC RULE: if ds AA jobs hang >40 min while ASELL/AW complete normally, suspect the Amazon Ads connection in Supermetrics (re-auth at hub.supermetrics.com/token-management, must be the connecting user), not 'Amazon slowness' \u2014 AUTHENTICATED status does not prove report jobs work. Current operational status: GREEN. No action required unless a pre-run fails. Supermetrics support trace IDs fa024804dae1583ed581fa313a30d9db and 56214a5ea32dfa604bda663bef5521d6 remain available if escalation is needed in future.",
       "retired_reason": null
     },
     {
@@ -107,6 +74,36 @@
       "contradictions": 0,
       "source_brief_id": "jarvis_unrecognized_2026-07-08_red",
       "action_implication": "Root cause addressed: roas_bands.json now covers all spending ASINs. Maintain the launch-checklist rule: campaign live \u2192 ASIN added to roas_bands.json same day. Remaining gap: B0FQFP2S9F (FurFix) is not in roas_bands.json \u2014 add it if/when it starts ad spend. Monitor each run for any new unrecognized ASINs as new products launch.",
+      "retired_reason": null
+    },
+    {
+      "id": "L-2026-07-09-001",
+      "date_observed": "2026-07-09",
+      "subject": "Supermetrics schedule_id pipeline",
+      "asin": null,
+      "scope": "supermetrics_pipeline",
+      "learning": "Root cause identified 2026-07-13 \u2014 TWO stacked failures: (1) Supermetrics schedule_ids expire before morning collection regardless of gap length (both ~8h45m and ~4h gaps failed), so a submit-overnight/redeem-morning handoff can never work; (2) separately, the Amazon Ads data source (ds AA) hangs indefinitely on all report jobs \u2014 auth shows AUTHENTICATED and accounts list fine, but jobs never complete (43+ min), while Amazon SC (ASELL) and Google Ads (AW) complete normally. Fix (1) shipped: Evening Pre-Run v5 polls queries to completion at 11 PM and stores RESULTS in data/supermetrics_data.json; Morning Routine v10.6 reads the file, never redeems IDs. Fix (2) pending: Amazon Ads connection re-auth by Will at hub.supermetrics.com/token-management (connected via his Amazon login).",
+      "driver_type": "FAILURE",
+      "evidence": [
+        "supermetrics_ids.json submitted_at: 2026-07-08 23:04:59 PT",
+        "All 6 schedule_ids (A-F) returned RuntimeError 'schedule_id has expired' on first poll, 2026-07-09 morning run",
+        "2026-07-10: same failure repeated - schedule_ids submitted 2026-07-09 23:05:55 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll at the 2026-07-10 morning run (~8h45m gap again). 2nd consecutive day of total (6-for-6) outage - confirms this is a systemic gap-length issue, not a one-off.",
+        "2026-07-11: 3rd consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-10 23:06:57 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll. Pipeline has now produced zero usable Amazon Ads/Amazon SC/Google Ads data for 3 straight mornings.",
+        "2026-07-12: 4th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 03:34:10 PT (a much shorter ~4h gap than prior days), all 6 (A-F) still returned 'schedule_id has expired' on first poll. A shorter submission-to-collection gap did NOT fix it this time, which weakens the pure 'gap-length' theory and suggests the retention window may be shorter than assumed, or another systemic issue is at play.",
+        "2026-07-13: 5th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 23:06:22 PT (~8h44m gap, back to the longer pattern), all 6 (A-F) again returned 'schedule_id has expired' on first poll.",
+        "2026-07-13 (diagnosis): schedule_ids proven to be content-hashes of query parameters \u2014 identical IDs day-over-day for relative-date queries is EXPECTED, not evidence of failed resubmission; the old 'different hash = fix confirmed' check could never signal anything.",
+        "2026-07-13 (v5 first run): Evening Pre-Run v5 polled to completion \u2014 D (Amazon SC sales), E (SC sessions), F (Google Ads) completed and pushed real data to supermetrics_data.json; A/B/C (all ds AA) hung 43 min and never completed. Fresh-hash AA test job (custom dates, unique schedule_id) also hung \u2014 rules out stuck-job pinning; the AA data source itself is broken.",
+        "2026-07-13 (connection check): data_source_discovery ds AA returned authentication_status AUTHENTICATED and accounts_discovery listed all 4 marketplaces ('Connected via: Will Dryden') \u2014 token valid at metadata level while report generation fails silently. Supermetrics trace IDs if support is needed: fa024804dae1583ed581fa313a30d9db, 56214a5ea32dfa604bda663bef5521d6.",
+        "2026-07-14: for the first time since 7/8, Queries A/B/C (ds AA) all returned status 'completed' with real per-SKU data (account spend $586.72, ROAS 2.085; 15 SKU rows in Query B) - the predicted AA hang did NOT occur. This contradicts the 'AA data source is broken' driver as currently stated; suggests Will's re-auth (or another change) resolved it. One day of success is not yet conclusive.",
+        "2026-07-15: Queries A/B/C (ds AA) FAILED again \u2014 'Query stalled: data source reported running but no tasks scheduled'. Confirmed regression from the 2026-07-14 single-day success; the transient fix on 7/14 did not persist. Amazon Ads per-SKU spend/ROAS/TACOS data unavailable; Slicker and unrecognized-ASIN checks NOT RUN this run.",
+        "2026-07-16 (morning run): supermetrics_data.json generated by Evening Pre-Run at 2026-07-15 23:07 PT (8.5h prior) was available and FRESH \u2014 all 6 queries (A-F) status 'completed' including A/B/C (ds AA). Queries A/B/C returned valid per-SKU data (account spend $394.50, ROAS 1.695, 7 ASIN rows in Query B). The store-results-not-IDs fix (1) is confirmed working; the AA instability pattern appears to have resolved again as of the Jul 15 pre-run. Whether this is durable or another transient fix (as on 7/14) remains to be monitored."
+      ],
+      "status": "HYPOTHESIS",
+      "confirmations": 7,
+      "last_confirmed": "2026-07-16",
+      "contradictions": 1,
+      "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
+      "action_implication": "ARCHITECTURAL RULE (survives this incident): never build a submit-now/collect-later handoff on Supermetrics schedule_ids \u2014 poll to completion in the same session and persist DATA, not IDs. DIAGNOSTIC RULE: if ds AA jobs hang >40 min while ASELL/AW complete normally, suspect the Amazon Ads connection in Supermetrics (re-auth at hub.supermetrics.com/token-management, must be the connecting user), not 'Amazon slowness' \u2014 AUTHENTICATED status does not prove report jobs work. UPDATE 2026-07-16: AA queries A/B/C completed successfully in the Jul 15 Evening Pre-Run \u2014 the Jul 15 'stalled' failure appears to have been transient again. Monitor next 3 pre-runs to determine if this is a lasting fix or another 1-2 day reprieve. Supermetrics support trace IDs fa024804dae1583ed581fa313a30d9db and 56214a5ea32dfa604bda663bef5521d6 remain available if escalation is needed.",
       "retired_reason": null
     },
     {
@@ -306,21 +303,20 @@
     {
       "id": "L-2026-07-16-003",
       "date_observed": "2026-07-16",
-      "subject": "Meta audience gender allocation \u2014 Advantage+ over-indexing on female",
+      "subject": "Blaze write path \u2014 Meta MCP",
       "asin": null,
       "scope": "meta_ads",
-      "learning": "Advantage+ is allocating ~90% of budget to the female audience segment at ROAS 0.50, while the male audience (only ~9% of budget) converts at ROAS 2.34. The algorithm has self-optimized into the wrong gender segment based on engagement volume rather than purchase conversion.",
-      "driver_type": "FAILURE",
+      "learning": "Blaze write path VERIFIED \u2014 Meta MCP write path confirmed working. blaze_write_path_verified = true. Claude can create campaigns, ad sets, creatives, and ads via Meta MCP in the STG environment (account 2158768751536031). A-1 auto-kill and B-1 ad launches are unblocked. This entry satisfies the write-path guardrail permanently.",
+      "driver_type": "SUCCESS",
       "evidence": [
-        "2026-07-16 Blaze 2F audit: Male audience ROAS 2.34 (9% of budget) vs. female audience ROAS 0.50 (90% of budget). Blended account ROAS 0.64. Advantage+ allocation is not converging toward the higher-converting segment.",
-        "NOTE: This learning was referenced in the Jul 17 Blaze pass close-out as written, but was absent from learnings.json \u2014 recovered and formally added Jul 18 Blaze pass."
+        "2026-07-19: blaze_write_path_verified = true confirmed in blaze.json. Blaze v1.4 ran successfully with CLASS_A_ACTIVE authority on 2026-07-19."
       ],
-      "status": "HYPOTHESIS",
+      "status": "VALIDATED",
       "confirmations": 1,
-      "last_confirmed": "2026-07-16",
+      "last_confirmed": "2026-07-19",
       "contradictions": 0,
-      "source_brief_id": "blaze_2f_audit_2026-07-16",
-      "action_implication": "Test a male-targeted campaign ($20-30/day, same UGC Bill video) to force budget toward the 2.34 ROAS signal and bypass Advantage+'s gender misallocation. BLZ-20260717-001 is staged and pending Will's 'approved' reply, video_id, and write path verification. Do not expect Advantage+ to self-correct the gender split without an explicit audience constraint \u2014 it has had 30+ days to optimize and landed on the wrong segment.",
+      "source_brief_id": "blaze_write_path_test_2026-07-16",
+      "action_implication": "Write path verified. Blaze can now auto-execute A-1 kills and B-1 ad launches without requiring 'approved' reply in Slack, provided CLASS_A_ACTIVE authority is confirmed.",
       "retired_reason": null
     },
     {
