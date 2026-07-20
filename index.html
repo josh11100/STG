@@ -1077,7 +1077,7 @@ function render(d){
 
   // — SKU Watch: live per-SKU ROAS + TACOS vs locked bands —
   const bandsSkus = (BANDS && BANDS.skus) || [];
-  const liveSkus = aa.skus || [];
+  const liveSkus = aa.skus || (d.supermetrics || {}).skus || [];
   const findBand = row => bandsSkus.find(b =>
     (row.asin && b.asin && row.asin === b.asin) ||
     (row.sku && b.sku && String(row.sku).toLowerCase().includes(String(b.sku).toLowerCase().split(' ')[0])));
