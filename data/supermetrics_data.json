@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-18T23:07:36-07:00",
-  "query_date_yesterday": "2026-07-17",
-  "query_date_sc": "2026-07-16",
+  "generated_at": "2026-07-19T23:12:50-07:00",
+  "query_date_yesterday": "2026-07-18",
+  "query_date_sc": "2026-07-17",
   "queries": {
     "A": {
       "status": "completed",
       "requested_field_ids": ["cost", "roas"],
       "rows": [
-        [524.5, 2.8133]
+        [429.82, 1.729]
       ],
       "error": null
     },
@@ -15,20 +15,19 @@
       "status": "completed",
       "requested_field_ids": ["asin", "sku", "cost", "attributedSales14dSameSKU", "acos"],
       "rows": [
-        ["B0FQL56V99", "3I-97VO-78X4", 274.27, 708.09, 36.1328],
-        ["B0GT1H84JM", "C8-VG2F-6714", 213.47, 0, 45.6016],
-        ["B0GV5ZFLC2", "8O-J63E-NJBR", 17.49, 0, 32.7712],
-        ["B0FQDHXSZ5", "7C-8EUF-79AF", 9.14, 39.98, 22.8614],
-        ["B0FQF2VTMJ", "W2-VFJG-FADR", 5.15, 14.99, 4.4767],
-        ["B0FQL16GH4", "6U-XVW9-2WBJ", 3.19, 39.98, 7.979],
-        ["B0FQ628KCH", "6H-JCY0-JARS", 1.37, 0, null],
+        ["B0GT1H84JM", "C8-VG2F-6714", 206.6, 0, 46.0842],
+        ["B0FQL56V99", "3I-97VO-78X4", 203, 229.9, 88.2993],
+        ["B0GV5ZFLC2", "8O-J63E-NJBR", 12.14, 18.99, 63.9284],
+        ["B0FQDHXSZ5", "7C-8EUF-79AF", 6.14, 0, null],
+        ["B0FQL16GH4", "6U-XVW9-2WBJ", 1.1, 0, 4.7847],
+        ["B0GXLPJS4C", "STG-TANGLE-MAT-BUNDLE-V1", 0.42, 0, 1.8269],
         ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0.42, 0, null],
+        ["B0FQ628KCH", "6H-JCY0-JARS", 0, 0, null],
+        ["B0FQF2VTMJ", "W2-VFJG-FADR", 0, 0, null],
         ["B0GFGDTJ39", "99-8KLV-TU5S", 0, 0, null],
-        ["B0GT1MFCY5", "73-EY5E-UIBV", 0, 0, null],
         ["B0GT1V7V8R", "HG-EGAG-1HO5", 0, 0, null],
         ["B0GT5YFVB8", "YH-4KUE-9WQH", 0, 0, null],
         ["B0GXH3JTK4", "STG-WASH-WEAR-BUNDLE-V2", 0, 0, null],
-        ["B0GXLPJS4C", "STG-TANGLE-MAT-BUNDLE-V1", 0, 0, null],
         ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null]
       ],
       "error": null
@@ -37,20 +36,20 @@
       "status": "completed",
       "requested_field_ids": ["asin", "cost"],
       "rows": [
-        ["B0FQL56V99", 1490.61],
-        ["B0GT1H84JM", 1463.28],
-        ["B0GV5ZFLC2", 83.06],
-        ["B0FQDHXSZ5", 49.72],
-        ["B0FQF2VTMJ", 37.76],
-        ["B0FQL16GH4", 12.17],
-        ["B0FQ628KCH", 7.37],
-        ["B0GY9WZWKH", 2.73],
-        ["B0GT5YFVB8", 0.42],
-        ["B0GXLPJS4C", 0.42],
+        ["B0GT1H84JM", 1418.97],
+        ["B0FQL56V99", 1404.4],
+        ["B0GV5ZFLC2", 83.44],
+        ["B0FQDHXSZ5", 50.81],
+        ["B0FQF2VTMJ", 33.13],
+        ["B0FQL16GH4", 10.67],
+        ["B0FQ628KCH", 6.32],
+        ["B0GY9WZWKH", 2.31],
+        ["B0GXLPJS4C", 0.63],
         ["B0GFGDTJ39", 0],
         ["B0GRJ1366C", 0],
         ["B0GT1MFCY5", 0],
         ["B0GT1V7V8R", 0],
+        ["B0GT5YFVB8", 0],
         ["B0GXH3JTK4", 0],
         ["B0GXLTZ495", 0]
       ],
@@ -60,10 +59,11 @@
       "status": "completed",
       "requested_field_ids": ["asin", "ordered_product_sales"],
       "rows": [
-        ["B0FQL56V99", 1062.08],
-        ["B0FQF2VTMJ", 392.68],
-        ["B0GV5ZFLC2", 93.95],
-        ["B0FQDHXSZ5", 59.97]
+        ["B0FQL56V99", 1211.54],
+        ["B0FQF2VTMJ", 206.83],
+        ["B0FQDHXSZ5", 79.96],
+        ["B0FQL16GH4", 39.98],
+        ["B0GV5ZFLC2", 36.08]
       ],
       "error": null
     },
@@ -71,7 +71,7 @@
       "status": "completed",
       "requested_field_ids": ["sessions", "unit_session_percentage", "units_ordered"],
       "rows": [
-        [427, 21.78, 93]
+        [456, 17.76, 81]
       ],
       "error": null
     },
@@ -86,8 +86,8 @@
     "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
     "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
     "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
-    "D": "fa40f11906c959ab04625e84fb13b947245882f0c89faee4dfc7c683cf85cf51",
-    "E": "f5cfaedf2ba579c56a8038072c67506d210cadea8f96db12d9f06b31f78599d5",
+    "D": "e25a3f33b8d9a773154efa422e419f048c04ae2d8b5900afbd106f146b89651a",
+    "E": "a548f06c0fffaef22970e58d5afd212029336c6da6f580729a1e9e2ce9df7697",
     "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
   }
 }
