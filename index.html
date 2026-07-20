@@ -1628,6 +1628,38 @@ function renderReports(files){
   const feed = $('rep-feed'), tabs = $('rep-tabs');
   if (!feed) return;
   const today = new Date().toLocaleDateString('en-CA', {timeZone:'America/Los_Angeles'}); // YYYY-MM-DD PT
+
+  // ── Normalize blaze.json format → posts[] format ──────────────────────
+  files = files.map(f => {
+    if (!f.posts && (f.close_out || f.run_date)) {
+      const co = f.close_out || {};
+      const posts = [];
+      const statusIcon = f.status === 'RED' ? '🔴' : f.status === 'YELLOW' ? '🟡' : '✅';
+      posts.push({
+        channel: '#stg-ads-watchdog',
+        type: 'main',
+        time: f.run_time_pt || '',
+        status: f.status || 'GREEN',
+        title: statusIcon + ' Blaze ' + (f.routine_version || '') + ' — ' + (f.run_date || '') + ' — ' + (f.authority_mode || ''),
+        text: (co.kill_breaches||0) + ' kill breaches · ' + (co.anomalies||0) + ' anomalies · ' +
+              (co.launches_executed||0) + ' launches · ' + (co.directives_processed||0) + ' directives'
+      });
+      (f.warnings || []).forEach(w => {
+        posts.push({ channel: '#stg-ads-watchdog', type: 'thread', time: '', status: 'YELLOW', text: String(w) });
+      });
+      if (f.audit_summary && f.audit_summary.ran) {
+        const a = f.audit_summary;
+        posts.push({
+          channel: '#stg-ads-watchdog', type: 'thread', time: '', status: null,
+          text: '📊 Audit: Top ' + (a.top_performer||'—') + ' ROAS ' + (a.top_roas||'—') +
+                ' · Bottom: ' + (a.bottom_performer||'—') + ' — ' + (a.root_cause||'')
+        });
+      }
+      return { ...f, date: f.run_date, generated_at: f.run_date + 'T' + (f.run_time_pt||'00:00'), agent: 'Blaze', posts };
+    }
+    return f;
+  });
+
   if (!files.length){
     tabs.innerHTML = '';
     feed.innerHTML = alertBox('info','<b>No agent reports pushed yet.</b> Once each routine gets its mirror step, today\'s Slack posts appear here automatically — no Slack login needed.');
