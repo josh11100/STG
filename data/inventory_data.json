@@ -1,72 +1,72 @@
 {
   "as_of": "2026-07-20",
-  "available": false,
-  "source": "DEGRADED — Chrome unavailable in cloud environment (L-2026-07-15-001 DOCTRINE). SKU data below is from last manual pull Jul 17.",
-  "note": "FBA inventory scrape unavailable today. Data below is 3 days stale (last manual pull Jul 17 by Josh). Manual SC check needed: B0FQ4PY573 (Detangling Spray, LIF≤0 per H10), B0FQFP2S9F (FurFix, STRANDED). @josh",
-  "last_known_sc_scrape": "2026-07-17",
+  "available": true,
+  "source": "LIVE — pulled directly from Amazon Seller Central (Manage Inventory Health) on 2026-07-20.",
+  "note": "Live FBA scrape successful. Notable change: B0FQ4PY573 (Detangling Spray) now shows HEALTHY in Seller Central (was CLOSED per H10 on Jul 19) — recommend confirming the listing is actually live/sellable before clearing the flag. B0FQFP2S9F (FurFix) is still STRANDED — manual SC check still needed. @josh",
+  "last_known_sc_scrape": "2026-07-20",
   "skus": [
     {
       "asin": "B0FQL56V99",
       "name": "Emergency Dematter",
-      "on_hand": 22105,
+      "on_hand": 21922,
       "amazon_min": 1726,
-      "rate_14d": 49.8,
+      "rate_14d": 50.3,
       "status": "HEALTHY",
-      "note": "HEALTHY — 291 DoS on-hand · 4,483 units / 90d (data as of Jul 17)"
+      "note": "HEALTHY — 291 DoS on-hand · 4,531 units / 90d (data as of Jul 20)"
     },
     {
       "asin": "B0FQF2VTMJ",
       "name": "Rake Brush",
-      "on_hand": 624,
+      "on_hand": 550,
       "amazon_min": 1019,
-      "rate_14d": 15.0,
+      "rate_14d": 15.6,
       "status": "LOW_STOCK",
-      "note": "LOW STOCK — 32 DoS on-hand · 1,650 inbound (shipped) · 1,349 units / 90d (data as of Jul 17)"
+      "note": "LOW STOCK — 28 DoS on-hand · 1,650 inbound (shipped) · 1,403 units / 90d (data as of Jul 20)"
     },
     {
       "asin": "B0GV5ZFLC2",
       "name": "Detangling Treatment",
-      "on_hand": 8344,
+      "on_hand": 8331,
       "amazon_min": 312,
-      "rate_14d": 7.7,
+      "rate_14d": 7.5,
       "status": "EXCESS",
-      "note": "EXCESS — 7,550 est. excess units · 689 units / 90d (data as of Jul 17)"
+      "note": "EXCESS — 7,541 est. excess units · 675 units / 90d (data as of Jul 20)"
     },
     {
       "asin": "B0FQL16GH4",
       "name": "4-in-1 Shampoo",
-      "on_hand": 4033,
+      "on_hand": 4027,
       "amazon_min": 56,
       "rate_14d": 1.6,
       "status": "EXCESS",
-      "note": "EXCESS — 3,520 est. excess units · 145 units / 90d (data as of Jul 17)"
+      "note": "EXCESS — 3,517 est. excess units · 144 units / 90d (data as of Jul 20)"
     },
     {
       "asin": "B0FQDHXSZ5",
       "name": "Pin Brush",
-      "on_hand": 2039,
+      "on_hand": 2026,
       "amazon_min": 116,
-      "rate_14d": 3.3,
+      "rate_14d": 3.4,
       "status": "EXCESS",
-      "note": "EXCESS — 1,852 est. excess units · 294 units / 90d (data as of Jul 17)"
+      "note": "EXCESS — 1,845 est. excess units · 304 units / 90d (data as of Jul 20)"
     },
     {
       "asin": "B0FQ628KCH",
       "name": "Slicker Brush",
-      "on_hand": 2590,
+      "on_hand": 2588,
       "amazon_min": 26,
       "rate_14d": 0.8,
       "status": "EXCESS",
-      "note": "EXCESS — 2,471 est. excess units — liquidation · 75 units / 90d (data as of Jul 17)"
+      "note": "EXCESS — 2,470 est. excess units — liquidation · 72 units / 90d (data as of Jul 20)"
     },
     {
       "asin": "B0FQ4PY573",
       "name": "Detangling Spray",
       "on_hand": 323,
       "amazon_min": 52,
-      "rate_14d": null,
-      "status": "CLOSED",
-      "note": "CLOSED listing — 0 sales · 323 units idle (data as of Jul 17). H10 Jul 19: LIF≤0, LTSF≥181 — manual SC check needed."
+      "rate_14d": 0,
+      "status": "HEALTHY",
+      "note": "HEALTHY per SC (89 DoS on-hand) — was CLOSED per H10 Jul 19 flag (LIF≤0, LTSF≥181). 0 units / 90d still. Listing status change unconfirmed — verify it's actually sellable before closing out the flag. @josh"
     },
     {
       "asin": "B0FQFP2S9F",
@@ -75,16 +75,16 @@
       "amazon_min": null,
       "rate_14d": null,
       "status": "STRANDED",
-      "note": "STRANDED — fix listing (data as of Jul 17). H10 Jul 19: LIF≤0, LTSF≥181 — manual SC check needed."
+      "note": "STRANDED — fix listing (data as of Jul 20). H10 Jul 19 flag (LIF≤0, LTSF≥181) still applies — manual SC check needed. @josh"
     }
   ],
   "summary": {
     "total": 8,
-    "healthy": 1,
+    "healthy": 2,
     "low_stock": 1,
     "excess": 4,
     "stranded": 1,
-    "closed": 1,
-    "data_staleness_days": 3
+    "closed": 0,
+    "data_staleness_days": 0
   }
 }
