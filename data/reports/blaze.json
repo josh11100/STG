@@ -1,92 +1,57 @@
 {
-  "run_date": "2026-07-19",
+  "run_date": "2026-07-20",
   "run_time_pt": "08:10",
+  "run_mode": "URGENT_BYPASS",
   "routine_version": "Blaze v1.4",
   "authority_mode": "CLASS_A_ACTIVE",
   "standing_authority_signature": "SIGNED_2026-07-16",
   "blaze_write_path_verified": false,
   "status": "RED",
   "auto_executions": 0,
-  "platforms_swept": ["Meta", "Amazon", "Google", "TikTok"],
-  "directives_processed": 0,
+  "platforms_swept": ["Meta"],
+  "directives_processed": 1,
   "launches_executed": 0,
   "audits_run": 0,
   "meta": {
     "account": "2158768751536031",
     "data_source": "live_meta_mcp",
-    "data_date": "2026-07-18",
-    "l30d_spend": 370.97,
-    "l30d_roas": 0.61,
-    "l30d_ctr": 6.12,
-    "l30d_frequency": 1.64,
-    "l30d_cpm": 56.78,
-    "l30d_impressions": 6533,
-    "l30d_reach": 3978,
-    "l30d_clicks": 400,
-    "yesterday_spend": 15.28,
-    "yesterday_impressions": 281,
-    "yesterday_clicks": 27,
-    "yesterday_ctr": 9.61,
+    "data_date": "2026-07-19",
+    "l30d_spend": 404.90,
+    "l30d_roas": 0.63,
+    "l30d_ctr": 6.14,
+    "l30d_frequency": 1.67,
+    "l30d_cpm": 57.69,
+    "l30d_impressions": 7018,
+    "yesterday_spend": 33.93,
+    "yesterday_roas": 0.88,
     "kill_breach": {
       "campaign": "Save the Shave UGC Bill _UGC_070326",
       "campaign_id": "120248769281270118",
-      "l30d_spend": 370.97,
-      "l30d_roas": 0.61,
-      "days_in_breach": 12,
-      "spend_above_threshold": 295.97,
-      "first_flagged": "2026-07-09",
-      "learning_id": "L-2026-07-10-001",
-      "status": "STAGED_CLASS_B",
+      "l30d_spend": 404.90,
+      "l30d_roas": 0.63,
+      "status": "STAGED_CLASS_B — flagged by Jarvis 07:56 PT 2026-07-20",
       "block_reason": "blaze_write_path_verified ABSENT — A-1 staged as Class B per STANDING_AUTHORITY_v1.1.md §3A prerequisite"
     },
-    "fatigue_flag": false,
-    "hygiene_flags": [
-      {
-        "campaign": "BLZ-20260717-002 — Shampoo 50OFF UGC — 2026-07-17",
-        "campaign_id": "120249184178260118",
-        "status": "ACTIVE_ZERO_SPEND",
-        "note": "Blaze-named campaign, no matching staging record in watchdog. Verify B-1 approval before it spends."
-      },
-      {
-        "campaign": "Save the Shave UGC Bill _UGC_070326 - Copy",
-        "campaign_id": "120249157571500118",
-        "status": "ACTIVE_ZERO_SPEND",
-        "note": "Assign budget before killing original or Meta goes dark."
-      },
-      {
-        "campaign": "STG_Meta_Detangling_30sUGC_2026-04 (duplicate)",
-        "status": "PAUSED_DUPLICATE",
-        "note": "Two identically-named campaigns. Deactivate one."
-      }
-    ],
-    "pending_launches": [
-      {
-        "brief_id": "BLZ-20260717-001",
-        "description": "Male-targeted campaign, $25/day, same UGC Bill video",
-        "staged_date": "2026-07-17",
-        "status": "OPEN_48H_PLUS",
-        "blockers": ["Will approved reply required", "video_id required", "blaze_write_path_verified absent"]
-      }
-    ],
+    "cpm_signal": "$57.69 — 2.3x above US pet care benchmark ($15-25). CTR 6.14% high but ROAS 0.63 = CVR/landing page mismatch.",
     "campaigns_live": [
       {
         "id": "120248769281270118",
         "name": "Save the Shave UGC Bill _UGC_070326",
         "status": "ACTIVE",
-        "l30d_spend": 370.97,
-        "l30d_roas": 0.61,
-        "ctr": 6.12,
-        "frequency": 1.64,
-        "cpm": 56.78,
-        "impressions": 6533,
-        "flag": "KILL_BREACH_DAY_12"
+        "l30d_spend": 404.90,
+        "l30d_roas": 0.63,
+        "ctr": 6.14,
+        "frequency": 1.67,
+        "cpm": 57.69,
+        "impressions": 7018,
+        "flag": "KILL_BREACH_DAY_30PLUS"
       },
       {
         "id": "120249184178260118",
         "name": "BLZ-20260717-002 — Shampoo 50OFF UGC — 2026-07-17",
         "status": "ACTIVE",
         "l30d_spend": 0,
-        "flag": "HYGIENE_VERIFY_APPROVAL"
+        "flag": "HYGIENE_VERIFY_APPROVAL — no spend data yet"
       },
       {
         "id": "120249157571500118",
@@ -95,87 +60,79 @@
         "l30d_spend": 0,
         "flag": "HYGIENE_ZERO_SPEND"
       }
+    ],
+    "pending_launches": [
+      {
+        "brief_id": "BLZ-20260717-001",
+        "description": "Male-targeted campaign, $25/day, UGC Bill video",
+        "staged_date": "2026-07-17",
+        "status": "OPEN_72H_PLUS",
+        "blockers": ["Will approved reply required", "video_id required", "blaze_write_path_verified absent"]
+      },
+      {
+        "brief_id": "BLZ-20260720-001",
+        "description": "Rosemary Mint Bath Day — 50% Off Confidence Hook",
+        "staged_date": "2026-07-20",
+        "status": "BLOCKED",
+        "products": ["4-in-1 Shampoo (B0FQL16GH4)", "Rake Brush (B0FQF2VTMJ)"],
+        "funnel": "BOF",
+        "budget": 50,
+        "blockers": ["video_id required", "destination URL required", "blaze_write_path_verified absent"],
+        "flags": [
+          "Rake Brush stock 679 units (~26 days) — confirm reorder with Graham before launching",
+          "BLZ-20260717-002 already ACTIVE (Shampoo 50OFF) — confirm not duplicating intent"
+        ],
+        "slack_message_ts": "1784559915.337489",
+        "slack_channel": "C0BDU52NV61"
+      }
     ]
   },
   "amazon": {
-    "data_date": "2026-07-17",
-    "data_source": "supermetrics_data.json (generated 2026-07-18T23:07:36-07:00, FRESH)",
-    "account_roas": 2.8133,
-    "account_spend": 524.50,
-    "violations": [
-      {
-        "asin": "B0FQ628KCH",
-        "sku": "Slicker Brush",
-        "type": "LIQUIDATION_SPEND_A2",
-        "spend_day": 1.37,
-        "spend_7d": 7.37,
-        "status": "A2_FLAGGED",
-        "learning_id": "L-2026-07-14-001",
-        "days_active": 13
-      }
-    ],
-    "unrecognized_asins": 0,
-    "skus": [
-      {"asin": "B0FQL56V99", "sku": "Emergency Dematter", "spend": 274.27, "sales": 708.09, "roas": 2.581, "band": "YELLOW", "tacos_7d_pct": 140.4, "note": "First YELLOW after 2 RED days — needs 2nd consecutive to restore hero designation"},
-      {"asin": "B0GT1H84JM", "sku": "Save the Shave Bundle", "spend": 213.47, "sales": 0.00, "roas": 0.00, "band": "KILL", "note": "Day 13+ KILL band, $0 attributed sales — manual pause needed"},
-      {"asin": "B0GV5ZFLC2", "sku": "Detangling Treatment", "spend": 17.49, "sales": 0.00, "roas": 0.00, "band": "KILL", "tacos_7d_pct": 88.4},
-      {"asin": "B0FQDHXSZ5", "sku": "Pin Brush", "spend": 9.14, "sales": 39.98, "roas": 4.37, "band": "GREEN", "tacos_7d_pct": 82.9},
-      {"asin": "B0FQF2VTMJ", "sku": "Rake Brush", "spend": 5.15, "sales": 14.99, "roas": 2.91, "band": "YELLOW", "tacos_7d_pct": 9.6},
-      {"asin": "B0FQL16GH4", "sku": "4-in-1 Shampoo", "spend": 3.19, "sales": 39.98, "roas": 12.53, "band": "GREEN"},
-      {"asin": "B0FQ628KCH", "sku": "Slicker Brush", "spend": 1.37, "sales": 0.00, "roas": null, "band": "VIOLATION"},
-      {"asin": "B0GY9WZWKH", "sku": "Full Coat Care System 5pc", "spend": 0.42, "sales": 0.00, "roas": 0.00, "band": "KILL"}
-    ]
+    "status": "NOT_SWEPT — URGENT bypass mode",
+    "note": "Carry forward from 2026-07-19 pass. See prior blaze.json for Amazon detail."
   },
   "google": {
     "status": "NOT_RUNNING",
-    "spend": 0,
-    "note": "$0 expected — not flagged"
+    "spend": 0
   },
   "tiktok": {
-    "status": "MANUAL_VISIBILITY_ONLY",
-    "note": "No connector — manual visibility only"
+    "status": "MANUAL_VISIBILITY_ONLY"
   },
   "anomalies": [
     {
       "type": "A2_SLICKER_VIOLATION",
-      "platform": "Amazon",
-      "asin": "B0FQ628KCH",
-      "sku": "Slicker Brush",
-      "spend_day": 1.37,
-      "spend_7d": 7.37,
-      "date_data": "2026-07-17",
-      "date_flagged": "2026-07-19",
-      "days_active": 13,
-      "status": "FLAGGED",
-      "learning_id": "L-2026-07-14-001"
+      "platform": "Meta",
+      "sku": "Slicker Brush (B0FQ628KCH)",
+      "detail": "$6.32 cumulative 7d spend — liquidation violation",
+      "status": "FLAGGED by Jarvis Ads Watchdog 07:56 PT 2026-07-20"
     }
   ],
   "close_out": {
     "kill_breaches": 1,
     "kill_breaches_executed": 0,
-    "kill_breaches_staged": 1,
+    "kill_breaches_staged": 0,
+    "kill_breaches_note": "Already flagged by Jarvis 07:56 PT; not re-staged under URGENT bypass",
     "anomalies": 1,
     "fatigue_flags": 0,
     "audits_run": 0,
-    "directives_processed": 0,
+    "directives_processed": 1,
     "launches_executed": 0,
-    "blocked": 0,
+    "blocked": 1,
     "active_ads_registry": 0
   },
-  "slack_posts": {
-    "channel_id": "C0BDU52NV61",
-    "main_post_ts": "1784474234.446129",
-    "thread_kill_detail_ts": "1784474251.634549",
-    "thread_hygiene_blz001_ts": "1784474269.998219",
-    "thread_closeout_ts": "1784474284.379489"
-  },
   "warnings": [
-    "blaze_write_path_verified learning absent — A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via Meta MCP"
+    "blaze_write_path_verified learning absent — A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via Meta MCP",
+    "BLZ-20260720-001 blocked: video_id and destination URL not provided in directive",
+    "Rake Brush inventory 679 units (~26 days) — reorder urgency before launching Meta ads for this SKU",
+    "BLZ-20260717-001 has been open 72h+ — Will has not replied 'approved'"
   ],
-  "learnings_updated": [],
+  "josh_action_required": [
+    "Test pause on any PAUSED Meta campaign via Meta MCP connector → confirm success → record blaze_write_path_verified VALIDATED learning in learnings.json. Required before A-1 auto-kills can fire and before any B-1 launch executes."
+  ],
   "audit_summary": {
     "ran": false,
-    "reason": "No audit directive received from Will or Marcelo today"
+    "reason": "No audit directive received; URGENT bypass mode"
   },
-  "weekly_watchdog": "NOT_DUE"
+  "weekly_watchdog": "NOT_DUE",
+  "learnings_updated": []
 }
