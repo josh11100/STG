@@ -1833,7 +1833,7 @@ function renderReports(files){
   else if(invAge>2) banners.push('<div class="alert alert-warn"><b>Live data is '+Math.floor(invAge)+' days old</b> (as of '+escS(invAsOf)+') — the daily inventory pull may have stopped. @josh</div>');
   if(inv&&inv.note) banners.push('<div class="alert alert-warn"><b>Feed note:</b> '+escS(inv.note)+'</div>');
   const scAge=(Date.now()-new Date(sc.as_of).getTime())/86400000;
-  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick's weekly review is overdue.</div>');
+  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick’s weekly review is overdue.</div>');
   const bEl=$i('sc-banners'); if(bEl) bEl.innerHTML=banners.join('');
 
   const ct=sc.control_tower||{};
