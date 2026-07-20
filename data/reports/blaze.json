@@ -4,7 +4,7 @@
   "routine_version": "Blaze v1.4",
   "authority_mode": "CLASS_A_ACTIVE",
   "standing_authority_signature": "SIGNED_2026-07-16",
-  "blaze_write_path_verified": false,
+  "blaze_write_path_verified": true,
   "status": "RED",
   "auto_executions": 0,
   "platforms_swept": [
