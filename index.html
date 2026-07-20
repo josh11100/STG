@@ -1462,23 +1462,21 @@ async function loadData(){
     const res = await fetch(DATA_URL + '?_=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
     const data = await safeJson(res);
-    // Fetch DAAS *before* render() so window.__DAAS is set when the
-    // overview table builds its DAAS row (fixes "routine not yet live" bug)
-    try{
-      const daasRes = await fetch(DAAS_URL + '?_=' + Date.now());
-      if (daasRes.ok) renderDaas(await safeJson(daasRes));
-      else renderDaas(null);
-    }catch(e){ renderDaas(null); }
     $('loading-state').style.display = 'none';
     $('error-state').style.display   = 'none';
     $('dashboard').style.display     = 'block';
     render(data);
-    // BH after render() — needs window.__LIVE (set inside render)
+
     try{
       const bhres = await fetch(BH_URL + '?_=' + Date.now());
       if (bhres.ok) renderBizHealth(await safeJson(bhres));
       else renderBizHealth(null);
     }catch(e){ renderBizHealth(null); }
+    try{
+      const daasRes = await fetch(DAAS_URL + '?_=' + Date.now());
+      if (daasRes.ok) renderDaas(await safeJson(daasRes));
+      else renderDaas(null);
+    }catch(e){ renderDaas(null); }
   }catch(err){
     $('loading-state').style.display = 'none';
     $('dashboard').style.display     = 'none';
@@ -1705,12 +1703,10 @@ function renderReports(files){
 <script>
 (async function authorityPanel(){
   const $a = id => document.getElementById(id);
-  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
-
   // ── 1. Standing Authority status (live from the signed doc) ──
   let mode = 'UNKNOWN', modeDetail = 'Could not fetch STANDING_AUTHORITY_v1.0.md';
   try {
-    const r = await fetch(RAW + 'docs/STANDING_AUTHORITY_v1.0.md', {cache:'no-store'});
+    const r = await fetch('./docs/STANDING_AUTHORITY_v1.0.md', {cache:'no-store'});
     if (r.ok) {
       const txt = await r.text();
       const line = (txt.split('\n').find(l => l.includes('SIGNATURE STATUS')) || '');
@@ -1737,7 +1733,7 @@ function renderReports(files){
 
   // ── 2. Full band math from roas_bands.json ──
   try {
-    const r = await fetch(RAW + 'data/roas_bands.json', {cache:'no-store'});
+    const r = await fetch('./data/roas_bands.json', {cache:'no-store'});
     if (!r.ok) throw new Error(r.status);
     const bands = await r.json();
     const esc = s => String(s==null?'—':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1764,59 +1760,6 @@ function renderReports(files){
   } catch(e) {
     $a('auth-bands-table').querySelector('tbody').innerHTML =
       '<tr><td colspan="8">roas_bands.json unavailable (' + e + ')</td></tr>';
-  }
-})();
-</script>
-<script>
-(async function inventoryPanel(){
-  const $i = id => document.getElementById(id);
-  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
-  const tag = $i('inv-tag');
-  try {
-    const r = await fetch(RAW + 'data/inventory_data.json', {cache:'no-store'});
-    if (!r.ok) throw new Error('nofile');
-    const inv = await r.json();
-    const esc = s => String(s==null?'—':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    const asof = new Date(inv.as_of);
-    const ageDays = (Date.now() - asof.getTime()) / 86400000;
-    $i('inv-when').textContent = 'on-hand as of ' + esc(inv.as_of) + (ageDays > 2 ? ' ⚠️ STALE' : '');
-
-    let worst = 'OK';
-    const alerts = [];
-    const rows = (inv.skus || []).map(s => {
-      const rate = s.rate_14d || 0;
-      const dos  = rate > 0 ? s.on_hand / rate : null;
-      const toMin = rate > 0 ? (s.on_hand - (s.amazon_min || 0)) / rate : null;
-      const dDate = d => d==null ? '—' : new Date(Date.now() + d*86400000).toISOString().slice(0,10);
-      const status = toMin == null ? 'NO SALES'
-        : toMin <= 30 ? 'URGENT' : toMin <= 60 ? 'WATCH' : 'OK';
-      if (status === 'URGENT') { worst = 'URGENT';
-        alerts.push(`${s.sku}: ~${Math.round(dos)} days of supply — hits Amazon min. level ${dDate(toMin)}, stockout ${dDate(dos)}. ${esc(s.note||'')}`);
-      } else if (status === 'WATCH' && worst !== 'URGENT') worst = 'WATCH';
-      const pill = status==='URGENT' ? 'pill-crit' : status==='WATCH' ? 'pill-warn' : status==='OK' ? 'pill-ok' : 'pill-na';
-      const liq = /slicker/i.test(s.sku||'');
-      return `<tr${status==='URGENT'?' style="background:rgba(192,0,0,.06)"':''}>`
-        + `<td><b>${esc(s.sku)}</b>${liq?' <span style="font-size:10px;color:var(--sub)">(liquidation)</span>':''}<br><span style="font-size:10px;color:var(--sub)">${esc(s.asin)}</span></td>`
-        + `<td class="r">${(s.on_hand??0).toLocaleString()}</td>`
-        + `<td class="r">${(s.amazon_min??0).toLocaleString()}</td>`
-        + `<td class="r">${rate.toFixed(1)}</td>`
-        + `<td class="r"><b>${dos==null?'—':Math.round(dos).toLocaleString()}</b></td>`
-        + `<td class="r">${dDate(toMin)}</td>`
-        + `<td class="r">${dDate(dos)}</td>`
-        + `<td class="r"><span class="pill ${pill}">${status}</span></td></tr>`;
-    });
-    $i('inv-table').querySelector('tbody').innerHTML = rows.join('');
-    tag.textContent = worst; tag.className = 'tag ' + (worst==='URGENT'?'tag-crit':worst==='WATCH'?'tag-warn':'tag-ok');
-    $i('inv-alerts').innerHTML = alerts.length
-      ? alerts.map(a=>`<div class="alert alert-crit">${a}</div>`).join('')
-      : '<div class="alert alert-ok">All SKUs beyond 60 days of supply at current run-rates.</div>';
-    if (inv.note) { const n=$i('inv-note'); n.style.display='block'; n.innerHTML='<b>Note:</b> '+esc(inv.note); }
-    if (ageDays > 2) $i('inv-alerts').insertAdjacentHTML('afterbegin',
-      '<div class="alert alert-warn"><b>On-hand data is '+Math.floor(ageDays)+' days old</b> — the daily inventory pull may have stopped. @josh</div>');
-  } catch(e) {
-    tag.textContent = 'NOT WIRED'; tag.className = 'tag tag-info';
-    $i('inv-alerts').innerHTML =
-      '<div class="alert alert-info"><b>Inventory pipeline not yet connected.</b> This panel reads data/inventory_data.json, which no routine writes yet. Last manual snapshot: InvRunway3.xlsx (on-hand as of Jul 10 — Rake Brush URGENT at ~41 days).</div>';
   }
 })();
 </script>
@@ -1858,7 +1801,7 @@ function renderReports(files){
   else if(invAge>2) banners.push('<div class="alert alert-warn"><b>Live data is '+Math.floor(invAge)+' days old</b> (as of '+escS(invAsOf)+') — the daily inventory pull may have stopped. @josh</div>');
   if(inv&&inv.note) banners.push('<div class="alert alert-warn"><b>Feed note:</b> '+escS(inv.note)+'</div>');
   const scAge=(Date.now()-new Date(sc.as_of).getTime())/86400000;
-  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick\u2019s weekly review is overdue.</div>');
+  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick's weekly review is overdue.</div>');
   const bEl=$i('sc-banners'); if(bEl) bEl.innerHTML=banners.join('');
 
   const ct=sc.control_tower||{};
