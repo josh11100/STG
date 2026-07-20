@@ -1575,6 +1575,56 @@ function renderAgentFlags(files) {
         html += '<div style="font-size:11px;color:var(--muted);line-height:1.8;"><b>Approver:</b> '+esc(brief.approver||'@will')+' — reply approved in Slack</div></div>';
       });
     }
+
+    // ── ADVISOR SOLUTIONS (Step 2G output) ──────────────────────────────────
+    const adv = f.advisor || {};
+    const advSols = adv.advisor_solutions || [];
+    const advGaps = adv.advisor_gaps || [];
+    if (advSols.length || advGaps.length) {
+      html += '<div style="margin:18px 0 6px;display:flex;align-items:center;gap:8px;">';
+      html += '<span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);">Business Advisor</span>';
+      html += '<span style="font-size:10px;color:var(--sub);">'+advSols.length+' solution(s) · '+advGaps.length+' gap(s)</span></div>';
+
+      advSols.forEach(prob => {
+        const isRed = String(prob.severity||'').toUpperCase() === 'RED';
+        const domainColor = {ads:'#d2483f',inventory:'#4E2D82',margin:'#F57E26',cash:'#e6a417',reviews:'#2faa6a'}[prob.domain] || '#6b7886';
+        const bc = isRed ? 'var(--red)' : 'var(--amber)';
+        const bg = isRed ? '#fdf3f2' : '#fffbf0';
+        html += '<div style="background:'+bg+';border:1px solid '+bc+';border-left:4px solid '+bc+';border-radius:8px;padding:14px 16px;margin-bottom:10px;">';
+        html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">';
+        html += '<span class="pill" style="background:'+domainColor+';color:#fff;font-size:9px;">'+esc((prob.domain||'').toUpperCase())+'</span>';
+        html += '<span class="pill '+(isRed?'pill-crit':'pill-warn')+'">'+esc(prob.severity||'')+'</span>';
+        html += '<span style="font-size:10px;color:var(--sub);">'+esc(prob.data||'')+'</span></div>';
+        html += '<div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px;">'+esc(prob.problem||'')+'</div>';
+
+        const sols = prob.solutions || [];
+        sols.forEach((sol,i) => {
+          const confColor = sol.confidence==='DOCTRINE' ? 'var(--green)' : '#1264a3';
+          const confBg = sol.confidence==='DOCTRINE' ? '#e3f5ec' : '#e8f5fa';
+          html += '<div style="background:#fff;border:1px solid #dde3ea;border-radius:6px;padding:10px 13px;margin-bottom:8px;">';
+          html += '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">';
+          html += '<span style="font-size:11px;font-weight:800;color:var(--navy);">#'+(i+1)+'</span>';
+          html += '<span style="background:'+confBg+';color:'+confColor+';font-size:9px;font-weight:700;padding:2px 6px;border-radius:5px;">'+esc(sol.confidence||'')+' · '+esc(String(sol.data_points||''))+'x proven</span>';
+          html += '<span style="font-size:10px;color:var(--sub);">per '+esc(sol.learning_id||'')+'</span></div>';
+          html += '<div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px;">'+esc(sol.recommendation||'')+'</div>';
+          html += '<div style="font-size:11px;color:var(--muted);">'+esc(sol.rationale||'')+'</div></div>';
+        });
+        html += '</div>';
+      });
+
+      if (advGaps.length) {
+        html += '<div style="background:#f0f2f5;border:1px solid #dde3ea;border-radius:8px;padding:12px 14px;margin-top:4px;">';
+        html += '<div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px;">⬜ Playbook Gaps ('+advGaps.length+') — no proven learning</div>';
+        advGaps.forEach(g => {
+          html += '<div style="font-size:11px;color:var(--muted);padding:3px 0;border-bottom:1px dashed #dde3ea;">';
+          html += '<span style="background:#f0f2f5;color:#6b7886;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-right:5px;">'+esc((g.domain||'').toUpperCase())+'</span>';
+          html += esc(g.problem||'')+'</div>';
+        });
+        html += '<div style="font-size:10px;color:var(--sub);margin-top:6px;">These scenarios have no proven playbook yet — build learnings here next.</div></div>';
+      }
+    }
+    // ── END ADVISOR SOLUTIONS ────────────────────────────────────────────────
+
     html += '</div>';
   });
   panel.innerHTML = html;
