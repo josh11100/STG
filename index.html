@@ -1237,7 +1237,7 @@ function render(d){
   };
 
   const hpCards = (p, vsLabel, vsKey) => {
-    if (!p || p.gross_revenue == null) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
+    if (!p || (p.gross_revenue == null && p.net_profit == null)) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
     const neg = (p.net_profit||0) < 0;
     const vs = p[vsKey];
     return card('Gross Revenue', fmtDollar(p.gross_revenue), (p.units!=null?fmtInt(p.units)+' units':'') + (p.date?' · '+esc(p.date):p.period?' · '+esc(p.period):''), 'bdr-teal') +
