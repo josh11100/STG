@@ -7,7 +7,12 @@
   "blaze_write_path_verified": false,
   "status": "RED",
   "auto_executions": 0,
-  "platforms_swept": ["Meta", "Amazon", "Google", "TikTok"],
+  "platforms_swept": [
+    "Meta",
+    "Amazon",
+    "Google",
+    "TikTok"
+  ],
   "directives_processed": 0,
   "launches_executed": 0,
   "audits_run": 0,
@@ -37,12 +42,12 @@
       "first_flagged": "2026-07-09",
       "learning_id": "L-2026-07-10-001",
       "status": "STAGED_CLASS_B",
-      "block_reason": "blaze_write_path_verified ABSENT — A-1 staged as Class B per STANDING_AUTHORITY_v1.1.md §3A prerequisite"
+      "block_reason": "blaze_write_path_verified ABSENT \u2014 A-1 staged as Class B per STANDING_AUTHORITY_v1.1.md \u00a73A prerequisite"
     },
     "fatigue_flag": false,
     "hygiene_flags": [
       {
-        "campaign": "BLZ-20260717-002 — Shampoo 50OFF UGC — 2026-07-17",
+        "campaign": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC \u2014 2026-07-17",
         "campaign_id": "120249184178260118",
         "status": "ACTIVE_ZERO_SPEND",
         "note": "Blaze-named campaign, no matching staging record in watchdog. Verify B-1 approval before it spends."
@@ -65,7 +70,11 @@
         "description": "Male-targeted campaign, $25/day, same UGC Bill video",
         "staged_date": "2026-07-17",
         "status": "OPEN_48H_PLUS",
-        "blockers": ["Will approved reply required", "video_id required", "blaze_write_path_verified absent"]
+        "blockers": [
+          "Will approved reply required",
+          "video_id required",
+          "blaze_write_path_verified absent"
+        ]
       }
     ],
     "campaigns_live": [
@@ -83,7 +92,7 @@
       },
       {
         "id": "120249184178260118",
-        "name": "BLZ-20260717-002 — Shampoo 50OFF UGC — 2026-07-17",
+        "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC \u2014 2026-07-17",
         "status": "ACTIVE",
         "l30d_spend": 0,
         "flag": "HYGIENE_VERIFY_APPROVAL"
@@ -101,7 +110,7 @@
     "data_date": "2026-07-17",
     "data_source": "supermetrics_data.json (generated 2026-07-18T23:07:36-07:00, FRESH)",
     "account_roas": 2.8133,
-    "account_spend": 524.50,
+    "account_spend": 524.5,
     "violations": [
       {
         "asin": "B0FQ628KCH",
@@ -116,24 +125,86 @@
     ],
     "unrecognized_asins": 0,
     "skus": [
-      {"asin": "B0FQL56V99", "sku": "Emergency Dematter", "spend": 274.27, "sales": 708.09, "roas": 2.581, "band": "YELLOW", "tacos_7d_pct": 140.4, "note": "First YELLOW after 2 RED days — needs 2nd consecutive to restore hero designation"},
-      {"asin": "B0GT1H84JM", "sku": "Save the Shave Bundle", "spend": 213.47, "sales": 0.00, "roas": 0.00, "band": "KILL", "note": "Day 13+ KILL band, $0 attributed sales — manual pause needed"},
-      {"asin": "B0GV5ZFLC2", "sku": "Detangling Treatment", "spend": 17.49, "sales": 0.00, "roas": 0.00, "band": "KILL", "tacos_7d_pct": 88.4},
-      {"asin": "B0FQDHXSZ5", "sku": "Pin Brush", "spend": 9.14, "sales": 39.98, "roas": 4.37, "band": "GREEN", "tacos_7d_pct": 82.9},
-      {"asin": "B0FQF2VTMJ", "sku": "Rake Brush", "spend": 5.15, "sales": 14.99, "roas": 2.91, "band": "YELLOW", "tacos_7d_pct": 9.6},
-      {"asin": "B0FQL16GH4", "sku": "4-in-1 Shampoo", "spend": 3.19, "sales": 39.98, "roas": 12.53, "band": "GREEN"},
-      {"asin": "B0FQ628KCH", "sku": "Slicker Brush", "spend": 1.37, "sales": 0.00, "roas": null, "band": "VIOLATION"},
-      {"asin": "B0GY9WZWKH", "sku": "Full Coat Care System 5pc", "spend": 0.42, "sales": 0.00, "roas": 0.00, "band": "KILL"}
+      {
+        "asin": "B0FQL56V99",
+        "sku": "Emergency Dematter",
+        "spend": 274.27,
+        "sales": 708.09,
+        "roas": 2.581,
+        "band": "YELLOW",
+        "tacos_7d_pct": 140.4,
+        "note": "First YELLOW after 2 RED days \u2014 needs 2nd consecutive to restore hero designation"
+      },
+      {
+        "asin": "B0GT1H84JM",
+        "sku": "Save the Shave Bundle",
+        "spend": 213.47,
+        "sales": 0.0,
+        "roas": 0.0,
+        "band": "KILL",
+        "note": "Day 13+ KILL band, $0 attributed sales \u2014 manual pause needed"
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "sku": "Detangling Treatment",
+        "spend": 17.49,
+        "sales": 0.0,
+        "roas": 0.0,
+        "band": "KILL",
+        "tacos_7d_pct": 88.4
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "sku": "Pin Brush",
+        "spend": 9.14,
+        "sales": 39.98,
+        "roas": 4.37,
+        "band": "GREEN",
+        "tacos_7d_pct": 82.9
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "sku": "Rake Brush",
+        "spend": 5.15,
+        "sales": 14.99,
+        "roas": 2.91,
+        "band": "YELLOW",
+        "tacos_7d_pct": 9.6
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "sku": "4-in-1 Shampoo",
+        "spend": 3.19,
+        "sales": 39.98,
+        "roas": 12.53,
+        "band": "GREEN"
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "sku": "Slicker Brush",
+        "spend": 1.37,
+        "sales": 0.0,
+        "roas": null,
+        "band": "VIOLATION"
+      },
+      {
+        "asin": "B0GY9WZWKH",
+        "sku": "Full Coat Care System 5pc",
+        "spend": 0.42,
+        "sales": 0.0,
+        "roas": 0.0,
+        "band": "KILL"
+      }
     ]
   },
   "google": {
     "status": "NOT_RUNNING",
     "spend": 0,
-    "note": "$0 expected — not flagged"
+    "note": "$0 expected \u2014 not flagged"
   },
   "tiktok": {
     "status": "MANUAL_VISIBILITY_ONLY",
-    "note": "No connector — manual visibility only"
+    "note": "No connector \u2014 manual visibility only"
   },
   "anomalies": [
     {
@@ -170,12 +241,32 @@
     "thread_closeout_ts": "1784474284.379489"
   },
   "warnings": [
-    "blaze_write_path_verified learning absent — A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via Meta MCP"
+    "blaze_write_path_verified learning absent \u2014 A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via Meta MCP"
   ],
   "learnings_updated": [],
   "audit_summary": {
     "ran": false,
     "reason": "No audit directive received from Will or Marcelo today"
   },
-  "weekly_watchdog": "NOT_DUE"
+  "weekly_watchdog": "NOT_DUE",
+  "date": "2026-07-19",
+  "agent": "Blaze",
+  "generated_at": "2026-07-19T08:10",
+  "posts": [
+    {
+      "channel": "#stg-ads-watchdog",
+      "type": "main",
+      "time": "08:10",
+      "status": "RED",
+      "title": "\ud83d\udd34 Blaze Blaze v1.4 \u2014 2026-07-19 \u2014 CLASS_A_ACTIVE",
+      "text": "1 kill breaches \u00b7 1 anomalies \u00b7 0 fatigue flags \u00b7 0 launches \u00b7 0 directives processed"
+    },
+    {
+      "channel": "#stg-ads-watchdog",
+      "type": "thread",
+      "time": "",
+      "status": "YELLOW",
+      "text": "blaze_write_path_verified learning absent \u2014 A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via Meta MCP"
+    }
+  ]
 }
