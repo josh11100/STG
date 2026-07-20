@@ -1,8 +1,8 @@
 {
-  "as_of": "2026-07-19",
+  "as_of": "2026-07-20",
   "available": false,
   "source": "DEGRADED — Chrome unavailable in cloud environment (L-2026-07-15-001 DOCTRINE). SKU data below is from last manual pull Jul 17.",
-  "note": "FBA inventory scrape unavailable today. Data below is 2 days stale (last manual pull Jul 17 by Josh). Manual SC check needed: B0FQ4PY573 (Detangling Spray, LIF≤0 per H10), B0FQFP2S9F (FurFix, STRANDED). @josh",
+  "note": "FBA inventory scrape unavailable today. Data below is 3 days stale (last manual pull Jul 17 by Josh). Manual SC check needed: B0FQ4PY573 (Detangling Spray, LIF≤0 per H10), B0FQFP2S9F (FurFix, STRANDED). @josh",
   "last_known_sc_scrape": "2026-07-17",
   "skus": [
     {
@@ -66,7 +66,7 @@
       "amazon_min": 52,
       "rate_14d": null,
       "status": "CLOSED",
-      "note": "CLOSED listing — 0 sales · 323 units idle (data as of Jul 17). H10 Jul 18: LIF≤0, LTSF≥181 — manual SC check needed."
+      "note": "CLOSED listing — 0 sales · 323 units idle (data as of Jul 17). H10 Jul 19: LIF≤0, LTSF≥181 — manual SC check needed."
     },
     {
       "asin": "B0FQFP2S9F",
@@ -75,7 +75,7 @@
       "amazon_min": null,
       "rate_14d": null,
       "status": "STRANDED",
-      "note": "STRANDED — fix listing (data as of Jul 17). H10 Jul 18: LIF≤0, LTSF≥181 — manual SC check needed."
+      "note": "STRANDED — fix listing (data as of Jul 17). H10 Jul 19: LIF≤0, LTSF≥181 — manual SC check needed."
     }
   ],
   "summary": {
@@ -85,6 +85,6 @@
     "excess": 4,
     "stranded": 1,
     "closed": 1,
-    "data_staleness_days": 2
+    "data_staleness_days": 3
   }
 }
