@@ -29,23 +29,23 @@
   },
 
   "response": {
-    "fire_url": "FILL_IN — Routines → Jarvis Responce Routine → Edit → API trigger → copy URL",
-    "token":    "FILL_IN — same screen → copy token"
+    "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_011GNQuyoZnVsHkeh1enPUBq/fire",
+    "token":    "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"
   },
 
   "slack": {
     "channels": {
-      "finance_alerts":   "FILL_IN — Slack: right-click #stg-finance-alerts → Copy link → ID after /archives/",
-      "morning_brief":    "FILL_IN — same for #stg-morning-brief",
+      "finance_alerts":   "C0BDVDN50DU",
+      "morning_brief":    "C0BDU4M2R37",
       "ads_watchdog":     "C0BDU52NV61",
-      "content_alerts":   "FILL_IN — same for #stg-content-alerts",
-      "inventory_alerts": "FILL_IN — same for #stg-inventory-alerts",
+      "content_alerts":   "C0BDG2XBMBR",
+      "inventory_alerts": "C0BDR6HHWCT",
       "urgent":           "C0BHMNC9BPU"
     },
     "users": {
       "will":    "U0BDV0HT2TY",
       "marcelo": "U0BDTNBGWDB",
-      "josh":    "FILL_IN — Slack: click your profile photo → Profile → copy member ID"
+      "josh":    "U0BERCSF1B2"
     }
   }
 }
