@@ -1,272 +1,100 @@
 {
-  "run_date": "2026-07-19",
-  "run_time_pt": "08:10",
-  "routine_version": "Blaze v1.4",
-  "authority_mode": "CLASS_A_ACTIVE",
-  "standing_authority_signature": "SIGNED_2026-07-16",
-  "blaze_write_path_verified": true,
-  "status": "RED",
-  "auto_executions": 0,
-  "platforms_swept": [
-    "Meta",
-    "Amazon",
-    "Google",
-    "TikTok"
-  ],
-  "directives_processed": 0,
-  "launches_executed": 0,
-  "audits_run": 0,
-  "meta": {
-    "account": "2158768751536031",
-    "data_source": "live_meta_mcp",
-    "data_date": "2026-07-18",
-    "l30d_spend": 370.97,
-    "l30d_roas": 0.61,
-    "l30d_ctr": 6.12,
-    "l30d_frequency": 1.64,
-    "l30d_cpm": 56.78,
-    "l30d_impressions": 6533,
-    "l30d_reach": 3978,
-    "l30d_clicks": 400,
-    "yesterday_spend": 15.28,
-    "yesterday_impressions": 281,
-    "yesterday_clicks": 27,
-    "yesterday_ctr": 9.61,
-    "kill_breach": {
-      "campaign": "Save the Shave UGC Bill _UGC_070326",
-      "campaign_id": "120248769281270118",
-      "l30d_spend": 370.97,
-      "l30d_roas": 0.61,
-      "days_in_breach": 12,
-      "spend_above_threshold": 295.97,
-      "first_flagged": "2026-07-09",
-      "learning_id": "L-2026-07-10-001",
-      "status": "STAGED_CLASS_B",
-      "block_reason": "blaze_write_path_verified ABSENT \u2014 A-1 staged as Class B per STANDING_AUTHORITY_v1.1.md \u00a73A prerequisite"
-    },
-    "fatigue_flag": false,
-    "hygiene_flags": [
-      {
-        "campaign": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC \u2014 2026-07-17",
-        "campaign_id": "120249184178260118",
-        "status": "ACTIVE_ZERO_SPEND",
-        "note": "Blaze-named campaign, no matching staging record in watchdog. Verify B-1 approval before it spends."
-      },
-      {
-        "campaign": "Save the Shave UGC Bill _UGC_070326 - Copy",
-        "campaign_id": "120249157571500118",
-        "status": "ACTIVE_ZERO_SPEND",
-        "note": "Assign budget before killing original or Meta goes dark."
-      },
-      {
-        "campaign": "STG_Meta_Detangling_30sUGC_2026-04 (duplicate)",
-        "status": "PAUSED_DUPLICATE",
-        "note": "Two identically-named campaigns. Deactivate one."
-      }
-    ],
-    "pending_launches": [
-      {
-        "brief_id": "BLZ-20260717-001",
-        "description": "Male-targeted campaign, $25/day, same UGC Bill video",
-        "staged_date": "2026-07-17",
-        "status": "OPEN_48H_PLUS",
-        "blockers": [
-          "Will approved reply required",
-          "video_id required",
-          "blaze_write_path_verified absent"
-        ]
-      }
-    ],
-    "campaigns_live": [
-      {
-        "id": "120248769281270118",
-        "name": "Save the Shave UGC Bill _UGC_070326",
-        "status": "ACTIVE",
-        "l30d_spend": 370.97,
-        "l30d_roas": 0.61,
-        "ctr": 6.12,
-        "frequency": 1.64,
-        "cpm": 56.78,
-        "impressions": 6533,
-        "flag": "KILL_BREACH_DAY_12"
-      },
-      {
-        "id": "120249184178260118",
-        "name": "BLZ-20260717-002 \u2014 Shampoo 50OFF UGC \u2014 2026-07-17",
-        "status": "ACTIVE",
-        "l30d_spend": 0,
-        "flag": "HYGIENE_VERIFY_APPROVAL"
-      },
-      {
-        "id": "120249157571500118",
-        "name": "Save the Shave UGC Bill _UGC_070326 - Copy",
-        "status": "ACTIVE",
-        "l30d_spend": 0,
-        "flag": "HYGIENE_ZERO_SPEND"
-      }
-    ]
-  },
-  "amazon": {
-    "data_date": "2026-07-17",
-    "data_source": "supermetrics_data.json (generated 2026-07-18T23:07:36-07:00, FRESH)",
-    "account_roas": 2.8133,
-    "account_spend": 524.5,
-    "violations": [
-      {
-        "asin": "B0FQ628KCH",
-        "sku": "Slicker Brush",
-        "type": "LIQUIDATION_SPEND_A2",
-        "spend_day": 1.37,
-        "spend_7d": 7.37,
-        "status": "A2_FLAGGED",
-        "learning_id": "L-2026-07-14-001",
-        "days_active": 13
-      }
-    ],
-    "unrecognized_asins": 0,
-    "skus": [
-      {
-        "asin": "B0FQL56V99",
-        "sku": "Emergency Dematter",
-        "spend": 274.27,
-        "sales": 708.09,
-        "roas": 2.581,
-        "band": "YELLOW",
-        "tacos_7d_pct": 140.4,
-        "note": "First YELLOW after 2 RED days \u2014 needs 2nd consecutive to restore hero designation"
-      },
-      {
-        "asin": "B0GT1H84JM",
-        "sku": "Save the Shave Bundle",
-        "spend": 213.47,
-        "sales": 0.0,
-        "roas": 0.0,
-        "band": "KILL",
-        "note": "Day 13+ KILL band, $0 attributed sales \u2014 manual pause needed"
-      },
-      {
-        "asin": "B0GV5ZFLC2",
-        "sku": "Detangling Treatment",
-        "spend": 17.49,
-        "sales": 0.0,
-        "roas": 0.0,
-        "band": "KILL",
-        "tacos_7d_pct": 88.4
-      },
-      {
-        "asin": "B0FQDHXSZ5",
-        "sku": "Pin Brush",
-        "spend": 9.14,
-        "sales": 39.98,
-        "roas": 4.37,
-        "band": "GREEN",
-        "tacos_7d_pct": 82.9
-      },
-      {
-        "asin": "B0FQF2VTMJ",
-        "sku": "Rake Brush",
-        "spend": 5.15,
-        "sales": 14.99,
-        "roas": 2.91,
-        "band": "YELLOW",
-        "tacos_7d_pct": 9.6
-      },
-      {
-        "asin": "B0FQL16GH4",
-        "sku": "4-in-1 Shampoo",
-        "spend": 3.19,
-        "sales": 39.98,
-        "roas": 12.53,
-        "band": "GREEN"
-      },
-      {
-        "asin": "B0FQ628KCH",
-        "sku": "Slicker Brush",
-        "spend": 1.37,
-        "sales": 0.0,
-        "roas": null,
-        "band": "VIOLATION"
-      },
-      {
-        "asin": "B0GY9WZWKH",
-        "sku": "Full Coat Care System 5pc",
-        "spend": 0.42,
-        "sales": 0.0,
-        "roas": 0.0,
-        "band": "KILL"
-      }
-    ]
-  },
-  "google": {
-    "status": "NOT_RUNNING",
-    "spend": 0,
-    "note": "$0 expected \u2014 not flagged"
-  },
-  "tiktok": {
-    "status": "MANUAL_VISIBILITY_ONLY",
-    "note": "No connector \u2014 manual visibility only"
-  },
-  "anomalies": [
-    {
-      "type": "A2_SLICKER_VIOLATION",
-      "platform": "Amazon",
-      "asin": "B0FQ628KCH",
-      "sku": "Slicker Brush",
-      "spend_day": 1.37,
-      "spend_7d": 7.37,
-      "date_data": "2026-07-17",
-      "date_flagged": "2026-07-19",
-      "days_active": 13,
-      "status": "FLAGGED",
-      "learning_id": "L-2026-07-14-001"
-    }
-  ],
-  "close_out": {
-    "kill_breaches": 1,
-    "kill_breaches_executed": 0,
-    "kill_breaches_staged": 1,
+  "generated_at": "2026-07-21T08:10:00-07:00",
+  "date": "2026-07-21",
+  "run_path": "FULL_DAILY",
+  "routine_version": "v1.7",
+  "summary": {
+    "authority": "CLASS_A_ACTIVE",
+    "kills_executed": 1,
+    "kills_staged": 0,
     "anomalies": 1,
-    "fatigue_flags": 0,
-    "audits_run": 0,
-    "directives_processed": 0,
-    "launches_executed": 0,
-    "blocked": 0,
-    "active_ads_registry": 0
+    "advisor_solutions": 5,
+    "advisor_gaps": 7
   },
-  "slack_posts": {
-    "channel_id": "C0BDU52NV61",
-    "main_post_ts": "1784474234.446129",
-    "thread_kill_detail_ts": "1784474251.634549",
-    "thread_hygiene_blz001_ts": "1784474269.998219",
-    "thread_closeout_ts": "1784474284.379489"
-  },
-  "warnings": [
-    "blaze_write_path_verified learning absent \u2014 A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via Meta MCP"
-  ],
-  "learnings_updated": [],
-  "audit_summary": {
-    "ran": false,
-    "reason": "No audit directive received from Will or Marcelo today"
-  },
-  "weekly_watchdog": "NOT_DUE",
-  "date": "2026-07-19",
-  "agent": "Blaze",
-  "generated_at": "2026-07-19T08:10",
-  "posts": [
+  "flags": [
     {
-      "channel": "#stg-ads-watchdog",
-      "type": "main",
-      "time": "08:10",
+      "brief_id": "P-2026-07-21-001",
       "status": "RED",
-      "title": "\ud83d\udd34 Blaze Blaze v1.4 \u2014 2026-07-19 \u2014 CLASS_A_ACTIVE",
-      "text": "1 kill breaches \u00b7 1 anomalies \u00b7 0 fatigue flags \u00b7 0 launches \u00b7 0 directives processed"
+      "platform": "ads",
+      "phase": "ADVISOR",
+      "title": "Meta — New Sales Ad auto-killed · $439.87 spend · ROAS 0.73",
+      "problem": "New Sales Ad (ID 120248769281250118) crossed the $75 kill threshold at ROAS 0.726 — below the 1.0 floor. 90% of budget went to women 65+ at ROAS 0.96. Ad auto-paused by A-1 authority.",
+      "solution": "Launch a replacement ad with hard age lock (25–54) and Advantage+ OFF. The male segment showed ROAS 2.34 at 9% of budget — test a male-targeted duplicate at $25/day.",
+      "action": "In Meta Ads Manager: duplicate the paused ad set, set age 25–54, disable Advantage+ Audience, set budget $25/day, activate. Tag Will for approval.",
+      "deadline": "Today — replacement needed before daily budget resets",
+      "approver": "@will",
+      "slack_status": "OPEN",
+      "learning_id": "L-2026-07-16-003",
+      "confidence": "VALIDATED"
     },
     {
-      "channel": "#stg-ads-watchdog",
-      "type": "thread",
-      "time": "",
+      "brief_id": "P-2026-07-21-002",
+      "status": "RED",
+      "platform": "ads",
+      "phase": "ADVISOR",
+      "title": "Amazon Bundle B0GT1H84JM — $169.37 spend · $0 sales",
+      "problem": "Save the Shave Bundle (B0GT1H84JM) has $169.37 Amazon ad spend with zero attributed sales. Real waste gate triggered (spend ≥ $75, zero return). No Blaze write authority on Amazon.",
+      "solution": "Pause the Amazon campaign for this ASIN immediately in Amazon Ads Manager. Review targeting — broad match keywords may be driving irrelevant clicks.",
+      "action": "Log into Amazon Ads → Campaign Manager → find Save the Shave Bundle campaign → pause. Review search term report for irrelevant queries before reactivating.",
+      "deadline": "Today — every hour adds ~$7 in wasted spend",
+      "approver": "@will",
+      "slack_status": "OPEN",
+      "learning_id": null,
+      "confidence": null
+    },
+    {
+      "brief_id": "P-2026-07-21-003",
+      "status": "RED",
+      "platform": "cash",
+      "phase": "ADVISOR",
+      "title": "Checking balance $13,283 — below $25K watch threshold",
+      "problem": "STG checking account at $13,283 — below the $25K liquid cash floor. AP $48,504 is 100% overdue. Combined cash (checking + money market) is $587K but daily operating cash is critically low.",
+      "solution": "Transfer operating cash from money market to checking to restore the buffer. Simultaneously get Patrick to prioritize the overdue AP — 100% past due is a vendor relationship risk.",
+      "action": "Patrick: transfer $30–40K from money market to checking. Then contact overdue vendors and negotiate payment schedule. Report back to Will by EOD.",
+      "deadline": "Today",
+      "approver": "@will",
+      "slack_status": "OPEN",
+      "learning_id": null,
+      "confidence": null
+    },
+    {
+      "brief_id": "P-2026-07-21-004",
       "status": "YELLOW",
-      "text": "blaze_write_path_verified learning absent \u2014 A-1 prerequisite unmet; auto-kills stage as Class B until Josh verifies write path via Meta MCP"
+      "platform": "reviews",
+      "phase": "ADVISOR",
+      "title": "Reviews — 3.8 avg · 4 negative · sheet 12 days stale",
+      "problem": "Review sheet hasn't been updated in 12 days (last update July 9). Latest batch averages 3.8 stars with 4 one/two-star reviews. Sheet staleness means complaint themes are going unmonitored.",
+      "solution": "Angelo needs to update the STG Weekly Review Update sheet immediately. Pull the 4 negative reviews and identify complaint themes — mat removal and brush quality are the most common patterns in prior learnings.",
+      "action": "Will: follow up with Angelo to update the review sheet. Once updated, review the 4 negative entries for product or listing issues that can be addressed.",
+      "deadline": "This week",
+      "approver": "@will",
+      "slack_status": "OPEN",
+      "learning_id": null,
+      "confidence": null
+    },
+    {
+      "brief_id": "P-2026-07-21-005",
+      "status": "YELLOW",
+      "platform": "ads",
+      "phase": "ADVISOR",
+      "title": "Klaviyo — Browse Abandonment still in DRAFT · all flows zero-send",
+      "problem": "Browse Abandonment flow has been in DRAFT status — not live. All 7-day Klaviyo flows show zero sends. This is suppressed email revenue that should be capturing cart and browse signals daily.",
+      "solution": "Marcelo needs to activate the Browse Abandonment flow in Klaviyo. This is a high-intent segment that converts well — each day it stays in DRAFT is missed revenue.",
+      "action": "Marcelo: go to Klaviyo → Flows → Browse Abandonment → set to Live. Confirm in #stg-morning-brief when done.",
+      "deadline": "This week",
+      "approver": "@will",
+      "slack_status": "OPEN",
+      "learning_id": null,
+      "confidence": null
     }
-  ]
+  ],
+  "briefs": [],
+  "advisor": {
+    "ran": true,
+    "run_date": "2026-07-21",
+    "domains_scanned": ["ads", "inventory", "margin", "cash", "reviews"],
+    "problems_found": 5,
+    "solutions_found": 5,
+    "gaps_found": 7
+  }
 }
