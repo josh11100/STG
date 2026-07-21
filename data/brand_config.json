@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "ad_account_id": "2158768751536031",
+    "facebook_page_id": "61572430834219",
+    "instagram_actor_id": "FILL_IN — Meta Business Suite → Accounts → Instagram Accounts → numeric ID next to skipthegroomer",
+    "instagram_handle": "skipthegroomer"
+  },
+
+  "store": {
+    "base_url": "https://www.skipthegroomer.com",
+    "homepage": "https://www.skipthegroomer.com"
+  },
+
+  "products": {
+    "single_skus": {
+      "emergency_dematter": {
+        "name": "Emergency Dematter Cream",
+        "asin": "B0FQL56V99",
+        "price": 22.99,
+        "url": "https://www.skipthegroomer.com/products/emergency-dematter-cream"
+      },
+      "detangling_treatment": {
+        "name": "Detangling Treatment",
+        "asin": "B0GV5ZFLC2",
+        "price": 18.99,
+        "url": "https://www.skipthegroomer.com/products/detangling-treatment"
+      },
+      "shampoo_conditioner": {
+        "name": "4-IN-1 Rosemary Mint Shampoo & Conditioner",
+        "asin": "B0FQL16GH4",
+        "price": 19.99,
+        "sale_price": 9.99,
+        "url": "https://www.skipthegroomer.com/products/4-in-1-rosemary-mint-shampoo-conditioner"
+      },
+      "pin_brush": {
+        "name": "Pin Brush",
+        "asin": "B0FQDHXSZ5",
+        "price": 19.99,
+        "url": "https://www.skipthegroomer.com/products/pin-brush"
+      },
+      "rake_brush": {
+        "name": "Rake Brush",
+        "asin": "B0FQF2VTMJ",
+        "price": 14.99,
+        "url": "https://www.skipthegroomer.com/products/rake-brush"
+      },
+      "slicker_brush": {
+        "name": "Slicker Brush",
+        "asin": "B0FQ628KCH",
+        "price": 17.99,
+        "sale_price": 8.99,
+        "url": "https://www.skipthegroomer.com/products/slicker-brush",
+        "note": "LIQUIDATION — no ad funding"
+      }
+    },
+    "bundles": {
+      "save_the_shave_bundle": {
+        "name": "Save the Shave — Emergency Dematter + Rake Brush",
+        "asin": "B0GT1H84JM",
+        "price": 37.98,
+        "sale_price": 34.18,
+        "discount_pct": 10,
+        "url": "https://www.skipthegroomer.com/products/save-the-shave-emergency-dematter-rake-brush"
+      },
+      "clean_and_fresh": {
+        "name": "Clean & Fresh — Shampoo + Slicker Brush",
+        "price": 37.98,
+        "sale_price": 18.98,
+        "discount_pct": 50,
+        "url": "https://www.skipthegroomer.com/products/clean-fresh"
+      },
+      "full_coat_care_5pc": {
+        "name": "Full Coat Care System (5 Piece)",
+        "price": 101.18,
+        "sale_price": 74.96,
+        "discount_pct": 26,
+        "url": "https://www.skipthegroomer.com/products/full-coat-care-system-5-piece"
+      },
+      "detangle_the_tangle": {
+        "name": "Detangle the Tangle — Detangling Treatment + Pin Brush",
+        "price": 38.98,
+        "sale_price": 35.08,
+        "discount_pct": 10,
+        "url": "https://www.skipthegroomer.com/products/detangle-the-tangle"
+      },
+      "easy_brush_days": {
+        "name": "Easy Brush Days — Detangling Treatment + Pin Brush",
+        "price": 58.97,
+        "sale_price": 50.12,
+        "discount_pct": 15,
+        "url": "https://www.skipthegroomer.com/products/easy-brush-days"
+      },
+      "daily_coat_care": {
+        "name": "Daily Coat Care System",
+        "price": 77.96,
+        "sale_price": 62.37,
+        "discount_pct": 20,
+        "url": "https://www.skipthegroomer.com/products/daily-coat-care-system"
+      },
+      "soft_tangle_free": {
+        "name": "Soft & Tangle Free Grooming Kit — Shampoo + Pin Brush",
+        "price": 39.98,
+        "sale_price": 35.98,
+        "discount_pct": 10,
+        "url": "https://www.skipthegroomer.com/products/soft-tangle-free-dog-grooming-kit"
+      },
+      "full_brush_set": {
+        "name": "Full Brush Set — Slicker + Pin + Rake",
+        "price": 52.97,
+        "sale_price": 45.02,
+        "discount_pct": 15,
+        "url": "https://www.skipthegroomer.com/products/full-brush-set"
+      }
+    }
+  },
+
+  "notes": {
+    "url_slugs": "URLs are best-guess Shopify slugs from product titles — verify each against the live site before Blaze uses them in ads",
+    "instagram_actor_id": "Required for Meta ad creative — get from Meta Business Suite → Accounts → Instagram Accounts"
+  }
+}
