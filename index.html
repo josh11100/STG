@@ -1077,7 +1077,7 @@ function render(d){
 
   // — SKU Watch: live per-SKU ROAS + TACOS vs locked bands —
   const bandsSkus = (BANDS && BANDS.skus) || [];
-  const liveSkus = aa.skus || (d.supermetrics || {}).skus || [];
+  const liveSkus = aa.skus || [];
   const findBand = row => bandsSkus.find(b =>
     (row.asin && b.asin && row.asin === b.asin) ||
     (row.sku && b.sku && String(row.sku).toLowerCase().includes(String(b.sku).toLowerCase().split(' ')[0])));
@@ -1237,7 +1237,7 @@ function render(d){
   };
 
   const hpCards = (p, vsLabel, vsKey) => {
-    if (!p || (p.gross_revenue == null && p.net_profit == null)) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
+    if (!p || p.gross_revenue == null) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
     const neg = (p.net_profit||0) < 0;
     const vs = p[vsKey];
     return card('Gross Revenue', fmtDollar(p.gross_revenue), (p.units!=null?fmtInt(p.units)+' units':'') + (p.date?' · '+esc(p.date):p.period?' · '+esc(p.period):''), 'bdr-teal') +
@@ -1462,21 +1462,23 @@ async function loadData(){
     const res = await fetch(DATA_URL + '?_=' + Date.now());
     if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
     const data = await safeJson(res);
-    $('loading-state').style.display = 'none';
-    $('error-state').style.display   = 'none';
-    $('dashboard').style.display     = 'block';
-    render(data);
-
-    try{
-      const bhres = await fetch(BH_URL + '?_=' + Date.now());
-      if (bhres.ok) renderBizHealth(await safeJson(bhres));
-      else renderBizHealth(null);
-    }catch(e){ renderBizHealth(null); }
+    // Fetch DAAS *before* render() so window.__DAAS is set when the
+    // overview table builds its DAAS row (fixes "routine not yet live" bug)
     try{
       const daasRes = await fetch(DAAS_URL + '?_=' + Date.now());
       if (daasRes.ok) renderDaas(await safeJson(daasRes));
       else renderDaas(null);
     }catch(e){ renderDaas(null); }
+    $('loading-state').style.display = 'none';
+    $('error-state').style.display   = 'none';
+    $('dashboard').style.display     = 'block';
+    render(data);
+    // BH after render() — needs window.__LIVE (set inside render)
+    try{
+      const bhres = await fetch(BH_URL + '?_=' + Date.now());
+      if (bhres.ok) renderBizHealth(await safeJson(bhres));
+      else renderBizHealth(null);
+    }catch(e){ renderBizHealth(null); }
   }catch(err){
     $('loading-state').style.display = 'none';
     $('dashboard').style.display     = 'none';
@@ -1555,11 +1557,30 @@ function renderAgentFlags(files) {
         html += '<span class="pill pill-na" style="font-size:9px;">'+esc(flag.slack_status||'OPEN')+'</span></div>';
         html += '<div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:6px;">'+esc(flag.title||'')+'</div>';
         html += '<div style="font-size:12px;color:var(--text);margin-bottom:10px;line-height:1.5;"><b>Problem:</b> '+esc(flag.problem||'')+'</div>';
-        html += '<div style="background:#fff;border:1px solid '+bc+';border-radius:6px;padding:10px 13px;margin-bottom:8px;">';
-        html += '<div style="font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px;">Solution</div>';
-        html += '<div style="font-size:12px;color:var(--text);margin-bottom:6px;">'+esc(flag.solution||'')+'</div>';
-        html += '<div style="font-size:11px;color:var(--muted);line-height:1.8;"><b>Action:</b> '+esc(flag.action||'')+'<br><b>Deadline:</b> '+esc(flag.deadline||'')+'<br><b>Approver:</b> '+esc(flag.approver||'@will')+'</div></div>';
-        html += '<div style="font-size:10px;color:var(--sub);">Brief ID: '+esc(flag.brief_id||'')+'</div></div>';
+        // Build solutions array — supports both solutions[] (v1.8+) and legacy single solution string
+        const sols = Array.isArray(flag.solutions) && flag.solutions.length
+          ? flag.solutions
+          : (flag.solution ? [{rank:1, recommendation:flag.solution, action:flag.action, learning_id:flag.learning_id, confidence:flag.confidence, data_points:flag.data_points}] : []);
+        const confColor = c => c==='DOCTRINE'?'var(--green)':c==='VALIDATED'?'var(--teal)':'var(--muted)';
+        sols.forEach((s,i) => {
+          const isOnly = sols.length === 1;
+          html += '<div style="background:#fff;border:1px solid '+bc+';border-radius:6px;padding:10px 13px;margin-bottom:6px;">';
+          html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">';
+          if(!isOnly) html += '<span style="font-size:9px;font-weight:800;background:'+bc+';color:#fff;padding:2px 7px;border-radius:5px;">OPTION '+s.rank+'</span>';
+          else html += '<span style="font-size:12px;font-weight:700;color:var(--navy);">Solution</span>';
+          if(s.confidence) html += '<span style="font-size:10px;font-weight:700;color:'+confColor(s.confidence)+';">'+esc(s.confidence)+'</span>';
+          if(s.data_points) html += '<span style="font-size:10px;color:var(--muted);">'+s.data_points+'× proven</span>';
+          if(s.learning_id) html += '<span style="font-size:10px;color:var(--sub);">per '+esc(s.learning_id)+'</span>';
+          html += '</div>';
+          html += '<div style="font-size:12px;color:var(--text);margin-bottom:6px;line-height:1.5;">'+esc(s.recommendation||'')+'</div>';
+          if(s.action) html += '<div style="font-size:11px;color:var(--muted);line-height:1.8;"><b>Action:</b> '+esc(s.action)+'</div>';
+          html += '</div>';
+        });
+        if(!sols.length) html += '<div style="font-size:12px;color:var(--muted);font-style:italic;">No grounded solution — logged as playbook gap.</div>';
+        html += '<div style="font-size:11px;color:var(--muted);margin-top:4px;line-height:1.8;">'
+          +(sols.length===0?'':('<b>Deadline:</b> '+esc(flag.deadline||'—')+'&nbsp;·&nbsp;<b>Approver:</b> '+esc(flag.approver||'@will')))
+          +'</div>';
+        html += '<div style="font-size:10px;color:var(--sub);margin-top:4px;">Brief ID: '+esc(flag.brief_id||'')+'</div></div>';
       });
     } else {
       html += '<div class="alert alert-ok">✅ No flags this run.</div>';
@@ -1575,56 +1596,6 @@ function renderAgentFlags(files) {
         html += '<div style="font-size:11px;color:var(--muted);line-height:1.8;"><b>Approver:</b> '+esc(brief.approver||'@will')+' — reply approved in Slack</div></div>';
       });
     }
-
-    // ── ADVISOR SOLUTIONS (Step 2G output) ──────────────────────────────────
-    const adv = f.advisor || {};
-    const advSols = adv.advisor_solutions || [];
-    const advGaps = adv.advisor_gaps || [];
-    if (advSols.length || advGaps.length) {
-      html += '<div style="margin:18px 0 6px;display:flex;align-items:center;gap:8px;">';
-      html += '<span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);">Business Advisor</span>';
-      html += '<span style="font-size:10px;color:var(--sub);">'+advSols.length+' solution(s) · '+advGaps.length+' gap(s)</span></div>';
-
-      advSols.forEach(prob => {
-        const isRed = String(prob.severity||'').toUpperCase() === 'RED';
-        const domainColor = {ads:'#d2483f',inventory:'#4E2D82',margin:'#F57E26',cash:'#e6a417',reviews:'#2faa6a'}[prob.domain] || '#6b7886';
-        const bc = isRed ? 'var(--red)' : 'var(--amber)';
-        const bg = isRed ? '#fdf3f2' : '#fffbf0';
-        html += '<div style="background:'+bg+';border:1px solid '+bc+';border-left:4px solid '+bc+';border-radius:8px;padding:14px 16px;margin-bottom:10px;">';
-        html += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">';
-        html += '<span class="pill" style="background:'+domainColor+';color:#fff;font-size:9px;">'+esc((prob.domain||'').toUpperCase())+'</span>';
-        html += '<span class="pill '+(isRed?'pill-crit':'pill-warn')+'">'+esc(prob.severity||'')+'</span>';
-        html += '<span style="font-size:10px;color:var(--sub);">'+esc(prob.data||'')+'</span></div>';
-        html += '<div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px;">'+esc(prob.problem||'')+'</div>';
-
-        const sols = prob.solutions || [];
-        sols.forEach((sol,i) => {
-          const confColor = sol.confidence==='DOCTRINE' ? 'var(--green)' : '#1264a3';
-          const confBg = sol.confidence==='DOCTRINE' ? '#e3f5ec' : '#e8f5fa';
-          html += '<div style="background:#fff;border:1px solid #dde3ea;border-radius:6px;padding:10px 13px;margin-bottom:8px;">';
-          html += '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">';
-          html += '<span style="font-size:11px;font-weight:800;color:var(--navy);">#'+(i+1)+'</span>';
-          html += '<span style="background:'+confBg+';color:'+confColor+';font-size:9px;font-weight:700;padding:2px 6px;border-radius:5px;">'+esc(sol.confidence||'')+' · '+esc(String(sol.data_points||''))+'x proven</span>';
-          html += '<span style="font-size:10px;color:var(--sub);">per '+esc(sol.learning_id||'')+'</span></div>';
-          html += '<div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px;">'+esc(sol.recommendation||'')+'</div>';
-          html += '<div style="font-size:11px;color:var(--muted);">'+esc(sol.rationale||'')+'</div></div>';
-        });
-        html += '</div>';
-      });
-
-      if (advGaps.length) {
-        html += '<div style="background:#f0f2f5;border:1px solid #dde3ea;border-radius:8px;padding:12px 14px;margin-top:4px;">';
-        html += '<div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px;">⬜ Playbook Gaps ('+advGaps.length+') — no proven learning</div>';
-        advGaps.forEach(g => {
-          html += '<div style="font-size:11px;color:var(--muted);padding:3px 0;border-bottom:1px dashed #dde3ea;">';
-          html += '<span style="background:#f0f2f5;color:#6b7886;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-right:5px;">'+esc((g.domain||'').toUpperCase())+'</span>';
-          html += esc(g.problem||'')+'</div>';
-        });
-        html += '<div style="font-size:10px;color:var(--sub);margin-top:6px;">These scenarios have no proven playbook yet — build learnings here next.</div></div>';
-      }
-    }
-    // ── END ADVISOR SOLUTIONS ────────────────────────────────────────────────
-
     html += '</div>';
   });
   panel.innerHTML = html;
@@ -1678,38 +1649,6 @@ function renderReports(files){
   const feed = $('rep-feed'), tabs = $('rep-tabs');
   if (!feed) return;
   const today = new Date().toLocaleDateString('en-CA', {timeZone:'America/Los_Angeles'}); // YYYY-MM-DD PT
-
-  // ── Normalize blaze.json format → posts[] format ──────────────────────
-  files = files.map(f => {
-    if (!f.posts && (f.close_out || f.run_date)) {
-      const co = f.close_out || {};
-      const posts = [];
-      const statusIcon = f.status === 'RED' ? '🔴' : f.status === 'YELLOW' ? '🟡' : '✅';
-      posts.push({
-        channel: '#stg-ads-watchdog',
-        type: 'main',
-        time: f.run_time_pt || '',
-        status: f.status || 'GREEN',
-        title: statusIcon + ' Blaze ' + (f.routine_version || '') + ' — ' + (f.run_date || '') + ' — ' + (f.authority_mode || ''),
-        text: (co.kill_breaches||0) + ' kill breaches · ' + (co.anomalies||0) + ' anomalies · ' +
-              (co.launches_executed||0) + ' launches · ' + (co.directives_processed||0) + ' directives'
-      });
-      (f.warnings || []).forEach(w => {
-        posts.push({ channel: '#stg-ads-watchdog', type: 'thread', time: '', status: 'YELLOW', text: String(w) });
-      });
-      if (f.audit_summary && f.audit_summary.ran) {
-        const a = f.audit_summary;
-        posts.push({
-          channel: '#stg-ads-watchdog', type: 'thread', time: '', status: null,
-          text: '📊 Audit: Top ' + (a.top_performer||'—') + ' ROAS ' + (a.top_roas||'—') +
-                ' · Bottom: ' + (a.bottom_performer||'—') + ' — ' + (a.root_cause||'')
-        });
-      }
-      return { ...f, date: f.run_date, generated_at: f.run_date + 'T' + (f.run_time_pt||'00:00'), agent: 'Blaze', posts };
-    }
-    return f;
-  });
-
   if (!files.length){
     tabs.innerHTML = '';
     feed.innerHTML = alertBox('info','<b>No agent reports pushed yet.</b> Once each routine gets its mirror step, today\'s Slack posts appear here automatically — no Slack login needed.');
@@ -1785,10 +1724,12 @@ function renderReports(files){
 <script>
 (async function authorityPanel(){
   const $a = id => document.getElementById(id);
+  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
+
   // ── 1. Standing Authority status (live from the signed doc) ──
   let mode = 'UNKNOWN', modeDetail = 'Could not fetch STANDING_AUTHORITY_v1.0.md';
   try {
-    const r = await fetch('./docs/STANDING_AUTHORITY_v1.0.md', {cache:'no-store'});
+    const r = await fetch(RAW + 'docs/STANDING_AUTHORITY_v1.0.md', {cache:'no-store'});
     if (r.ok) {
       const txt = await r.text();
       const line = (txt.split('\n').find(l => l.includes('SIGNATURE STATUS')) || '');
@@ -1815,7 +1756,7 @@ function renderReports(files){
 
   // ── 2. Full band math from roas_bands.json ──
   try {
-    const r = await fetch('./data/roas_bands.json', {cache:'no-store'});
+    const r = await fetch(RAW + 'data/roas_bands.json', {cache:'no-store'});
     if (!r.ok) throw new Error(r.status);
     const bands = await r.json();
     const esc = s => String(s==null?'—':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1842,6 +1783,59 @@ function renderReports(files){
   } catch(e) {
     $a('auth-bands-table').querySelector('tbody').innerHTML =
       '<tr><td colspan="8">roas_bands.json unavailable (' + e + ')</td></tr>';
+  }
+})();
+</script>
+<script>
+(async function inventoryPanel(){
+  const $i = id => document.getElementById(id);
+  const RAW = 'https://raw.githubusercontent.com/josh11100/STG/main/';
+  const tag = $i('inv-tag');
+  try {
+    const r = await fetch(RAW + 'data/inventory_data.json', {cache:'no-store'});
+    if (!r.ok) throw new Error('nofile');
+    const inv = await r.json();
+    const esc = s => String(s==null?'—':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const asof = new Date(inv.as_of);
+    const ageDays = (Date.now() - asof.getTime()) / 86400000;
+    $i('inv-when').textContent = 'on-hand as of ' + esc(inv.as_of) + (ageDays > 2 ? ' ⚠️ STALE' : '');
+
+    let worst = 'OK';
+    const alerts = [];
+    const rows = (inv.skus || []).map(s => {
+      const rate = s.rate_14d || 0;
+      const dos  = rate > 0 ? s.on_hand / rate : null;
+      const toMin = rate > 0 ? (s.on_hand - (s.amazon_min || 0)) / rate : null;
+      const dDate = d => d==null ? '—' : new Date(Date.now() + d*86400000).toISOString().slice(0,10);
+      const status = toMin == null ? 'NO SALES'
+        : toMin <= 30 ? 'URGENT' : toMin <= 60 ? 'WATCH' : 'OK';
+      if (status === 'URGENT') { worst = 'URGENT';
+        alerts.push(`${s.sku}: ~${Math.round(dos)} days of supply — hits Amazon min. level ${dDate(toMin)}, stockout ${dDate(dos)}. ${esc(s.note||'')}`);
+      } else if (status === 'WATCH' && worst !== 'URGENT') worst = 'WATCH';
+      const pill = status==='URGENT' ? 'pill-crit' : status==='WATCH' ? 'pill-warn' : status==='OK' ? 'pill-ok' : 'pill-na';
+      const liq = /slicker/i.test(s.sku||'');
+      return `<tr${status==='URGENT'?' style="background:rgba(192,0,0,.06)"':''}>`
+        + `<td><b>${esc(s.sku)}</b>${liq?' <span style="font-size:10px;color:var(--sub)">(liquidation)</span>':''}<br><span style="font-size:10px;color:var(--sub)">${esc(s.asin)}</span></td>`
+        + `<td class="r">${(s.on_hand??0).toLocaleString()}</td>`
+        + `<td class="r">${(s.amazon_min??0).toLocaleString()}</td>`
+        + `<td class="r">${rate.toFixed(1)}</td>`
+        + `<td class="r"><b>${dos==null?'—':Math.round(dos).toLocaleString()}</b></td>`
+        + `<td class="r">${dDate(toMin)}</td>`
+        + `<td class="r">${dDate(dos)}</td>`
+        + `<td class="r"><span class="pill ${pill}">${status}</span></td></tr>`;
+    });
+    $i('inv-table').querySelector('tbody').innerHTML = rows.join('');
+    tag.textContent = worst; tag.className = 'tag ' + (worst==='URGENT'?'tag-crit':worst==='WATCH'?'tag-warn':'tag-ok');
+    $i('inv-alerts').innerHTML = alerts.length
+      ? alerts.map(a=>`<div class="alert alert-crit">${a}</div>`).join('')
+      : '<div class="alert alert-ok">All SKUs beyond 60 days of supply at current run-rates.</div>';
+    if (inv.note) { const n=$i('inv-note'); n.style.display='block'; n.innerHTML='<b>Note:</b> '+esc(inv.note); }
+    if (ageDays > 2) $i('inv-alerts').insertAdjacentHTML('afterbegin',
+      '<div class="alert alert-warn"><b>On-hand data is '+Math.floor(ageDays)+' days old</b> — the daily inventory pull may have stopped. @josh</div>');
+  } catch(e) {
+    tag.textContent = 'NOT WIRED'; tag.className = 'tag tag-info';
+    $i('inv-alerts').innerHTML =
+      '<div class="alert alert-info"><b>Inventory pipeline not yet connected.</b> This panel reads data/inventory_data.json, which no routine writes yet. Last manual snapshot: InvRunway3.xlsx (on-hand as of Jul 10 — Rake Brush URGENT at ~41 days).</div>';
   }
 })();
 </script>
@@ -1883,7 +1877,7 @@ function renderReports(files){
   else if(invAge>2) banners.push('<div class="alert alert-warn"><b>Live data is '+Math.floor(invAge)+' days old</b> (as of '+escS(invAsOf)+') — the daily inventory pull may have stopped. @josh</div>');
   if(inv&&inv.note) banners.push('<div class="alert alert-warn"><b>Feed note:</b> '+escS(inv.note)+'</div>');
   const scAge=(Date.now()-new Date(sc.as_of).getTime())/86400000;
-  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick’s weekly review is overdue.</div>');
+  if(scAge>10) banners.push('<div class="alert alert-warn"><b>Supply-chain plan is '+Math.floor(scAge)+' days old</b> — Patrick\u2019s weekly review is overdue.</div>');
   const bEl=$i('sc-banners'); if(bEl) bEl.innerHTML=banners.join('');
 
   const ct=sc.control_tower||{};
