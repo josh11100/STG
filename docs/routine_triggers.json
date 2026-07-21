@@ -23,8 +23,29 @@
     "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01B431roe7qLdHPJABc1cic9/fire",
     "token": "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"
   },
-  "blaze":{
+  "blaze": {
     "fire_url": "https://api.anthropic.com/v1/claude_code/routines/trig_01VqrLZkWfnTGYjmuatnZRoE/fire",
     "token": "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"
+  },
+
+  "response": {
+    "fire_url": "FILL_IN — Routines → Jarvis Responce Routine → Edit → API trigger → copy URL",
+    "token":    "FILL_IN — same screen → copy token"
+  },
+
+  "slack": {
+    "channels": {
+      "finance_alerts":   "FILL_IN — Slack: right-click #stg-finance-alerts → Copy link → ID after /archives/",
+      "morning_brief":    "FILL_IN — same for #stg-morning-brief",
+      "ads_watchdog":     "C0BDU52NV61",
+      "content_alerts":   "FILL_IN — same for #stg-content-alerts",
+      "inventory_alerts": "FILL_IN — same for #stg-inventory-alerts",
+      "urgent":           "C0BHMNC9BPU"
+    },
+    "users": {
+      "will":    "U0BDV0HT2TY",
+      "marcelo": "U0BDTNBGWDB",
+      "josh":    "FILL_IN — Slack: click your profile photo → Profile → copy member ID"
+    }
   }
 }
