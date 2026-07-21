@@ -1,0 +1,53 @@
+{
+  "version": "v10.13",
+  "generated_at": "2026-07-21T07:00:00-07:00",
+  "run_date": "2026-07-21",
+  "wren": {
+    "should_fire": true,
+    "reason": "Browse Abandonment flow still in DRAFT status — Wren fires daily until activated",
+    "fire_url": null,
+    "token": null,
+    "wren_fire_available": false,
+    "note": "routine_triggers.json not found (404) — Report v1.0 must resolve wren fire_url and token from its own config before firing"
+  },
+  "channel_ids": {
+    "stg_finance_alerts": null,
+    "stg_morning_brief": null,
+    "stg_ads_watchdog": null,
+    "stg_content_alerts": null,
+    "stg_inventory_alerts": null,
+    "note": "routine_triggers.json not found (404) — Report v1.0 must resolve all channel IDs from its own config"
+  },
+  "drafts": [
+    {
+      "id": "DRAFT_A",
+      "channel": "#stg-finance-alerts",
+      "channel_id": null,
+      "text": "*QuickBooks — Jul 21 · 07:00 PT*\n\n:large_green_circle: *Checking $28,185* — above $25k floor (no cash alert)\n:bank: Cash total: $487,236 (Checking $28,185 · MM ~$459,051) · ~50 weeks runway\n\n:rotating_light: *AP $48,505 — 100% overdue*\n  • Primo Animal Health: $25,575 (31–60d)\n  • Jiangsu Laoshu Pet Products: $13,076 (31–60d)\n  • WSA Distributing: $854 (31–60d)\n  • Will Dryden (Vendor): $9,000 (61–90d)\n\n:chart_with_downwards_trend: *MTD P&L (thru Jul 20):* Net –$21,596 · 20 days\n\n_QB sync lag Day 9 (L-2026-07-14-002) — revenue/COGS frozen since Jul 12; H10 Jul 20 net $434 is authoritative for Amazon P&L. AR skipped (non-Monday)._"
+    },
+    {
+      "id": "DRAFT_B",
+      "channel": "#stg-morning-brief",
+      "channel_id": null,
+      "text": "*Morning Brief — Jul 21 · 07:00 PT*\n\n:email: *Klaviyo* — $0 revenue · near-zero send volume\n  • Browse Abandonment: DRAFT (not live) — Wren firing daily :rotating_light:\n  • All live flows — 0 sends this week (Welcome, Abandoned Cart, Warranty, Registration) — 3rd+ consecutive week\n\n:shopify: *Shopify* — Jul 20: *$213 revenue* · 10 orders · AOV $21.30 :triangular_flag_on_post: (< $34 threshold)\n\n:moneybag: *Amazon (H10)* — Jul 20: *$434 net profit* · 75 units\n_7-day (Jul 13–19): $2,660 net · 646 units_\n\n_QB revenue frozen since Jul 12 (L-2026-07-14-002) — H10 is authoritative for Amazon P&L._"
+    },
+    {
+      "id": "DRAFT_C",
+      "channel": "#stg-ads-watchdog",
+      "channel_id": null,
+      "text": "*Ads Watchdog — Jul 21 · 07:00 PT*\n\n:rotating_light: *TOP FLAG — Save the Shave Bundle (B0GT1H84JM): KILL*\n$169.37 spend Jul 19 · $0 attributed sales · ROAS 0.00\n7-day spend: $1,407 · 7d ordered sales: $0 · TACOS: undefined\nAttribution guard: cost ≥$75 + $0 sales — confirmed KILL, action required\n\nAmazon account (Jul 19): spend $411.37 · ROAS 1.683\n\n*Amazon ROAS by SKU — Jul 19 data*\n```\nSKU                    | ROAS | Band          | TACOS  | Jul19 Spend\nEmergency Dematter     | 1.87 | YELLOW ↑KILL  | 80.4%  | $201.84\nRake Brush             | 3.93 | GREEN ↑YELLOW |  9.1%  |   $3.82\nPin Brush              | 2.39 | YELLOW ↑KILL  | 44.0%  |   $8.36\nDetangling Treatment   | 1.04 | KILL* ↓RED    |105.2%  |  $18.22\n4-in-1 Shampoo         | 0.00 | KILL*         | 33.7%  |   $9.55\nSlicker Brush          |  —   | VIOLATION     |  —     |  $0 (7d $5.48)\n```\n_*attribution guard active (spend <$75) — monitor, no hard action_\n\n:large_green_circle: Improvements: Dematter ↑KILL→YELLOW · Rake ↑YELLOW→GREEN · Pin Brush ↑KILL→YELLOW\n:small_red_triangle_down: Detangling Treatment ↓RED→KILL (guarded) · Dematter TACOS 80.4% (2× target)\n\n*H10 Keywords (Jul 20 tracker)*\n:large_green_circle: Dematter — 2 keywords in top 10 organic ('detangler for dogs' · 'dematting comb for dogs')\n:small_red_triangle_down: Slicker Brush — 'dog slicker brushes' rank 148 (↓10 spots)\n\n*Meta Ads (L30D: Jun 21–Jul 21)*\nAccount: $455.54 spend · ROAS 0.70\n:rotating_light: Save the Shave UGC Bill: $439.87 · ROAS ~0.69 — KILL BREACH Day 30+ (L-2026-07-10-001 VALIDATED)\n:new: BLZ-20260721-001: ACTIVE today · $0 spend — new launch, verify intended\nBLZ-20260717-002 (Shampoo): ACTIVE · $0 spend — verify intended\n\n*Google Ads* — $0 spend (no data)\n_Chrome unavailable — browser scrape not possible (L-2026-07-15-001 DOCTRINE)_"
+    },
+    {
+      "id": "DRAFT_D",
+      "channel": "#stg-content-alerts",
+      "channel_id": null,
+      "text": "*Content & Reviews — Jul 21 · 07:00 PT*\n\n:star: *Reviews snapshot* — avg 3.80 · 4 negatives in latest batch — :red_circle: RED\n_Sheet last updated Jul 16 (5 days ago, within 8-day threshold)_\n\n:small_red_triangle_down: *Slicker Brush* — 'dog slicker brushes': rank 148 (↓10 spots, Jul 20 KT)\n\n:x: Listing Analyzer: unavailable this run — email too large to parse (repeat issue)\n:x: Market Tracker: no report found this run"
+    },
+    {
+      "id": "DRAFT_E",
+      "channel": "#stg-inventory-alerts",
+      "channel_id": null,
+      "text": "*Inventory Brief — Jul 21 · 07:00 PT*\n_FBA scrape unavailable (Chrome — L-2026-07-15-001 DOCTRINE) · Last SC data: Jul 20 (1 day stale)_\n\n:warning: *B0FQFP2S9F — FurFix: STRANDED* — fix listing required (manual SC check needed)\n:warning: *B0FQ4PY573 — Detangling Spray: UNCONFIRMED* — SC showed HEALTHY Jul 20 but H10 Jul 19 flagged LIF≤0; verify listing is live/sellable before clearing flag\n\n:chart_with_downwards_trend: *Rake Brush (B0FQF2VTMJ): LOW STOCK* — 28 DoS on hand · 1,650 units inbound (shipped)\n\n:white_check_mark: Dematter: HEALTHY — 291 DoS · 21,922 on hand\n:file_folder: Excess: Detangling Treatment (7,541 units) · 4-in-1 Shampoo (3,517) · Pin Brush (1,845) · Slicker Brush (2,470, liquidation)"
+    }
+  ]
+}
