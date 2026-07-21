@@ -2,7 +2,7 @@
   "generated_at": "2026-07-21T08:10:00-07:00",
   "date": "2026-07-21",
   "run_path": "FULL_DAILY",
-  "routine_version": "v1.7",
+  "routine_version": "v1.8",
   "summary": {
     "authority": "CLASS_A_ACTIVE",
     "kills_executed": 1,
@@ -18,14 +18,28 @@
       "platform": "ads",
       "phase": "ADVISOR",
       "title": "Meta — New Sales Ad auto-killed · $439.87 spend · ROAS 0.73",
-      "problem": "New Sales Ad (ID 120248769281250118) crossed the $75 kill threshold at ROAS 0.726 — below the 1.0 floor. 90% of budget went to women 65+ at ROAS 0.96. Ad auto-paused by A-1 authority.",
-      "solution": "Launch a replacement ad with hard age lock (25–54) and Advantage+ OFF. The male segment showed ROAS 2.34 at 9% of budget — test a male-targeted duplicate at $25/day.",
-      "action": "In Meta Ads Manager: duplicate the paused ad set, set age 25–54, disable Advantage+ Audience, set budget $25/day, activate. Tag Will for approval.",
+      "problem": "New Sales Ad (ID 120248769281250118) crossed the $75 kill threshold at ROAS 0.726. 90% of budget went to women 65+ at ROAS 0.96. Ad auto-paused by A-1 authority.",
       "deadline": "Today — replacement needed before daily budget resets",
       "approver": "@will",
       "slack_status": "OPEN",
-      "learning_id": "L-2026-07-16-003",
-      "confidence": "VALIDATED"
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Launch a male-targeted replacement with hard age lock 25–54 and Advantage+ OFF. Male segment showed ROAS 2.34 at only 9% of budget — isolate and scale that signal.",
+          "action": "In Meta Ads Manager: duplicate the paused ad set → set age 25–54 → disable Advantage+ Audience → set budget $25/day → activate. Post confirmation to #stg-ads-watchdog.",
+          "learning_id": "L-2026-07-16-003",
+          "confidence": "VALIDATED",
+          "data_points": 2
+        },
+        {
+          "rank": 2,
+          "recommendation": "Before relaunching, test the same video with a female 35–54 segment separately. The 65+ age skew may be a targeting artifact, not a creative problem — isolating by age will confirm.",
+          "action": "Create a second ad set: female only, age 35–54, Advantage+ OFF, $15/day. Run both male and female variants in parallel for 5 days before deciding which to scale.",
+          "learning_id": null,
+          "confidence": null,
+          "data_points": null
+        }
+      ]
     },
     {
       "brief_id": "P-2026-07-21-002",
@@ -33,14 +47,28 @@
       "platform": "ads",
       "phase": "ADVISOR",
       "title": "Amazon Bundle B0GT1H84JM — $169.37 spend · $0 sales",
-      "problem": "Save the Shave Bundle (B0GT1H84JM) has $169.37 Amazon ad spend with zero attributed sales. Real waste gate triggered (spend ≥ $75, zero return). No Blaze write authority on Amazon.",
-      "solution": "Pause the Amazon campaign for this ASIN immediately in Amazon Ads Manager. Review targeting — broad match keywords may be driving irrelevant clicks.",
-      "action": "Log into Amazon Ads → Campaign Manager → find Save the Shave Bundle campaign → pause. Review search term report for irrelevant queries before reactivating.",
+      "problem": "Save the Shave Bundle has $169.37 Amazon ad spend with zero attributed sales. Real waste gate triggered (spend ≥ $75, zero return). No Blaze write authority on Amazon.",
       "deadline": "Today — every hour adds ~$7 in wasted spend",
       "approver": "@will",
       "slack_status": "OPEN",
-      "learning_id": null,
-      "confidence": null
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Pause the Amazon campaign for this ASIN immediately. Bundle ads often suffer from keyword mismatch — searchers looking for individual products land on a bundle page and bounce.",
+          "action": "Amazon Ads → Campaign Manager → Save the Shave Bundle campaign → pause. Pull search term report and identify irrelevant queries before reactivating.",
+          "learning_id": null,
+          "confidence": null,
+          "data_points": null
+        },
+        {
+          "rank": 2,
+          "recommendation": "After pausing, switch the bundle campaign to exact-match keywords only targeting 'dematting kit' and 'dog mat removal kit' — broad match is likely the waste driver.",
+          "action": "In the paused campaign: remove all broad/phrase match targets → add 5–10 exact match keywords → set bids at $0.75 → reactivate at $10/day test budget.",
+          "learning_id": null,
+          "confidence": null,
+          "data_points": null
+        }
+      ]
     },
     {
       "brief_id": "P-2026-07-21-003",
@@ -48,14 +76,20 @@
       "platform": "cash",
       "phase": "ADVISOR",
       "title": "Checking balance $13,283 — below $25K watch threshold",
-      "problem": "STG checking account at $13,283 — below the $25K liquid cash floor. AP $48,504 is 100% overdue. Combined cash (checking + money market) is $587K but daily operating cash is critically low.",
-      "solution": "Transfer operating cash from money market to checking to restore the buffer. Simultaneously get Patrick to prioritize the overdue AP — 100% past due is a vendor relationship risk.",
-      "action": "Patrick: transfer $30–40K from money market to checking. Then contact overdue vendors and negotiate payment schedule. Report back to Will by EOD.",
+      "problem": "STG checking account at $13,283 — below the $25K liquid cash floor. AP $48,504 is 100% overdue. Combined cash is $587K but daily operating cash is critically low.",
       "deadline": "Today",
       "approver": "@will",
       "slack_status": "OPEN",
-      "learning_id": null,
-      "confidence": null
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Transfer $30–40K from money market to checking immediately to restore the operating buffer. Then contact all overdue AP vendors with a payment schedule — 100% past due is a vendor relationship risk.",
+          "action": "Patrick: log into QB → transfer $35K from money market to checking → send payment schedule to all AP vendors with dates → confirm with Will by 3 PM today.",
+          "learning_id": null,
+          "confidence": null,
+          "data_points": null
+        }
+      ]
     },
     {
       "brief_id": "P-2026-07-21-004",
@@ -63,14 +97,20 @@
       "platform": "reviews",
       "phase": "ADVISOR",
       "title": "Reviews — 3.8 avg · 4 negative · sheet 12 days stale",
-      "problem": "Review sheet hasn't been updated in 12 days (last update July 9). Latest batch averages 3.8 stars with 4 one/two-star reviews. Sheet staleness means complaint themes are going unmonitored.",
-      "solution": "Angelo needs to update the STG Weekly Review Update sheet immediately. Pull the 4 negative reviews and identify complaint themes — mat removal and brush quality are the most common patterns in prior learnings.",
-      "action": "Will: follow up with Angelo to update the review sheet. Once updated, review the 4 negative entries for product or listing issues that can be addressed.",
+      "problem": "Review sheet hasn't been updated in 12 days. Latest batch averages 3.8 stars with 4 one/two-star reviews. Complaint themes going unmonitored.",
       "deadline": "This week",
       "approver": "@will",
       "slack_status": "OPEN",
-      "learning_id": null,
-      "confidence": null
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Angelo updates the review sheet this week. Once updated, pull the 4 negative reviews and identify complaint themes — mat removal difficulty and brush quality are the most common patterns per prior learnings.",
+          "action": "Will: follow up with Angelo to update the STG Weekly Review Update sheet. Review the 4 negative entries for product or listing issues that can be addressed in copy or images.",
+          "learning_id": null,
+          "confidence": null,
+          "data_points": null
+        }
+      ]
     },
     {
       "brief_id": "P-2026-07-21-005",
@@ -78,14 +118,20 @@
       "platform": "ads",
       "phase": "ADVISOR",
       "title": "Klaviyo — Browse Abandonment still in DRAFT · all flows zero-send",
-      "problem": "Browse Abandonment flow has been in DRAFT status — not live. All 7-day Klaviyo flows show zero sends. This is suppressed email revenue that should be capturing cart and browse signals daily.",
-      "solution": "Marcelo needs to activate the Browse Abandonment flow in Klaviyo. This is a high-intent segment that converts well — each day it stays in DRAFT is missed revenue.",
-      "action": "Marcelo: go to Klaviyo → Flows → Browse Abandonment → set to Live. Confirm in #stg-morning-brief when done.",
+      "problem": "Browse Abandonment flow has been in DRAFT — not live. All 7-day flows show zero sends. Suppressed email revenue that should be capturing browse signals daily.",
       "deadline": "This week",
       "approver": "@will",
       "slack_status": "OPEN",
-      "learning_id": null,
-      "confidence": null
+      "solutions": [
+        {
+          "rank": 1,
+          "recommendation": "Marcelo activates the Browse Abandonment flow in Klaviyo. This is a high-intent segment — each day it stays in DRAFT is missed revenue from warm visitors who showed product interest.",
+          "action": "Marcelo: Klaviyo → Flows → Browse Abandonment → set to Live. Confirm in #stg-morning-brief when done.",
+          "learning_id": null,
+          "confidence": null,
+          "data_points": null
+        }
+      ]
     }
   ],
   "briefs": [],
