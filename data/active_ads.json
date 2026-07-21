@@ -1,5 +1,25 @@
 {
   "schema_version": "1.0",
-  "note": "Maintained by Blaze v1.2. Every ad launched via B-1 is added here. Blaze reads this on every sweep and monitors each ad_id against L30D ROAS thresholds. Josh: push to data/active_ads.json on main branch.",
-  "ads": []
+  "note": "Maintained by Blaze v1.7. Every ad launched or killed via A-1/B-1 is recorded here. Blaze reads this on every sweep and monitors each ad_id against L30D ROAS thresholds.",
+  "ads": [
+    {
+      "ad_id": "120248769281250118",
+      "campaign_id": "120248769281270118",
+      "adset_id": "120248769281260118",
+      "platform": "Meta",
+      "brief_id": "A-1-kill-2026-07-21",
+      "launch_date": null,
+      "kill_date": "2026-07-21",
+      "daily_budget": 25,
+      "roas_target": 2.0,
+      "kill_threshold": 75,
+      "status": "KILLED",
+      "kill_reason": "A-1 auto-kill: L30D spend $439.87 ≥ $75 · ROAS 0.726 < 1.0",
+      "approved_by": "AUTO_A1",
+      "approved_ts": "auto",
+      "launched_by": "pre-existing",
+      "killed_by": "Blaze v1.7",
+      "notes": "Ad: New Sales Ad · Campaign: Save the Shave UGC Bill _UGC_070326 · First A-1 auto-kill executed. Previously staged as Class B for 30+ days while write path was unverified. L-2026-07-16-003 VALIDATED confirmed write path on Jul 16 — A-1 fired Jul 21."
+    }
+  ]
 }
