@@ -1,268 +1,84 @@
 {
-  "generated_at": "2026-07-20T23:07:21-07:00",
-  "query_date_yesterday": "2026-07-19",
-  "query_date_sc": "2026-07-18",
+  "generated_at": "2026-07-21T23:10:41-07:00",
+  "query_date_yesterday": "2026-07-20",
+  "query_date_sc": "2026-07-19",
   "queries": {
     "A": {
       "status": "completed",
-      "requested_field_ids": [
-        "cost",
-        "roas"
-      ],
+      "requested_field_ids": ["cost", "roas"],
       "rows": [
-        [
-          411.37,
-          1.6827
-        ]
+        [323.5, 1.9477]
       ],
       "error": null
     },
     "B": {
       "status": "completed",
-      "requested_field_ids": [
-        "asin",
-        "sku",
-        "cost",
-        "attributedSales14dSameSKU",
-        "acos"
-      ],
+      "requested_field_ids": ["asin", "sku", "cost", "attributedSales14dSameSKU", "acos"],
       "rows": [
-        [
-          "B0FQL56V99",
-          "3I-97VO-78X4",
-          201.84,
-          377.03,
-          48.8717
-        ],
-        [
-          "B0GT1H84JM",
-          "C8-VG2F-6714",
-          169.37,
-          0,
-          82.5108
-        ],
-        [
-          "B0GV5ZFLC2",
-          "8O-J63E-NJBR",
-          18.22,
-          18.99,
-          46.7419
-        ],
-        [
-          "B0FQL16GH4",
-          "6U-XVW9-2WBJ",
-          9.55,
-          0,
-          null
-        ],
-        [
-          "B0FQDHXSZ5",
-          "7C-8EUF-79AF",
-          8.36,
-          19.99,
-          41.8209
-        ],
-        [
-          "B0FQF2VTMJ",
-          "W2-VFJG-FADR",
-          3.82,
-          14.99,
-          25.4837
-        ],
-        [
-          "B0GXLPJS4C",
-          "STG-TANGLE-MAT-BUNDLE-V1",
-          0.21,
-          0,
-          null
-        ],
-        [
-          "B0FQ628KCH",
-          "6H-JCY0-JARS",
-          0,
-          0,
-          null
-        ],
-        [
-          "B0GFGDTJ39",
-          "99-8KLV-TU5S",
-          0,
-          0,
-          null
-        ],
-        [
-          "B0GT1MFCY5",
-          "73-EY5E-UIBV",
-          0,
-          0,
-          null
-        ],
-        [
-          "B0GT1V7V8R",
-          "HG-EGAG-1HO5",
-          0,
-          0,
-          null
-        ],
-        [
-          "B0GT5YFVB8",
-          "YH-4KUE-9WQH",
-          0,
-          0,
-          null
-        ],
-        [
-          "B0GXH3JTK4",
-          "STG-WASH-WEAR-BUNDLE-V2",
-          0,
-          0,
-          null
-        ],
-        [
-          "B0GXLTZ495",
-          "STG-EASY-BRUSH-DAYS-V1",
-          0,
-          0,
-          null
-        ],
-        [
-          "B0GY9WZWKH",
-          "STG-FULL-COAT-CARE-SYSTEM",
-          0,
-          0,
-          null
-        ]
+        ["B0FQL56V99", "3I-97VO-78X4", 176.67, 321.86, 54.8903],
+        ["B0GT1H84JM", "C8-VG2F-6714", 129.59, 0, 51.5781],
+        ["B0GV5ZFLC2", "8O-J63E-NJBR", 5.26, 18.99, 27.6988],
+        ["B0FQF2VTMJ", "W2-VFJG-FADR", 4.42, 14.99, 29.4863],
+        ["B0FQDHXSZ5", "7C-8EUF-79AF", 3.25, 0, null],
+        ["B0FQL16GH4", "6U-XVW9-2WBJ", 2.1, 0, null],
+        ["B0FQ628KCH", "6H-JCY0-JARS", 1.37, 0, null],
+        ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0.42, 0, 1.8269],
+        ["B0GT5YFVB8", "YH-4KUE-9WQH", 0.21, 0, null],
+        ["B0GXLPJS4C", "STG-TANGLE-MAT-BUNDLE-V1", 0.21, 0, null],
+        ["B0GFGDTJ39", "99-8KLV-TU5S", 0, 0, null],
+        ["B0GRJ1366C", "BF-U1I9-TB25", 0, 0, null],
+        ["B0GT1MFCY5", "73-EY5E-UIBV", 0, 0, null],
+        ["B0GT1V7V8R", "HG-EGAG-1HO5", 0, 0, null],
+        ["B0GXH3JTK4", "STG-WASH-WEAR-BUNDLE-V2", 0, 0, null],
+        ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null]
       ],
       "error": null
     },
     "C": {
       "status": "completed",
-      "requested_field_ids": [
-        "asin",
-        "cost"
-      ],
+      "requested_field_ids": ["asin", "cost"],
       "rows": [
-        [
-          "B0GT1H84JM",
-          1407.19
-        ],
-        [
-          "B0FQL56V99",
-          1378.59
-        ],
-        [
-          "B0GV5ZFLC2",
-          97.93
-        ],
-        [
-          "B0FQDHXSZ5",
-          51.86
-        ],
-        [
-          "B0FQF2VTMJ",
-          30.79
-        ],
-        [
-          "B0FQL16GH4",
-          20.22
-        ],
-        [
-          "B0FQ628KCH",
-          5.48
-        ],
-        [
-          "B0GY9WZWKH",
-          2.1
-        ],
-        [
-          "B0GXLPJS4C",
-          0.84
-        ],
-        [
-          "B0GFGDTJ39",
-          0
-        ],
-        [
-          "B0GRJ1366C",
-          0
-        ],
-        [
-          "B0GT1MFCY5",
-          0
-        ],
-        [
-          "B0GT1V7V8R",
-          0
-        ],
-        [
-          "B0GT5YFVB8",
-          0
-        ],
-        [
-          "B0GXH3JTK4",
-          0
-        ],
-        [
-          "B0GXLTZ495",
-          0
-        ]
+        ["B0FQL56V99", 1381.6],
+        ["B0GT1H84JM", 1302.88],
+        ["B0GV5ZFLC2", 94],
+        ["B0FQDHXSZ5", 50.12],
+        ["B0FQF2VTMJ", 28.54],
+        ["B0FQL16GH4", 20.24],
+        ["B0FQ628KCH", 5.48],
+        ["B0GY9WZWKH", 2.31],
+        ["B0GXLPJS4C", 1.05],
+        ["B0GT5YFVB8", 0.21],
+        ["B0GFGDTJ39", 0],
+        ["B0GRJ1366C", 0],
+        ["B0GT1MFCY5", 0],
+        ["B0GT1V7V8R", 0],
+        ["B0GXH3JTK4", 0],
+        ["B0GXLTZ495", 0]
       ],
       "error": null
     },
     "D": {
       "status": "completed",
-      "requested_field_ids": [
-        "asin",
-        "ordered_product_sales"
-      ],
+      "requested_field_ids": ["asin", "ordered_product_sales"],
       "rows": [
-        [
-          "B0FQL56V99",
-          1715.01
-        ],
-        [
-          "B0FQF2VTMJ",
-          338.73
-        ],
-        [
-          "B0FQDHXSZ5",
-          117.94
-        ],
-        [
-          "B0GV5ZFLC2",
-          93.05
-        ],
-        [
-          "B0FQL16GH4",
-          59.97
-        ]
+        ["B0FQL56V99", 1496.59],
+        ["B0FQF2VTMJ", 362.7],
+        ["B0GV5ZFLC2", 37.98],
+        ["B0FQDHXSZ5", 19.99]
       ],
       "error": null
     },
     "E": {
       "status": "completed",
-      "requested_field_ids": [
-        "sessions",
-        "unit_session_percentage",
-        "units_ordered"
-      ],
+      "requested_field_ids": ["sessions", "unit_session_percentage", "units_ordered"],
       "rows": [
-        [
-          568,
-          21.13,
-          120
-        ]
+        [567, 18.34, 104]
       ],
       "error": null
     },
     "F": {
       "status": "completed",
-      "requested_field_ids": [
-        "campaign_name",
-        "cost",
-        "conversions_value",
-        "roas"
-      ],
+      "requested_field_ids": ["campaign_name", "cost", "conversions_value", "roas"],
       "rows": [],
       "error": null
     }
@@ -271,8 +87,8 @@
     "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
     "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
     "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
-    "D": "dd745e4d20f97e9e2a27cd135f547d4ac4c1b8ab12c03256948c83e6b9fad9a7",
-    "E": "5f08cade221a34280bcecf60828a891f5897c2a0b7846759ec9d02503d53d106",
+    "D": "688b9d95941cfc3538132bc9a0e33fda9e7188c09465e52d6338f8f898917146",
+    "E": "b9bbc4b01aab3765ea004035e3ef8b76b21126b057afd00321e4d46e5e9ffafb",
     "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de"
   }
 }
