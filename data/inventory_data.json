@@ -1,64 +1,76 @@
 {
-  "as_of": "2026-07-20",
-  "available": false,
-  "source": "STALE — last successful SC scrape was 2026-07-20; today's scrape unavailable (Chrome — L-2026-07-15-001 DOCTRINE). Data below is 2 days stale.",
-  "note": "Jul 22 SC scrape unavailable (Chrome — L-2026-07-15-001 DOCTRINE). Jul 21 also unavailable. Data below is last known good from Jul 20 (2 days stale). B0FQ4PY573 (Detangling Spray) shows HEALTHY per SC Jul 20 but H10 LIF<=0 flag still active — verify listing is live/sellable before clearing. B0FQFP2S9F (FurFix) still STRANDED — manual SC check needed.",
-  "last_known_sc_scrape": "2026-07-20",
-  "data_staleness_days": 2,
+  "as_of": "2026-07-22",
+  "available": true,
+  "source": "seller_central_manual",
+  "note": "Manually updated from SC FBA Inventory page Jul 22 2026. SP-API script pending setup.",
+  "last_known_sc_scrape": "2026-07-22",
+  "data_staleness_days": 0,
   "skus": [
     {
       "asin": "B0FQL56V99",
-      "name": "Emergency Dematter",
-      "on_hand": 21922,
+      "name": "Emergency Dematter Cream",
+      "on_hand": 21793,
       "amazon_min": 1726,
-      "rate_14d": 50.3,
+      "rate_14d": 50.9,
+      "inbound": 40,
+      "dos": 313,
       "status": "HEALTHY",
-      "note": "HEALTHY — 291 DoS on-hand · 4,531 units / 90d (data as of Jul 20)"
+      "note": "HEALTHY \u2014 21,793 on-hand \u00b7 313 DoS \u00b7 40 inbound (receiving) (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQF2VTMJ",
       "name": "Rake Brush",
-      "on_hand": 550,
+      "on_hand": 502,
       "amazon_min": 1019,
-      "rate_14d": 15.6,
+      "rate_14d": 16.1,
+      "inbound": 1650,
+      "dos": 23,
       "status": "LOW_STOCK",
-      "note": "LOW STOCK — 28 DoS on-hand · 1,650 inbound (shipped) · 1,403 units / 90d (data as of Jul 20)"
+      "note": "LOW STOCK \u2014 502 on-hand \u00b7 23 DoS on-hand \u00b7 1,650 inbound (shipped) \u00b7 Total DoS 108 with inbound (data as of 2026-07-22)"
     },
     {
       "asin": "B0GV5ZFLC2",
       "name": "Detangling Treatment",
-      "on_hand": 8331,
+      "on_hand": 8324,
       "amazon_min": 312,
       "rate_14d": 7.5,
+      "inbound": 2,
+      "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS — 7,541 est. excess units · 675 units / 90d (data as of Jul 20)"
+      "note": "EXCESS \u2014 7,536 est. excess units \u00b7 365+ DoS \u00b7 2 inbound (receiving) (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQL16GH4",
       "name": "4-in-1 Shampoo",
-      "on_hand": 4027,
+      "on_hand": 4030,
       "amazon_min": 56,
       "rate_14d": 1.6,
+      "inbound": 0,
+      "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS — 3,517 est. excess units · 144 units / 90d (data as of Jul 20)"
+      "note": "EXCESS \u2014 3,523 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQDHXSZ5",
       "name": "Pin Brush",
-      "on_hand": 2026,
+      "on_hand": 2022,
       "amazon_min": 116,
-      "rate_14d": 3.4,
+      "rate_14d": 3.5,
+      "inbound": 0,
+      "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS — 1,845 est. excess units · 304 units / 90d (data as of Jul 20)"
+      "note": "EXCESS \u2014 1,843 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQ628KCH",
       "name": "Slicker Brush",
-      "on_hand": 2588,
+      "on_hand": 2580,
       "amazon_min": 26,
       "rate_14d": 0.8,
-      "status": "EXCESS",
-      "note": "EXCESS — 2,470 est. excess units — liquidation · 72 units / 90d (data as of Jul 20)"
+      "inbound": 0,
+      "dos": 365,
+      "status": "LIQUIDATION",
+      "note": "EXCESS \u2014 2,462 est. excess units \u2014 liquidation \u00b7 365+ DoS \u00b7 aged surcharge $903.04 (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQ4PY573",
@@ -66,17 +78,21 @@
       "on_hand": 323,
       "amazon_min": 52,
       "rate_14d": 0,
+      "inbound": 0,
+      "dos": 194,
       "status": "HEALTHY",
-      "note": "HEALTHY per SC Jul 20 (89 DoS on-hand) — was CLOSED per H10 Jul 19 (LIF<=0, LTSF>=181). 0 units / 90d still. Listing status change unconfirmed — verify it is actually sellable before closing out the flag."
+      "note": "HEALTHY per SC \u2014 323 on-hand \u00b7 194 DoS \u00b7 0 units sold in 90d \u00b7 aged surcharge $70.90 \u00b7 verify listing is SELLABLE (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQFP2S9F",
       "name": "FurFix De-Shed Brush",
-      "on_hand": 60,
+      "on_hand": 62,
       "amazon_min": null,
-      "rate_14d": null,
+      "rate_14d": 0,
+      "inbound": 0,
+      "dos": null,
       "status": "STRANDED",
-      "note": "STRANDED — fix listing (data as of Jul 20). H10 Jul 19 flag (LIF<=0, LTSF>=181) still applies — manual SC check needed."
+      "note": "STRANDED \u2014 62 units (63 FBA stranded) \u00b7 fix listing in SC \u2192 'Go to Fix stranded inventory' \u00b7 aged surcharge $2.45 (data as of 2026-07-22)"
     }
   ],
   "summary": {
@@ -86,6 +102,6 @@
     "excess": 4,
     "stranded": 1,
     "closed": 0,
-    "data_staleness_days": 2
+    "data_staleness_days": 0
   }
 }
