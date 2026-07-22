@@ -1,22 +1,20 @@
 {
   "_instructions": "Patrick fills this out weekly. Update report_date each time. Send email to stgbrandanalytics@gmail.com with subject 'STG Business Health Update' and paste this file's Google Sheet URL in the body.",
-  "report_date": "2026-06-19",
-  "updated_by": "Patrick",
-
+  "report_date": "2026-07-22",
+  "updated_by": "JARVIS (inventory + AP auto-updated Jul 22 \u00b7 lifetime metrics as of Jun 19 \u00b7 Patrick update needed)",
   "kpis": {
     "lifetime_revenue": 265654,
     "lifetime_units": 12432,
     "est_profit": 113300,
-    "inventory_cogs": 254696,
-    "inventory_units": 69682,
+    "inventory_cogs": 193343,
+    "inventory_units": 51771,
     "total_customers": 10607,
     "top_tier_pct": 19.5,
     "sns_total_pct": 1.8,
     "return_rate_pct": 3.47,
-    "owed_now": 7500,
+    "owed_now": 48504.75,
     "owed_total_thru_dec": 230000
   },
-
   "skus": [
     {
       "name": "8oz Emergency Dematter",
@@ -27,8 +25,8 @@
       "profit_per_unit": 11.11,
       "margin_pct": 48,
       "price": 22.99,
-      "inventory_units": 48917,
-      "inventory_cogs": 171196,
+      "inventory_units": 31244,
+      "inventory_cogs": 109354,
       "inventory_status": "fresh",
       "sns_subs": 151,
       "sns_penetration_pct": 1.7,
@@ -46,8 +44,8 @@
       "profit_per_unit": 4.81,
       "margin_pct": 32,
       "price": 14.99,
-      "inventory_units": 1268,
-      "inventory_cogs": 2371,
+      "inventory_units": 502,
+      "inventory_cogs": 939,
       "inventory_status": "healthy",
       "sns_subs": 0,
       "sns_penetration_pct": null,
@@ -65,8 +63,8 @@
       "profit_per_unit": 6.64,
       "margin_pct": 35,
       "price": 18.99,
-      "inventory_units": 10221,
-      "inventory_cogs": 37920,
+      "inventory_units": 11226,
+      "inventory_cogs": 41648,
       "inventory_status": "high",
       "sns_subs": 5,
       "sns_penetration_pct": 0.9,
@@ -84,8 +82,8 @@
       "profit_per_unit": 5.33,
       "margin_pct": 27,
       "price": 19.99,
-      "inventory_units": 4089,
-      "inventory_cogs": 24002,
+      "inventory_units": 4030,
+      "inventory_cogs": 23656,
       "inventory_status": "severe",
       "sns_subs": 18,
       "sns_penetration_pct": 4.2,
@@ -103,8 +101,8 @@
       "profit_per_unit": 7.67,
       "margin_pct": 38,
       "price": 19.99,
-      "inventory_units": 2471,
-      "inventory_cogs": 8055,
+      "inventory_units": 2151,
+      "inventory_cogs": 7012,
       "inventory_status": "high",
       "sns_subs": 0,
       "sns_penetration_pct": null,
@@ -122,8 +120,8 @@
       "profit_per_unit": 4.45,
       "margin_pct": 25,
       "price": 17.99,
-      "inventory_units": 2720,
-      "inventory_cogs": 11152,
+      "inventory_units": 2618,
+      "inventory_cogs": 10734,
       "inventory_status": "severe",
       "sns_subs": 0,
       "sns_penetration_pct": null,
@@ -133,32 +131,80 @@
       "return_vs_category": "above"
     }
   ],
-
   "production_schedule": [
-    {"month": "Jun", "amount": 7500,  "type": "owed_now"},
-    {"month": "Jul", "amount": 65000, "type": "planned"},
-    {"month": "Aug", "amount": 39000, "type": "planned"},
-    {"month": "Sep", "amount": 0,     "type": "planned"},
-    {"month": "Oct", "amount": 86000, "type": "planned"},
-    {"month": "Nov", "amount": 0,     "type": "planned"},
-    {"month": "Dec", "amount": 33000, "type": "planned"}
+    {
+      "month": "Jun",
+      "amount": 7500,
+      "type": "owed_now"
+    },
+    {
+      "month": "Jul",
+      "amount": 65000,
+      "type": "planned"
+    },
+    {
+      "month": "Aug",
+      "amount": 39000,
+      "type": "planned"
+    },
+    {
+      "month": "Sep",
+      "amount": 0,
+      "type": "planned"
+    },
+    {
+      "month": "Oct",
+      "amount": 86000,
+      "type": "planned"
+    },
+    {
+      "month": "Nov",
+      "amount": 0,
+      "type": "planned"
+    },
+    {
+      "month": "Dec",
+      "amount": 33000,
+      "type": "planned"
+    }
   ],
-
   "brand_health": {
     "week_of": "2026-06-13",
-    "top_tier":   {"count": 2072, "pct": 19.5},
-    "promising":  {"count": 8200, "pct": 77.3},
-    "at_risk":    {"count": 335,  "pct": 3.2, "wow_change_pct": 183},
+    "top_tier": {
+      "count": 2072,
+      "pct": 19.5
+    },
+    "promising": {
+      "count": 8200,
+      "pct": 77.3
+    },
+    "at_risk": {
+      "count": 335,
+      "pct": 3.2,
+      "wow_change_pct": 183
+    },
     "repeat_purchase_rate_pct": 5.2,
     "sns_total_penetration_pct": 1.8,
     "sns_total_subs": 174,
     "brand_search_share_pct": 4.7,
     "cart_abandoners": 9569,
     "funnel": {
-      "awareness":      {"count": 530, "wow_pct": -23},
-      "consideration":  {"count": 815, "wow_pct": -14},
-      "intent_carted":  {"count": 362, "wow_pct": -18},
-      "purchase_new":   {"count": 184, "wow_pct": -19}
+      "awareness": {
+        "count": 530,
+        "wow_pct": -23
+      },
+      "consideration": {
+        "count": 815,
+        "wow_pct": -14
+      },
+      "intent_carted": {
+        "count": 362,
+        "wow_pct": -18
+      },
+      "purchase_new": {
+        "count": 184,
+        "wow_pct": -19
+      }
     }
   }
 }
