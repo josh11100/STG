@@ -1,10 +1,10 @@
 {
   "as_of": "2026-07-20",
-  "available": true,
-  "source": "LIVE — pulled directly from Amazon Seller Central (Manage Inventory Health) on 2026-07-20.",
-  "note": "Jul 21 SC scrape unavailable (Chrome — L-2026-07-15-001 DOCTRINE). Data below is 1 day stale (Jul 20 last known good). Notable: B0FQ4PY573 (Detangling Spray) shows HEALTHY in SC as of Jul 20 (was CLOSED per H10 Jul 19) — verify listing is actually live/sellable before clearing flag. B0FQFP2S9F (FurFix) still STRANDED — manual SC check needed.",
+  "available": false,
+  "source": "STALE — last successful SC scrape was 2026-07-20; today's scrape unavailable (Chrome — L-2026-07-15-001 DOCTRINE). Data below is 2 days stale.",
+  "note": "Jul 22 SC scrape unavailable (Chrome — L-2026-07-15-001 DOCTRINE). Jul 21 also unavailable. Data below is last known good from Jul 20 (2 days stale). B0FQ4PY573 (Detangling Spray) shows HEALTHY per SC Jul 20 but H10 LIF<=0 flag still active — verify listing is live/sellable before clearing. B0FQFP2S9F (FurFix) still STRANDED — manual SC check needed.",
   "last_known_sc_scrape": "2026-07-20",
-  "data_staleness_days": 1,
+  "data_staleness_days": 2,
   "skus": [
     {
       "asin": "B0FQL56V99",
@@ -67,7 +67,7 @@
       "amazon_min": 52,
       "rate_14d": 0,
       "status": "HEALTHY",
-      "note": "HEALTHY per SC Jul 20 (89 DoS on-hand) — was CLOSED per H10 Jul 19 (LIF≤0, LTSF≥181). 0 units / 90d still. Listing status change unconfirmed — verify it is actually sellable before closing out the flag."
+      "note": "HEALTHY per SC Jul 20 (89 DoS on-hand) — was CLOSED per H10 Jul 19 (LIF<=0, LTSF>=181). 0 units / 90d still. Listing status change unconfirmed — verify it is actually sellable before closing out the flag."
     },
     {
       "asin": "B0FQFP2S9F",
@@ -76,7 +76,7 @@
       "amazon_min": null,
       "rate_14d": null,
       "status": "STRANDED",
-      "note": "STRANDED — fix listing (data as of Jul 20). H10 Jul 19 flag (LIF≤0, LTSF≥181) still applies — manual SC check needed."
+      "note": "STRANDED — fix listing (data as of Jul 20). H10 Jul 19 flag (LIF<=0, LTSF>=181) still applies — manual SC check needed."
     }
   ],
   "summary": {
@@ -86,6 +86,6 @@
     "excess": 4,
     "stranded": 1,
     "closed": 0,
-    "data_staleness_days": 1
+    "data_staleness_days": 2
   }
 }

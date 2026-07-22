@@ -1,24 +1,24 @@
 {
-  "last_updated": "2026-07-21 PT",
+  "last_updated": "2026-07-22 PT",
   "run_version": "v10.13",
   "quickbooks": {
     "status": "GREEN",
     "cash_balance": 487235.80,
     "checking_balance": 28185.25,
     "mm_balance": 459050.55,
-    "weeks_runway": 50.4,
-    "weekly_burn": 9666.62,
+    "weeks_runway": 43.6,
+    "weekly_burn": 11164.44,
     "accounts_payable": 48504.75,
     "accounts_receivable": 0.0,
     "mtd": {
-      "period": "2026-07-01 to 2026-07-20",
-      "revenue": 3387.5,
-      "cogs": 1463.68,
-      "gross_profit": 1923.82,
-      "gross_margin_pct": 56.8,
-      "operating_expenses": 23519.46,
+      "period": "2026-07-01 to 2026-07-22",
+      "revenue": 24553.71,
+      "cogs": 11061.04,
+      "gross_profit": 13492.67,
+      "gross_margin_pct": 55.0,
+      "operating_expenses": 35088.31,
       "net_income": -21595.64,
-      "net_margin_pct": -637.6
+      "net_margin_pct": -88.0
     },
     "ap_detail": {
       "total": 48504.75,
@@ -30,16 +30,16 @@
         {"name": "WSA Distributing, Inc.", "amount": 853.75, "bucket": "31-60d"}
       ]
     },
-    "note": "QB sync lag Day 9 (L-2026-07-14-002) — revenue/COGS frozen since Jul 12; H10 net is authoritative. Checking $28,185 above $25k floor — no RED alert today.",
-    "notes": "QB revenue sync frozen since Jul 12 (L-2026-07-14-002) — MTD revenue $3,387 is severely understated. H10 Jul 20: net $434.01 / 75 units is authoritative for Amazon revenue. Cash = Checking ($28,185) + MM ($459,051) = $487,236. Checking ABOVE $25k floor — GREEN. Weekly burn $9,667 based on prior MTD OpEx estimate."
+    "note": "QB sync lag Day 10 (L-2026-07-14-002) — revenue/COGS frozen since Jul 12; H10 net is authoritative. Cash/AP data current. Checking $28,185 above $25k floor — GREEN.",
+    "notes": "QB revenue sync frozen since Jul 12 (L-2026-07-14-002) — MTD P&L figures unreliable for Amazon analysis. H10 Jul 21: net $680.17 / 98 units is authoritative. Cash = Checking ($28,185) + MM ($459,051) = $487,236. Weekly burn $11,165 based on Jul 1-22 QB OpEx (frozen data — ballpark only)."
   },
   "klaviyo": {
-    "avg_open_rate": null,
-    "avg_click_rate": null,
+    "avg_open_rate": 0.333,
+    "avg_click_rate": 0.0,
     "total_email_revenue_7d": 0.0,
     "flows_flagged": [
-      "Browse Abandonment — DRAFT, not live (Wren fired daily until activated)",
-      "All live flows — 0 sends in past 7 days (Welcome Series, Abandoned Cart, Warranty, Registration all zero recipients) — 3rd consecutive week zero-send, escalation required"
+      "Browse Abandonment — DRAFT, not live (Wren fires daily until activated)",
+      "All live flows — near-zero volume: 3 total recipients in past 7 days, 0 conversions — escalation required"
     ],
     "flows": [
       {
@@ -58,9 +58,9 @@
         "name": "A | Welcome Series",
         "id": "SDc7uQ",
         "status": "live",
-        "recipients": 0,
-        "open_rate_pct": null,
-        "click_rate_pct": null,
+        "recipients": 1,
+        "open_rate_pct": 0.0,
+        "click_rate_pct": 0.0,
         "revenue": 0.0,
         "revenue_per_recipient": 0.0,
         "low_volume": true,
@@ -70,9 +70,9 @@
         "name": "Abandoned Cart Reminder - Shopify",
         "id": "T5cHUL",
         "status": "live",
-        "recipients": 1,
-        "open_rate_pct": null,
-        "click_rate_pct": null,
+        "recipients": 2,
+        "open_rate_pct": 50.0,
+        "click_rate_pct": 0.0,
         "revenue": 0.0,
         "revenue_per_recipient": 0.0,
         "low_volume": true,
@@ -105,22 +105,22 @@
     ]
   },
   "shopify": {
-    "yesterday_sales": 213.04,
-    "aov": 21.30,
-    "vs_7day_avg_pct": 350,
+    "yesterday_sales": 27.98,
+    "aov": 27.98,
+    "vs_7day_avg_pct": -56.9,
     "daily_7d": [
-      {"date": "2026-07-14", "sales": 0.0},
       {"date": "2026-07-15", "sales": 74.96},
       {"date": "2026-07-16", "sales": 18.99},
       {"date": "2026-07-17", "sales": 0.0},
       {"date": "2026-07-18", "sales": 0.0},
       {"date": "2026-07-19", "sales": 119.03},
-      {"date": "2026-07-20", "sales": 213.04}
+      {"date": "2026-07-20", "sales": 213.04},
+      {"date": "2026-07-21", "sales": 27.98}
     ]
   },
   "helium10": {
     "report_found": true,
-    "report_date": "2026-07-20",
+    "report_date": "2026-07-21",
     "data_readable": true,
     "products": [
       {
@@ -128,22 +128,37 @@
         "name": "Emergency Dematter",
         "keywords": [
           {
-            "keyword": "detangler for dogs",
-            "rank": null,
-            "delta": null,
-            "sv": 1561,
-            "sponsored_rank": null,
-            "change_rating": "TOP_10",
-            "note": "In top 10 (exact rank not parsed — email too large)"
-          },
-          {
             "keyword": "dematting comb for dogs",
-            "rank": null,
-            "delta": null,
+            "rank": 17,
+            "delta": 15,
             "sv": 5818,
             "sponsored_rank": null,
-            "change_rating": "TOP_10",
-            "note": "In top 10 (exact rank not parsed — email too large)"
+            "change_rating": "IMPROVING"
+          },
+          {
+            "keyword": "dematting tool for dogs",
+            "rank": 5,
+            "delta": 2,
+            "sv": 2792,
+            "sponsored_rank": null,
+            "change_rating": "IMPROVING"
+          },
+          {
+            "keyword": "dog detangler",
+            "rank": 19,
+            "delta": 1,
+            "sv": null,
+            "sponsored_rank": null,
+            "change_rating": "STABLE"
+          },
+          {
+            "keyword": "detangler for dogs",
+            "rank": 14,
+            "delta": -1,
+            "sv": 1561,
+            "sponsored_rank": null,
+            "change_rating": "STABLE",
+            "note": "Minor slip -1 — below 3-spot flag threshold"
           }
         ]
       },
@@ -152,32 +167,33 @@
         "name": "Slicker Brush",
         "keywords": [
           {
-            "keyword": "dog slicker brushes",
-            "rank": 148,
-            "delta": -10,
+            "keyword": "slicker brush for dogs",
+            "rank": 166,
+            "delta": 131,
             "sv": null,
             "sponsored_rank": null,
-            "change_rating": "DOWN"
+            "change_rating": "IMPROVING",
+            "note": "Rank improved +131 from ~297 — still high rank; liquidation SKU, tracking only"
           }
         ]
       }
     ],
     "flags": [
-      "POSITIVE: Emergency Dematter (B0FQL56V99) — 2 keywords in top 10 (Jul 20 KT)",
-      "NEGATIVE: Slicker Brush (B0FQ628KCH) — 'dog slicker brushes' dropped 10 spots to rank 148 (Jul 20 KT)",
-      "INVENTORY: Detangling Spray (B0FQ4PY573) — LIF ≤ 0, LTSF ≥ 181 — status unconfirmed (SC Jul 20 shows HEALTHY; verify listing is live)",
-      "INVENTORY: FurFix (B0FQFP2S9F) — STRANDED — manual SC check needed"
+      "POSITIVE: Emergency Dematter (B0FQL56V99) — 'dematting comb for dogs' rank 17 (+15, SV 5818); 'dematting tool for dogs' rank 5 (+2, SV 2792) (Jul 21 KT)",
+      "LIQUIDATION: Slicker Brush (B0FQ628KCH) — 'slicker brush for dogs' rank 166 (+131) — liquidation SKU, tracking only",
+      "UNRESOLVED: Detangling Spray (B0FQ4PY573) — H10 LIF<=0 LTSF>=181 — SC shows HEALTHY Jul 20; verify listing is live before clearing flag",
+      "STRANDED: FurFix (B0FQFP2S9F) — STRANDED — manual SC check needed"
     ]
   },
   "helium10_profits": {
     "daily": {
-      "date": "2026-07-20",
+      "date": "2026-07-21",
       "gross_revenue": null,
       "expenses": null,
-      "net_profit": 434.01,
+      "net_profit": 680.17,
       "net_margin_pct": null,
-      "units": 75,
-      "vs_prior_day_pct": null,
+      "units": 98,
+      "vs_prior_day_pct": 56.7,
       "products": []
     },
     "weekly": {
@@ -189,14 +205,16 @@
   },
   "helium10_listing_analyzer": {
     "report_found": false,
-    "report_date": "2026-07-21",
+    "report_date": "2026-07-22",
     "listings": [],
     "note": "Email thread exceeded parse limit (191k chars) — listing scores unavailable this run (repeat of prior run)"
   },
   "helium10_market_tracker": {
-    "report_found": false,
-    "report_date": null,
-    "review_changes": []
+    "report_found": true,
+    "report_date": "2026-07-21",
+    "review_changes": [
+      {"competitor": "multiple", "change": "Competitor review volume increases only — no STG listing changes detected"}
+    ]
   },
   "amazon_ads_browser": {
     "available": false,
@@ -209,102 +227,124 @@
   },
   "supermetrics": {
     "status": "GREEN",
-    "generated_at": "2026-07-20T23:07:21-07:00",
-    "query_date_yesterday": "2026-07-19",
-    "query_date_sc": "2026-07-18",
+    "generated_at": "2026-07-21T23:10:41-07:00",
+    "query_date_yesterday": "2026-07-20",
+    "query_date_sc": "2026-07-19",
     "amazon_ads": {
-      "spend": 411.37,
-      "roas": 1.6827,
+      "spend": 323.50,
+      "roas": 1.9477,
       "sku_data_pending": false
     },
     "skus": [
       {
         "asin": "B0GT1H84JM",
         "name": "Save the Shave Bundle",
-        "spend_daily": 169.37,
+        "spend_daily": 129.59,
         "sales_daily": 0.0,
         "roas": 0.0,
         "band": "KILL",
-        "spend_7d": 1407.19,
+        "spend_7d": 1302.88,
         "sales_7d": 0.0,
         "tacos": null,
-        "note": "KILL confirmed — spend ≥$75 + $0 sales Jul 19; attribution guard does NOT apply (≥$75 threshold breached). Action required."
+        "note": "KILL confirmed — spend $129.59 >= $75 + $0 attributed sales Jul 20. Attribution guard does NOT apply. Action required."
       },
       {
         "asin": "B0FQL56V99",
         "name": "Emergency Dematter",
-        "spend_daily": 201.84,
-        "sales_daily": 377.03,
-        "roas": 1.868,
+        "spend_daily": 176.67,
+        "sales_daily": 321.86,
+        "roas": 1.821,
         "band": "YELLOW",
-        "spend_7d": 1378.59,
-        "sales_7d": 1715.01,
-        "tacos": 80.4,
-        "band_change": "KILL→YELLOW",
-        "note": "Band improved KILL→YELLOW (ROAS 1.868 vs breakeven 2.07). TACOS 80.4% — 2× above 35% target. Monitor per L-2026-07-20-001."
+        "spend_7d": 1381.60,
+        "sales_7d": 1496.59,
+        "tacos": 92.3,
+        "note": "YELLOW (ROAS 1.821 vs breakeven 2.07). TACOS 92.3% — 2.6x above 35% target. Band unchanged."
       },
       {
         "asin": "B0GV5ZFLC2",
         "name": "Detangling Treatment",
-        "spend_daily": 18.22,
+        "spend_daily": 5.26,
         "sales_daily": 18.99,
-        "roas": 1.042,
-        "band": "KILL",
-        "spend_7d": 97.93,
-        "sales_7d": 93.05,
-        "tacos": 105.2,
-        "band_change": "RED→KILL",
-        "note": "Band degraded RED→KILL (ROAS 1.042 vs floor 1.51). Attribution guard active — spend $18.22 < $75 threshold; monitor, not hard action."
-      },
-      {
-        "asin": "B0FQDHXSZ5",
-        "name": "Pin Brush",
-        "spend_daily": 8.36,
-        "sales_daily": 19.99,
-        "roas": 2.391,
-        "band": "YELLOW",
-        "spend_7d": 51.86,
-        "sales_7d": 117.94,
-        "tacos": 44.0,
-        "band_change": "KILL→YELLOW",
-        "note": "Band improved KILL→YELLOW (ROAS 2.391 vs breakeven 2.61). TACOS 44.0% above 35% target."
-      },
-      {
-        "asin": "B0FQL16GH4",
-        "name": "4-in-1 Shampoo",
-        "spend_daily": 9.55,
-        "sales_daily": 0.0,
-        "roas": 0.0,
-        "band": "KILL",
-        "spend_7d": 20.22,
-        "sales_7d": 59.97,
-        "tacos": 33.7,
-        "note": "KILL (ROAS 0). Attribution guard active — spend $9.55 < $75; monitor per L-2026-07-20-002. TACOS 33.7% within target on 7d window."
+        "roas": 3.612,
+        "band": "GREEN",
+        "spend_7d": 94.00,
+        "sales_7d": 37.98,
+        "tacos": 247.5,
+        "band_change": "KILL->GREEN",
+        "note": "Band improved KILL->GREEN (ROAS 3.612 vs breakeven 2.74). Attribution guard: spend $5.26 < $75. TACOS 247.5% — elevated but low spend."
       },
       {
         "asin": "B0FQF2VTMJ",
         "name": "Rake Brush",
-        "spend_daily": 3.82,
+        "spend_daily": 4.42,
         "sales_daily": 14.99,
-        "roas": 3.925,
+        "roas": 3.393,
         "band": "GREEN",
-        "spend_7d": 30.79,
-        "sales_7d": 338.73,
-        "tacos": 9.1,
-        "band_change": "YELLOW→GREEN",
-        "note": "Band improved YELLOW→GREEN (ROAS 3.925 vs breakeven 3.12). TACOS 9.1% well below 35% target."
+        "spend_7d": 28.54,
+        "sales_7d": 362.70,
+        "tacos": 7.9,
+        "note": "GREEN (ROAS 3.393 vs breakeven 3.12). TACOS 7.9% — well below 35% target."
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "spend_daily": 3.25,
+        "sales_daily": 0.0,
+        "roas": 0.0,
+        "band": "KILL",
+        "spend_7d": 50.12,
+        "sales_7d": 19.99,
+        "tacos": 250.7,
+        "band_change": "YELLOW->KILL",
+        "note": "Band degraded YELLOW->KILL (ROAS 0 vs breakeven 2.61). Attribution guard: spend $3.25 < $75 — monitor, no hard action. TACOS 250.7% — 7x above target."
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "4-in-1 Shampoo",
+        "spend_daily": 2.10,
+        "sales_daily": 0.0,
+        "roas": 0.0,
+        "band": "KILL",
+        "spend_7d": 20.24,
+        "sales_7d": 0.0,
+        "tacos": null,
+        "note": "KILL (ROAS 0). Attribution guard: spend $2.10 < $75 — monitor only."
       },
       {
         "asin": "B0FQ628KCH",
         "name": "Slicker Brush",
-        "spend_daily": 0.0,
+        "spend_daily": 1.37,
         "sales_daily": 0.0,
         "roas": null,
         "band": "VIOLATION",
         "spend_7d": 5.48,
         "sales_7d": 0.0,
         "tacos": null,
-        "note": "liquidate=true; 7d cumulative $5.48 spend on liquidation SKU — VIOLATION. Any ad spend > $0 = immediate flag (roas_bands.json)."
+        "note": "liquidate=true; $1.37 spend Jul 20 (7d $5.48) on liquidation SKU — VIOLATION. Any ad spend > $0 = immediate kill flag."
+      },
+      {
+        "asin": "B0GY9WZWKH",
+        "name": "Full Coat Care System",
+        "spend_daily": 0.42,
+        "sales_daily": 0.0,
+        "roas": 0.0,
+        "band": "KILL",
+        "spend_7d": null,
+        "sales_7d": 0.0,
+        "tacos": null,
+        "note": "Attribution guard: spend $0.42 < $75. Monitor only."
+      },
+      {
+        "asin": "B0GT5YFVB8",
+        "name": "Unknown SKU",
+        "spend_daily": 0.21,
+        "sales_daily": 0.0,
+        "roas": 0.0,
+        "band": "KILL",
+        "spend_7d": null,
+        "sales_7d": 0.0,
+        "tacos": null,
+        "note": "New/unidentified SKU — attribution guard: spend $0.21 < $75. Monitor only."
       },
       {
         "asin": "B0GXLPJS4C",
@@ -313,40 +353,28 @@
         "sales_daily": 0.0,
         "roas": 0.0,
         "band": "KILL",
-        "spend_7d": 0.84,
+        "spend_7d": null,
         "sales_7d": 0.0,
         "tacos": null,
-        "note": "Attribution guard active — spend $0.21 < $75; 7d $0.84 < $75. Monitor only."
-      },
-      {
-        "asin": "B0GY9WZWKH",
-        "name": "Full Coat Care System",
-        "spend_daily": 0.0,
-        "sales_daily": 0.0,
-        "roas": null,
-        "band": "KILL",
-        "spend_7d": 2.10,
-        "sales_7d": 0.0,
-        "tacos": null,
-        "note": "Attribution guard active — 7d spend $2.10 < $75. Monitor only."
+        "note": "Attribution guard: spend $0.21 < $75. Monitor only."
       }
     ],
     "flagged_skus": [
-      "Save the Shave Bundle (B0GT1H84JM) — KILL band, $169.37 spend / $0 attributed sales Jul 19 (≥$75 confirmed — action required)",
-      "Slicker Brush (B0FQ628KCH) — LIQUIDATION VIOLATION: 7d cumulative $5.48 spend on liquidation SKU",
-      "Detangling Treatment (B0GV5ZFLC2) — RED→KILL regression (ROAS 1.042 vs floor 1.51) — attribution guard active (spend $18.22 < $75)",
-      "Emergency Dematter (B0FQL56V99) — TACOS 80.4% (2× target 35%) — band improved KILL→YELLOW (ROAS 1.868)"
+      "Save the Shave Bundle (B0GT1H84JM) — KILL band, $129.59 spend / $0 attributed sales Jul 20 (>=’$75 — action required)",
+      "Slicker Brush (B0FQ628KCH) — LIQUIDATION VIOLATION: $1.37 spend Jul 20, 7d cumulative $5.48 on liquidation SKU (kill flag)",
+      "Pin Brush (B0FQDHXSZ5) — YELLOW->KILL regression (ROAS 0 vs breakeven 2.61) — attribution guard active (spend $3.25 < $75)",
+      "Emergency Dematter (B0FQL56V99) — TACOS 92.3% (2.6x target 35%) — band YELLOW unchanged",
+      "Detangling Treatment (B0GV5ZFLC2) — TACOS 247.5% despite KILL->GREEN improvement — attribution guard active (spend $5.26 < $75)",
+      "Pin Brush (B0FQDHXSZ5) — TACOS 250.7% (7x target) — attribution guard active (spend $3.25 < $75)"
     ],
     "band_changes": [
-      {"asin": "B0FQL56V99", "name": "Emergency Dematter", "prior": "KILL", "current": "YELLOW", "direction": "UP"},
-      {"asin": "B0FQF2VTMJ", "name": "Rake Brush", "prior": "YELLOW", "current": "GREEN", "direction": "UP"},
-      {"asin": "B0FQDHXSZ5", "name": "Pin Brush", "prior": "KILL", "current": "YELLOW", "direction": "UP"},
-      {"asin": "B0GV5ZFLC2", "name": "Detangling Treatment", "prior": "RED", "current": "KILL", "direction": "DOWN"}
+      {"asin": "B0GV5ZFLC2", "name": "Detangling Treatment", "prior": "KILL", "current": "GREEN", "direction": "UP"},
+      {"asin": "B0FQDHXSZ5", "name": "Pin Brush", "prior": "YELLOW", "current": "KILL", "direction": "DOWN"}
     ],
     "amazon_sales": {
-      "sessions": 568,
-      "conversion_rate": 21.13,
-      "units_ordered": 120
+      "sessions": 567,
+      "conversion_rate": 18.34,
+      "units_ordered": 104
     },
     "google_ads": {
       "spend": 0.0,
@@ -357,53 +385,55 @@
   "meta_ads": {
     "available": true,
     "account_id": "2158768751536031",
-    "period": "L30D trailing (Jun 21 – Jul 21)",
+    "period": "L30D trailing (Jun 22 - Jul 21)",
     "yesterday": {
-      "spend": null
+      "spend": 26.23
     },
     "flags": [
-      "Save the Shave UGC Bill: KILL BREACH Day 30+ — $439.87 L30D spend, ROAS ~0.69 — action overdue (L-2026-07-10-001 VALIDATED)",
-      "BLZ-20260721-001: New campaign launched Jul 21 — ACTIVE at $0 spend, verify intended",
-      "BLZ-20260717-002 (Shampoo) ACTIVE at $0 spend — verify intentional launch"
+      "Save the Shave UGC Bill: KILL BREACH Day 31+ — $447.17 L30D spend, ROAS 0.714 — action overdue (L-2026-07-10-001 VALIDATED)",
+      "BLZ-20260721-001: $7.80 L30D spend — ACTIVE, new campaign launched Jul 21, verify intended",
+      "BLZ-20260717-002 (Shampoo): $26.82 L30D spend — ACTIVE, launched Jul 17, verify intended"
     ],
     "l30d": {
-      "spend": 455.54,
+      "spend": 481.79,
       "purchase_value": null,
-      "roas": 0.70
+      "roas": 0.714
     },
     "campaigns_l30d": [
       {
         "name": "Save the Shave UGC Bill _UGC_070326",
         "status": "ACTIVE",
-        "spend": 439.87,
+        "spend": 447.17,
         "results": null,
-        "roas": 0.69
+        "roas": 0.714,
+        "note": "KILL BREACH Day 31+ — action required (L-2026-07-10-001)"
       },
       {
         "name": "BLZ-20260721-001",
         "status": "ACTIVE",
-        "spend": 0.0,
-        "results": "0",
+        "spend": 7.80,
+        "results": null,
         "roas": null,
-        "note": "New campaign — launched 2026-07-21"
+        "note": "New campaign — launched 2026-07-21, $7.80 spend to date"
+      },
+      {
+        "name": "BLZ-20260717-002 Shampoo",
+        "status": "ACTIVE",
+        "spend": 26.82,
+        "results": null,
+        "roas": null,
+        "note": "New campaign — launched 2026-07-17, $26.82 spend to date"
       },
       {
         "name": "Save the Shave UGC Bill - Copy",
         "status": "ACTIVE",
         "spend": 0.0,
-        "results": "0",
-        "roas": null
-      },
-      {
-        "name": "BLZ-20260717-002 Shampoo",
-        "status": "ACTIVE",
-        "spend": 0.0,
-        "results": "0",
+        "results": null,
         "roas": null
       }
     ],
     "paused_campaign_count": 4,
-    "date_since": "2026-06-21",
+    "date_since": "2026-06-22",
     "date_until": "2026-07-21"
   },
   "reviews": {
@@ -412,11 +442,11 @@
     "negative_count": 4,
     "avg_rating_new_batch": 3.8,
     "sheet_last_modified": "2026-07-16",
-    "last_reviews_check": "2026-07-21"
+    "last_reviews_check": "2026-07-22"
   },
   "inventory": {
     "available": false,
     "data_date": "2026-07-20",
-    "note": "FBA inventory unavailable today — Seller Central scrape requires Chrome (L-2026-07-15-001 DOCTRINE). Last successful SC scrape: Jul 20 (1 day stale). See inventory_data.json for Jul 20 data. Priority manual checks: B0FQ4PY573 (Detangling Spray — SC HEALTHY Jul 20, H10 Jul 19 flagged LIF≤0, verify listing is live), B0FQFP2S9F (FurFix — STRANDED, fix listing)."
+    "note": "FBA inventory unavailable today — Seller Central scrape requires Chrome (L-2026-07-15-001 DOCTRINE). Last successful SC scrape: Jul 20 (2 days stale). See inventory_data.json for Jul 20 data. Priority manual checks: B0FQ4PY573 (Detangling Spray — SC HEALTHY Jul 20, H10 LIF<=0 flag active, verify listing is live), B0FQFP2S9F (FurFix — STRANDED, fix listing)."
   }
 }
