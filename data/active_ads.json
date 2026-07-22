@@ -1,5 +1,38 @@
 {
   "schema_version": "1.0",
-  "note": "Maintained by Blaze v1.2. Every ad launched via B-1 is added here. Blaze reads this on every sweep and monitors each ad_id against L30D ROAS thresholds. Josh: push to data/active_ads.json on main branch.",
-  "ads": []
+  "note": "Maintained by Blaze v1.8. Every ad launched via B-1 is added here. Blaze reads this on every sweep and monitors each ad_id against L30D ROAS thresholds.",
+  "ads": [
+    {
+      "ad_id": "120249254385700118",
+      "campaign_id": "120249252887330118",
+      "adset_id": "120249252894110118",
+      "platform": "Meta",
+      "brief_id": "BLZ-20260721-001",
+      "launch_date": "2026-07-21",
+      "daily_budget": 10,
+      "roas_target": null,
+      "kill_threshold": 75,
+      "status": "ACTIVE",
+      "approved_by": "Will Dryden",
+      "approved_ts": "2026-07-21T11:08:00-07:00",
+      "launched_by": "Blaze",
+      "notes": "Detangle the Tangle TOF — Detangling Treatment + Pin Brush bundle. LINK_CLICKS objective. Lookalike 1% STG Customer Emails. Added to registry retroactively Jul 22 (missing from Jul 21 launch run)."
+    },
+    {
+      "ad_id": "120249184178250118",
+      "campaign_id": "120249184178260118",
+      "adset_id": null,
+      "platform": "Meta",
+      "brief_id": "BLZ-20260717-002",
+      "launch_date": "2026-07-17",
+      "daily_budget": null,
+      "roas_target": null,
+      "kill_threshold": 75,
+      "status": "ACTIVE",
+      "approved_by": "Will Dryden",
+      "approved_ts": null,
+      "launched_by": "Blaze",
+      "notes": "Shampoo 50OFF UGC. OUTCOME_SALES objective. Added to registry retroactively Jul 22 (missing). adset_id unknown — populate from Meta Ads Manager. L30D spend $26.82 / yesterday $11.15 as of Jul 22."
+    }
+  ]
 }
