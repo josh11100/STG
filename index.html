@@ -310,6 +310,7 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums;}
           <div class="cards" id="sh-cards"></div>
           <div id="sh-alerts"></div>
           <div id="sh-chart"></div>
+          <div id="sh-breakdown"></div>
         </div>
 
         <!-- AMAZON (consolidated) -->
@@ -1026,6 +1027,72 @@ function render(d){
     }
   }
 
+  // — Shopify Order Breakdown —
+  const shProds  = sh.top_products   || [];
+  const shBreak  = sh.order_breakdown || {};
+  const shBreakEl = $('sh-breakdown');
+  if (shBreakEl) {
+    if (!shProds.length && !shBreak.total_orders) {
+      shBreakEl.innerHTML = alertBox('info', 'Order breakdown will appear after the next routine run — Step 3B needs to be added to Collect v10.13.');
+    } else {
+      const sio = shBreak.single_item_orders || 0;
+      const mio = shBreak.multi_item_orders  || 0;
+      const tot = shBreak.total_orders       || (sio + mio);
+      const aip = shBreak.avg_items_per_order != null ? Number(shBreak.avg_items_per_order).toFixed(1) : '—';
+      const capNote = shBreak.capped ? ' <span class="pill pill-warn">CAPPED AT 50</span>' : '';
+      let sbHtml = `
+        <div class="tbl-wrap" style="margin-top:10px;">
+          <div class="tbl-title">Order breakdown — yesterday${capNote}</div>
+          <div class="cards" style="padding:10px 12px 4px;">
+            <div class="card bdr-teal"><div class="c-lbl">Total Orders</div><div class="c-val">${tot}</div><div class="c-sub">${shBreak.capped?'50+ orders (capped)':'yesterday'}</div></div>
+            <div class="card bdr-grey"><div class="c-lbl">Single-Product Orders</div><div class="c-val">${sio}</div><div class="c-sub">${tot>0?Math.round(sio/tot*100)+'% of orders':'—'}</div></div>
+            <div class="card bdr-orange"><div class="c-lbl">Multi-Product Orders</div><div class="c-val">${mio}</div><div class="c-sub">${tot>0?Math.round(mio/tot*100)+'% of orders':'—'}</div></div>
+            <div class="card bdr-purple"><div class="c-lbl">Avg Items / Order</div><div class="c-val">${aip}</div><div class="c-sub">higher = more bundling</div></div>
+          </div>
+        </div>`;
+      if (shProds.length) {
+        const maxRev = Math.max(...shProds.map(p => p.revenue || 0), 1);
+        sbHtml += `
+          <div class="tbl-wrap" style="margin-top:10px;">
+            <div class="tbl-title">What customers bought — by revenue</div>
+            <table><thead><tr>
+              <th>Product</th><th>Variants</th><th class="r">Units</th>
+              <th class="r">Revenue</th><th class="r">Orders</th>
+              <th class="r">Avg Price</th><th style="width:100px;">Share</th>
+            </tr></thead><tbody>
+            ${shProds.map((p,i)=>{
+              const share=maxRev>0?Math.round((p.revenue||0)/maxRev*100):0;
+              const revShare=tot>0?Math.round((p.order_count||0)/tot*100):0;
+              const isTop=i===0;
+              return `<tr${isTop?' style="background:#f0fbf5;"':''}>
+                <td><b>${esc(p.product_title||'?')}</b>${isTop?' <span class="pill pill-ok">TOP</span>':''}</td>
+                <td style="font-size:11px;color:var(--muted);">${(p.variants||[]).filter(Boolean).join(', ')||'—'}</td>
+                <td class="r"><b>${p.units_sold||0}</b></td>
+                <td class="r" style="font-weight:700;color:var(--teal);">$${Number(p.revenue||0).toFixed(2)}</td>
+                <td class="r">${p.order_count||0} <span style="font-size:10px;color:var(--muted);">(${revShare}%)</span></td>
+                <td class="r">$${Number(p.avg_price||0).toFixed(2)}</td>
+                <td><div style="background:#eef1f4;border-radius:3px;height:8px;"><div style="background:var(--teal);width:${share}%;height:8px;border-radius:3px;"></div></div></td>
+              </tr>`;
+            }).join('')}
+            </tbody></table>
+          </div>`;
+      }
+      const combos = shBreak.top_combos || [];
+      if (combos.length) {
+        sbHtml += `
+          <div class="tbl-wrap" style="margin-top:10px;">
+            <div class="tbl-title">Most common product combos — bought together in same order</div>
+            <table><thead><tr><th>#</th><th>Product A</th><th>Product B</th><th class="r">Times Bought Together</th></tr></thead>
+            <tbody>${combos.map((c,i)=>`<tr${i===0?' style="background:#f0fbf5;"':''}><td style="color:var(--muted);font-weight:700;">${i+1}</td><td><b>${esc(c.product_a||'?')}</b></td><td><b>${esc(c.product_b||'?')}</b></td><td class="r"><b>${c.count}</b></td></tr>`).join('')}
+            </tbody></table>
+          </div>`;
+      } else if (mio===0 && tot>0) {
+        sbHtml += alertBox('info','No multi-product orders yesterday — all '+tot+' orders were single-item.');
+      }
+      shBreakEl.innerHTML = sbHtml;
+    }
+  }
+
   // — Helium 10 — (tolerant: report_found | reports_found, products[] optional)
   const h10 = d.helium10 || {};
   const h10Found = h10.report_found != null ? h10.report_found
@@ -1237,7 +1304,7 @@ function render(d){
   };
 
   const hpCards = (p, vsLabel, vsKey) => {
-    if (!p || p.gross_revenue == null) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
+    if (!p || (p.gross_revenue == null && p.net_profit == null && p.units == null)) return '<div class="card bdr-grey"><div class="c-lbl">No report yet</div><div class="c-val na">No data</div></div>';
     const neg = (p.net_profit||0) < 0;
     const vs = p[vsKey];
     return card('Gross Revenue', fmtDollar(p.gross_revenue), (p.units!=null?fmtInt(p.units)+' units':'') + (p.date?' · '+esc(p.date):p.period?' · '+esc(p.period):''), 'bdr-teal') +
