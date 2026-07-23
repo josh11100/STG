@@ -470,7 +470,82 @@
   },
   "inventory": {
     "available": false,
-    "data_date": "2026-07-20",
-    "note": "FBA inventory unavailable today — Seller Central scrape requires Chrome (L-2026-07-15-001 DOCTRINE). Last successful SC scrape: Jul 20 (2 days stale). See inventory_data.json for Jul 20 data. Priority manual checks: B0FQ4PY573 (Detangling Spray — SC HEALTHY Jul 20, H10 LIF<=0 flag active, verify listing is live), B0FQFP2S9F (FurFix — STRANDED, fix listing)."
+    "data_date": "2026-07-22",
+    "skus": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "on_hand": 21793,
+        "dos": 313,
+        "status": "HEALTHY",
+        "note": "HEALTHY — 21,793 on-hand · 313 DoS · 40 inbound (receiving) (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "Rake Brush",
+        "on_hand": 502,
+        "dos": 23,
+        "status": "LOW_STOCK",
+        "note": "LOW STOCK — 502 on-hand · 23 DoS on-hand · 1,650 inbound (shipped) · Total DoS 108 with inbound (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment",
+        "on_hand": 8324,
+        "dos": 365,
+        "status": "EXCESS",
+        "note": "EXCESS — 7,536 est. excess units · 365+ DoS · 2 inbound (receiving) (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "4-in-1 Shampoo",
+        "on_hand": 4030,
+        "dos": 365,
+        "status": "EXCESS",
+        "note": "EXCESS — 3,523 est. excess units · 365+ DoS (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "on_hand": 2022,
+        "dos": 365,
+        "status": "EXCESS",
+        "note": "EXCESS — 1,843 est. excess units · 365+ DoS (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "on_hand": 2580,
+        "dos": 365,
+        "status": "LIQUIDATION",
+        "note": "EXCESS — 2,462 est. excess units — liquidation · 365+ DoS · aged surcharge $903.04 (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQ4PY573",
+        "name": "Detangling Spray",
+        "on_hand": 323,
+        "dos": 194,
+        "status": "HEALTHY",
+        "note": "HEALTHY per SC — 323 on-hand · 194 DoS · 0 units sold in 90d · aged surcharge $70.90 · verify listing is SELLABLE (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQFP2S9F",
+        "name": "FurFix De-Shed Brush",
+        "on_hand": 62,
+        "dos": null,
+        "status": "STRANDED",
+        "note": "STRANDED — 62 units (63 FBA stranded) · fix listing in SC → 'Go to Fix stranded inventory' · aged surcharge $2.45 (data as of 2026-07-22)"
+      }
+    ],
+    "summary": {
+      "total": 8,
+      "healthy": 2,
+      "low_stock": 1,
+      "excess": 4,
+      "stranded": 1,
+      "closed": 0,
+      "data_staleness_days": 1
+    },
+    "note": "SC scrape unavailable 2026-07-23 (Chrome — L-2026-07-15-001 DOCTRINE). Last successful SC scrape: 2026-07-22."
   }
 }
