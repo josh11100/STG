@@ -11,16 +11,36 @@
     "mtd_income": 24553.71,
     "mtd_cogs": 11061.04,
     "mtd_gross_profit": 13492.67,
-    "mtd_expenses": 39960.80,
+    "mtd_expenses": 39960.8,
     "mtd_net_income": -26468.13,
     "gross_margin_pct": 55.0,
-    "net_margin_pct": -107.8
+    "net_margin_pct": -107.8,
+    "cash_balance": 484001.8,
+    "weeks_runway": 39.8,
+    "accounts_payable": 48504.75,
+    "status": "GREEN",
+    "mtd": {
+      "revenue": 24553.71,
+      "cogs": 11061.04,
+      "gross_profit": 13492.67,
+      "operating_expenses": 39960.8,
+      "net_income": -26468.13,
+      "gross_margin_pct": 55.0,
+      "net_margin_pct": -107.8,
+      "period": "2026-07-01 to 2026-07-23"
+    }
   },
   "klaviyo": {
     "available": true,
     "flows_live": 3,
     "recipients_7d": 4,
-    "revenue_7d": 0
+    "revenue_7d": 0,
+    "total_email_revenue_7d": 0,
+    "avg_open_rate": null,
+    "avg_click_rate": null,
+    "flows_flagged": [],
+    "flows": [],
+    "status": "RED"
   },
   "shopify": {
     "available": true,
@@ -29,20 +49,75 @@
       "revenue": 74.96,
       "orders": 4,
       "aov": 18.74
-    }
+    },
+    "yesterday_sales": 74.96,
+    "aov": 18.74,
+    "orders_yesterday": 4
   },
   "helium10": {
     "available": true,
     "report_date": "2026-07-22",
     "keyword_ranks": {
       "B0FQL56V99": [
-        {"keyword": "detangler for dogs", "organic": 18, "change": -4},
-        {"keyword": "dematting comb", "organic": 19, "change": -2}
+        {
+          "keyword": "detangler for dogs",
+          "organic": 18,
+          "change": -4
+        },
+        {
+          "keyword": "dematting comb",
+          "organic": 19,
+          "change": -2
+        }
       ],
       "B0FQ628KCH": [
-        {"keyword": "slicker brush for dogs", "organic": 177, "change": -11}
+        {
+          "keyword": "slicker brush for dogs",
+          "organic": 177,
+          "change": -11
+        }
       ]
-    }
+    },
+    "products": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "keywords": [
+          {
+            "keyword": "detangler for dogs",
+            "organic_rank": 18,
+            "search_volume": null,
+            "sponsored_rank": null,
+            "organic_change_rating": "DECLINING",
+            "delta": -4
+          },
+          {
+            "keyword": "dematting comb",
+            "organic_rank": 19,
+            "search_volume": null,
+            "sponsored_rank": null,
+            "organic_change_rating": "DECLINING",
+            "delta": -2
+          }
+        ]
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "keywords": [
+          {
+            "keyword": "slicker brush for dogs",
+            "organic_rank": 177,
+            "search_volume": null,
+            "sponsored_rank": null,
+            "organic_change_rating": "DECLINING",
+            "delta": -11
+          }
+        ]
+      }
+    ],
+    "report_found": true,
+    "flags": []
   },
   "helium10_profits": {
     "available": true,
@@ -53,7 +128,8 @@
       "net_profit": 799.62,
       "net_margin_pct": 42.2,
       "units": 92,
-      "vs_prior_day_pct": 252.0
+      "vs_prior_day_pct": 252.0,
+      "gross_revenue": 1894.42
     }
   },
   "amazon_ads": {
@@ -112,7 +188,7 @@
       "roas": 2.3836
     },
     "query_g": {
-      "lifetime_revenue": 310590.20,
+      "lifetime_revenue": 310590.2,
       "lifetime_units": 15095
     }
   },
@@ -176,5 +252,15 @@
       "mat made worse",
       "not effective on goldendoodle/poodle"
     ]
+  },
+  "reviews": {
+    "available": false,
+    "new_review_count": 0,
+    "avg_rating_new_batch": null,
+    "sheet_last_modified": null,
+    "last_reviews_check": null,
+    "status": null,
+    "recent": [],
+    "note": "Review connector not yet writing data — Angelo's sheet check pending"
   }
 }
