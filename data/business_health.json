@@ -1,160 +1,136 @@
 {
-  "_instructions": "Patrick fills this out weekly. Update report_date each time. Send email to stgbrandanalytics@gmail.com with subject 'STG Business Health Update' and paste this file's Google Sheet URL in the body.",
-  "report_date": "2026-07-23",
-  "updated_by": "JARVIS v10.16 — 2026-07-23",
-  "kpis": {
-    "lifetime_revenue": 310590.20,
-    "lifetime_units": 15095,
-    "est_profit": 113300,
-    "inventory_cogs": 193343,
-    "inventory_units": 51771,
-    "total_customers": 10607,
-    "top_tier_pct": 19.5,
-    "sns_total_pct": 1.8,
-    "return_rate_pct": 3.47,
-    "owed_now": 48504.75,
-    "owed_total_thru_dec": 230000
-  },
-  "skus": [
-    {
-      "name": "8oz Emergency Dematter",
-      "short": "Dematter",
-      "revenue_lifetime": 237920,
-      "units_lifetime": 10637,
-      "revenue_share_pct": 76.6,
-      "profit_per_unit": 11.11,
-      "margin_pct": 48,
-      "price": 22.99,
-      "inventory_units": 31244,
-      "inventory_cogs": 109354,
-      "inventory_status": "fresh",
-      "sns_subs": 151,
-      "sns_penetration_pct": 1.7,
-      "coupon_driven_pct": 56.8,
-      "return_rate_pct": 3.38,
-      "category_avg_return_pct": 4.5,
-      "return_vs_category": "below"
-    },
-    {
-      "name": "Rake Brush",
-      "short": "Rake",
-      "revenue_lifetime": 30236,
-      "units_lifetime": 2179,
-      "revenue_share_pct": 9.7,
-      "profit_per_unit": 4.81,
-      "margin_pct": 32,
-      "price": 14.99,
-      "inventory_units": 502,
-      "inventory_cogs": 939,
-      "inventory_status": "healthy",
-      "sns_subs": 0,
-      "sns_penetration_pct": null,
-      "coupon_driven_pct": null,
-      "return_rate_pct": 2.54,
-      "category_avg_return_pct": 5.5,
-      "return_vs_category": "below"
-    },
-    {
-      "name": "12oz Detangling Treatment",
-      "short": "Detangling",
-      "revenue_lifetime": 12308,
-      "units_lifetime": 695,
-      "revenue_share_pct": 4.0,
-      "profit_per_unit": 6.64,
-      "margin_pct": 35,
-      "price": 18.99,
-      "inventory_units": 11226,
-      "inventory_cogs": 41648,
-      "inventory_status": "high",
-      "sns_subs": 5,
-      "sns_penetration_pct": 0.9,
-      "coupon_driven_pct": 0,
-      "return_rate_pct": null,
-      "category_avg_return_pct": null,
-      "return_vs_category": "new"
-    },
-    {
-      "name": "16oz 4-in-1 Shampoo",
-      "short": "Shampoo",
-      "revenue_lifetime": 9084,
-      "units_lifetime": 465,
-      "revenue_share_pct": 2.9,
-      "profit_per_unit": 5.33,
-      "margin_pct": 27,
-      "price": 19.99,
-      "inventory_units": 4030,
-      "inventory_cogs": 23656,
-      "inventory_status": "severe",
-      "sns_subs": 18,
-      "sns_penetration_pct": 4.2,
-      "coupon_driven_pct": 42.3,
-      "return_rate_pct": 1.96,
-      "category_avg_return_pct": 3.5,
-      "return_vs_category": "below"
-    },
-    {
-      "name": "Pin Brush",
-      "short": "Pin",
-      "revenue_lifetime": 9880,
-      "units_lifetime": 527,
-      "revenue_share_pct": 3.2,
-      "profit_per_unit": 7.67,
-      "margin_pct": 38,
-      "price": 19.99,
-      "inventory_units": 2151,
-      "inventory_cogs": 7012,
-      "inventory_status": "high",
-      "sns_subs": 0,
-      "sns_penetration_pct": null,
-      "coupon_driven_pct": null,
-      "return_rate_pct": 3.35,
-      "category_avg_return_pct": 5.5,
-      "return_vs_category": "below"
-    },
-    {
-      "name": "Slicker Brush",
-      "short": "Slicker",
-      "revenue_lifetime": 3859,
-      "units_lifetime": 224,
-      "revenue_share_pct": 1.2,
-      "profit_per_unit": 4.45,
-      "margin_pct": 25,
-      "price": 17.99,
-      "inventory_units": 2618,
-      "inventory_cogs": 10734,
-      "inventory_status": "severe",
-      "sns_subs": 0,
-      "sns_penetration_pct": null,
-      "coupon_driven_pct": null,
-      "return_rate_pct": 8.67,
-      "category_avg_return_pct": 5.5,
-      "return_vs_category": "above"
+  "_comment": "MERGE THIS INTO business_health.json — replace the _meta and subscribe_and_save sections entirely. Per-SKU sns{} objects merge into each skus[] entry by ASIN.",
+
+  "_meta": {
+    "last_patched": "2026-07-23",
+    "patched_by": "manual — Jul 23 session",
+    "field_freshness": {
+      "lifetime_revenue":    { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
+      "lifetime_units":      { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
+      "revenue_share_pct":   { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
+      "sessions":            { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
+      "buy_box_pct":         { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
+      "subscribe_and_save":  { "last_updated": "2026-07-23", "source": "amazon_sc_manual_export",   "auto": false },
+      "margin_pct":          { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
+      "profit_per_unit":     { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
+      "estimated_profit":    { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
+      "return_rate":         { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
+      "customer_segments":   { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
+      "inventory_cash":      { "last_updated": "2026-07-22", "source": "sc_manual_warehouse_xlsx",  "auto": false },
+      "accounts_payable":    { "last_updated": "2026-07-23", "source": "quickbooks_live",           "auto": true  },
+      "production_schedule": { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false }
     }
-  ],
-  "production_schedule": [
-    {"month": "Jun", "amount": 7500, "type": "owed_now"},
-    {"month": "Jul", "amount": 65000, "type": "planned"},
-    {"month": "Aug", "amount": 39000, "type": "planned"},
-    {"month": "Sep", "amount": 0, "type": "planned"},
-    {"month": "Oct", "amount": 86000, "type": "planned"},
-    {"month": "Nov", "amount": 0, "type": "planned"},
-    {"month": "Dec", "amount": 33000, "type": "planned"}
-  ],
-  "brand_health": {
-    "week_of": "2026-06-13",
-    "top_tier": {"count": 2072, "pct": 19.5},
-    "promising": {"count": 8200, "pct": 77.3},
-    "at_risk": {"count": 335, "pct": 3.2, "wow_change_pct": 183},
-    "repeat_purchase_rate_pct": 5.2,
-    "sns_total_penetration_pct": 1.8,
-    "sns_total_subs": 174,
-    "brand_search_share_pct": 4.7,
-    "cart_abandoners": 9569,
-    "funnel": {
-      "awareness": {"count": 530, "wow_pct": -23},
-      "consideration": {"count": 815, "wow_pct": -14},
-      "intent_carted": {"count": 362, "wow_pct": -18},
-      "purchase_new": {"count": 184, "wow_pct": -19}
+  },
+
+  "subscribe_and_save": {
+    "available": true,
+    "last_updated": "2026-07-23",
+    "source": "amazon_sc_manual_export",
+    "report_period_start": "2026-04-22",
+    "report_period_end": "2026-07-21",
+    "report_days": 90,
+    "totals": {
+      "active_subscribers": 178,
+      "sns_shipped_units": 151,
+      "sns_sales": 3249.44,
+      "lost_sales_oos": 19.99
+    },
+    "flags": [
+      "⚠️ B0FQ4PY573 (Detangling Spray) — 100% OOS, 0 active subscribers, $19.99 lost sales. Confirm this SKU is discontinued.",
+      "🟡 Emergency Dematter — 63.4% of subscribers are coupon-driven. Renewal health may be fragile if coupon removed.",
+      "🟡 4-in-1 Shampoo — 55.6% coupon-driven. Same risk as Dematter.",
+      "✅ Detangling Treatment — 0% coupon-driven. Most organic subscriber base."
+    ],
+    "skus": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "active_subscribers": 151,
+        "sns_shipped_units": 130,
+        "sns_sales": 2867.84,
+        "sns_penetration_pct": 2.91,
+        "oos_pct": 0.0,
+        "lost_sales_oos": 0.0,
+        "coupon_driven_pct": 63.4,
+        "coupon_sales_penetration_pct": 53.0,
+        "seller_funding_pct": 10.0
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "4-in-1 Shampoo",
+        "active_subscribers": 19,
+        "sns_shipped_units": 11,
+        "sns_sales": 210.69,
+        "sns_penetration_pct": 9.80,
+        "oos_pct": 0.0,
+        "lost_sales_oos": 0.0,
+        "coupon_driven_pct": 55.6,
+        "coupon_sales_penetration_pct": 37.0,
+        "seller_funding_pct": 10.0
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment",
+        "active_subscribers": 8,
+        "sns_shipped_units": 10,
+        "sns_sales": 170.91,
+        "sns_penetration_pct": 1.47,
+        "oos_pct": 0.0,
+        "lost_sales_oos": 0.0,
+        "coupon_driven_pct": 0.0,
+        "coupon_sales_penetration_pct": 0.0,
+        "seller_funding_pct": 10.0
+      },
+      {
+        "asin": "B0FQ4PY573",
+        "name": "Detangling Spray (discontinued?)",
+        "active_subscribers": 0,
+        "sns_shipped_units": 0,
+        "sns_sales": 0.0,
+        "sns_penetration_pct": 0.0,
+        "oos_pct": 100.0,
+        "lost_sales_oos": 19.99,
+        "coupon_driven_pct": 0.0,
+        "coupon_sales_penetration_pct": 0.0,
+        "seller_funding_pct": 5.0
+      }
+    ]
+  },
+
+  "skus_sns_patch": {
+    "_comment": "Merge each of these into the matching ASIN entry in skus[] — add sns{} as a new key inside each SKU object.",
+    "B0FQL56V99": {
+      "sns": {
+        "active_subscribers": 151,
+        "sns_penetration_pct": 2.91,
+        "coupon_driven_pct": 63.4,
+        "last_updated": "2026-07-23"
+      }
+    },
+    "B0FQL16GH4": {
+      "sns": {
+        "active_subscribers": 19,
+        "sns_penetration_pct": 9.80,
+        "coupon_driven_pct": 55.6,
+        "last_updated": "2026-07-23"
+      }
+    },
+    "B0GV5ZFLC2": {
+      "sns": {
+        "active_subscribers": 8,
+        "sns_penetration_pct": 1.47,
+        "coupon_driven_pct": 0.0,
+        "last_updated": "2026-07-23"
+      }
+    },
+    "B0FQF2VTMJ": {
+      "sns": { "active_subscribers": null, "sns_penetration_pct": null, "coupon_driven_pct": null, "last_updated": null }
+    },
+    "B0FQDHXSZ5": {
+      "sns": { "active_subscribers": null, "sns_penetration_pct": null, "coupon_driven_pct": null, "last_updated": null }
+    },
+    "B0FQ628KCH": {
+      "sns": { "active_subscribers": null, "sns_penetration_pct": null, "coupon_driven_pct": null, "last_updated": null, "note": "Liquidation SKU — SnS not applicable" }
     }
   }
 }
