@@ -1,10 +1,10 @@
 {
   "_instructions": "Patrick fills this out weekly. Update report_date each time. Send email to stgbrandanalytics@gmail.com with subject 'STG Business Health Update' and paste this file's Google Sheet URL in the body.",
-  "report_date": "2026-07-22",
-  "updated_by": "JARVIS (revenue/units from Supermetrics ASELL Jul 22 \u00b7 inventory Jul 22 SC \u00b7 margins from Patrick Jun 19)",
+  "report_date": "2026-07-23",
+  "updated_by": "JARVIS v10.15 — 2026-07-23",
   "kpis": {
-    "lifetime_revenue": 303286,
-    "lifetime_units": 14727,
+    "lifetime_revenue": 310590,
+    "lifetime_units": 15095,
     "est_profit": 113300,
     "inventory_cogs": 193343,
     "inventory_units": 51771,
@@ -21,7 +21,7 @@
       "short": "Dematter",
       "revenue_lifetime": 237920,
       "units_lifetime": 10637,
-      "revenue_share_pct": 78.4,
+      "revenue_share_pct": 76.6,
       "profit_per_unit": 11.11,
       "margin_pct": 48,
       "price": 22.99,
@@ -40,7 +40,7 @@
       "short": "Rake",
       "revenue_lifetime": 30236,
       "units_lifetime": 2179,
-      "revenue_share_pct": 10.0,
+      "revenue_share_pct": 9.7,
       "profit_per_unit": 4.81,
       "margin_pct": 32,
       "price": 14.99,
@@ -59,7 +59,7 @@
       "short": "Detangling",
       "revenue_lifetime": 12308,
       "units_lifetime": 695,
-      "revenue_share_pct": 4.1,
+      "revenue_share_pct": 4.0,
       "profit_per_unit": 6.64,
       "margin_pct": 35,
       "price": 18.99,
@@ -78,7 +78,7 @@
       "short": "Shampoo",
       "revenue_lifetime": 9084,
       "units_lifetime": 465,
-      "revenue_share_pct": 3.0,
+      "revenue_share_pct": 2.9,
       "profit_per_unit": 5.33,
       "margin_pct": 27,
       "price": 19.99,
@@ -97,7 +97,7 @@
       "short": "Pin",
       "revenue_lifetime": 9880,
       "units_lifetime": 527,
-      "revenue_share_pct": 3.3,
+      "revenue_share_pct": 3.2,
       "profit_per_unit": 7.67,
       "margin_pct": 38,
       "price": 19.99,
@@ -116,7 +116,7 @@
       "short": "Slicker",
       "revenue_lifetime": 3859,
       "units_lifetime": 224,
-      "revenue_share_pct": 1.3,
+      "revenue_share_pct": 1.2,
       "profit_per_unit": 4.45,
       "margin_pct": 25,
       "price": 17.99,
@@ -132,79 +132,29 @@
     }
   ],
   "production_schedule": [
-    {
-      "month": "Jun",
-      "amount": 7500,
-      "type": "owed_now"
-    },
-    {
-      "month": "Jul",
-      "amount": 65000,
-      "type": "planned"
-    },
-    {
-      "month": "Aug",
-      "amount": 39000,
-      "type": "planned"
-    },
-    {
-      "month": "Sep",
-      "amount": 0,
-      "type": "planned"
-    },
-    {
-      "month": "Oct",
-      "amount": 86000,
-      "type": "planned"
-    },
-    {
-      "month": "Nov",
-      "amount": 0,
-      "type": "planned"
-    },
-    {
-      "month": "Dec",
-      "amount": 33000,
-      "type": "planned"
-    }
+    {"month": "Jun", "amount": 7500, "type": "owed_now"},
+    {"month": "Jul", "amount": 65000, "type": "planned"},
+    {"month": "Aug", "amount": 39000, "type": "planned"},
+    {"month": "Sep", "amount": 0, "type": "planned"},
+    {"month": "Oct", "amount": 86000, "type": "planned"},
+    {"month": "Nov", "amount": 0, "type": "planned"},
+    {"month": "Dec", "amount": 33000, "type": "planned"}
   ],
   "brand_health": {
     "week_of": "2026-06-13",
-    "top_tier": {
-      "count": 2072,
-      "pct": 19.5
-    },
-    "promising": {
-      "count": 8200,
-      "pct": 77.3
-    },
-    "at_risk": {
-      "count": 335,
-      "pct": 3.2,
-      "wow_change_pct": 183
-    },
+    "top_tier": {"count": 2072, "pct": 19.5},
+    "promising": {"count": 8200, "pct": 77.3},
+    "at_risk": {"count": 335, "pct": 3.2, "wow_change_pct": 183},
     "repeat_purchase_rate_pct": 5.2,
     "sns_total_penetration_pct": 1.8,
     "sns_total_subs": 174,
     "brand_search_share_pct": 4.7,
     "cart_abandoners": 9569,
     "funnel": {
-      "awareness": {
-        "count": 530,
-        "wow_pct": -23
-      },
-      "consideration": {
-        "count": 815,
-        "wow_pct": -14
-      },
-      "intent_carted": {
-        "count": 362,
-        "wow_pct": -18
-      },
-      "purchase_new": {
-        "count": 184,
-        "wow_pct": -19
-      }
+      "awareness": {"count": 530, "wow_pct": -23},
+      "consideration": {"count": 815, "wow_pct": -14},
+      "intent_carted": {"count": 362, "wow_pct": -18},
+      "purchase_new": {"count": 184, "wow_pct": -19}
     }
   }
 }
