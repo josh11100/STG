@@ -1,65 +1,65 @@
 {
   "as_of": "2026-07-23",
-  "available": false,
+  "available": true,
   "source": "seller_central_manual",
-  "note": "SC scrape unavailable 2026-07-23 (Chrome — L-2026-07-15-001 DOCTRINE). Last successful SC scrape: 2026-07-22.",
-  "last_known_sc_scrape": "2026-07-22",
-  "data_staleness_days": 1,
+  "note": "Live read of Seller Central 'Manage Inventory Health' page on 2026-07-23 (automated SC scrape still flagged unavailable per L-2026-07-15-001 DOCTRINE; this update was pulled manually from the on-screen table).",
+  "last_known_sc_scrape": "2026-07-23",
+  "data_staleness_days": 0,
   "skus": [
     {
       "asin": "B0FQL56V99",
       "name": "Emergency Dematter Cream",
-      "on_hand": 21793,
+      "on_hand": 21738,
       "amazon_min": 1726,
-      "rate_14d": 50.9,
+      "rate_14d": 51.2,
       "inbound": 40,
-      "dos": 313,
+      "dos": 305,
       "status": "HEALTHY",
-      "note": "HEALTHY — 21,793 on-hand · 313 DoS · 40 inbound (receiving) (data as of 2026-07-22)"
+      "note": "HEALTHY — 21,738 on-hand · 305 DoS (Total DoS 307) · 40 inbound (receiving) (data as of 2026-07-23)"
     },
     {
       "asin": "B0FQF2VTMJ",
       "name": "Rake Brush",
-      "on_hand": 502,
+      "on_hand": 479,
       "amazon_min": 1019,
-      "rate_14d": 16.1,
-      "inbound": 1650,
-      "dos": 23,
+      "rate_14d": 16.3,
+      "inbound": 4500,
+      "dos": 22,
       "status": "LOW_STOCK",
-      "note": "LOW STOCK — 502 on-hand · 23 DoS on-hand · 1,650 inbound (shipped) · Total DoS 108 with inbound (data as of 2026-07-22)"
+      "note": "LOW STOCK — 479 on-hand · 22 DoS on-hand · 4,500 inbound (2,850 working · 1,650 shipped) · Total DoS 239 with inbound (data as of 2026-07-23)"
     },
     {
       "asin": "B0GV5ZFLC2",
       "name": "Detangling Treatment",
-      "on_hand": 8324,
+      "on_hand": 8319,
       "amazon_min": 312,
-      "rate_14d": 7.5,
+      "rate_14d": 7.6,
       "inbound": 2,
       "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS — 7,536 est. excess units · 365+ DoS · 2 inbound (receiving) (data as of 2026-07-22)"
+      "note": "EXCESS — 7,552 est. excess units · 365+ DoS · 2 inbound (receiving) (data as of 2026-07-23)"
     },
     {
       "asin": "B0FQL16GH4",
       "name": "4-in-1 Shampoo",
-      "on_hand": 4030,
+      "on_hand": 4026,
       "amazon_min": 56,
-      "rate_14d": 1.6,
+      "rate_14d": 1.7,
       "inbound": 0,
       "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS — 3,523 est. excess units · 365+ DoS (data as of 2026-07-22)"
+      "note": "EXCESS — 3,516 est. excess units · 365+ DoS (data as of 2026-07-23)"
     },
     {
       "asin": "B0FQDHXSZ5",
       "name": "Pin Brush",
-      "on_hand": 2022,
+      "on_hand": 2019,
       "amazon_min": 116,
       "rate_14d": 3.5,
       "inbound": 0,
       "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS — 1,843 est. excess units · 365+ DoS (data as of 2026-07-22)"
+      "note": "EXCESS — 1,841 est. excess units · 365+ DoS (data as of 2026-07-23)"
     },
     {
       "asin": "B0FQ628KCH",
@@ -70,29 +70,29 @@
       "inbound": 0,
       "dos": 365,
       "status": "LIQUIDATION",
-      "note": "EXCESS — 2,462 est. excess units — liquidation · 365+ DoS · aged surcharge $903.04 (data as of 2026-07-22)"
+      "note": "EXCESS — 2,461 est. excess units — liquidation · 365+ DoS · aged surcharge $903.04 (rising to $904.10 on Aug 15, 2026) (data as of 2026-07-23)"
     },
     {
       "asin": "B0FQ4PY573",
       "name": "Detangling Spray",
-      "on_hand": 323,
+      "on_hand": 288,
       "amazon_min": 52,
       "rate_14d": 0,
       "inbound": 0,
-      "dos": 194,
+      "dos": 186,
       "status": "HEALTHY",
-      "note": "HEALTHY per SC — 323 on-hand · 194 DoS · 0 units sold in 90d · aged surcharge $70.90 · verify listing is SELLABLE (data as of 2026-07-22)"
+      "note": "HEALTHY per SC — 288 on-hand · 186 DoS (Total DoS 194) · 0 units sold in 90d · aged surcharge $70.90 · verify listing is SELLABLE (data as of 2026-07-23)"
     },
     {
       "asin": "B0FQFP2S9F",
       "name": "FurFix De-Shed Brush",
-      "on_hand": 62,
+      "on_hand": 60,
       "amazon_min": null,
       "rate_14d": 0,
       "inbound": 0,
       "dos": null,
       "status": "STRANDED",
-      "note": "STRANDED — 62 units (63 FBA stranded) · fix listing in SC → 'Go to Fix stranded inventory' · aged surcharge $2.45 (data as of 2026-07-22)"
+      "note": "STRANDED — 60 units (62 FBA stranded) · fix listing in SC → 'Go to Fix stranded inventory' · aged surcharge $2.45 (data as of 2026-07-23)"
     }
   ],
   "summary": {
@@ -102,6 +102,6 @@
     "excess": 4,
     "stranded": 1,
     "closed": 0,
-    "data_staleness_days": 1
+    "data_staleness_days": 0
   }
 }
