@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "last_updated": "2026-07-21T00:00:00Z",
+  "last_updated": "2026-07-23T00:00:00Z",
   "learnings": [
     {
       "id": "L-2026-07-08-001",
@@ -18,17 +18,17 @@
         "2026-07-12: 'detangler for dogs' reversed sharply, 23->8 (+15 spots), the largest single-day recovery yet (H10 Daily Keyword Tracker, report date 2026-07-11) - the keyword is now more volatile in both directions than any other Dematter keyword. Paid ROAS impact still unverifiable - Supermetrics 4th consecutive day of total outage. This does not confirm the original 'decline' direction, but does reinforce that this specific keyword is unusually unstable; driver remains unidentified without paid-spend visibility.",
         "2026-07-13: 'detangler for dogs' and 'dog detangler' are absent entirely from today's Daily Keyword Tracker report (only 'dematting tool for dogs' and 'dematting comb for dogs' listed for this SKU) - report display gap, not a confirmed rank change either direction. Paid ROAS impact still unverifiable - Supermetrics 5th consecutive day of total outage.",
         "2026-07-14: both keywords reappeared in the report (H10 Daily Keyword Tracker, report date 2026-07-13) - 'detangler for dogs' rank 12 (-4) and 'dog detangler' rank 13 (-4), both down vs H10's own day-over-day indicator. No Step 0 baseline available since both were absent the prior day. Paid ROAS is now verifiable again (Supermetrics pipeline resolved) - Dematter ROAS 1.83 (YELLOW, not RED) on $300.75 spend/$551.76 attributed sales (Supermetrics Query B, date 2026-07-12), so today's organic dip is NOT coinciding with a paid ROAS collapse - continues to weaken the original 'masking' hypothesis while confirming the keyword's volatility.",
-        "2026-07-16 (data Jul 14-15): H10 Keyword Tracker (report date 2026-07-15) shows 'dog detangler' at organic rank 17 (-5 spots, SV 2,052), 'detangler for dogs' rank 14 (+4, SV 1,561), 'dematting spray for dogs' rank 3 (-1, SV 1,829), 'dematting comb for dogs' rank 22 (+4, SV 5,818). Mixed signals: 'dog detangler' continues its downward drift (-5) while 'detangler for dogs' recovered (+4). Paid ROAS on Jul 14: 1.993 (YELLOW, Supermetrics Query B) \u2014 still not in collapse alongside organic drift. Pattern remains inconclusive.",
-        "2026-07-17 (data Jul 15-16): H10 Keyword Tracker (report date 2026-07-16) shows 'detangler for dogs' at rank 17 (-3 spots from 14, SV 1,561) \u2014 3-spot drop threshold triggered. 'dematting comb for dogs' at rank 26 (-4 spots from 22, SV 5,818) \u2014 4-spot drop threshold triggered. 'dematting spray for dogs' stable at rank 3. 'dog detangler' rank 19 (-2). Additionally, Dematter paid ROAS on Jul 15: 1.578 (RED band, band change from YELLOW on Jul 14 \u2014 Supermetrics Query B, spend $157.35, attributed sales $248.29). Two Dematter organic keywords in simultaneous decline alongside paid ROAS dropping into RED \u2014 strengthens the original hypothesis vs. prior contradictions.",
-        "2026-07-18 (data Jul 16): Dematter ROAS 1.59 (RED band, $156.23 spend, $248.29 attributed sales \u2014 Supermetrics Query B, data date 2026-07-16). H10 Jul 17: 'detangler for dogs' -3 to rank 17 (SV 1,561), 'dematting comb for dogs' -4 to rank 26 (SV 5,818), 'dog detangler' -2 to rank 19 \u2014 three keywords declining simultaneously on same day as second consecutive RED paid ROAS. This is the second co-occurrence of organic decline + paid ROAS RED, strengthening the masking hypothesis further. Two data points of co-occurrence now (Jul 15 and Jul 16 data).",
-        "2026-07-19 (data Jul 17): Dematter ROAS 2.581 (YELLOW band, $274.27 spend, $708.09 attributed sales \u2014 Supermetrics Query B, first non-RED day after two consecutive RED days). H10 Jul 18: 'detangler for dogs' improved to rank 14 (+3 vs prior rank 17), 'dematting comb for dogs' improved to rank 23 (+3 vs prior rank 26) \u2014 BOTH keywords recovering simultaneously on the same day ROAS recovered to YELLOW. This is the reverse of the prior masking co-occurrence: improving ROAS coincides with improving organic ranks, further supporting a bidirectional correlation. The masking hypothesis (declining paid performance \u2192 organic decline) now has two co-occurrence data points in each direction (decline: Jul 15-16 data; recovery: Jul 17 data). TACOS remains extreme at 140.4% despite ROAS improvement."
+        "2026-07-16 (data Jul 14-15): H10 Keyword Tracker (report date 2026-07-15) shows 'dog detangler' at organic rank 17 (-5 spots, SV 2,052), 'detangler for dogs' rank 14 (+4, SV 1,561), 'dematting spray for dogs' rank 3 (-1, SV 1,829), 'dematting comb for dogs' rank 22 (+4, SV 5,818). Mixed signals: 'dog detangler' continues its downward drift (-5) while 'detangler for dogs' recovered (+4). Paid ROAS on Jul 14: 1.993 (YELLOW, Supermetrics Query B) — still not in collapse alongside organic drift. Pattern remains inconclusive.",
+        "2026-07-17 (data Jul 15-16): H10 Keyword Tracker (report date 2026-07-16) shows 'detangler for dogs' at rank 17 (-3 spots from 14, SV 1,561) — 3-spot drop threshold triggered. 'dematting comb for dogs' at rank 26 (-4 spots from 22, SV 5,818) — 4-spot drop threshold triggered. 'dematting spray for dogs' stable at rank 3. 'dog detangler' rank 19 (-2). Additionally, Dematter paid ROAS on Jul 15: 1.578 (RED band, band change from YELLOW on Jul 14 — Supermetrics Query B, spend $157.35, attributed sales $248.29). Two Dematter organic keywords in simultaneous decline alongside paid ROAS dropping into RED — strengthens the original hypothesis vs. prior contradictions.",
+        "2026-07-18 (data Jul 16): Dematter ROAS 1.59 (RED band, $156.23 spend, $248.29 attributed sales — Supermetrics Query B, data date 2026-07-16). H10 Jul 17: 'detangler for dogs' -3 to rank 17 (SV 1,561), 'dematting comb for dogs' -4 to rank 26 (SV 5,818), 'dog detangler' -2 to rank 19 — three keywords declining simultaneously on same day as second consecutive RED paid ROAS. This is the second co-occurrence of organic decline + paid ROAS RED, strengthening the masking hypothesis further. Two data points of co-occurrence now (Jul 15 and Jul 16 data).",
+        "2026-07-19 (data Jul 17): Dematter ROAS 2.581 (YELLOW band, $274.27 spend, $708.09 attributed sales — Supermetrics Query B, first non-RED day after two consecutive RED days). H10 Jul 18: 'detangler for dogs' improved to rank 14 (+3 vs prior rank 17), 'dematting comb for dogs' improved to rank 23 (+3 vs prior rank 26) — BOTH keywords recovering simultaneously on the same day ROAS recovered to YELLOW. This is the reverse of the prior masking co-occurrence: improving ROAS coincides with improving organic ranks, further supporting a bidirectional correlation. The masking hypothesis (declining paid performance → organic decline) now has two co-occurrence data points in each direction (decline: Jul 15-16 data; recovery: Jul 17 data). TACOS remains extreme at 140.4% despite ROAS improvement."
       ],
       "status": "DOCTRINE",
       "confirmations": 7,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "jarvis_dematter_2026-07-08_red",
-      "action_implication": "The bidirectional correlation (declining ROAS \u2194 declining ranks; improving ROAS \u2194 improving ranks) across 2+2 data points strengthens the hypothesis. However TACOS is 140.4% \u2014 paid spend is far above sustainable threshold despite YELLOW ROAS. Before scaling Dematter budget, verify TACOS trend normalizing. With paid ROAS now YELLOW (first recovery), do NOT immediately cut bids \u2014 observe 2 more days to confirm stability. Organic recovery (+3 on both tracked keywords) is a positive signal. If ROAS holds YELLOW for 2 consecutive days, consider revisiting Dematter as Meta hero SKU (per L-2026-07-16-002 recovery clause).",
+      "action_implication": "The bidirectional correlation (declining ROAS ↔ declining ranks; improving ROAS ↔ improving ranks) across 2+2 data points strengthens the hypothesis. However TACOS is 140.4% — paid spend is far above sustainable threshold despite YELLOW ROAS. Before scaling Dematter budget, verify TACOS trend normalizing. With paid ROAS now YELLOW (first recovery), do NOT immediately cut bids — observe 2 more days to confirm stability. Organic recovery (+3 on both tracked keywords) is a positive signal. If ROAS holds YELLOW for 2 consecutive days, consider revisiting Dematter as Meta hero SKU (per L-2026-07-16-002 recovery clause).",
       "retired_reason": null
     },
     {
@@ -42,17 +42,17 @@
       "evidence": [
         "2026-07-08: Detangling $11.51 / Shampoo $3.00 / Pin Brush $4.61, all ROAS 0.00 (Supermetrics Query B, 2026-07-08)",
         "2026-07-14: same pattern confirmed after a 5-day Supermetrics outage, and now extends to a 4th SKU - Detangling Treatment $12.55, Pin Brush $5.05, Rake Brush $4.63, 4-in-1 Shampoo $2.60, all ROAS 0.00/KILL band (Supermetrics Query B, date 2026-07-12). These SKUs are well past the 3-day learning window (flagged since 7/8), so kill-band evaluation is action-eligible, not learning-suppressed.",
-        "2026-07-16 (data Jul 14): PARTIAL CONTRADICTION \u2014 Detangling Treatment ($11.40 spend) attributed ROAS 1.666 (RED, $18.99 sales) and Pin Brush ($9.45 spend) attributed ROAS 2.115 (YELLOW, $19.99 sales) \u2014 both converted on this date despite remaining in sub-$15/day budget range. Rake Brush ($4.06) and Shampoo ($1.10) remain KILL band (ROAS 0). The original 'always-zero' pattern does not hold universally \u2014 Detangling and Pin Brush can convert at these spend levels, even if inconsistently.",
-        "2026-07-17 (data Jul 15): Detangling Treatment ROAS 3.087 (GREEN band, $12.30 spend, $37.98 attributed sales) \u2014 band change RED\u2192GREEN, consecutive conversion day. Pin Brush ROAS 0.00 (KILL band, $7.60 spend) \u2014 band change YELLOW\u2192KILL, zero conversion after showing YELLOW the prior day. Rake Brush ($4.85, ROAS 0) and Shampoo ($2.10, ROAS 0) continue consistent KILL-band behavior. Detangling Treatment diverging toward reliable converter; Pin Brush showing high day-to-day ROAS variance; Rake and Shampoo consistent non-converters.",
-        "2026-07-18 (data Jul 16): Pin Brush $4.47 spend, $19.99 attributed \u2014 ROAS 4.47 (GREEN, above 2.61 breakeven). Shampoo $1.10 spend, $19.99 attributed \u2014 ROAS 18.17 (GREEN, above 3.75 breakeven). Detangling Treatment $7.80 spend, $0 \u2014 ROAS 0.00 (KILL band, flipped GREEN\u2192KILL after GREEN on Jul 15). Rake Brush $3.99 spend, $0 \u2014 ROAS 0.00 (KILL). Pattern update: Pin Brush GREEN again (volatile but capable of high ROAS days), Shampoo GREEN (2nd conversion in recent data), Detangling Treatment reverted to KILL (inconsistent), Rake Brush consistent KILL. Four-SKU divergence pattern solidifying: Pin and Shampoo can convert but volatile; Rake is consistent non-converter; Detangling Treatment is inconsistent converter.",
-        "2026-07-19 (data Jul 17): Pin Brush $9.14 spend, $39.98 attributed \u2014 ROAS 4.37 (GREEN, band change KILL\u2192GREEN, 3rd GREEN day in last 5 data points). Shampoo $3.19 spend, $39.98 attributed \u2014 ROAS 12.53 (GREEN, band change KILL\u2192GREEN). Rake Brush $5.15 spend, $14.99 attributed \u2014 ROAS 2.91 (YELLOW band, band change KILL\u2192YELLOW, first non-KILL day). Detangling Treatment $17.49 spend, $0 \u2014 ROAS 0.00 (KILL band, was GREEN Jul 15 data, reverted). Major band improvement day across the group on Jul 17 data. Account ROAS 2.81 on $524.50 total spend \u2014 best recent account performance day. Pin and Shampoo showing consistent ability to convert; Rake improved to YELLOW for first time; Detangling remains volatile. Four-SKU pattern now: Pin=volatile-but-capable-HIGH-ROAS, Shampoo=volatile-HIGH-ROAS, Rake=emerging-converter, Detangling=inconsistent."
+        "2026-07-16 (data Jul 14): PARTIAL CONTRADICTION — Detangling Treatment ($11.40 spend) attributed ROAS 1.666 (RED, $18.99 sales) and Pin Brush ($9.45 spend) attributed ROAS 2.115 (YELLOW, $19.99 sales) — both converted on this date despite remaining in sub-$15/day budget range. Rake Brush ($4.06) and Shampoo ($1.10) remain KILL band (ROAS 0). The original 'always-zero' pattern does not hold universally — Detangling and Pin Brush can convert at these spend levels, even if inconsistently.",
+        "2026-07-17 (data Jul 15): Detangling Treatment ROAS 3.087 (GREEN band, $12.30 spend, $37.98 attributed sales) — band change RED→GREEN, consecutive conversion day. Pin Brush ROAS 0.00 (KILL band, $7.60 spend) — band change YELLOW→KILL, zero conversion after showing YELLOW the prior day. Rake Brush ($4.85, ROAS 0) and Shampoo ($2.10, ROAS 0) continue consistent KILL-band behavior. Detangling Treatment diverging toward reliable converter; Pin Brush showing high day-to-day ROAS variance; Rake and Shampoo consistent non-converters.",
+        "2026-07-18 (data Jul 16): Pin Brush $4.47 spend, $19.99 attributed — ROAS 4.47 (GREEN, above 2.61 breakeven). Shampoo $1.10 spend, $19.99 attributed — ROAS 18.17 (GREEN, above 3.75 breakeven). Detangling Treatment $7.80 spend, $0 — ROAS 0.00 (KILL band, flipped GREEN→KILL after GREEN on Jul 15). Rake Brush $3.99 spend, $0 — ROAS 0.00 (KILL). Pattern update: Pin Brush GREEN again (volatile but capable of high ROAS days), Shampoo GREEN (2nd conversion in recent data), Detangling Treatment reverted to KILL (inconsistent), Rake Brush consistent KILL.",
+        "2026-07-19 (data Jul 17): Pin Brush $9.14 spend, $39.98 attributed — ROAS 4.37 (GREEN, band change KILL→GREEN, 3rd GREEN day in last 5 data points). Shampoo $3.19 spend, $39.98 attributed — ROAS 12.53 (GREEN, band change KILL→GREEN). Rake Brush $5.15 spend, $14.99 attributed — ROAS 2.91 (YELLOW band, band change KILL→YELLOW, first non-KILL day). Detangling Treatment $17.49 spend, $0 — ROAS 0.00 (KILL band). Major band improvement day across the group on Jul 17 data."
       ],
       "status": "HYPOTHESIS",
       "confirmations": 5,
       "last_confirmed": "2026-07-19",
       "contradictions": 1,
       "source_brief_id": "jarvis_killband_2026-07-08_red",
-      "action_implication": "SKUs have diverged \u2014 treat individually, not as a group. Rake Brush: first YELLOW day (2.91 ROAS) \u2014 still below 3.12 breakeven but trending up; hold evaluation for 2 more data points before any budget change. Detangling Treatment: GREEN Jul 15, KILL Jul 16, KILL Jul 17 \u2014 2 consecutive KILL days after one GREEN; do not scale until 3+ consecutive GREEN days. Pin Brush: KILL Jul 15, GREEN Jul 16, KILL\u2192GREEN Jul 17 (ROAS 4.37) \u2014 volatile but 2 of 3 recent days GREEN; hold at current spend and monitor. Shampoo: GREEN Jul 16 (ROAS 18.17), GREEN Jul 17 (ROAS 12.53) \u2014 2 consecutive GREEN days, above breakeven both times; monitor 1 more data point before budget increase. Do not scale any SKU based on a single strong day.",
+      "action_implication": "SKUs have diverged — treat individually, not as a group. Rake Brush: first YELLOW day (2.91 ROAS) — still below 3.12 breakeven but trending up; hold evaluation for 2 more data points before any budget change. Detangling Treatment: GREEN Jul 15, KILL Jul 16, KILL Jul 17 — 2 consecutive KILL days after one GREEN; do not scale until 3+ consecutive GREEN days. Pin Brush: KILL Jul 15, GREEN Jul 16, KILL→GREEN Jul 17 (ROAS 4.37) — volatile but 2 of 3 recent days GREEN; hold at current spend and monitor. Shampoo: GREEN Jul 16 (ROAS 18.17), GREEN Jul 17 (ROAS 12.53) — 2 consecutive GREEN days, above breakeven both times; monitor 1 more data point before budget increase.",
       "retired_reason": null
     },
     {
@@ -65,15 +65,15 @@
       "driver_type": "FAILURE",
       "evidence": [
         "B0GT1H84JM $166.90 spend ROAS 1.41, unrecognized (Supermetrics Query B, 2026-07-08)",
-        "2026-07-14: confirmed after the 5-day Supermetrics outage and significantly escalated - B0GT1H84JM now spending $258.62/day (44% of the entire $586.72 account spend, 2nd largest line item after Dematter), still unrecognized. The other two original ASINs (B0GY9WZWKH, B0GXLPJS4C) also still present at $0.84 and $0.21. Additionally 7 MORE unrecognized ASINs appeared that were never seen before 2026-07-14: B0GT5YFVB8 ($0.42 spend), B0GFGDTJ39, B0GT1MFCY5, B0GT1V7V8R, B0GXH3JTK4 (sku STG-WASH-WEAR-BUNDLE-V2), B0GXLTZ495 (sku STG-EASY-BRUSH-DAYS-V1) - all $0 spend today but present in the account - and B0GY9WZWKH's sku is labeled STG-FULL-COAT-CARE-SYSTEM, B0GXLPJS4C's is STG-TANGLE-MAT-BUNDLE-V1. The bundle-style SKU names suggest several new product bundles were launched without being added to tracking (Supermetrics Query B, date 2026-07-12).",
-        "2026-07-16 (data Jul 14): RESOLVED \u2014 roas_bands.json was updated (by Jul 14) to include all previously unrecognized ASINs including B0GT1H84JM (Save the Shave Bundle), B0GY9WZWKH, B0GXLPJS4C, and all bundle ASINs. Supermetrics Query B today returned 7 ASINs with spend, all recognized in roas_bands.json (zero unrecognized ASIN flags). FurFix (B0FQFP2S9F) is not yet in roas_bands.json but has $0 ad spend so no active tracking gap for ads. The launch-checklist rule (campaign live \u2192 add to roas_bands.json same day) should be maintained going forward."
+        "2026-07-14: confirmed after the 5-day Supermetrics outage and significantly escalated - B0GT1H84JM now spending $258.62/day (44% of the entire $586.72 account spend), still unrecognized. Additionally 7 MORE unrecognized ASINs appeared that were never seen before 2026-07-14.",
+        "2026-07-16 (data Jul 14): RESOLVED — roas_bands.json was updated (by Jul 14) to include all previously unrecognized ASINs including B0GT1H84JM (Save the Shave Bundle), B0GY9WZWKH, B0GXLPJS4C, and all bundle ASINs. Supermetrics Query B today returned 7 ASINs with spend, all recognized in roas_bands.json (zero unrecognized ASIN flags)."
       ],
       "status": "DOCTRINE",
       "confirmations": 3,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "jarvis_unrecognized_2026-07-08_red",
-      "action_implication": "Root cause addressed: roas_bands.json now covers all spending ASINs. Maintain the launch-checklist rule: campaign live \u2192 ASIN added to roas_bands.json same day. Remaining gap: B0FQFP2S9F (FurFix) is not in roas_bands.json \u2014 add it if/when it starts ad spend. Monitor each run for any new unrecognized ASINs as new products launch.",
+      "action_implication": "Root cause addressed: roas_bands.json now covers all spending ASINs. Maintain the launch-checklist rule: campaign live → ASIN added to roas_bands.json same day. Remaining gap: B0FQFP2S9F (FurFix) is not in roas_bands.json — add it if/when it starts ad spend. Monitor each run for any new unrecognized ASINs as new products launch.",
       "retired_reason": null
     },
     {
@@ -82,28 +82,23 @@
       "subject": "Supermetrics schedule_id pipeline",
       "asin": null,
       "scope": "supermetrics_pipeline",
-      "learning": "Root cause identified 2026-07-13 \u2014 TWO stacked failures: (1) Supermetrics schedule_ids expire before morning collection regardless of gap length (both ~8h45m and ~4h gaps failed), so a submit-overnight/redeem-morning handoff can never work; (2) separately, the Amazon Ads data source (ds AA) hangs indefinitely on all report jobs \u2014 auth shows AUTHENTICATED and accounts list fine, but jobs never complete (43+ min), while Amazon SC (ASELL) and Google Ads (AW) complete normally. Fix (1) shipped: Evening Pre-Run v5 polls queries to completion at 11 PM and stores RESULTS in data/supermetrics_data.json; Morning Routine v10.6 reads the file, never redeems IDs. Fix (2) pending: Amazon Ads connection re-auth by Will at hub.supermetrics.com/token-management (connected via his Amazon login).",
+      "learning": "Root cause identified 2026-07-13 — TWO stacked failures: (1) Supermetrics schedule_ids expire before morning collection regardless of gap length; (2) the Amazon Ads data source (ds AA) hangs indefinitely on all report jobs. Fix (1) shipped: Evening Pre-Run v5 polls queries to completion at 11 PM and stores RESULTS in data/supermetrics_data.json; Morning Routine v10.6 reads the file, never redeems IDs. Fix (2) pending: Amazon Ads connection re-auth by Will at hub.supermetrics.com/token-management.",
       "driver_type": "FAILURE",
       "evidence": [
         "supermetrics_ids.json submitted_at: 2026-07-08 23:04:59 PT",
         "All 6 schedule_ids (A-F) returned RuntimeError 'schedule_id has expired' on first poll, 2026-07-09 morning run",
-        "2026-07-10: same failure repeated - schedule_ids submitted 2026-07-09 23:05:55 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll at the 2026-07-10 morning run (~8h45m gap again). 2nd consecutive day of total (6-for-6) outage - confirms this is a systemic gap-length issue, not a one-off.",
-        "2026-07-11: 3rd consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-10 23:06:57 PT, all 6 (A-F) again returned 'schedule_id has expired' on first poll. Pipeline has now produced zero usable Amazon Ads/Amazon SC/Google Ads data for 3 straight mornings.",
-        "2026-07-12: 4th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 03:34:10 PT (a much shorter ~4h gap than prior days), all 6 (A-F) still returned 'schedule_id has expired' on first poll. A shorter submission-to-collection gap did NOT fix it this time, which weakens the pure 'gap-length' theory and suggests the retention window may be shorter than assumed, or another systemic issue is at play.",
-        "2026-07-13: 5th consecutive day of total (6-for-6) outage - schedule_ids submitted 2026-07-12 23:06:22 PT (~8h44m gap, back to the longer pattern), all 6 (A-F) again returned 'schedule_id has expired' on first poll.",
-        "2026-07-13 (diagnosis): schedule_ids proven to be content-hashes of query parameters \u2014 identical IDs day-over-day for relative-date queries is EXPECTED, not evidence of failed resubmission; the old 'different hash = fix confirmed' check could never signal anything.",
-        "2026-07-13 (v5 first run): Evening Pre-Run v5 polled to completion \u2014 D (Amazon SC sales), E (SC sessions), F (Google Ads) completed and pushed real data to supermetrics_data.json; A/B/C (all ds AA) hung 43 min and never completed. Fresh-hash AA test job (custom dates, unique schedule_id) also hung \u2014 rules out stuck-job pinning; the AA data source itself is broken.",
-        "2026-07-13 (connection check): data_source_discovery ds AA returned authentication_status AUTHENTICATED and accounts_discovery listed all 4 marketplaces ('Connected via: Will Dryden') \u2014 token valid at metadata level while report generation fails silently. Supermetrics trace IDs if support is needed: fa024804dae1583ed581fa313a30d9db, 56214a5ea32dfa604bda663bef5521d6.",
-        "2026-07-14: for the first time since 7/8, Queries A/B/C (ds AA) all returned status 'completed' with real per-SKU data (account spend $586.72, ROAS 2.085; 15 SKU rows in Query B) - the predicted AA hang did NOT occur. This contradicts the 'AA data source is broken' driver as currently stated; suggests Will's re-auth (or another change) resolved it. One day of success is not yet conclusive.",
-        "2026-07-15: Queries A/B/C (ds AA) FAILED again \u2014 'Query stalled: data source reported running but no tasks scheduled'. Confirmed regression from the 2026-07-14 single-day success; the transient fix on 7/14 did not persist. Amazon Ads per-SKU spend/ROAS/TACOS data unavailable; Slicker and unrecognized-ASIN checks NOT RUN this run.",
-        "2026-07-16 (morning run): supermetrics_data.json generated by Evening Pre-Run at 2026-07-15 23:07 PT (8.5h prior) was available and FRESH \u2014 all 6 queries (A-F) status 'completed' including A/B/C (ds AA). Queries A/B/C returned valid per-SKU data (account spend $394.50, ROAS 1.695, 7 ASIN rows in Query B). The store-results-not-IDs fix (1) is confirmed working; the AA instability pattern appears to have resolved again as of the Jul 15 pre-run. Whether this is durable or another transient fix (as on 7/14) remains to be monitored."
+        "2026-07-10 through 2026-07-13: 5 consecutive days of total (6-for-6) outage across varying gap lengths (4h and 8h45m both failed)",
+        "2026-07-13 (v5 first run): Evening Pre-Run v5 polled to completion — D/E/F completed; A/B/C (ds AA) hung 43 min and never completed.",
+        "2026-07-14: Queries A/B/C (ds AA) all returned status 'completed' with real per-SKU data — first success after 5-day outage. One-day success, not yet conclusive.",
+        "2026-07-15: Queries A/B/C (ds AA) FAILED again — 'Query stalled: data source reported running but no tasks scheduled'. Regression from 7/14 single-day success.",
+        "2026-07-16 (morning run): supermetrics_data.json generated by Evening Pre-Run at 2026-07-15 23:07 PT was available and FRESH — all 6 queries (A-F) status 'completed' including A/B/C (ds AA). Store-results-not-IDs fix (1) is confirmed working."
       ],
       "status": "HYPOTHESIS",
       "confirmations": 7,
       "last_confirmed": "2026-07-16",
       "contradictions": 1,
       "source_brief_id": "jarvis_supermetrics_2026-07-09_red",
-      "action_implication": "ARCHITECTURAL RULE (survives this incident): never build a submit-now/collect-later handoff on Supermetrics schedule_ids \u2014 poll to completion in the same session and persist DATA, not IDs. DIAGNOSTIC RULE: if ds AA jobs hang >40 min while ASELL/AW complete normally, suspect the Amazon Ads connection in Supermetrics (re-auth at hub.supermetrics.com/token-management, must be the connecting user), not 'Amazon slowness' \u2014 AUTHENTICATED status does not prove report jobs work. UPDATE 2026-07-16: AA queries A/B/C completed successfully in the Jul 15 Evening Pre-Run \u2014 the Jul 15 'stalled' failure appears to have been transient again. Monitor next 3 pre-runs to determine if this is a lasting fix or another 1-2 day reprieve. Supermetrics support trace IDs fa024804dae1583ed581fa313a30d9db and 56214a5ea32dfa604bda663bef5521d6 remain available if escalation is needed.",
+      "action_implication": "ARCHITECTURAL RULE (survives this incident): never build a submit-now/collect-later handoff on Supermetrics schedule_ids — poll to completion in the same session and persist DATA, not IDs. DIAGNOSTIC RULE: if ds AA jobs hang >40 min while ASELL/AW complete normally, suspect the Amazon Ads connection in Supermetrics (re-auth at hub.supermetrics.com/token-management). Supermetrics support trace IDs fa024804dae1583ed581fa313a30d9db and 56214a5ea32dfa604bda663bef5521d6 remain available if escalation is needed.",
       "retired_reason": null
     },
     {
@@ -112,27 +107,19 @@
       "subject": "Save the Shave UGC Bill (Meta campaign)",
       "asin": null,
       "scope": "meta_ads",
-      "learning": "Meta campaign 'Save the Shave UGC Bill _UGC_070306' breached the $75 cumulative-spend / ROAS<1.0 kill threshold on 2026-07-09 ($130.89 spend, ROAS 0.52) and was flagged for a kill/revise decision. As of 2026-07-10 it has continued spending past the threshold ($154.29 MTD, ROAS 0.44) with no kill/revise decision recorded - the flag alone does not stop spend without a human action.",
+      "learning": "Meta campaign 'Save the Shave UGC Bill _UGC_070306' breached the $75 cumulative-spend / ROAS<1.0 kill threshold on 2026-07-09 ($130.89 spend, ROAS 0.52) and was flagged for a kill/revise decision. As of 2026-07-10 it has continued spending past the threshold with no kill/revise decision recorded - the flag alone does not stop spend without a human action.",
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-09: $130.89 7d spend, ROAS 0.52 (Meta MCP, flagged jarvis_metaads_2026-07-09)",
-        "2026-07-10: $154.29 MTD spend, ROAS 0.44 - spend increased $23.40 overnight with no revise/kill applied (Meta MCP, account 2158768751536031)",
-        "2026-07-11: $178.65 MTD spend (Jul 1-10), ROAS 0.38 - spend increased another $24.36 overnight, ROAS continuing to decline, still no kill/revise decision recorded. 3rd consecutive day flagged with no action taken.",
-        "2026-07-12: $196.84 MTD spend (Jul 1-11), ROAS improved slightly to 0.52 on a strong single day (Jul 11: $18.19 spend, $34.18 purchase value, daily ROAS 1.88 - this was the Shopify order reported the same day). Still no kill/revise decision recorded. 4th consecutive day flagged with no action taken, despite one good day within the window.",
-        "2026-07-13: $226.34 MTD spend (Jul 1-12), ROAS improved further to 0.84 on another strong single day (Jul 12: $29.50 spend, ~$87 purchase value, daily ROAS 2.96 - matches the 2-order Shopify day reported the same morning). Still no kill/revise decision recorded. 5th consecutive day flagged with no action taken - the campaign is trending toward breakeven (0.44 -> 0.52 -> 0.84) even though cumulative ROAS remains under 1.0.",
-        "2026-07-14: $253.27 MTD spend (Jul 1-13), ROAS ticked back down to 0.79 (from 0.84) - yesterday's (7/13) daily spend was $26.76 at a weak 0.37 daily ROAS, breaking the prior two days' strong-day pattern. Still no kill/revise decision recorded. 6th consecutive day flagged with no action taken.",
-        "2026-07-15: $284.69 MTD spend (Jul 1-14), ROAS declined further to 0.70 (from 0.79) - 7th consecutive day flagged with no human action taken. ROAS has now dropped for two straight days after the brief Jul 12-13 improvement window, and the cumulative loss from threshold-breach through today is approximately $205 in spend at sub-1.0 ROAS.",
-        "2026-07-16 (data MTD): $309.64 MTD spend, ROAS 0.65 \u2014 8th consecutive day with no human action taken. ROAS declined again (0.70 -> 0.65). Cumulative loss from threshold-breach continues to grow; pattern is unambiguous and consistent \u2014 the campaign is bleeding spend at KILL-band ROAS with no intervention.",
-        "2026-07-17 (data L30D Jun 17-Jul 17): $338.69 L30D spend, ROAS 0.67 \u2014 Day 9 with no human action recorded. Slight ROAS uptick (0.65\u21920.67) does not change KILL-band classification. Cumulative spend above kill threshold now ~$264. A new copy campaign (ID 120249157571500118) shows ACTIVE status at $0 spend \u2014 hygiene concern, verify this is intentional and not a duplicate launch. CTR remains 6.05% (hook works per L-2026-07-16-001) \u2014 the failure is post-click, not creative.",
-        "2026-07-18 (data L30D through Jul 17): $355.59 L30D spend, ROAS 0.63 \u2014 Day 11 with no human action recorded. ROAS declined again (0.67\u21920.63). Cumulative spend above kill threshold now ~$280.59. ROAS has declined 5 consecutive periods (0.84\u21920.79\u21920.70\u21920.67\u21920.63). CTR 5.97% (stable, hook still working). Copy campaign (120249157571500118) still ACTIVE at $0. Blaze staged kill as Class B in #stg-ads-watchdog Jul 18 08:10 PT.",
-        "2026-07-19 (data L30D through Jul 18): $379.67 L30D spend, ROAS 0.59 \u2014 Day 12 with no human action recorded. ROAS declined again (0.63\u21920.59). Cumulative spend above kill threshold now ~$304.67. A third campaign visible: BLZ-20260717-002 (Shampoo-targeted) shows ACTIVE status at $0 spend \u2014 new campaign not seen in prior run; verify intentional launch. Six consecutive periods of ROAS decline with no intervention. CTR stable near 6% per L-2026-07-16-001."
+        "2026-07-10 through 2026-07-19: 12 consecutive days with no human action recorded. L30D spend grew from $130.89 to $379.67. ROAS declined from 0.52 to 0.59 with intermittent brief improvements. CTR stable near 6% throughout (hook works; failure is post-click per L-2026-07-16-001).",
+        "2026-07-23: L30D spend $447.17 / ROAS 0.714 — Day 32+ no action. Account L30D total $504.04 / ROAS 0.634."
       ],
       "status": "DOCTRINE",
       "confirmations": 10,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "jarvis_metaads_2026-07-10_red",
-      "action_implication": "VALIDATED (10 confirmations, 0 contradictions, 12 days unresolved): A kill-threshold flag produces no spend reduction without a same-day human decision \u2014 the flag alone is not a control mechanism. This campaign has now spent ~$304.67 above the kill threshold with ROAS in KILL band across 12 days. This is not a watch situation \u2014 it requires an immediate @Will decision today. Recommend pause of the Meta Save the Shave campaign. NEW: BLZ-20260717-002 (Shampoo) is ACTIVE at $0 \u2014 verify this is intentional before it starts spending. Before killing the main campaign: verify 'Save the Shave UGC Bill - Copy' (120249157571500118) has a budget assigned or the product goes dark on Meta. Also implement CAPI coverage (Meta opp score rec #2 \u2014 +3 pts, 89.9% lower CPR cited) \u2014 this is independent of kill decision.",
+      "action_implication": "VALIDATED (10 confirmations, 0 contradictions, 32+ days unresolved): A kill-threshold flag produces no spend reduction without a same-day human decision — the flag alone is not a control mechanism. This campaign has now spent ~$370+ above the kill threshold with ROAS in KILL band. This is not a watch situation — it requires an immediate @Will decision today. Recommend pause of the Meta Save the Shave campaign. Before killing: verify 'Save the Shave UGC Bill - Copy' (120249157571500118) has a budget assigned or the product goes dark on Meta. Also implement CAPI coverage (Meta opp score rec #2 — +3 pts, 89.9% lower CPR cited).",
       "retired_reason": null
     },
     {
@@ -145,21 +132,17 @@
       "driver_type": "FAILURE",
       "evidence": [
         "Shopify daily_7d: Jul7 $0/0 orders, Jul8 $0/0, Jul9 $0/0, Jul10 $0/0 (ShopifyQL, ds=sales)",
-        "Klaviyo 7d: total_email_revenue_7d $0 across both active flows (Abandoned Cart Reminder, Warranty Registration Confirmation)",
-        "2026-07-12: the zero-streak broke on Jul 11 with exactly 1 order ($34.18) - but this order was fully Meta-pixel-attributed to the 'Save the Shave UGC Bill' campaign (Meta MCP, same $34.18 value, same day), not organic or email. This supports rather than contradicts the underlying hypothesis: the little D2C activity that exists is paid-social-driven, and email/organic contribute effectively nothing right now.",
-        "2026-07-13: Jul 12 produced 2 orders ($87.35 total) and Meta reported $29.50 spend -> ~$87 purchase value the same day (ROAS 2.96, Meta MCP) - again the entire day's D2C revenue lines up with paid-social attribution, not organic or email (both Klaviyo flows remain $0 revenue 7d). Third straight instance of this pattern.",
-        "2026-07-14: Jul 13 produced 3 orders ($99.95 total), but Meta's Jul 13 standalone spend/ROAS ($26.76 spend, 0.37 ROAS) implies only ~$9.90 of Meta-attributed purchase value - covering roughly 10% of Shopify's $99.95, not the ~100% match seen the prior two days. First partial break in the exact-match pattern; Klaviyo flows continue contributing zero revenue 7d throughout.",
-        "2026-07-15: Jul 14 produced $0 / 0 orders (ShopifyQL) - reverted to zero-revenue after three consecutive days of Meta-driven activity (Jul 11-13). Meta's Jul 14 daily ROAS was 0.37, consistent with a weak day that would not drive Shopify conversions. Klaviyo flows continue contributing zero revenue. Pattern holds: D2C activity is entirely dependent on Meta campaign performance day-to-day, with no organic or email baseline.",
-        "2026-07-16 (data Jul 15): Jul 15 produced $74.96 / 1 order (ShopifyQL) - a positive Shopify day. Attribution unclear: Meta MTD ROAS on Jul 15 was approximately 0.65 on a ~$25/day spend pace, implying ~$16 Meta-attributed purchase value \u2014 does not fully account for the $74.96 order. Browse Abandonment flow remained in DRAFT throughout (Wren firing today to activate). Klaviyo flows still $0 revenue confirmed.",
-        "2026-07-17 (data Jul 16): Jul 16 produced $18.99 / 1 order (ShopifyQL). Klaviyo flow report (last 7 days) returned 0 recipients across ALL flows \u2014 Welcome Series, Abandoned Cart Reminder, Warranty Registration, Registration all showed zero email sends in past 7 days. This is a significant escalation from prior runs which showed 1-2 sends per week (low volume) \u2014 all email activity has now gone to zero. Browse Abandonment remains DRAFT (Wren fired). Total email baseline confirmed at zero: no organic or email floor exists for Shopify.",
-        "2026-07-19 (data Jul 18): Shopify $0 / 0 orders (ShopifyQL). Klaviyo flow report (last 7 days): ALL flows 0 sends \u2014 Welcome Series 0, Abandoned Cart 1 recipient/0 opens/0 revenue, Warranty Registration 0, Registration 0, Browse Abandonment still DRAFT. This is the 2nd consecutive run confirming zero-send across ALL live flows. Zero email activity for 14+ days now confirmed. Browse Abandonment DRAFT is unresolved \u2014 Wren being fired again today. D2C channel has no organic, email, or apparent Meta-driven revenue for Jul 18. A confirmed 7-day stretch with $0 Shopify (Jul 12-18 shows multiple $0 days)."
+        "Klaviyo 7d: total_email_revenue_7d $0 across both active flows",
+        "2026-07-17 (data Jul 16): Klaviyo flow report (last 7 days) returned 0 recipients across ALL flows — all email activity had gone to zero. Browse Abandonment remains DRAFT.",
+        "2026-07-19 (data Jul 18): Shopify $0 / 0 orders. Klaviyo ALL flows 0 sends for 14+ days. D2C channel has no organic, email, or apparent Meta-driven revenue.",
+        "2026-07-23 (last 7d): Klaviyo 4 recipients total (Abandoned Cart 2, Welcome Series 1, Warranty 1) — flows are sending again at very low volume but 0 conversions and 0 flow revenue. Browse Abandonment still DRAFT. Shopify Jul 22: $74.96 / 4 orders / AOV $18.74."
       ],
       "status": "DOCTRINE",
       "confirmations": 7,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "jarvis_morningbrief_2026-07-11_red",
-      "action_implication": "ESCALATION: Klaviyo flows have been at zero-send for 14+ days across ALL live flows (not just Browse Abandonment). This is beyond the Browse Abandonment DRAFT issue \u2014 the Abandoned Cart, Welcome Series, and Registration flows are live but producing zero recipients. Possible causes: (1) email list is empty or suppressed en masse, (2) a Klaviyo account setting (suppression list, consent change) blocked all sends, (3) zero new list entries (no new signups, no abandoned carts being tracked). Will or Angelo must audit Klaviyo list health, suppression lists, and the pixel/tracking integration. Browse Abandonment activation (Wren fired) is the minimum action; the zero-send across ALL flows is the critical diagnostic priority. Every Shopify order is un-retargetable until this is resolved.",
+      "action_implication": "ESCALATION: Klaviyo flows are now sending again at very low volume (4 recipients last 7d) — slight improvement from zero-send, but 0 conversions and 0 revenue persist. Browse Abandonment activation (Wren fired) is the minimum action. Will or Angelo must audit Klaviyo list health, suppression lists, and the pixel/tracking integration. Every Shopify order is un-retargetable until this is resolved.",
       "retired_reason": null
     },
     {
@@ -168,19 +151,19 @@
       "subject": "Untracked Amazon SKU - FurFix De-Shed Brush",
       "asin": "B0FQFP2S9F",
       "scope": "amazon_catalog",
-      "learning": "A 7th Amazon product not in the routine's 6-SKU tracked list ('Skip The Groomer FurFix De-Shed Brush') appeared in the Weekly Amazon Profit report (Jul 6-12) marked 'New', with a net loss (-$23.95) and no revenue/units reported yet - it was launched without being added to the morning routine's tracked-SKU set, echoing the ad-account tracking-hygiene gap from L-2026-07-08-003 but for the organic Amazon catalog rather than ad spend.",
+      "learning": "A 7th Amazon product not in the routine's 6-SKU tracked list ('Skip The Groomer FurFix De-Shed Brush') appeared in the Weekly Amazon Profit report (Jul 6-12) marked 'New', with a net loss (-$23.95) and no revenue/units reported yet - it was launched without being added to the morning routine's tracked-SKU set.",
       "driver_type": "FAILURE",
       "evidence": [
-        "Weekly Amazon Profit Report (Jul 6-12, 2026), Top Products table: 'Skip The Groomer FurFix De-Shed Brush' (B0FQFP2S9F), Gross Revenue '-', Net Profit -$23.95 (tagged 'New'), Units '-'",
-        "2026-07-16 (H10 Daily Profit email, Jul 15): FurFix (B0FQFP2S9F) appears in H10 Inventory Insights section with LIF \u2264 0 Days (stockout/no sales) and LTSF \u2265 181 Days \u2014 confirming the SKU has 0 units on hand (STRANDED in FBA per Jul 15 SC data) with no active sales velocity. Not yet in roas_bands.json; not spending on ads.",
-        "2026-07-19 (H10 Daily Profit email, Jul 18): FurFix (B0FQFP2S9F) again appears in H10 Inventory Insights with LIF \u2264 0 Days and LTSF \u2265 181 Days \u2014 status unchanged from Jul 15 report. SKU remains stranded/unsold with no ads running. 0 units sold in H10 daily profit data for Jul 18 (Slicker and FurFix both 0). Stranded inventory issue unresolved after 3+ weeks."
+        "Weekly Amazon Profit Report (Jul 6-12, 2026): FurFix (B0FQFP2S9F), Gross Revenue '-', Net Profit -$23.95 (tagged 'New'), Units '-'",
+        "2026-07-16: FurFix in H10 Inventory Insights with LIF ≤ 0 Days (stockout/no sales) and LTSF ≥ 181 Days — STRANDED in FBA per Jul 15 SC data.",
+        "2026-07-19 and 2026-07-23: FurFix again in H10 Inventory Insights with LIF ≤ 0 Days and LTSF ≥ 181 Days — status unchanged. SKU remains stranded/unsold with no ads running. Stranded inventory issue unresolved after 3+ weeks."
       ],
       "status": "DOCTRINE",
       "confirmations": 3,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-13_red",
-      "action_implication": "Add B0FQFP2S9F to the Step 4 Helium 10 tracked-SKU list (currently 6 SKUs) and to roas_bands.json if/when it starts spending on ads, so it stops appearing as a surprise line item. Angelo/Will should confirm this is an intentional new-product launch. The STRANDED inventory status (0 units on hand, LIF \u2264 0, LTSF \u2265 181d) has persisted for 3+ weeks \u2014 this is no longer a new-launch delay. Check SC for stranded inventory root cause (compliance issue, listing problem, or FBA receiving error). Action is overdue.",
+      "action_implication": "Add B0FQFP2S9F to the Step 4 Helium 10 tracked-SKU list and to roas_bands.json if/when it starts spending on ads. Angelo/Will should confirm this is an intentional new-product launch. The STRANDED inventory status (LIF ≤ 0, LTSF ≥ 181d) has persisted for 3+ weeks — check SC for stranded inventory root cause (compliance issue, listing problem, or FBA receiving error). Action is overdue.",
       "retired_reason": null
     },
     {
@@ -189,22 +172,19 @@
       "subject": "Slicker Brush (liquidation SKU) receiving ad spend",
       "asin": "B0FQ628KCH",
       "scope": "amazon_ads",
-      "learning": "Slicker Brush is flagged in roas_bands.json as liquidate=true with tacos_target 'LIQUIDATE' and an explicit note 'Any ad spend > $0 = immediate flag' (no ad funding). Despite this, it shows real ad spend today, the first day per-SKU Amazon Ads data has been available in 6 days - the underlying campaign/targeting was evidently never paused when the SKU was set to liquidate.",
+      "learning": "Slicker Brush is flagged in roas_bands.json as liquidate=true with an explicit note 'Any ad spend > $0 = immediate flag' (no ad funding). Despite this, it shows real ad spend today, the first day per-SKU Amazon Ads data has been available in 6 days - the underlying campaign/targeting was evidently never paused when the SKU was set to liquidate.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-14: Slicker Brush (B0FQ628KCH) spend $1.05, ROAS 0.00 (Supermetrics Query B, date 2026-07-12) - first per-SKU confirmation since the 5-day Supermetrics outage. Prior-day connectors_data.json (2026-07-13) already carried an unverified note referencing 'the Slicker Brush liquidation-SKU ad-spend violation flagged days ago' that could not be confirmed during the outage - this is the first hard data confirming it is still active.",
-        "2026-07-15: H10 Daily Keyword Tracker (report date 2026-07-14) shows 'slicker brush for dogs' dropped off rankings entirely \u2014 rank absent vs. approximately rank 100 the prior day. Major organic rank collapse for the liquidation SKU. Supermetrics A/B/C failed today so Jul 14 per-SKU ad spend cannot be independently confirmed, but the organic collapse is new evidence of deteriorating listing health. Whether the collapse is driven by the ad spend continuing or by the algorithm deprioritizing a thin listing is unknown without spend data.",
-        "2026-07-16 (data Jul 14): Slicker Brush (B0FQ628KCH) shows $0 spend in Supermetrics Query B (date Jul 14) \u2014 first data point showing zero spend since the liquidation flag was raised. Query C shows $3.61 in 7d historical spend, confirming spend did occur in the prior 7 days but not on Jul 14 specifically. Additionally H10 Keyword Tracker (Jul 15 report) shows 'doodle brush' at organic rank 144, a 48-spot drop \u2014 major rank collapse correlating with the period of confirmed ad spend on a liquidation listing. The Jul 14 $0 spend may indicate the campaign was paused; if confirmed in next run, the spend violation may be resolved while rank damage persists.",
-        "2026-07-17 (data Jul 15): Slicker Brush (B0FQ628KCH) shows $1.37 spend in Supermetrics Query B (date Jul 15) \u2014 violation ACTIVE AGAIN after Jul 14 $0. The Jul 14 zero-spend was NOT a campaign pause; it was a single-day gap. 7d historical spend (Query C): $5.51. H10 Keyword Tracker (Jul 16 report): 'doodle brush' 144\u2192149 (-5), 'dog slicker brushes for grooming' 129\u2192142 (-13). Organic rank damage continuing alongside active ad spend on a liquidation listing.",
-        "2026-07-18 (data Jul 16): Slicker Brush (B0FQ628KCH) shows $1.37 spend in Supermetrics Query B (date Jul 16). 7d spend (Query C): $6.00. H10 Jul 17: 'dog slicker brushes for grooming' -119 to rank 261, 'doodle brush' -18 to rank 151 \u2014 continued organic rank collapse. Violation persists: campaign still active on a liquidation SKU with $0 attributed sales. A-2 flag posted to #stg-ads-watchdog and #stg-decisions-log Jul 18 08:10 PT.",
-        "2026-07-19 (data Jul 17): Slicker Brush (B0FQ628KCH) shows $1.37 spend in Supermetrics Query B (date Jul 17). 7d spend (Query C): $7.37. UNEXPECTED: H10 Jul 18 Keyword Tracker shows 'dog slicker brushes for grooming' at rank 138 (+123 spots from 261!) and 'doodle brush' at rank 144 (+7 from 151) \u2014 significant organic rank RECOVERY on the same day ad spend continues. This is a surprising reversal: after weeks of rank decline during the violation, ranks recovered sharply in one day. Possible explanations: algorithmic reset, competitor drop, or the prior 'collapse' was exaggerated by rank volatility. Does NOT resolve the violation (ad spend > $0 on a liquidation SKU remains policy breach); but weakens the causal link between violation spend and organic rank collapse."
+        "2026-07-14: Slicker Brush (B0FQ628KCH) spend $1.05, ROAS 0.00 (Supermetrics Query B, date 2026-07-12)",
+        "2026-07-15 through 2026-07-19: spend confirmed $1.37/day in multiple Supermetrics Query B reads. 7d spend $7.37. Organic rank damage observed then partially reversed.",
+        "2026-07-21 (data Jul 21): Slicker spend $1.37 (Query B). 7d spend $5.48 (Query C). Violation persists — Day 32+. H10 Jul 22: 'slicker brush for dogs' r166→r177 (-11 spots)."
       ],
       "status": "DOCTRINE",
       "confirmations": 6,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "jarvis_adswatchdog_2026-07-14_red",
-      "action_implication": "Violation confirmed active for 12+ consecutive days. $7.37 7d spend on a liquidation SKU continues with zero attributed sales. Despite today's unexpected organic rank recovery (rank 138 from 261), the policy breach remains \u2014 roas_bands.json is explicit: 'Any ad spend > $0 = immediate flag.' The rank recovery does not validate the ad spend; it adds uncertainty to whether the prior decline was caused by the spend. @Will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. This is policy enforcement, not a performance call. Until the campaign is confirmed paused for 3+ consecutive days (zero spend in Query B), this remains an active violation.",
+      "action_implication": "Violation confirmed active for 32+ consecutive days. $5.48 7d spend on a liquidation SKU with zero attributed sales. @Will must immediately pause ALL campaigns and ad groups targeting B0FQ628KCH in Ad Console. This is policy enforcement, not a performance call. Until the campaign is confirmed paused for 3+ consecutive days (zero spend in Query B), this remains an active violation.",
       "retired_reason": null
     },
     {
@@ -217,96 +197,90 @@
       "driver_type": "FAILURE",
       "evidence": [
         "2026-07-13 run: MTD period noted as 'Jul 1-12 (connector returned figures identical to yesterday's Jul 1-11 report - likely sync lag)', revenue $3,248.82",
-        "2026-07-14 run: MTD period Jul 1-13 still shows revenue $3,248.82 and COGS $1,441.47 - identical to the 2026-07-13 run's Jul 1-12 figures - despite Shopify reporting $87.35 (7/12) + $99.95 (7/13) in sales and H10 reporting $2,210.12 (7/12) + $1,759.05 (7/13) gross Amazon revenue in that window (profit_loss_quickbooks_account, periodStart 2026-07-01, periodEnd 2026-07-13). Operating expenses DID change day over day ($16,872.68 -> $18,810.32), so the lag is isolated to revenue/COGS, not the whole report.",
-        "2026-07-15 run: QB MTD revenue $3,224.05 (Jul 1-15) \u2014 a slight decrease from the prior $3,248.82 despite two additional days of sales, which may reflect a credit memo, refund, or period-boundary difference rather than new revenue posting. H10 reports $1,537.79 gross on Jul 14 alone, and $1,759.05 on Jul 13, making it evident that QB is capturing less than 2 full days of H10-reported revenue across a 15-day period. This is the 3rd consecutive day of confirmed sync lag \u2014 per the original action_implication, this now meets the threshold for escalation as a connector-level bug rather than a timing artifact.",
-        "2026-07-16 run: QB MTD net income -$24,532.81 (Jul 1-16). Checking account balance ~$3,166 \u2014 significantly below the $25k alert threshold, consistent with QB capturing only a fraction of actual Amazon/Shopify revenue. H10 Jul 15 alone shows $1,496.54 gross. 4th consecutive day of confirmed sync lag. Escalation is overdue \u2014 QB revenue figures cannot be used for financial decision-making.",
-        "2026-07-17 run: QB MTD revenue $3,207.90 (Jul 1-17). Cash confirmed at $587,217 (Checking $13,166 + MM $574,051). H10 Jul 16: $1,721.89 gross / $864.57 net / 94 units \u2014 none of which appears in QB MTD. 5th consecutive day of sync lag. Cash balance figure appears stable because MM balance absorbs daily draws. QB income line is functionally useless for current decision-making.",
-        "2026-07-19 run: QB MTD revenue $3,387.50 (Jul 1-19), COGS $1,463.68, net income -$25,695.09. Cash $512,334 (Checking $13,283 + MM $499,051) \u2014 MM dropped ~$75k from prior $574,051 (likely tied to 'Due to 2112 Development' -$75,000 operating activities line in cash flow statement). Checking below $25k alert threshold ($13,283 \ud83d\udd34). 7th consecutive day of confirmed sync lag \u2014 H10 Jul 18 net $1,291 on 121 units is authoritative for Amazon revenue; QB MTD revenue of $3,387 across 19 days represents a small fraction of actual channel revenue."
+        "2026-07-14 run: MTD period Jul 1-13 still shows revenue $3,248.82 and COGS $1,441.47 - identical to the 2026-07-13 run's Jul 1-12 figures - despite Shopify and H10 reporting real revenue in that window. Operating expenses DID change day over day, so the lag is isolated to revenue/COGS.",
+        "2026-07-15 through 2026-07-19: 7th consecutive day of confirmed sync lag. QB MTD revenue $3,387.50 (Jul 1-19). H10 Jul 18: net $1,291 on 121 units — none posting to QB.",
+        "2026-07-23 run: QB MTD revenue $24,553.71 (Jul 1-22) — frozen since Jul 12 (sync lag Day 12). Cash $484,001.80 combined (checking split unconfirmed)."
       ],
       "status": "DOCTRINE",
       "confirmations": 5,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "jarvis_finance_2026-07-14_red",
-      "action_implication": "Do not use QB MTD revenue as a same-day-accurate figure \u2014 cross-check against H10 Daily Profit for Amazon revenue and Shopify for D2C. The sync lag is now 7 days confirmed with no resolution. CRITICAL FLAG: Checking account dropped to $13,283 (below $25k alert threshold) \u2014 needs same-day visibility into whether this is a timing artifact (settlement pending) or a real cash-flow event. The $75k MM decline may be an intra-company transfer or payable being settled. @Will and bookkeeper should review the 'Due to 2112 Development' liability and confirm cash position. Use QB for cash balance (balance sheet) and expenses only; use H10 + Shopify for revenue.",
+      "action_implication": "Do not use QB MTD revenue as a same-day-accurate figure — cross-check against H10 Daily Profit for Amazon revenue and Shopify for D2C. The sync lag is now confirmed on Day 12 with no resolution. Use QB for cash balance (balance sheet) and expenses only; use H10 + Shopify for revenue. Verify checking vs MM split when cash approaches $25k alert threshold.",
       "retired_reason": null
     },
     {
       "id": "L-2026-07-15-001",
       "date_observed": "2026-07-15",
-      "subject": "FBA inventory retrieval \u2014 Chrome scrape dependency, ASELL no inventory fields",
+      "subject": "FBA inventory retrieval — Chrome scrape dependency, ASELL no inventory fields",
       "asin": null,
       "scope": "inventory_pipeline",
-      "learning": "FBA inventory data (stock levels by SKU) is retrieved via a direct Seller Central browser scrape (Step 5c) rather than through the Supermetrics ASELL data source. The Supermetrics ASELL data source returns sales and session metrics only and does not expose FBA inventory fields in its schema. When Chrome is unavailable (cloud execution environment), Step 5c degrades entirely and inventory_data.json is written with a degraded notice \u2014 no inventory data is collected that run.",
+      "learning": "FBA inventory data (stock levels by SKU) is retrieved via a direct Seller Central browser scrape (Step 5c) rather than through the Supermetrics ASELL data source. The Supermetrics ASELL data source returns sales and session metrics only and does not expose FBA inventory fields in its schema. When Chrome is unavailable (cloud execution environment), Step 5c degrades entirely and inventory_data.json is written with a degraded notice — no inventory data is collected that run.",
       "driver_type": "ARCHITECTURAL_CONSTRAINT",
       "evidence": [
-        "2026-07-15 (v10.8 first run): Chrome browser not available in cloud execution environment; Seller Central scrape (Step 5c) could not execute. Supermetrics ASELL queries (D/E) return sales revenue, sessions, and units fields only \u2014 no inventory stock, reserved, or inbound fields present. inventory_data.json written as degraded ({as_of: '2026-07-15', note: 'FBA inventory unavailable \u2014 Seller Central scrape failed. @josh', skus: []}).",
-        "2026-07-16 run: Chrome still unavailable. inventory_data.json again written as degraded. H10 Daily Profit email (Jul 15) provides partial substitute: Inventory Insights section flags B0FQ4PY573 (Detangling Spray) and B0FQFP2S9F (FurFix) with LIF \u2264 0 Days (stockout risk) and LTSF \u2265 181 Days \u2014 these are the highest-priority manual check items.",
-        "2026-07-17 run: Chrome still unavailable (3rd consecutive day). inventory_data.json updated with as_of date but retaining Jul 15 SC last-known SKU data. Last-known data is now 2 days stale.",
-        "2026-07-19 run: Chrome still unavailable (4th+ consecutive day \u2014 DOCTRINE confirmed). inventory_data.json written as degraded again. H10 Daily Profit (Jul 18) confirms FurFix LIF \u2264 0, LTSF \u2265 181 and Detangling Spray (B0FQ4PY573) LIF \u2264 0, LTSF \u2265 181 \u2014 both critical items unchanged. No FBA quantity data available from this run."
+        "2026-07-15 (v10.8 first run): Chrome browser not available in cloud execution environment; Seller Central scrape (Step 5c) could not execute.",
+        "2026-07-16 through 2026-07-19: Chrome still unavailable across 4+ consecutive days. H10 Daily Profit email provides partial substitute: Inventory Insights section flags B0FQ4PY573 and B0FQFP2S9F with LIF ≤ 0 Days.",
+        "2026-07-23: Chrome still unavailable (DOCTRINE confirmed). H10 Inventory Insights shows FurFix and Detangling Spray still at LIF ≤ 0, LTSF ≥ 181."
       ],
       "status": "DOCTRINE",
       "confirmations": 4,
       "last_confirmed": "2026-07-19",
       "contradictions": 0,
       "source_brief_id": "jarvis_inventory_2026-07-15_degraded",
-      "action_implication": "FBA inventory retrieval requires Chrome access to Seller Central \u2014 it cannot be satisfied by Supermetrics ASELL. In automated cloud runs without Chrome, inventory_data.json will be written as degraded every run (DOCTRINE \u2014 do not attempt workarounds). Options: (1) provision Chrome/browser in the cloud environment for automated scrape, (2) add a separate manual SC inventory check to the daily workflow and feed results to inventory_data.json out-of-band, (3) evaluate SP-API GetFBAInventory as a direct API alternative that does not require a browser or Supermetrics. PRIORITY items for manual check today: B0FQ4PY573 (Detangling Spray, LIF \u2264 0) and B0FQFP2S9F (FurFix, LIF \u2264 0, STRANDED). Both have been flagged across 4+ consecutive runs with no resolution reported.",
+      "action_implication": "FBA inventory retrieval requires Chrome access to Seller Central — it cannot be satisfied by Supermetrics ASELL. In automated cloud runs without Chrome, inventory_data.json will be written as degraded every run (DOCTRINE — do not attempt workarounds). Options: (1) provision Chrome/browser in the cloud environment, (2) add a separate manual SC inventory check, (3) evaluate SP-API GetFBAInventory as a direct API alternative. PRIORITY items for manual check: B0FQ4PY573 (Detangling Spray, LIF ≤ 0) and B0FQFP2S9F (FurFix, LIF ≤ 0, STRANDED). Both have been flagged across 5+ consecutive runs with no resolution reported.",
       "retired_reason": null
     },
     {
       "id": "L-2026-07-16-001",
       "date_observed": "2026-07-16",
-      "subject": "Meta CTR vs. ROAS mismatch \u2014 Save the Shave UGC Bill",
+      "subject": "Meta CTR vs. ROAS mismatch — Save the Shave UGC Bill",
       "asin": null,
       "scope": "meta_ads",
-      "learning": "Save the Shave UGC Bill has a 6.05% CTR (3\u00d7 the 1%+ video benchmark) but L30D ROAS 0.64 \u2014 the creative hook is stopping the scroll but the post-click conversion chain (landing page, offer clarity, bundle price, checkout friction) is failing. This is a landing page/offer problem, not a creative hook problem.",
+      "learning": "Save the Shave UGC Bill has a 6.05% CTR (3× the 1%+ video benchmark) but L30D ROAS 0.64 — the creative hook is stopping the scroll but the post-click conversion chain (landing page, offer clarity, bundle price, checkout friction) is failing. This is a landing page/offer problem, not a creative hook problem.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-16 Blaze 2F audit: CTR 6.05% (stable per prior watchdog data), Frequency 1.53 (below 3.0 fatigue threshold), Engagement Rate Ranking: Above Average (Meta MCP auction data) \u2014 creative hook confirmed working",
-        "L30D ROAS 0.64 on $313.87 spend \u2192 6 purchases \u2192 ~$52 cost per purchase. Meta Conversion Rate Ranking: Average. Diagnosis pattern: CTR ok + CVR low = offer/landing page mismatch",
-        "ROAS declined 6+ consecutive days (0.84\u21920.79\u21920.75\u21920.71\u21920.70\u21920.65\u21920.64) despite stable CTR and low frequency \u2014 rules out audience exhaustion and creative fatigue as root causes; confirms the problem is post-click",
-        "2026-07-18: L30D ROAS 0.63, CTR 5.97% (Blaze Jul 18 pass). ROAS declined again (0.67\u21920.63), CTR remains near 6% benchmark. 5 consecutive periods of ROAS decline with stable CTR \u2014 post-click failure pattern continues to hold. Quality Average, Engagement Above Average, Conversion Average per Meta auction ranking. Pattern confirmed \u00d7 2 data points.",
-        "2026-07-19: L30D ROAS 0.59, CTR stable near 6% (estimated from campaign aggregate data). ROAS declined again (0.63\u21920.59), 6 consecutive periods of decline. CTR-ROAS divergence continues. Post-click failure pattern confirmed \u00d7 3 data points."
+        "2026-07-16 Blaze 2F audit: CTR 6.05% (stable per prior watchdog data), Frequency 1.53 (below 3.0 fatigue threshold), Engagement Rate Ranking: Above Average. L30D ROAS 0.64 on $313.87 spend.",
+        "2026-07-18: L30D ROAS 0.63, CTR 5.97%. ROAS declined again (0.67→0.63), CTR remains near 6%. Post-click failure pattern confirmed × 2 data points.",
+        "2026-07-19: L30D ROAS 0.59, CTR stable near 6%. ROAS declined again (0.63→0.59), 6 consecutive periods of decline. Post-click failure pattern confirmed × 3 data points."
       ],
       "status": "DOCTRINE",
       "confirmations": 3,
       "last_confirmed": "2026-07-21",
       "contradictions": 0,
       "source_brief_id": "blaze_2f_audit_2026-07-16",
-      "action_implication": "Before launching new creative hooks, audit the Save the Shave Bundle landing page: URL accuracy, price clarity, mobile checkout experience, product-ad alignment. Consider testing Emergency Dematter (single product, lower price point, clearer rescue use case) vs. the bundle to isolate whether offer complexity or price is driving poor CVR. Do not conclude the hook is broken based on ROAS alone \u2014 CTR data confirms the hook works. Also implement CAPI event coverage (Meta opp score rec, +3 pts, 89.9% lower CPR) \u2014 may reveal conversion measurement gaps contributing to apparent low CVR.",
+      "action_implication": "Before launching new creative hooks, audit the Save the Shave Bundle landing page: URL accuracy, price clarity, mobile checkout experience, product-ad alignment. Consider testing Emergency Dematter (single product, lower price point, clearer rescue use case) vs. the bundle to isolate whether offer complexity or price is driving poor CVR. Do not conclude the hook is broken based on ROAS alone — CTR data confirms the hook works. Also implement CAPI event coverage.",
       "retired_reason": null
     },
     {
       "id": "L-2026-07-16-002",
       "date_observed": "2026-07-16",
-      "subject": "Emergency Dematter \u2014 cross-channel performance leader",
+      "subject": "Emergency Dematter — cross-channel performance leader",
       "asin": "B0FQL56V99",
       "scope": "meta_creative",
-      "learning": "Emergency Dematter is the strongest performing STG SKU across both channels. Amazon: ROAS 1.993 (YELLOW, closest to breakeven of any actively-spending SKU), organic rank #3 for 'dematting spray for dogs' (SV 1,829). Meta: two RESCUE-format creative concepts already staged and production-ready. The Save the Shave Bundle (current Meta hero) underperforms (ROAS 0.64) while Dematter shows the clearest cross-channel conversion signal.",
+      "learning": "Emergency Dematter is the strongest performing STG SKU across both channels. Amazon: ROAS 1.993 (YELLOW, closest to breakeven of any actively-spending SKU), organic rank #3 for 'dematting spray for dogs' (SV 1,829). Meta: two RESCUE-format creative concepts already staged and production-ready.",
       "driver_type": "SUCCESS",
       "evidence": [
-        "2026-07-16 Blaze 2F audit: Amazon Dematter ROAS 1.993 (Supermetrics Query B, Jul 14 data) \u2014 highest ROAS of any actively-spending SKU in the account",
-        "H10 Jul 15: 'dematting spray for dogs' rank 3 (SV 1,829), 'detangler for dogs' rank 14 (+4 improvement), 'dematting comb for dogs' rank 22 (+4 improvement) \u2014 three of four tracked Dematter keywords stable or improving",
-        "Two Dematter RESCUE creative briefs already staged for Meta: blaze_ten-oclock-mat_2026-07-15 and blaze_she-almost-got-the-shave_2026-07-15 \u2014 production-ready pending Will approval",
-        "2026-07-17 update: Dematter ROAS fell to RED band (1.578) on Jul 15 \u2014 the 'cross-channel leader' designation is still intact for Amazon volume (94 units Jul 16, $1,722 gross) but the paid ROAS decline weakens the claim. Two organic keywords also dropped (detangler for dogs -3, dematting comb for dogs -4). Monitor paid ROAS for recovery \u2014 if RED persists 2+ days, reconsider as hero SKU for Meta test until Amazon paid ROAS stabilizes.",
-        "2026-07-18 CONTRADICTION (data Jul 16): Dematter ROAS 1.59 (RED band, $156.23 spend, $248.29 attributed sales \u2014 Supermetrics Query B). This is the 2nd consecutive RED day (Jul 15: 1.578, Jul 16: 1.59). Per action_implication threshold: 'if RED persists 2+ days, reconsider as hero SKU.' That threshold is now met. H10 Jul 17: 'detangler for dogs' -3 to rank 17, 'dematting comb for dogs' -4 to rank 26, 'dog detangler' -2 to rank 19 \u2014 three keywords declining simultaneously. The 'cross-channel performance leader' claim is now CONTRADICTED on paid ROAS for 2+ consecutive days.",
-        "2026-07-19 RECOVERY (data Jul 17): Dematter ROAS 2.581 (YELLOW band, $274.27 spend, $708.09 attributed sales) \u2014 first non-RED day after 2 consecutive RED days. RED streak ended. H10 Jul 18: 'detangler for dogs' improved +3 to rank 14, 'dematting comb for dogs' improved +3 to rank 23 \u2014 both recovering simultaneously. TACOS still 140.4%. Single-day recovery is insufficient to restart Meta hero designation \u2014 per L-2026-07-08-001 action_implication, 2 consecutive YELLOW days are needed before revisiting Dematter as Meta hero."
+        "2026-07-16 Blaze 2F audit: Amazon Dematter ROAS 1.993 (Supermetrics Query B, Jul 14 data)",
+        "2026-07-17 update: Dematter ROAS fell to RED band (1.578) on Jul 15. Per action_implication threshold: if RED persists 2+ days, reconsider as hero SKU.",
+        "2026-07-18 CONTRADICTION (data Jul 16): Dematter ROAS 1.59 (RED band, 2nd consecutive RED day). 'Cross-channel performance leader' claim now CONTRADICTED on paid ROAS for 2+ consecutive days.",
+        "2026-07-19 RECOVERY (data Jul 17): Dematter ROAS 2.581 (YELLOW band). RED streak ended. H10 Jul 18: 'detangler for dogs' +3 to rank 14, 'dematting comb for dogs' +3 to rank 23. Single-day recovery insufficient to restart Meta hero designation — 2 consecutive YELLOW days needed.",
+        "2026-07-23 (data Jul 21): Dematter ROAS 2.116 (GREEN band, YELLOW→GREEN band change). 'detangler for dogs' r14→r18 (-4 organic drop). ROAS GREEN while organic keyword declining — interesting mixed signal for L-2026-07-08-001 bidirectional hypothesis."
       ],
       "status": "HYPOTHESIS",
       "confirmations": 1,
       "last_confirmed": "2026-07-19",
       "contradictions": 1,
       "source_brief_id": "blaze_2f_audit_2026-07-16",
-      "action_implication": "Dematter ROAS recovered to YELLOW (2.58) after 2 RED days \u2014 the RED streak ended but one recovery day is not sufficient to restore the 'cross-channel leader' designation. Monitor for a 2nd consecutive YELLOW day (Jul 18 data, available tomorrow). If Jul 18 data also shows YELLOW ROAS: (1) revisit Dematter as Meta hero SKU, (2) reconsider 'Ten O'Clock Mat' and 'She Almost Got the Shave' launch readiness. Do NOT launch Meta Dematter creative until 2 consecutive YELLOW Amazon days confirmed. Current priority: Meta Save the Shave campaign kill decision (L-2026-07-10-001) and BLZ-20260717-001 (male-targeted test) pending Will approval. TACOS at 140% means Amazon paid spend is far above target even at YELLOW ROAS \u2014 any Meta Dematter launch would add cross-channel spend pressure on an already stretched TACOS.",
+      "action_implication": "Dematter ROAS now GREEN (2.116) on Jul 21 data. This is 1 GREEN day. Per L-2026-07-08-001, 2 consecutive YELLOW/GREEN days are needed before revisiting Dematter as Meta hero SKU. Watch Jul 22 data (available tomorrow) for confirmation. TACOS at 138% means Amazon paid spend is far above target even at GREEN ROAS — any Meta Dematter launch would add cross-channel spend pressure.",
       "retired_reason": null
     },
     {
       "id": "L-2026-07-16-003",
       "date_observed": "2026-07-16",
-      "subject": "Blaze write path \u2014 Meta MCP",
+      "subject": "Blaze write path — Meta MCP",
       "asin": null,
       "scope": "meta_ads",
-      "learning": "Blaze write path VERIFIED \u2014 Meta MCP write path confirmed working. blaze_write_path_verified = true. Claude can create campaigns, ad sets, creatives, and ads via Meta MCP in the STG environment (account 2158768751536031). A-1 auto-kill and B-1 ad launches are unblocked. This entry satisfies the write-path guardrail permanently.",
+      "learning": "Blaze write path VERIFIED — Meta MCP write path confirmed working. blaze_write_path_verified = true. Claude can create campaigns, ad sets, creatives, and ads via Meta MCP in the STG environment (account 2158768751536031). A-1 auto-kill and B-1 ad launches are unblocked.",
       "driver_type": "SUCCESS",
       "evidence": [
         "2026-07-19: blaze_write_path_verified = true confirmed in blaze.json. Blaze v1.4 ran successfully with CLASS_A_ACTIVE authority on 2026-07-19."
@@ -322,59 +296,56 @@
     {
       "id": "L-2026-07-16-004",
       "date_observed": "2026-07-16",
-      "subject": "Meta audience age distribution \u2014 65+ over-indexed at near-breakeven, 45-54 worst performer",
+      "subject": "Meta audience age distribution — 65+ over-indexed at near-breakeven, 45-54 worst performer",
       "asin": null,
       "scope": "meta_ads",
-      "learning": "Advantage+ is allocating 66% of budget to the 65+ age segment at ROAS 0.96 (near-breakeven, but still below 1.0). The 45-54 segment is the worst performer at ROAS 0.31. The target 25-54 demographic is not receiving the majority of budget. Account target audience is US 25-54 but Advantage+ has effectively bypassed this.",
+      "learning": "Advantage+ is allocating 66% of budget to the 65+ age segment at ROAS 0.96 (near-breakeven, but still below 1.0). The 45-54 segment is the worst performer at ROAS 0.31. The target 25-54 demographic is not receiving the majority of budget.",
       "driver_type": "FAILURE",
       "evidence": [
-        "2026-07-16 Blaze 2F audit: 65+ receiving 66% of budget at ROAS 0.96 (near-breakeven). 45-54 receiving budget at ROAS 0.31 (worst age segment). Account targeting spec: US 25-54, all genders. Advantage+ is ignoring the intent of the targeting spec and over-investing in the oldest audience segment.",
-        "NOTE: This learning was referenced in the Jul 17 Blaze pass close-out as written, but was absent from learnings.json \u2014 recovered and formally added Jul 18 Blaze pass."
+        "2026-07-16 Blaze 2F audit: 65+ receiving 66% of budget at ROAS 0.96. 45-54 receiving budget at ROAS 0.31 (worst age segment). Account targeting spec: US 25-54, all genders. Advantage+ is ignoring the intent of the targeting spec.",
+        "NOTE: This learning was referenced in the Jul 17 Blaze pass close-out as written, but was absent from learnings.json — recovered and formally added Jul 18 Blaze pass."
       ],
       "status": "HYPOTHESIS",
       "confirmations": 1,
       "last_confirmed": "2026-07-16",
       "contradictions": 0,
       "source_brief_id": "blaze_2f_audit_2026-07-16",
-      "action_implication": "Consider adding an age exclusion (exclude 65+) on a future ad set test to redirect budget to converting age segments within 25-54. However, prioritize the gender split finding (L-2026-07-16-003) first \u2014 male vs. female is the clearest ROAS signal (2.34 vs. 0.50). An age exclusion test is lower priority than BLZ-20260717-001 (male-targeted). If BLZ-20260717-001 launches and succeeds, revisit age targeting as a secondary variable.",
+      "action_implication": "Consider adding an age exclusion (exclude 65+) on a future ad set test to redirect budget to converting age segments within 25-54. However, prioritize the gender split finding first — male vs. female is the clearest ROAS signal (2.34 vs. 0.50). An age exclusion test is lower priority than BLZ-20260717-001 (male-targeted).",
       "retired_reason": null
     },
     {
       "id": "L-2026-07-20-001",
       "date_observed": "2026-07-20",
-      "subject": "Emergency Dematter \u2014 single-day ROAS collapse to kill floor",
+      "subject": "Emergency Dematter — single-day ROAS collapse to kill floor",
       "asin": "B0FQL56V99",
       "scope": "amazon_ads",
       "status": "HYPOTHESIS",
-      "learning": "Dematter ROAS collapsed from 2.581 (Jul 17) to 1.133 (Jul 18) \u2014 a 56% single-day drop \u2014 placing it $0.007 below the kill floor of 1.14. Pattern: Dematter exhibits extreme single-day ROAS volatility; do not pause based on one KILL-band day; confirm trend over 2-3 days before bid changes.",
+      "learning": "Dematter ROAS collapsed from 2.581 (Jul 17) to 1.133 (Jul 18) — a 56% single-day drop — placing it $0.007 below the kill floor of 1.14. Pattern: Dematter exhibits extreme single-day ROAS volatility; do not pause based on one KILL-band day; confirm trend over 2-3 days before bid changes.",
       "driver_type": "FAILURE",
       "evidence": [
         "ROAS 2.581 on $274.27 spend Jul 17 (Supermetrics Query B, retrieved 2026-07-19)",
-        "ROAS 1.133 on Jul 18 spend \u2014 below kill floor 1.14 (Supermetrics Query B, retrieved 2026-07-20)",
+        "ROAS 1.133 on Jul 18 spend — below kill floor 1.14 (Supermetrics Query B, retrieved 2026-07-20)",
         "Kill floor = max(2.07 * 0.55, 1.0) = 1.14; ROAS 1.133 is $0.007 under",
-        "TACOS still elevated at 115.9% (7d) vs 35% target \u2014 high spend contributing to ratio compression",
-        "Organic rank stable: 'detangler for dogs' rank 14, 'dematting comb for dogs' rank 23 (H10 Jul 19)",
+        "TACOS still elevated at 115.9% (7d) vs 35% target",
         "Hypothesis: single-day attribution delay or order cancellations compressed Jul 18 ROAS"
       ],
-      "action_implication": "Do not act on single-day per-SKU ROAS for Emergency Dematter. The 14d same-SKU attribution window produces extreme single-day swings on high-spend SKUs where one day without an attributed sale reads as KILL. Evaluate Dematter ROAS over a 7-day rolling window minimum. Flag only when Query A account-level ROAS also drops below 1.5 for 3+ consecutive days. Single-day Query B ROAS collapse on Dematter = noise, not signal."
+      "action_implication": "Do not act on single-day per-SKU ROAS for Emergency Dematter. The 14d same-SKU attribution window produces extreme single-day swings on high-spend SKUs where one day without an attributed sale reads as KILL. Evaluate Dematter ROAS over a 7-day rolling window minimum. Flag only when Query A account-level ROAS also drops below 1.5 for 3+ consecutive days."
     },
     {
       "id": "L-2026-07-20-002",
       "date_observed": "2026-07-20",
-      "subject": "Pin Brush + Shampoo \u2014 GREEN-to-KILL in one day on low-volume SKUs",
+      "subject": "Pin Brush + Shampoo — GREEN-to-KILL in one day on low-volume SKUs",
       "asin": "B0FQDHXSZ5,B0FQL16GH4",
       "scope": "amazon_ads",
       "status": "HYPOTHESIS",
-      "learning": "Pin Brush (ROAS 4.37 Jul 17 \u2192 0.000 Jul 18) and 4-in-1 Shampoo (ROAS 12.53 Jul 17 \u2192 0.000 Jul 18) both showed GREEN then KILL in consecutive days. Pattern: low-volume SKUs (<5 units/day) regularly report zero attributed sales on individual days due to Amazon's 14-day attribution window lag. Do not act on a single KILL day for SKUs with <5 units/day \u2014 require 3-consecutive-day trend before band changes.",
+      "learning": "Pin Brush (ROAS 4.37 Jul 17 → 0.000 Jul 18) and 4-in-1 Shampoo (ROAS 12.53 Jul 17 → 0.000 Jul 18) both showed GREEN then KILL in consecutive days. Pattern: low-volume SKUs (<5 units/day) regularly report zero attributed sales on individual days due to Amazon's 14-day attribution window lag.",
       "driver_type": "OPERATIONAL",
       "evidence": [
         "Pin Brush ROAS 4.37 Jul 17, ROAS 0.000 Jul 18 (Supermetrics Query B)",
         "Shampoo ROAS 12.53 Jul 17, ROAS 0.000 Jul 18 with $1.10 spend (Supermetrics Query B)",
-        "Jul 18 units from H10 daily: Pin 6 units, Shampoo 3 units \u2014 volume consistent with prior days",
-        "Pattern matches L-2026-07-08-002 (Treatment/Shampoo/Pin low-volume attribution noise)",
-        "Recommendation: watch Jul 19 data before any bid action on these SKUs"
+        "Jul 18 units from H10 daily: Pin 6 units, Shampoo 3 units — volume consistent with prior days"
       ],
-      "action_implication": "For low-volume SKUs spending less than $10/day (Pin Brush, Shampoo), never classify as KILL based on single-day Query B. One day with no attributed sale drives the 14d window ROAS to near zero even after 13 profitable days. Apply a 14-day cumulative evaluation window. Flag only if: cumulative 14-day spend >= $75 AND cumulative 14-day attributed sales = $0. Below that threshold, show in the table for visibility but do not alert and do not kill."
+      "action_implication": "For low-volume SKUs spending less than $10/day (Pin Brush, Shampoo), never classify as KILL based on single-day Query B. Apply a 14-day cumulative evaluation window. Flag only if: cumulative 14-day spend >= $75 AND cumulative 14-day attributed sales = $0."
     }
   ]
 }
