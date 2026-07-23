@@ -53,97 +53,128 @@
     "yesterday_sales": 74.96,
     "aov": 18.74,
     "orders_yesterday": 4,
+    "vs_7day_avg_pct": 7.6,
     "daily_7d": [
       {
         "date": "2026-07-16",
-        "gross_sales": 18.99,
-        "orders": 1,
-        "net_sales": 18.99
+        "sales": 18.99,
+        "orders": 1
       },
       {
         "date": "2026-07-17",
-        "gross_sales": 38.97,
-        "orders": 2,
-        "net_sales": 0.0
+        "sales": 38.97,
+        "orders": 2
       },
       {
         "date": "2026-07-18",
-        "gross_sales": 0.0,
-        "orders": 0,
-        "net_sales": 0.0
+        "sales": 0.0,
+        "orders": 0
       },
       {
         "date": "2026-07-19",
-        "gross_sales": 119.03,
-        "orders": 2,
-        "net_sales": 29.82
+        "sales": 119.03,
+        "orders": 2
       },
       {
         "date": "2026-07-20",
-        "gross_sales": 213.04,
-        "orders": 10,
-        "net_sales": 44.17
+        "sales": 213.04,
+        "orders": 10
       },
       {
         "date": "2026-07-21",
-        "gross_sales": 27.98,
-        "orders": 1,
-        "net_sales": 0.0
+        "sales": 27.98,
+        "orders": 1
       },
       {
         "date": "2026-07-22",
-        "gross_sales": 74.96,
-        "orders": 4,
-        "net_sales": 9.99
+        "sales": 74.96,
+        "orders": 4
       }
     ],
     "gross_7d": 492.97,
     "orders_7d": 20,
-    "top_products_30d": [
+    "top_products": [
       {
-        "title": "4-IN-1 Rosemary Mint Shampoo & Conditioner",
-        "gross_sales": 300.92,
-        "net_sales": 98.42,
-        "orders": 19
+        "product_title": "4-IN-1 Rosemary Mint Shampoo & Conditioner",
+        "revenue": 300.92,
+        "order_count": 19,
+        "units_sold": 19,
+        "avg_price": 15.84,
+        "variants": [
+          "Default"
+        ]
       },
       {
-        "title": "Emergency Dematter Cream",
-        "gross_sales": 288.18,
-        "net_sales": 183.3,
-        "orders": 14
+        "product_title": "Emergency Dematter Cream",
+        "revenue": 288.18,
+        "order_count": 14,
+        "units_sold": 14,
+        "avg_price": 20.58,
+        "variants": [
+          "Default"
+        ]
       },
       {
-        "title": "Detangling Treatment",
-        "gross_sales": 252.28,
-        "net_sales": 81.42,
-        "orders": 14
+        "product_title": "Detangling Treatment",
+        "revenue": 252.28,
+        "order_count": 14,
+        "units_sold": 14,
+        "avg_price": 18.02,
+        "variants": [
+          "Default"
+        ]
       },
       {
-        "title": "Slicker Brush",
-        "gross_sales": 228.42,
-        "net_sales": 26.98,
-        "orders": 18
+        "product_title": "Slicker Brush",
+        "revenue": 228.42,
+        "order_count": 18,
+        "units_sold": 18,
+        "avg_price": 12.69,
+        "variants": [
+          "Default"
+        ]
       },
       {
-        "title": "Pin Brush",
-        "gross_sales": 195.6,
-        "net_sales": 101.72,
-        "orders": 10
+        "product_title": "Pin Brush",
+        "revenue": 195.6,
+        "order_count": 10,
+        "units_sold": 10,
+        "avg_price": 19.56,
+        "variants": [
+          "Default"
+        ]
       },
       {
-        "title": "Rake Brush",
-        "gross_sales": 172.89,
-        "net_sales": 104.51,
-        "orders": 13
+        "product_title": "Rake Brush",
+        "revenue": 172.89,
+        "order_count": 13,
+        "units_sold": 13,
+        "avg_price": 13.3,
+        "variants": [
+          "Default"
+        ]
       },
       {
-        "title": "Soft & Tangle Free Dog Grooming Kit (Shampoo + Pin)",
-        "gross_sales": 35.99,
-        "net_sales": 0.0,
-        "orders": 1,
+        "product_title": "Soft & Tangle Free Dog Grooming Kit",
+        "revenue": 35.99,
+        "order_count": 1,
+        "units_sold": 1,
+        "avg_price": 35.99,
+        "variants": [
+          "Shampoo + Pin"
+        ],
         "is_bundle": true
       }
     ],
+    "order_breakdown": {
+      "total_orders": 4,
+      "single_item_orders": 4,
+      "multi_item_orders": 0,
+      "avg_items_per_order": 1.0,
+      "capped": false,
+      "top_combos": [],
+      "note": "All 4 orders yesterday were single-item. 3 comped ($0), 1 paid ($10.49). Gross $74.96 reflects pre-discount pricing."
+    },
     "bundles_30d": [
       {
         "title": "Soft & Tangle Free Dog Grooming Kit (Shampoo + Pin)",
@@ -151,7 +182,7 @@
         "orders": 1
       }
     ],
-    "note": "Slicker Brush: $228 gross but only $27 net \u2014 heavy discounting. Bundle (Shampoo+Pin) 1 sale/30d."
+    "note": "Slicker Brush $228 gross / $27 net \u2014 heavy discounting. Bundle (Shampoo+Pin): 1 sale/30d."
   },
   "helium10": {
     "available": true,
@@ -291,7 +322,7 @@
       "roas": 2.3836,
       "skus": [],
       "sku_data_pending": true,
-      "sku_data_note": "Queries B/C timed out last night \u2014 per-SKU table populates tonight after Evening Pre-Run v5.4",
+      "sku_data_note": "Queries B/C timed out \u2014 per-SKU table populates after tonight's Evening Pre-Run v5.4",
       "flagged_skus": [
         {
           "asin": "B0GT1H84JM",
@@ -308,8 +339,7 @@
     "amazon_sales": {
       "sessions": null,
       "conversion_rate": null,
-      "units_sold": null,
-      "note": "Query D/E \u2014 2-day SC processing lag. Data from Jul 20."
+      "units_sold": null
     },
     "google_ads": {
       "spend": 0,
@@ -375,12 +405,9 @@
   "reviews_google": {
     "available": true,
     "last_reviews_check": "2026-07-23",
-    "most_recent_review_date": "2026-07-09",
     "avg_rating_last_15": 3.8,
     "low_star_count": 4,
-    "low_star_flag": "RED",
     "sheet_last_modified": "2026-07-16",
-    "sheet_staleness_flag": "GREEN",
     "negative_themes": [
       "glue-like consistency",
       "mat made worse",
@@ -395,7 +422,7 @@
     "last_reviews_check": "2026-07-23",
     "status": "RED",
     "recent": [],
-    "note": "4 low-star reviews in latest batch. Themes: glue-like consistency, mat made worse, not effective on goldendoodle/poodle."
+    "note": "4 low-star reviews. Themes: glue-like consistency, mat made worse, not effective on goldendoodle/poodle."
   },
   "inventory": {
     "available": true,
@@ -408,7 +435,7 @@
         "on_hand": 21793,
         "dos": 313,
         "status": "HEALTHY",
-        "note": "HEALTHY \u2014 21,793 on-hand \u00b7 313 DoS \u00b7 40 inbound (data as of 2026-07-22)"
+        "note": "HEALTHY \u2014 21,793 on-hand \u00b7 313 DoS (data as of 2026-07-22)"
       },
       {
         "asin": "B0FQF2VTMJ",
@@ -416,7 +443,7 @@
         "on_hand": 502,
         "dos": 23,
         "status": "LOW_STOCK",
-        "note": "LOW STOCK \u2014 502 on-hand \u00b7 23 DoS on-hand \u00b7 1,650 inbound shipped (data as of 2026-07-22)"
+        "note": "LOW STOCK \u2014 502 on-hand \u00b7 23 DoS \u00b7 1,650 inbound shipped"
       },
       {
         "asin": "B0GV5ZFLC2",
@@ -424,7 +451,7 @@
         "on_hand": 8324,
         "dos": 365,
         "status": "EXCESS",
-        "note": "EXCESS \u2014 7,536 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+        "note": "EXCESS \u2014 7,536 est. excess units"
       },
       {
         "asin": "B0FQL16GH4",
@@ -432,7 +459,7 @@
         "on_hand": 4030,
         "dos": 365,
         "status": "EXCESS",
-        "note": "EXCESS \u2014 3,523 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+        "note": "EXCESS \u2014 3,523 est. excess units"
       },
       {
         "asin": "B0FQDHXSZ5",
@@ -440,7 +467,7 @@
         "on_hand": 2022,
         "dos": 365,
         "status": "EXCESS",
-        "note": "EXCESS \u2014 1,843 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+        "note": "EXCESS \u2014 1,843 est. excess units"
       },
       {
         "asin": "B0FQ628KCH",
@@ -448,7 +475,7 @@
         "on_hand": 2580,
         "dos": 365,
         "status": "LIQUIDATION",
-        "note": "EXCESS \u2014 2,462 est. excess \u2014 liquidation \u00b7 365+ DoS (data as of 2026-07-22)"
+        "note": "EXCESS \u2014 liquidation \u00b7 2,462 est. excess"
       },
       {
         "asin": "B0FQ4PY573",
@@ -456,7 +483,7 @@
         "on_hand": 323,
         "dos": 194,
         "status": "HEALTHY",
-        "note": "HEALTHY per SC \u2014 323 on-hand \u00b7 194 DoS \u00b7 0 units sold 90d \u00b7 verify listing SELLABLE (data as of 2026-07-22)"
+        "note": "HEALTHY \u2014 0 velocity \u00b7 verify listing SELLABLE"
       },
       {
         "asin": "B0FQFP2S9F",
@@ -464,7 +491,7 @@
         "on_hand": 62,
         "dos": null,
         "status": "STRANDED",
-        "note": "STRANDED \u2014 62 units \u00b7 fix listing in SC (data as of 2026-07-22)"
+        "note": "STRANDED \u2014 fix listing in SC"
       }
     ],
     "summary": {
