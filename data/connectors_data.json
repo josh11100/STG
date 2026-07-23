@@ -52,7 +52,106 @@
     },
     "yesterday_sales": 74.96,
     "aov": 18.74,
-    "orders_yesterday": 4
+    "orders_yesterday": 4,
+    "daily_7d": [
+      {
+        "date": "2026-07-16",
+        "gross_sales": 18.99,
+        "orders": 1,
+        "net_sales": 18.99
+      },
+      {
+        "date": "2026-07-17",
+        "gross_sales": 38.97,
+        "orders": 2,
+        "net_sales": 0.0
+      },
+      {
+        "date": "2026-07-18",
+        "gross_sales": 0.0,
+        "orders": 0,
+        "net_sales": 0.0
+      },
+      {
+        "date": "2026-07-19",
+        "gross_sales": 119.03,
+        "orders": 2,
+        "net_sales": 29.82
+      },
+      {
+        "date": "2026-07-20",
+        "gross_sales": 213.04,
+        "orders": 10,
+        "net_sales": 44.17
+      },
+      {
+        "date": "2026-07-21",
+        "gross_sales": 27.98,
+        "orders": 1,
+        "net_sales": 0.0
+      },
+      {
+        "date": "2026-07-22",
+        "gross_sales": 74.96,
+        "orders": 4,
+        "net_sales": 9.99
+      }
+    ],
+    "gross_7d": 492.97,
+    "orders_7d": 20,
+    "top_products_30d": [
+      {
+        "title": "4-IN-1 Rosemary Mint Shampoo & Conditioner",
+        "gross_sales": 300.92,
+        "net_sales": 98.42,
+        "orders": 19
+      },
+      {
+        "title": "Emergency Dematter Cream",
+        "gross_sales": 288.18,
+        "net_sales": 183.3,
+        "orders": 14
+      },
+      {
+        "title": "Detangling Treatment",
+        "gross_sales": 252.28,
+        "net_sales": 81.42,
+        "orders": 14
+      },
+      {
+        "title": "Slicker Brush",
+        "gross_sales": 228.42,
+        "net_sales": 26.98,
+        "orders": 18
+      },
+      {
+        "title": "Pin Brush",
+        "gross_sales": 195.6,
+        "net_sales": 101.72,
+        "orders": 10
+      },
+      {
+        "title": "Rake Brush",
+        "gross_sales": 172.89,
+        "net_sales": 104.51,
+        "orders": 13
+      },
+      {
+        "title": "Soft & Tangle Free Dog Grooming Kit (Shampoo + Pin)",
+        "gross_sales": 35.99,
+        "net_sales": 0.0,
+        "orders": 1,
+        "is_bundle": true
+      }
+    ],
+    "bundles_30d": [
+      {
+        "title": "Soft & Tangle Free Dog Grooming Kit (Shampoo + Pin)",
+        "gross_sales": 35.99,
+        "orders": 1
+      }
+    ],
+    "note": "Slicker Brush: $228 gross but only $27 net \u2014 heavy discounting. Bundle (Shampoo+Pin) 1 sale/30d."
   },
   "helium10": {
     "available": true,
@@ -124,12 +223,12 @@
     "daily": {
       "date": "2026-07-22",
       "gross": 1894.42,
+      "gross_revenue": 1894.42,
       "expenses": -982.87,
       "net_profit": 799.62,
       "net_margin_pct": 42.2,
       "units": 92,
-      "vs_prior_day_pct": 252.0,
-      "gross_revenue": 1894.42
+      "vs_prior_day_pct": 252.0
     }
   },
   "amazon_ads": {
@@ -187,6 +286,36 @@
     "generated_at": "2026-07-22T23:35:00-07:00",
     "age_hours": 8.2,
     "status": "GREEN",
+    "amazon_ads": {
+      "spend": 341.16,
+      "roas": 2.3836,
+      "skus": [],
+      "sku_data_pending": true,
+      "sku_data_note": "Queries B/C timed out last night \u2014 per-SKU table populates tonight after Evening Pre-Run v5.4",
+      "flagged_skus": [
+        {
+          "asin": "B0GT1H84JM",
+          "flag": "KILL-BREACH",
+          "days_active": 32
+        },
+        {
+          "asin": "B0FQ628KCH",
+          "flag": "LIQUIDATION-VIOLATION",
+          "days_active": 32
+        }
+      ]
+    },
+    "amazon_sales": {
+      "sessions": null,
+      "conversion_rate": null,
+      "units_sold": null,
+      "note": "Query D/E \u2014 2-day SC processing lag. Data from Jul 20."
+    },
+    "google_ads": {
+      "spend": 0,
+      "roas": null,
+      "note": "No active Google campaigns"
+    },
     "query_a": {
       "date": "2026-07-21",
       "account_spend": 341.16,
@@ -267,5 +396,86 @@
     "status": "RED",
     "recent": [],
     "note": "4 low-star reviews in latest batch. Themes: glue-like consistency, mat made worse, not effective on goldendoodle/poodle."
+  },
+  "inventory": {
+    "available": true,
+    "source": "seller_central_manual",
+    "data_date": "2026-07-22",
+    "skus": [
+      {
+        "asin": "B0FQL56V99",
+        "name": "Emergency Dematter Cream",
+        "on_hand": 21793,
+        "dos": 313,
+        "status": "HEALTHY",
+        "note": "HEALTHY \u2014 21,793 on-hand \u00b7 313 DoS \u00b7 40 inbound (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQF2VTMJ",
+        "name": "Rake Brush",
+        "on_hand": 502,
+        "dos": 23,
+        "status": "LOW_STOCK",
+        "note": "LOW STOCK \u2014 502 on-hand \u00b7 23 DoS on-hand \u00b7 1,650 inbound shipped (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0GV5ZFLC2",
+        "name": "Detangling Treatment",
+        "on_hand": 8324,
+        "dos": 365,
+        "status": "EXCESS",
+        "note": "EXCESS \u2014 7,536 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "name": "4-in-1 Shampoo",
+        "on_hand": 4030,
+        "dos": 365,
+        "status": "EXCESS",
+        "note": "EXCESS \u2014 3,523 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush",
+        "on_hand": 2022,
+        "dos": 365,
+        "status": "EXCESS",
+        "note": "EXCESS \u2014 1,843 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush",
+        "on_hand": 2580,
+        "dos": 365,
+        "status": "LIQUIDATION",
+        "note": "EXCESS \u2014 2,462 est. excess \u2014 liquidation \u00b7 365+ DoS (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQ4PY573",
+        "name": "Detangling Spray",
+        "on_hand": 323,
+        "dos": 194,
+        "status": "HEALTHY",
+        "note": "HEALTHY per SC \u2014 323 on-hand \u00b7 194 DoS \u00b7 0 units sold 90d \u00b7 verify listing SELLABLE (data as of 2026-07-22)"
+      },
+      {
+        "asin": "B0FQFP2S9F",
+        "name": "FurFix De-Shed Brush",
+        "on_hand": 62,
+        "dos": null,
+        "status": "STRANDED",
+        "note": "STRANDED \u2014 62 units \u00b7 fix listing in SC (data as of 2026-07-22)"
+      }
+    ],
+    "summary": {
+      "total": 8,
+      "healthy": 2,
+      "low_stock": 1,
+      "excess": 4,
+      "stranded": 1,
+      "closed": 0,
+      "data_staleness_days": 1
+    },
+    "note": "Manually updated Jul 22 2026 from SC FBA Inventory page."
   }
 }
