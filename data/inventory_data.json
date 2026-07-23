@@ -1,10 +1,10 @@
 {
-  "as_of": "2026-07-22",
-  "available": true,
+  "as_of": "2026-07-23",
+  "available": false,
   "source": "seller_central_manual",
-  "note": "Manually updated from SC FBA Inventory page Jul 22 2026. SP-API script pending setup.",
+  "note": "SC scrape unavailable 2026-07-23 (Chrome — L-2026-07-15-001 DOCTRINE). Last successful SC scrape: 2026-07-22.",
   "last_known_sc_scrape": "2026-07-22",
-  "data_staleness_days": 0,
+  "data_staleness_days": 1,
   "skus": [
     {
       "asin": "B0FQL56V99",
@@ -15,7 +15,7 @@
       "inbound": 40,
       "dos": 313,
       "status": "HEALTHY",
-      "note": "HEALTHY \u2014 21,793 on-hand \u00b7 313 DoS \u00b7 40 inbound (receiving) (data as of 2026-07-22)"
+      "note": "HEALTHY — 21,793 on-hand · 313 DoS · 40 inbound (receiving) (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQF2VTMJ",
@@ -26,7 +26,7 @@
       "inbound": 1650,
       "dos": 23,
       "status": "LOW_STOCK",
-      "note": "LOW STOCK \u2014 502 on-hand \u00b7 23 DoS on-hand \u00b7 1,650 inbound (shipped) \u00b7 Total DoS 108 with inbound (data as of 2026-07-22)"
+      "note": "LOW STOCK — 502 on-hand · 23 DoS on-hand · 1,650 inbound (shipped) · Total DoS 108 with inbound (data as of 2026-07-22)"
     },
     {
       "asin": "B0GV5ZFLC2",
@@ -37,7 +37,7 @@
       "inbound": 2,
       "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS \u2014 7,536 est. excess units \u00b7 365+ DoS \u00b7 2 inbound (receiving) (data as of 2026-07-22)"
+      "note": "EXCESS — 7,536 est. excess units · 365+ DoS · 2 inbound (receiving) (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQL16GH4",
@@ -48,7 +48,7 @@
       "inbound": 0,
       "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS \u2014 3,523 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+      "note": "EXCESS — 3,523 est. excess units · 365+ DoS (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQDHXSZ5",
@@ -59,7 +59,7 @@
       "inbound": 0,
       "dos": 365,
       "status": "EXCESS",
-      "note": "EXCESS \u2014 1,843 est. excess units \u00b7 365+ DoS (data as of 2026-07-22)"
+      "note": "EXCESS — 1,843 est. excess units · 365+ DoS (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQ628KCH",
@@ -70,7 +70,7 @@
       "inbound": 0,
       "dos": 365,
       "status": "LIQUIDATION",
-      "note": "EXCESS \u2014 2,462 est. excess units \u2014 liquidation \u00b7 365+ DoS \u00b7 aged surcharge $903.04 (data as of 2026-07-22)"
+      "note": "EXCESS — 2,462 est. excess units — liquidation · 365+ DoS · aged surcharge $903.04 (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQ4PY573",
@@ -81,7 +81,7 @@
       "inbound": 0,
       "dos": 194,
       "status": "HEALTHY",
-      "note": "HEALTHY per SC \u2014 323 on-hand \u00b7 194 DoS \u00b7 0 units sold in 90d \u00b7 aged surcharge $70.90 \u00b7 verify listing is SELLABLE (data as of 2026-07-22)"
+      "note": "HEALTHY per SC — 323 on-hand · 194 DoS · 0 units sold in 90d · aged surcharge $70.90 · verify listing is SELLABLE (data as of 2026-07-22)"
     },
     {
       "asin": "B0FQFP2S9F",
@@ -92,7 +92,7 @@
       "inbound": 0,
       "dos": null,
       "status": "STRANDED",
-      "note": "STRANDED \u2014 62 units (63 FBA stranded) \u00b7 fix listing in SC \u2192 'Go to Fix stranded inventory' \u00b7 aged surcharge $2.45 (data as of 2026-07-22)"
+      "note": "STRANDED — 62 units (63 FBA stranded) · fix listing in SC → 'Go to Fix stranded inventory' · aged surcharge $2.45 (data as of 2026-07-22)"
     }
   ],
   "summary": {
@@ -102,6 +102,6 @@
     "excess": 4,
     "stranded": 1,
     "closed": 0,
-    "data_staleness_days": 0
+    "data_staleness_days": 1
   }
 }
