@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-22 PT",
-  "routine_version": "v10.13",
+  "last_updated": "2026-07-23 PT",
+  "routine_version": "v10.15",
   "quickbooks": {
     "status": "GREEN",
     "cash_balance": 487221.80,
@@ -210,7 +210,11 @@
       "POSITIVE: Emergency Dematter (B0FQL56V99) — 'dematting comb for dogs' rank 17 (+15, SV 5818); 'dematting tool for dogs' rank 5 (+2, SV 2792) (Jul 21 KT)",
       "LIQUIDATION: Slicker Brush (B0FQ628KCH) — 'slicker brush for dogs' rank 166 (+131) — liquidation SKU, tracking only",
       "UNRESOLVED: Detangling Spray (B0FQ4PY573) — H10 LIF<=0 LTSF>=181 — SC shows HEALTHY Jul 20; verify listing is live before clearing flag",
-      "STRANDED: FurFix (B0FQFP2S9F) — STRANDED — manual SC check needed"
+      "STRANDED: FurFix (B0FQFP2S9F) — STRANDED — manual SC check needed",
+      "⚠️ INV-ZERO-VEL: Detangling Spray (B0FQ4PY573) — LIF ≤ 0 (H10) · verify listing & stock",
+      "📦 INV-EXCESS: 4-in-1 Shampoo (B0FQL16GH4) — LIF ≤ 2580 days (H10)",
+      "⚠️ INV-ZERO-VEL: FurFix De-Shed Brush (B0FQFP2S9F) — LIF ≤ 0 (H10) · verify listing & stock",
+      "📦 INV-EXCESS: Pin Brush (B0FQDHXSZ5) — LIF ≤ 657 days (H10)"
     ]
   },
   "helium10_profits": {
@@ -469,83 +473,129 @@
     "last_reviews_check": "2026-07-22"
   },
   "inventory": {
-    "available": false,
+    "available": true,
+    "source": "helium10_email",
     "data_date": "2026-07-22",
     "skus": [
       {
-        "asin": "B0FQL56V99",
-        "name": "Emergency Dematter Cream",
-        "on_hand": 21793,
-        "dos": 313,
-        "status": "HEALTHY",
-        "note": "HEALTHY — 21,793 on-hand · 313 DoS · 40 inbound (receiving) (data as of 2026-07-22)"
-      },
-      {
-        "asin": "B0FQF2VTMJ",
-        "name": "Rake Brush",
-        "on_hand": 502,
-        "dos": 23,
-        "status": "LOW_STOCK",
-        "note": "LOW STOCK — 502 on-hand · 23 DoS on-hand · 1,650 inbound (shipped) · Total DoS 108 with inbound (data as of 2026-07-22)"
-      },
-      {
-        "asin": "B0GV5ZFLC2",
-        "name": "Detangling Treatment",
-        "on_hand": 8324,
-        "dos": 365,
-        "status": "EXCESS",
-        "note": "EXCESS — 7,536 est. excess units · 365+ DoS · 2 inbound (receiving) (data as of 2026-07-22)"
+        "asin": "B0FQ4PY573",
+        "name": "Skip The Groomer Detangling...",
+        "on_hand": null,
+        "dos": 0,
+        "status": "ZERO_VELOCITY",
+        "note": "LIF ≤ 0 — zero sales velocity (not confirmed OOS). LTSF ≥ 181 days — long-term storage fee risk."
       },
       {
         "asin": "B0FQL16GH4",
-        "name": "4-in-1 Shampoo",
-        "on_hand": 4030,
-        "dos": 365,
+        "name": "Dog Shampoo & Conditioner f...",
+        "on_hand": null,
+        "dos": 2580,
         "status": "EXCESS",
-        "note": "EXCESS — 3,523 est. excess units · 365+ DoS (data as of 2026-07-22)"
-      },
-      {
-        "asin": "B0FQDHXSZ5",
-        "name": "Pin Brush",
-        "on_hand": 2022,
-        "dos": 365,
-        "status": "EXCESS",
-        "note": "EXCESS — 1,843 est. excess units · 365+ DoS (data as of 2026-07-22)"
-      },
-      {
-        "asin": "B0FQ628KCH",
-        "name": "Slicker Brush",
-        "on_hand": 2580,
-        "dos": 365,
-        "status": "LIQUIDATION",
-        "note": "EXCESS — 2,462 est. excess units — liquidation · 365+ DoS · aged surcharge $903.04 (data as of 2026-07-22)"
-      },
-      {
-        "asin": "B0FQ4PY573",
-        "name": "Detangling Spray",
-        "on_hand": 323,
-        "dos": 194,
-        "status": "HEALTHY",
-        "note": "HEALTHY per SC — 323 on-hand · 194 DoS · 0 units sold in 90d · aged surcharge $70.90 · verify listing is SELLABLE (data as of 2026-07-22)"
+        "note": "LIF ≤ 2580 days — excess inventory. LTSF ≥ 181 days — long-term storage fee risk."
       },
       {
         "asin": "B0FQFP2S9F",
-        "name": "FurFix De-Shed Brush",
-        "on_hand": 62,
-        "dos": null,
-        "status": "STRANDED",
-        "note": "STRANDED — 62 units (63 FBA stranded) · fix listing in SC → 'Go to Fix stranded inventory' · aged surcharge $2.45 (data as of 2026-07-22)"
+        "name": "Skip The Groomer FurFix De-...",
+        "on_hand": null,
+        "dos": 0,
+        "status": "ZERO_VELOCITY",
+        "note": "LIF ≤ 0 — zero sales velocity (not confirmed OOS). LTSF ≥ 181 days — long-term storage fee risk."
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "name": "Pin Brush for Dogs, Gentle ...",
+        "on_hand": null,
+        "dos": 657,
+        "status": "EXCESS",
+        "note": "LIF ≤ 657 days — excess inventory. LTSF ≥ 181 days — long-term storage fee risk."
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "name": "Slicker Brush for Dogs, Gol...",
+        "on_hand": null,
+        "dos": 3196,
+        "status": "LIQUIDATION",
+        "note": "LIF ≤ 3196 days — liquidation SKU. LTSF ≥ 181 days."
       }
     ],
     "summary": {
-      "total": 8,
-      "healthy": 2,
-      "low_stock": 1,
-      "excess": 4,
-      "stranded": 1,
-      "closed": 0,
-      "data_staleness_days": 1
+      "total": 5,
+      "healthy": 0,
+      "low_stock": 0,
+      "excess": 3,
+      "stranded": 0,
+      "zero_velocity": 2,
+      "data_source": "helium10_email",
+      "note": "on_hand unavailable — H10 email only. LIF days used as DoS proxy."
     },
-    "note": "SC scrape unavailable 2026-07-23 (Chrome — L-2026-07-15-001 DOCTRINE). Last successful SC scrape: 2026-07-22."
+    "note": "Source: H10 Daily Profits email (Inventory Insights section). on_hand = null — exact units require SC scrape. LIF days used as days-of-supply proxy."
+  },
+  "helium10_inventory": {
+    "source": "helium10_email",
+    "report_date": "2026-07-22",
+    "available": true,
+    "note": null,
+    "skus": [
+      {
+        "asin": "B0FQ4PY573",
+        "product_title": "Skip The Groomer Detangling...",
+        "lif_operator": "≤",
+        "lif_days": 0,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
+        "ltsf_risk": true,
+        "status": "ZERO_VELOCITY",
+        "on_hand": null,
+        "note": "LIF ≤ 0 — zero sales velocity (not confirmed OOS). LTSF ≥ 181 days — long-term storage fee risk."
+      },
+      {
+        "asin": "B0FQL16GH4",
+        "product_title": "Dog Shampoo & Conditioner f...",
+        "lif_operator": "≤",
+        "lif_days": 2580,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
+        "ltsf_risk": true,
+        "status": "EXCESS",
+        "on_hand": null,
+        "note": "LIF ≤ 2580 days — excess inventory. LTSF ≥ 181 days — long-term storage fee risk."
+      },
+      {
+        "asin": "B0FQFP2S9F",
+        "product_title": "Skip The Groomer FurFix De-...",
+        "lif_operator": "≤",
+        "lif_days": 0,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
+        "ltsf_risk": true,
+        "status": "ZERO_VELOCITY",
+        "on_hand": null,
+        "note": "LIF ≤ 0 — zero sales velocity (not confirmed OOS). LTSF ≥ 181 days — long-term storage fee risk."
+      },
+      {
+        "asin": "B0FQDHXSZ5",
+        "product_title": "Pin Brush for Dogs, Gentle ...",
+        "lif_operator": "≤",
+        "lif_days": 657,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
+        "ltsf_risk": true,
+        "status": "EXCESS",
+        "on_hand": null,
+        "note": "LIF ≤ 657 days — excess inventory. LTSF ≥ 181 days — long-term storage fee risk."
+      },
+      {
+        "asin": "B0FQ628KCH",
+        "product_title": "Slicker Brush for Dogs, Gol...",
+        "lif_operator": "≤",
+        "lif_days": 3196,
+        "ltsf_operator": "≥",
+        "ltsf_days": 181,
+        "ltsf_risk": false,
+        "status": "LIQUIDATION",
+        "on_hand": null,
+        "note": "LIF ≤ 3196 days — liquidation SKU. LTSF ≥ 181 days."
+      }
+    ]
   }
 }
