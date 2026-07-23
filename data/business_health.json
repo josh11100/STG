@@ -1,9 +1,9 @@
 {
   "_instructions": "Patrick fills this out weekly. Update report_date each time. Send email to stgbrandanalytics@gmail.com with subject 'STG Business Health Update' and paste this file's Google Sheet URL in the body.",
   "report_date": "2026-07-23",
-  "updated_by": "JARVIS v10.15 — 2026-07-23",
+  "updated_by": "JARVIS v10.16 — 2026-07-23",
   "kpis": {
-    "lifetime_revenue": 310590,
+    "lifetime_revenue": 310590.20,
     "lifetime_units": 15095,
     "est_profit": 113300,
     "inventory_cogs": 193343,
