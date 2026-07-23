@@ -154,27 +154,32 @@
       "roas": 0.634,
       "purchase_value": 319.35
     },
-    "yesterday_spend": 22.25,
-    "active_campaigns": [
+    "yesterday": {
+      "spend": 22.25
+    },
+    "campaigns_l30d": [
       {
         "name": "Save the Shave UGC Bill",
-        "spend_l30d": 447.17,
-        "roas_l30d": 0.714,
+        "spend": 447.17,
+        "roas": 0.714,
         "status": "ACTIVE"
       },
       {
-        "name": "BLZ-20260717-002 Shampoo",
-        "spend_l30d": 37.89,
-        "roas_l30d": null,
+        "name": "BLZ-20260717-002 Shampoo 50OFF",
+        "spend": 37.89,
+        "roas": null,
         "status": "ACTIVE"
       },
       {
         "name": "BLZ-20260721-001 Detangle TOF",
-        "spend_l30d": 18.98,
-        "roas_l30d": null,
+        "spend": 18.98,
+        "roas": null,
         "status": "ACTIVE",
         "objective": "LINK_CLICKS"
       }
+    ],
+    "flags": [
+      "KILL BREACH: Save the Shave UGC Bill \u00b7 $447.17 L30D \u00b7 ROAS 0.714 \u00b7 Day 32+ \u00b7 requires Will pause in Ads Manager"
     ]
   },
   "supermetrics": {
@@ -254,13 +259,13 @@
     ]
   },
   "reviews": {
-    "available": false,
-    "new_review_count": 0,
-    "avg_rating_new_batch": null,
-    "sheet_last_modified": null,
-    "last_reviews_check": null,
-    "status": null,
+    "available": true,
+    "new_review_count": 4,
+    "avg_rating_new_batch": 3.8,
+    "sheet_last_modified": "2026-07-16",
+    "last_reviews_check": "2026-07-23",
+    "status": "RED",
     "recent": [],
-    "note": "Review connector not yet writing data — Angelo's sheet check pending"
+    "note": "4 low-star reviews in latest batch. Themes: glue-like consistency, mat made worse, not effective on goldendoodle/poodle."
   }
 }
