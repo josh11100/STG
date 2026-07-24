@@ -1,136 +1,199 @@
 {
-  "_comment": "MERGE THIS INTO business_health.json — replace the _meta and subscribe_and_save sections entirely. Per-SKU sns{} objects merge into each skus[] entry by ASIN.",
+  "_instructions": "Paste the 'skus' array below into business_health.json, replacing the existing empty skus:[]. Also add the 'kpis' and 'cash_production' blocks. All values sourced from supply_chain.json (as_of: 2026-07-14). Do not change field names — dashboard reads these exact keys.",
 
-  "_meta": {
-    "last_patched": "2026-07-23",
-    "patched_by": "manual — Jul 23 session",
-    "field_freshness": {
-      "lifetime_revenue":    { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
-      "lifetime_units":      { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
-      "revenue_share_pct":   { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
-      "sessions":            { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
-      "buy_box_pct":         { "last_updated": "2026-07-22", "source": "supermetrics_query_g",      "auto": true  },
-      "subscribe_and_save":  { "last_updated": "2026-07-23", "source": "amazon_sc_manual_export",   "auto": false },
-      "margin_pct":          { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
-      "profit_per_unit":     { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
-      "estimated_profit":    { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
-      "return_rate":         { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
-      "customer_segments":   { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false },
-      "inventory_cash":      { "last_updated": "2026-07-22", "source": "sc_manual_warehouse_xlsx",  "auto": false },
-      "accounts_payable":    { "last_updated": "2026-07-23", "source": "quickbooks_live",           "auto": true  },
-      "production_schedule": { "last_updated": "2026-06-19", "source": "patrick_manual",            "auto": false }
-    }
+  "kpis": {
+    "cash_in_inventory":           194093,
+    "cash_in_inventory_source":    "supply_chain_json",
+    "cash_in_inventory_date":      "2026-07-14",
+    "total_units_all_locations":   55702,
+    "retail_value_potential":      1183678,
+    "gross_profit_potential":      989585,
+    "production_balance_owed":     306210,
+    "production_balance_note":     "Excl. Rake PO2 (corrected PI pending). Source: supply_chain.json PO 10344.",
+    "lifetime_revenue":            null,
+    "lifetime_revenue_source":     "supermetrics_query_g — check queries.G.status in supermetrics_data.json",
+    "lifetime_units":              null,
+    "total_customers":             null,
+    "total_customers_source":      "SP-API Brand Analytics — not yet connected",
+    "return_rate_slicker":         8.67,
+    "return_rate_note":            "Slicker only from supply_chain.json. Other SKUs require SP-API."
   },
 
-  "subscribe_and_save": {
-    "available": true,
-    "last_updated": "2026-07-23",
-    "source": "amazon_sc_manual_export",
-    "report_period_start": "2026-04-22",
-    "report_period_end": "2026-07-21",
-    "report_days": 90,
-    "totals": {
-      "active_subscribers": 178,
-      "sns_shipped_units": 151,
-      "sns_sales": 3249.44,
-      "lost_sales_oos": 19.99
-    },
-    "flags": [
-      "⚠️ B0FQ4PY573 (Detangling Spray) — 100% OOS, 0 active subscribers, $19.99 lost sales. Confirm this SKU is discontinued.",
-      "🟡 Emergency Dematter — 63.4% of subscribers are coupon-driven. Renewal health may be fragile if coupon removed.",
-      "🟡 4-in-1 Shampoo — 55.6% coupon-driven. Same risk as Dematter.",
-      "✅ Detangling Treatment — 0% coupon-driven. Most organic subscriber base."
+  "cash_production": {
+    "source":        "supply_chain_json",
+    "as_of":         "2026-07-14",
+    "total_balance_owed": 306210,
+    "balances": [
+      { "label": "June balance (JBK)",                    "amount": 108886 },
+      { "label": "July balance (revised — no shampoo)",   "amount": 40073  },
+      { "label": "August (Brushes + Chews)",              "amount": 38651  },
+      { "label": "October (Dematter 25k — HOLD pending)", "amount": 85500  },
+      { "label": "December (Detangling 10k)",             "amount": 33100  },
+      { "label": "Rake PO2 (corrected PI)",               "amount": null   }
     ],
-    "skus": [
-      {
-        "asin": "B0FQL56V99",
-        "name": "Emergency Dematter Cream",
-        "active_subscribers": 151,
-        "sns_shipped_units": 130,
-        "sns_sales": 2867.84,
-        "sns_penetration_pct": 2.91,
-        "oos_pct": 0.0,
-        "lost_sales_oos": 0.0,
-        "coupon_driven_pct": 63.4,
-        "coupon_sales_penetration_pct": 53.0,
-        "seller_funding_pct": 10.0
-      },
-      {
-        "asin": "B0FQL16GH4",
-        "name": "4-in-1 Shampoo",
-        "active_subscribers": 19,
-        "sns_shipped_units": 11,
-        "sns_sales": 210.69,
-        "sns_penetration_pct": 9.80,
-        "oos_pct": 0.0,
-        "lost_sales_oos": 0.0,
-        "coupon_driven_pct": 55.6,
-        "coupon_sales_penetration_pct": 37.0,
-        "seller_funding_pct": 10.0
-      },
-      {
-        "asin": "B0GV5ZFLC2",
-        "name": "Detangling Treatment",
-        "active_subscribers": 8,
-        "sns_shipped_units": 10,
-        "sns_sales": 170.91,
-        "sns_penetration_pct": 1.47,
-        "oos_pct": 0.0,
-        "lost_sales_oos": 0.0,
-        "coupon_driven_pct": 0.0,
-        "coupon_sales_penetration_pct": 0.0,
-        "seller_funding_pct": 10.0
-      },
-      {
-        "asin": "B0FQ4PY573",
-        "name": "Detangling Spray (discontinued?)",
-        "active_subscribers": 0,
-        "sns_shipped_units": 0,
-        "sns_sales": 0.0,
-        "sns_penetration_pct": 0.0,
-        "oos_pct": 100.0,
-        "lost_sales_oos": 19.99,
-        "coupon_driven_pct": 0.0,
-        "coupon_sales_penetration_pct": 0.0,
-        "seller_funding_pct": 5.0
-      }
-    ]
+    "horizon_30d":  "Rake PO2 deposit + air freight (per corrected PI — pending)",
+    "horizon_60d":  "Pin balance ~$13,076 + Chews balance TBD + Rake PO2 balance",
+    "horizon_90d":  "Rake ocean PO1 balance + Dematter Oct 25k ($85,500 if confirmed)"
   },
 
-  "skus_sns_patch": {
-    "_comment": "Merge each of these into the matching ASIN entry in skus[] — add sns{} as a new key inside each SKU object.",
-    "B0FQL56V99": {
+  "skus": [
+    {
+      "asin":             "B0FQL56V99",
+      "name":             "Emergency Dematter Cream",
+      "status":           "HOLD",
+      "cogs":             3.36,
+      "msrp":             22.99,
+      "net_per_unit":     11.51,
+      "margin_pct":       50.1,
+      "units_all_locs":   32908,
+      "cash_at_cost":     110571,
+      "retail_potential": 756555,
+      "gross_profit_pot": 645984,
+      "return_rate":      null,
+      "supplier":         "JBK Wellness Labs",
+      "supplier_status":  "HOLD — 6-wk accel run blocked (Craig ingredient)",
       "sns": {
-        "active_subscribers": 151,
-        "sns_penetration_pct": 2.91,
-        "coupon_driven_pct": 63.4,
-        "last_updated": "2026-07-23"
-      }
+        "active_subscribers":    151,
+        "sns_penetration_pct":   2.91,
+        "coupon_driven_pct":     63.4,
+        "monthly_rev_avg":       955.95,
+        "last_updated":          "2026-07-23"
+      },
+      "revenue_lifetime":  null,
+      "units_lifetime":    null,
+      "revenue_share_pct": null
     },
-    "B0FQL16GH4": {
+    {
+      "asin":             "B0FQF2VTMJ",
+      "name":             "Rake Brush",
+      "status":           "BELOW REC",
+      "cogs":             1.82,
+      "msrp":             14.99,
+      "net_per_unit":     7.77,
+      "margin_pct":       51.9,
+      "units_all_locs":   2369,
+      "cash_at_cost":     4312,
+      "retail_potential": 35511,
+      "gross_profit_pot": 31199,
+      "return_rate":      null,
+      "supplier":         "Jiangsu Laoshu",
+      "supplier_status":  "Air inbound — 1,350 ~Jul 29, 300 ~Jul 31. PO2 deposit pending.",
       "sns": {
-        "active_subscribers": 19,
-        "sns_penetration_pct": 9.80,
-        "coupon_driven_pct": 55.6,
-        "last_updated": "2026-07-23"
-      }
+        "active_subscribers":    null,
+        "sns_penetration_pct":   null,
+        "coupon_driven_pct":     null,
+        "monthly_rev_avg":       null,
+        "last_updated":          null
+      },
+      "revenue_lifetime":  null,
+      "units_lifetime":    null,
+      "revenue_share_pct": null
     },
-    "B0GV5ZFLC2": {
+    {
+      "asin":             "B0GV5ZFLC2",
+      "name":             "Detangling Treatment",
+      "status":           "GREEN",
+      "cogs":             3.30,
+      "msrp":             18.99,
+      "net_per_unit":     8.93,
+      "margin_pct":       47.0,
+      "units_all_locs":   11303,
+      "cash_at_cost":     37300,
+      "retail_potential": 214644,
+      "gross_profit_pot": 177344,
+      "return_rate":      null,
+      "supplier":         "JBK Wellness Labs",
+      "supplier_status":  "Dec +10k scheduled — confirm proceed (same ingredient block as Dematter)",
       "sns": {
-        "active_subscribers": 8,
-        "sns_penetration_pct": 1.47,
-        "coupon_driven_pct": 0.0,
-        "last_updated": "2026-07-23"
-      }
+        "active_subscribers":    8,
+        "sns_penetration_pct":   1.47,
+        "coupon_driven_pct":     0.0,
+        "monthly_rev_avg":       56.97,
+        "last_updated":          "2026-07-23"
+      },
+      "revenue_lifetime":  null,
+      "units_lifetime":    null,
+      "revenue_share_pct": null
     },
-    "B0FQF2VTMJ": {
-      "sns": { "active_subscribers": null, "sns_penetration_pct": null, "coupon_driven_pct": null, "last_updated": null }
+    {
+      "asin":             "B0FQL16GH4",
+      "name":             "4-in-1 Shampoo",
+      "status":           "STOP",
+      "cogs":             5.17,
+      "msrp":             19.99,
+      "net_per_unit":     7.72,
+      "margin_pct":       38.6,
+      "units_all_locs":   4052,
+      "cash_at_cost":     20949,
+      "retail_potential": 80999,
+      "gross_profit_pot": 60050,
+      "return_rate":      null,
+      "supplier":         "JBK Wellness Labs",
+      "supplier_status":  "DO NOT REORDER — huge supply. New scents (Coconut Lime, Lavender Chamomile) Aug = labels only.",
+      "sns": {
+        "active_subscribers":    19,
+        "sns_penetration_pct":   9.80,
+        "coupon_driven_pct":     55.6,
+        "monthly_rev_avg":       70.23,
+        "last_updated":          "2026-07-23"
+      },
+      "revenue_lifetime":  null,
+      "units_lifetime":    null,
+      "revenue_share_pct": null
     },
-    "B0FQDHXSZ5": {
-      "sns": { "active_subscribers": null, "sns_penetration_pct": null, "coupon_driven_pct": null, "last_updated": null }
+    {
+      "asin":             "B0FQDHXSZ5",
+      "name":             "Pin Brush",
+      "status":           "STOP",
+      "cogs":             3.19,
+      "msrp":             19.99,
+      "net_per_unit":     9.70,
+      "margin_pct":       48.5,
+      "units_all_locs":   2380,
+      "cash_at_cost":     7592,
+      "retail_potential": 47576,
+      "gross_profit_pot": 39984,
+      "return_rate":      null,
+      "supplier":         "Jiangsu Laoshu",
+      "supplier_status":  "DO NOT REORDER. 3,000 already inbound to WSA (Jul 20 vessel). Hold at WSA.",
+      "sns": {
+        "active_subscribers":    null,
+        "sns_penetration_pct":   null,
+        "coupon_driven_pct":     null,
+        "monthly_rev_avg":       null,
+        "last_updated":          null
+      },
+      "revenue_lifetime":  null,
+      "units_lifetime":    null,
+      "revenue_share_pct": null
     },
-    "B0FQ628KCH": {
-      "sns": { "active_subscribers": null, "sns_penetration_pct": null, "coupon_driven_pct": null, "last_updated": null, "note": "Liquidation SKU — SnS not applicable" }
+    {
+      "asin":             "B0FQ628KCH",
+      "name":             "Slicker Brush",
+      "status":           "LIQUIDATION",
+      "cogs":             4.97,
+      "msrp":             17.99,
+      "net_per_unit":     6.60,
+      "margin_pct":       36.7,
+      "units_all_locs":   2690,
+      "cash_at_cost":     13369,
+      "retail_potential": 48393,
+      "gross_profit_pot": 35024,
+      "return_rate":      8.67,
+      "return_rate_flag": "NEAR THRESHOLD — 10.2% triggers Amazon surcharge. Monitor weekly.",
+      "supplier":         "Jiangsu Laoshu",
+      "supplier_status":  "LIQUIDATE — DO NOT REORDER. Storage $1,010.79/mo. Bundle with Dematter.",
+      "sns": {
+        "active_subscribers":    null,
+        "sns_penetration_pct":   null,
+        "coupon_driven_pct":     null,
+        "monthly_rev_avg":       null,
+        "last_updated":          null,
+        "note":                  "Liquidation SKU — S&S not applicable"
+      },
+      "revenue_lifetime":  null,
+      "units_lifetime":    null,
+      "revenue_share_pct": null
     }
-  }
+  ]
 }
