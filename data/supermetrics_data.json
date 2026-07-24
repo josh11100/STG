@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-22T23:35:00-07:00",
-  "query_date_yesterday": "2026-07-21",
-  "query_date_sc": "2026-07-20",
+  "generated_at": "2026-07-23T23:12:12-07:00",
+  "query_date_yesterday": "2026-07-22",
+  "query_date_sc": "2026-07-21",
   "queries": {
     "A": {
       "status": "completed",
       "requested_field_ids": ["cost", "roas"],
       "rows": [
-        [341.16, 2.3836]
+        [350.4, 1.7856]
       ],
       "error": null
     },
@@ -15,22 +15,21 @@
       "status": "completed",
       "requested_field_ids": ["asin", "sku", "cost", "attributedSales14dSameSKU", "acos"],
       "rows": [
-        ["B0FQL56V99", "3I-97VO-78X4", 193.41, 409.22, 45.9177],
-        ["B0GT1H84JM", "C8-VG2F-6714", 129.59, 0, 42.5415],
-        ["B0FQF2VTMJ", "W2-VFJG-FADR", 5.34, 26.98, 11.7699],
-        ["B0GV5ZFLC2", "8O-J63E-NJBR", 5.26, 18.99, 27.6988],
-        ["B0FQDHXSZ5", "7C-8EUF-79AF", 3.25, 0, null],
-        ["B0FQL16GH4", "6U-XVW9-2WBJ", 2.1, 0, null],
-        ["B0FQ628KCH", "6H-JCY0-JARS", 1.37, 0, null],
-        ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0.42, 0, 1.8269],
+        ["B0FQL56V99", "3I-97VO-78X4", 183.49, 344.85, 53.2086],
+        ["B0GT1H84JM", "C8-VG2F-6714", 123.86, 0, 62.5935],
+        ["B0FQL16GH4", "6U-XVW9-2WBJ", 14.91, 19.99, 74.5873],
+        ["B0FQDHXSZ5", "7C-8EUF-79AF", 10.33, 39.98, 25.8379],
+        ["B0GT1MFCY5", "73-EY5E-UIBV", 7.94, 0, null],
+        ["B0GV5ZFLC2", "8O-J63E-NJBR", 5.69, 0, null],
+        ["B0FQF2VTMJ", "W2-VFJG-FADR", 1.89, 0, 8.221],
+        ["B0FQ628KCH", "6H-JCY0-JARS", 1.87, 0, null],
         ["B0GT5YFVB8", "YH-4KUE-9WQH", 0.21, 0, null],
         ["B0GXLPJS4C", "STG-TANGLE-MAT-BUNDLE-V1", 0.21, 0, null],
         ["B0GFGDTJ39", "99-8KLV-TU5S", 0, 0, null],
         ["B0GRJ1366C", "BF-U1I9-TB25", 0, 0, null],
-        ["B0GT1MFCY5", "73-EY5E-UIBV", 0, 0, null],
-        ["B0GT1V7V8R", "HG-EGAG-1HO5", 0, 0, null],
         ["B0GXH3JTK4", "STG-WASH-WEAR-BUNDLE-V2", 0, 0, null],
-        ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null]
+        ["B0GXLTZ495", "STG-EASY-BRUSH-DAYS-V1", 0, 0, null],
+        ["B0GY9WZWKH", "STG-FULL-COAT-CARE-SYSTEM", 0, 0, null]
       ],
       "error": null
     },
@@ -38,19 +37,19 @@
       "status": "completed",
       "requested_field_ids": ["asin", "cost"],
       "rows": [
-        ["B0FQL56V99", 1402.42],
-        ["B0GT1H84JM", 1302.88],
-        ["B0GV5ZFLC2", 94],
-        ["B0FQDHXSZ5", 48.46],
-        ["B0FQF2VTMJ", 29.46],
-        ["B0FQL16GH4", 20.24],
-        ["B0FQ628KCH", 5.48],
-        ["B0GY9WZWKH", 2.31],
-        ["B0GXLPJS4C", 1.05],
-        ["B0GT5YFVB8", 0.21],
+        ["B0FQL56V99", 1432.97],
+        ["B0GT1H84JM", 1172.47],
+        ["B0GV5ZFLC2", 75.03],
+        ["B0FQDHXSZ5", 46.47],
+        ["B0FQL16GH4", 35.11],
+        ["B0FQF2VTMJ", 24.19],
+        ["B0FQ628KCH", 17.0],
+        ["B0GT1MFCY5", 9.81],
+        ["B0GY9WZWKH", 1.89],
+        ["B0GXLPJS4C", 1.26],
+        ["B0GT5YFVB8", 0.42],
         ["B0GFGDTJ39", 0],
         ["B0GRJ1366C", 0],
-        ["B0GT1MFCY5", 0],
         ["B0GT1V7V8R", 0],
         ["B0GXH3JTK4", 0],
         ["B0GXLTZ495", 0]
@@ -61,8 +60,8 @@
       "status": "completed",
       "requested_field_ids": ["asin", "ordered_product_sales"],
       "rows": [
-        ["B0FQL56V99", 1016.12],
-        ["B0FQF2VTMJ", 257.79],
+        ["B0FQL56V99", 1411.54],
+        ["B0FQF2VTMJ", 335.73],
         ["B0FQDHXSZ5", 39.98],
         ["B0FQL16GH4", 19.99],
         ["B0GV5ZFLC2", 18.99]
@@ -73,7 +72,7 @@
       "status": "completed",
       "requested_field_ids": ["sessions", "unit_session_percentage", "units_ordered"],
       "rows": [
-        [456, 16.23, 74]
+        [428, 22.66, 97]
       ],
       "error": null
     },
@@ -87,14 +86,14 @@
       "status": "completed",
       "requested_field_ids": ["asin", "ordered_product_sales", "units_ordered", "sessions", "unit_session_percentage", "buy_box_percentage"],
       "rows": [
-        ["B0FQL56V99", 237920.18, 10637, 56689, 18.76, 99.56],
-        ["B0FQF2VTMJ", 30235.56, 2179, 7244, 30.08, 99.46],
-        ["B0GV5ZFLC2", 12307.8, 695, 4540, 15.31, 99.26],
+        ["B0FQL56V99", 239284.6, 10700, 57077, 18.75, 99.56],
+        ["B0FQF2VTMJ", 30496.35, 2200, 7272, 30.25, 99.47],
+        ["B0GV5ZFLC2", 12326.79, 696, 4578, 15.2, 99.27],
         ["", 10835.92, 379, 3668, 20.63, 190.35],
-        ["B0FQDHXSZ5", 9879.72, 527, 3890, 13.55, 99.45],
-        ["B0FQL16GH4", 9083.83, 465, 4758, 9.77, 99.33],
+        ["B0FQDHXSZ5", 9939.69, 530, 3924, 13.51, 99.46],
+        ["B0FQL16GH4", 9103.82, 466, 4774, 9.76, 99.33],
         ["B0FQ4PY573", 7303.78, 368, 3307, 11.13, 79.53],
-        ["B0FQ628KCH", 3859.33, 224, 2342, 9.56, 99.02]
+        ["B0FQ628KCH", 3859.33, 224, 2350, 9.53, 99.02]
       ],
       "error": null
     }
@@ -103,9 +102,9 @@
     "A": "0aedd4b6fd352f777e1906dac5a058d5173cd395c2f1fbb54c9cdb9e0904e563",
     "B": "60142a88f6039dcfae93a385716595c4a63245f2bf6c0b0a2c204412ad153c90",
     "C": "57aa82d702fac3bf5c190db06e5b036f1c6a65a0f096805ddc6699fa0eb7a1c7",
-    "D": "de1e2132ad63d1dc531e7c4db52e9ccd3b7df5b4f4023a7426ac52e30dc08085",
-    "E": "7653c9427527d248cb021d502b2a664c92fae90ce790db15bdb9f7193425f4ad",
+    "D": "d77c2136f28882eaf335b6f34d78a29e391bbc1ac2ae56ba55d2cdd4bb56bc7c",
+    "E": "3101bbecc5dec4f4ede0c4cfe8745d3e43c9a2c9f373ea044e1df1c68ec27386",
     "F": "e75e3bcbc0e14b7b127b9866b4028f918da7d65811b2eeddc7ca52fa86d939de",
-    "G": "9aa621f3545dd7837e1e427744bb1190e17e47b9c0c639d5e6b0fe17b27007f4"
+    "G": "9c6ca80fe006f0cb273b2f6d5c6c69d8115abe69408f33fceecd7ae30e89b9d9"
   }
 }
