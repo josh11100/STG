@@ -1,508 +1,270 @@
 {
-  "last_updated": "2026-07-23 PT",
-  "routine_version": "v10.16",
-  "collected_at": "2026-07-23T13:45:00-07:00",
-  "quickbooks": {
-    "available": true,
-    "cash_end_of_period": 484001.8,
-    "runway_weeks": 39.8,
-    "sync_lag_days": 12,
-    "period": "2026-07-01 to 2026-07-23",
-    "mtd_income": 24553.71,
-    "mtd_cogs": 11061.04,
-    "mtd_gross_profit": 13492.67,
-    "mtd_expenses": 39960.8,
-    "mtd_net_income": -26468.13,
-    "gross_margin_pct": 55.0,
-    "net_margin_pct": -107.8,
-    "cash_balance": 484001.8,
-    "weeks_runway": 39.8,
-    "accounts_payable": 48504.75,
-    "status": "GREEN",
-    "mtd": {
-      "revenue": 24553.71,
-      "cogs": 11061.04,
-      "gross_profit": 13492.67,
-      "operating_expenses": 39960.8,
-      "net_income": -26468.13,
-      "gross_margin_pct": 55.0,
-      "net_margin_pct": -107.8,
-      "period": "2026-07-01 to 2026-07-23"
-    }
-  },
-  "klaviyo": {
-    "available": true,
-    "flows_live": 3,
-    "recipients_7d": 4,
-    "revenue_7d": 0,
-    "total_email_revenue_7d": 0,
-    "avg_open_rate": null,
-    "avg_click_rate": null,
-    "flows_flagged": [],
-    "flows": [],
-    "status": "RED"
-  },
-  "shopify": {
-    "available": true,
-    "yesterday": {
-      "date": "2026-07-22",
-      "revenue": 74.96,
-      "orders": 4,
-      "aov": 18.74
+  "routine_version": "v10.19",
+  "last_updated": "2026-07-24 PT",
+  "report_date": "2026-07-24",
+  "data_date": "2026-07-23",
+  "duplicate_run_guard": "NOT FIRED — prior last_updated 2026-07-23 PT (~18-19h elapsed, > 16h threshold)",
+  "webhook_note": "routine_triggers.json does not exist in repository — JARVIS Report webhook not fired this run",
+  "sections": {
+    "quickbooks": {
+      "available": true,
+      "cash": {
+        "total": 484001.80,
+        "checking": 24951.25,
+        "money_market": 459050.55
+      },
+      "mtd_period": "Jul 1-23, 2026",
+      "mtd_income": 24553.71,
+      "mtd_cogs": 11061.04,
+      "mtd_gross_profit": 13492.67,
+      "mtd_expenses": 39960.80,
+      "mtd_net_income": -26468.13,
+      "runway_weeks_est": 31,
+      "runway_months_est": 7.3,
+      "sync_lag_note": "QB MTD income frozen at Jul 12 data per L-2026-07-14-002 (~12-13 day lag). H10 authoritative for revenue; QB balance sheet authoritative for cash."
     },
-    "yesterday_sales": 74.96,
-    "aov": 18.74,
-    "orders_yesterday": 4,
-    "vs_7day_avg_pct": 7.6,
-    "daily_7d": [
-      {
-        "date": "2026-07-16",
-        "sales": 18.99,
-        "orders": 1
-      },
-      {
-        "date": "2026-07-17",
-        "sales": 38.97,
-        "orders": 2
-      },
-      {
-        "date": "2026-07-18",
-        "sales": 0.0,
-        "orders": 0
-      },
-      {
-        "date": "2026-07-19",
-        "sales": 119.03,
-        "orders": 2
-      },
-      {
-        "date": "2026-07-20",
-        "sales": 213.04,
-        "orders": 10
-      },
-      {
-        "date": "2026-07-21",
-        "sales": 27.98,
-        "orders": 1
-      },
-      {
-        "date": "2026-07-22",
-        "sales": 74.96,
-        "orders": 4
-      }
-    ],
-    "gross_7d": 492.97,
-    "orders_7d": 20,
-    "top_products": [
-      {
-        "product_title": "4-IN-1 Rosemary Mint Shampoo & Conditioner",
-        "revenue": 300.92,
-        "order_count": 19,
-        "units_sold": 19,
-        "avg_price": 15.84,
-        "variants": [
-          "Default"
-        ]
-      },
-      {
-        "product_title": "Emergency Dematter Cream",
-        "revenue": 288.18,
-        "order_count": 14,
-        "units_sold": 14,
-        "avg_price": 20.58,
-        "variants": [
-          "Default"
-        ]
-      },
-      {
-        "product_title": "Detangling Treatment",
-        "revenue": 252.28,
-        "order_count": 14,
-        "units_sold": 14,
-        "avg_price": 18.02,
-        "variants": [
-          "Default"
-        ]
-      },
-      {
-        "product_title": "Slicker Brush",
-        "revenue": 228.42,
-        "order_count": 18,
-        "units_sold": 18,
-        "avg_price": 12.69,
-        "variants": [
-          "Default"
-        ]
-      },
-      {
-        "product_title": "Pin Brush",
-        "revenue": 195.6,
-        "order_count": 10,
-        "units_sold": 10,
-        "avg_price": 19.56,
-        "variants": [
-          "Default"
-        ]
-      },
-      {
-        "product_title": "Rake Brush",
-        "revenue": 172.89,
-        "order_count": 13,
-        "units_sold": 13,
-        "avg_price": 13.3,
-        "variants": [
-          "Default"
-        ]
-      },
-      {
-        "product_title": "Soft & Tangle Free Dog Grooming Kit",
-        "revenue": 35.99,
-        "order_count": 1,
-        "units_sold": 1,
-        "avg_price": 35.99,
-        "variants": [
-          "Shampoo + Pin"
-        ],
-        "is_bundle": true
-      }
-    ],
-    "order_breakdown": {
-      "total_orders": 4,
-      "single_item_orders": 4,
-      "multi_item_orders": 0,
-      "avg_items_per_order": 1.0,
-      "capped": false,
-      "top_combos": [],
-      "note": "All 4 orders yesterday were single-item. 3 comped ($0), 1 paid ($10.49). Gross $74.96 reflects pre-discount pricing."
-    },
-    "bundles_30d": [
-      {
-        "title": "Soft & Tangle Free Dog Grooming Kit (Shampoo + Pin)",
-        "gross_sales": 35.99,
-        "orders": 1
-      }
-    ],
-    "note": "Slicker Brush $228 gross / $27 net \u2014 heavy discounting. Bundle (Shampoo+Pin): 1 sale/30d."
-  },
-  "helium10": {
-    "available": true,
-    "report_date": "2026-07-22",
-    "keyword_ranks": {
-      "B0FQL56V99": [
+    "helium10": {
+      "available": true,
+      "report_date": "2026-07-23",
+      "keywords": [
         {
-          "keyword": "detangler for dogs",
-          "organic": 18,
-          "change": -4
+          "asin": "B0FQL56V99",
+          "keyword": "dematting comb for dogs",
+          "rank_current": 27,
+          "rank_prior": 19,
+          "rank_change": -8,
+          "flag": "RED — dropped 8 spots"
         },
         {
-          "keyword": "dematting comb",
-          "organic": 19,
-          "change": -2
-        }
-      ],
-      "B0FQ628KCH": [
-        {
-          "keyword": "slicker brush for dogs",
-          "organic": 177,
-          "change": -11
-        }
-      ]
-    },
-    "products": [
-      {
-        "asin": "B0FQL56V99",
-        "name": "Emergency Dematter Cream",
-        "keywords": [
-          {
-            "keyword": "detangler for dogs",
-            "organic_rank": 18,
-            "search_volume": null,
-            "sponsored_rank": null,
-            "organic_change_rating": "DECLINING",
-            "delta": -4
-          },
-          {
-            "keyword": "dematting comb",
-            "organic_rank": 19,
-            "search_volume": null,
-            "sponsored_rank": null,
-            "organic_change_rating": "DECLINING",
-            "delta": -2
-          }
-        ]
-      },
-      {
-        "asin": "B0FQ628KCH",
-        "name": "Slicker Brush",
-        "keywords": [
-          {
-            "keyword": "slicker brush for dogs",
-            "organic_rank": 177,
-            "search_volume": null,
-            "sponsored_rank": null,
-            "organic_change_rating": "DECLINING",
-            "delta": -11
-          }
-        ]
-      }
-    ],
-    "report_found": true,
-    "flags": []
-  },
-  "helium10_profits": {
-    "available": true,
-    "daily": {
-      "date": "2026-07-22",
-      "gross": 1894.42,
-      "gross_revenue": 1894.42,
-      "expenses": -982.87,
-      "net_profit": 799.62,
-      "net_margin_pct": 42.2,
-      "units": 92,
-      "vs_prior_day_pct": 252.0
-    }
-  },
-  "amazon_ads": {
-    "available": true,
-    "flagged_skus": [
-      {
-        "asin": "B0GT1H84JM",
-        "flag": "KILL-BREACH",
-        "days_active": 32
-      },
-      {
-        "asin": "B0FQ628KCH",
-        "flag": "LIQUIDATION-VIOLATION",
-        "days_active": 32
-      }
-    ]
-  },
-  "meta_ads": {
-    "available": true,
-    "l30d": {
-      "spend": 504.04,
-      "roas": 0.634,
-      "purchase_value": 319.35
-    },
-    "yesterday": {
-      "spend": 22.25
-    },
-    "campaigns_l30d": [
-      {
-        "name": "Save the Shave UGC Bill",
-        "spend": 447.17,
-        "roas": 0.714,
-        "status": "ACTIVE"
-      },
-      {
-        "name": "BLZ-20260717-002 Shampoo 50OFF",
-        "spend": 37.89,
-        "roas": null,
-        "status": "ACTIVE"
-      },
-      {
-        "name": "BLZ-20260721-001 Detangle TOF",
-        "spend": 18.98,
-        "roas": null,
-        "status": "ACTIVE",
-        "objective": "LINK_CLICKS"
-      }
-    ],
-    "flags": [
-      "KILL BREACH: Save the Shave UGC Bill \u00b7 $447.17 L30D \u00b7 ROAS 0.714 \u00b7 Day 32+ \u00b7 requires Will pause in Ads Manager"
-    ]
-  },
-  "supermetrics": {
-    "available": true,
-    "generated_at": "2026-07-22T23:35:00-07:00",
-    "age_hours": 8.2,
-    "status": "GREEN",
-    "amazon_ads": {
-      "spend": 341.16,
-      "roas": 2.3836,
-      "skus": [],
-      "sku_data_pending": true,
-      "sku_data_note": "Queries B/C timed out \u2014 per-SKU table populates after tonight's Evening Pre-Run v5.4",
-      "flagged_skus": [
-        {
-          "asin": "B0GT1H84JM",
-          "flag": "KILL-BREACH",
-          "days_active": 32
+          "asin": "B0FQL56V99",
+          "keyword": "dog detangler",
+          "rank_current": 17,
+          "rank_prior": 18,
+          "rank_change": 1,
+          "flag": "GREEN — improved 1 spot (minor)"
         },
         {
           "asin": "B0FQ628KCH",
-          "flag": "LIQUIDATION-VIOLATION",
-          "days_active": 32
+          "keyword": "slicker brush for dogs",
+          "rank_current": 191,
+          "rank_prior": 177,
+          "rank_change": -14,
+          "flag": "RED — dropped 14 spots"
         }
       ]
     },
-    "amazon_sales": {
-      "sessions": null,
-      "conversion_rate": null,
-      "units_sold": null
+    "helium10_profits": {
+      "available": true,
+      "report_date": "2026-07-23",
+      "summary": {
+        "gross": 1257.58,
+        "expenses": 870.34,
+        "net_profit": 316.88,
+        "units": 63
+      },
+      "by_sku": [
+        {
+          "asin": "B0FQL56V99",
+          "name": "Emergency Dematter Cream",
+          "units": 33,
+          "net": 218.87,
+          "flag": "OK"
+        },
+        {
+          "asin": "B0FQF2VTMJ",
+          "name": "Rake Brush",
+          "units": 4,
+          "net": -18.07,
+          "flag": "YELLOW — negative net profit"
+        },
+        {
+          "asin": "B0GV5ZFLC2",
+          "name": "Detangling Treatment",
+          "units": 0,
+          "gross": 0.00,
+          "net": -52.31,
+          "flag": "RED — zero revenue, negative net (ad spend with no sales)"
+        }
+      ]
     },
-    "google_ads": {
-      "spend": 0,
-      "roas": null,
-      "note": "No active Google campaigns"
+    "helium10_inventory_insights": {
+      "available": true,
+      "report_date": "2026-07-23",
+      "critical_flags": [
+        {
+          "asin": "B0FQ4PY573",
+          "name": "Detangling Spray",
+          "lif_days": 0,
+          "flag": "CRITICAL — LIF <= 0 Days (stockout imminent)"
+        },
+        {
+          "asin": "B0FQFP2S9F",
+          "name": "FurFix De-Shed Brush",
+          "lif_days": 0,
+          "ltsf_days_min": 181,
+          "flag": "CRITICAL — LIF <= 0 Days + LTSF >= 181 Days (stockout + long-term storage fee, stranded 4+ weeks)"
+        }
+      ]
     },
-    "query_a": {
-      "date": "2026-07-21",
-      "account_spend": 341.16,
-      "roas": 2.3836
+    "shopify": {
+      "available": true,
+      "report_date": "2026-07-23",
+      "orders_count": 1,
+      "revenue_net": 0.00,
+      "note": "Jul 23: 1 comped order, $0 net revenue. Shopify D2C channel inactive."
     },
-    "query_g": {
-      "lifetime_revenue": 310590.2,
-      "lifetime_units": 15095
+    "klaviyo": {
+      "available": true,
+      "report_date": "2026-07-23",
+      "total_revenue_7d": 0.00,
+      "total_recipients_7d": 6,
+      "channel_status": "DEAD",
+      "flag_revenue": "RED — $0 revenue, 6 total recipients 7d, all click_rates 0%",
+      "flows": [
+        {
+          "name": "Welcome Series",
+          "recipients_7d": 2,
+          "open_rate": 0.00,
+          "click_rate": 0.00,
+          "revenue_7d": 0.00,
+          "flags": ["open_rate RED", "click_rate RED"]
+        },
+        {
+          "name": "Abandoned Cart",
+          "recipients_7d": 2,
+          "open_rate": 0.50,
+          "click_rate": 0.00,
+          "revenue_7d": 0.00,
+          "flags": ["click_rate RED"]
+        },
+        {
+          "name": "Warranty",
+          "recipients_7d": 2,
+          "open_rate": 0.50,
+          "click_rate": 0.00,
+          "revenue_7d": 0.00,
+          "flags": ["click_rate RED"]
+        }
+      ]
+    },
+    "amazon_ads": {
+      "available": true,
+      "data_source": "supermetrics_data.json",
+      "supermetrics_generated_at": "2026-07-23T23:12",
+      "supermetrics_age_hours": 8.5,
+      "account": {
+        "daily_spend": 350.40,
+        "daily_roas": 1.7856,
+        "roas_band": "YELLOW"
+      },
+      "by_sku": [
+        {
+          "asin": "B0FQL56V99",
+          "name": "Emergency Dematter Cream",
+          "daily_spend": 183.49,
+          "daily_sales": 344.85,
+          "daily_roas": 1.879,
+          "roas_band": "YELLOW",
+          "7d_spend": 1432.97,
+          "7d_sales": 1411.54,
+          "tacos_pct": 101.5,
+          "tacos_flag": "RED — 101.5% vs 35% target"
+        },
+        {
+          "asin": "B0GT1H84JM",
+          "name": "Save the Shave Bundle",
+          "daily_spend": 123.86,
+          "daily_sales": 0.00,
+          "daily_roas": 0.00,
+          "roas_band": "KILL",
+          "7d_spend": 1172.47,
+          "7d_sales": 0.00,
+          "tacos_pct": null,
+          "tacos_note": "UNDEFINED — $0 attributed sales",
+          "alert": "KILL-BREACH — $123.86 spend / $0 attributed sales. Attribution-window guard triggered (cost >= $75, sales = $0). Immediate pause required."
+        },
+        {
+          "asin": "B0FQ628KCH",
+          "name": "Slicker Brush",
+          "daily_spend": 1.87,
+          "daily_sales": 0.00,
+          "roas_band": "LIQUIDATION",
+          "alert": "LIQUIDATION VIOLATION Day 33+ — any spend > $0 is breach per roas_bands.json liquidate flag. Organic rank r177->r191 (-14 spots Jul 23). Pause all campaigns immediately."
+        },
+        {
+          "asin": "B0GV5ZFLC2",
+          "name": "Detangling Treatment",
+          "daily_spend": 75.03,
+          "daily_sales": 18.99,
+          "7d_spend": 75.03,
+          "7d_sales": 18.99,
+          "tacos_pct": 395.1,
+          "tacos_flag": "RED — 395.1% vs 35% target"
+        },
+        {
+          "asin": "B0FQF2VTMJ",
+          "name": "Rake Brush",
+          "7d_sales": 335.73
+        },
+        {
+          "asin": "B0FQDHXSZ5",
+          "name": "Pin Brush",
+          "7d_sales": 39.98
+        },
+        {
+          "asin": "B0FQL16GH4",
+          "name": "4-in-1 Shampoo",
+          "7d_sales": 19.99
+        }
+      ]
+    },
+    "meta_ads": {
+      "available": true,
+      "l30d": {
+        "spend": 523.31,
+        "roas": 0.61025,
+        "roas_band": "KILL"
+      },
+      "yesterday_spend": 19.27,
+      "campaigns": [
+        {
+          "name": "Save the Shave UGC Bill",
+          "l30d_spend": 447.17,
+          "l30d_roas": 0.714,
+          "roas_band": "KILL",
+          "alert": "KILL band Day 33+ — no action taken. Requires human approval per guardrails.",
+          "status": "ACTIVE"
+        },
+        {
+          "name": "BLZ-20260721-001",
+          "l30d_spend": 28.99,
+          "roas_band": "INSUFFICIENT_DATA",
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    "reviews": {
+      "available": true,
+      "note": "Reviews data read from Google Drive sheet (Step 4g reuse — no additional fetch this run)."
+    },
+    "live_cash_in_inventory": {
+      "available": true,
+      "as_of": "2026-07-23",
+      "data_sources": [
+        "inventory_data.json (JARVIS INVENTORY v1.0, as_of 2026-07-23)",
+        "roas_bands.json (COGS per SKU)"
+      ],
+      "total_fba_cash": 141441.79,
+      "by_sku": [
+        { "asin": "B0FQL56V99", "fba_on_hand": 21738, "cogs_per_unit": 3.36, "fba_cash": 73039.68 },
+        { "asin": "B0FQF2VTMJ", "fba_on_hand": 479,   "cogs_per_unit": 1.82, "fba_cash": 871.78 },
+        { "asin": "B0GV5ZFLC2", "fba_on_hand": 8319,  "cogs_per_unit": 3.30, "fba_cash": 27452.70 },
+        { "asin": "B0FQL16GH4", "fba_on_hand": 4026,  "cogs_per_unit": 5.17, "fba_cash": 20814.42 },
+        { "asin": "B0FQDHXSZ5", "fba_on_hand": 2019,  "cogs_per_unit": 3.19, "fba_cash": 6440.61 },
+        { "asin": "B0FQ628KCH", "fba_on_hand": 2580,  "cogs_per_unit": 4.97, "fba_cash": 12822.60 },
+        { "asin": "B0FQ4PY573", "fba_on_hand": 288,   "cogs_per_unit": null, "fba_cash": 0.00, "note": "COGS not in roas_bands.json — excluded from total" },
+        { "asin": "B0FQFP2S9F", "fba_on_hand": 60,    "cogs_per_unit": null, "fba_cash": 0.00, "note": "COGS not in roas_bands.json — excluded from total" }
+      ]
     }
-  },
-  "helium10_inventory": {
-    "available": true,
-    "report_date": "2026-07-22",
-    "skus": [
-      {
-        "asin": "B0FQ4PY573",
-        "name": "Detangling Spray",
-        "lif_days": 0,
-        "lif_status": "ZERO_VELOCITY",
-        "ltsf_days": 181,
-        "ltsf_risk": true
-      },
-      {
-        "asin": "B0FQL16GH4",
-        "name": "Shampoo 4-in-1",
-        "lif_days": 2580,
-        "lif_status": "EXCESS",
-        "ltsf_days": 181,
-        "ltsf_risk": true
-      },
-      {
-        "asin": "B0FQFP2S9F",
-        "name": "FurFix De-Shed",
-        "lif_days": 0,
-        "lif_status": "ZERO_VELOCITY",
-        "ltsf_days": 181,
-        "ltsf_risk": true
-      },
-      {
-        "asin": "B0FQDHXSZ5",
-        "name": "Pin Brush",
-        "lif_days": 657,
-        "lif_status": "EXCESS",
-        "ltsf_days": 181,
-        "ltsf_risk": true
-      },
-      {
-        "asin": "B0FQ628KCH",
-        "name": "Slicker Brush",
-        "lif_days": 3196,
-        "lif_status": "LIQUIDATION",
-        "ltsf_days": 181,
-        "ltsf_risk": true
-      }
-    ]
-  },
-  "reviews_google": {
-    "available": true,
-    "last_reviews_check": "2026-07-23",
-    "avg_rating_last_15": 3.8,
-    "low_star_count": 4,
-    "sheet_last_modified": "2026-07-16",
-    "negative_themes": [
-      "glue-like consistency",
-      "mat made worse",
-      "not effective on goldendoodle/poodle"
-    ]
-  },
-  "reviews": {
-    "available": true,
-    "new_review_count": 4,
-    "avg_rating_new_batch": 3.8,
-    "sheet_last_modified": "2026-07-16",
-    "last_reviews_check": "2026-07-23",
-    "status": "RED",
-    "recent": [],
-    "note": "4 low-star reviews. Themes: glue-like consistency, mat made worse, not effective on goldendoodle/poodle."
-  },
-  "inventory": {
-    "available": true,
-    "source": "seller_central_manual",
-    "data_date": "2026-07-22",
-    "skus": [
-      {
-        "asin": "B0FQL56V99",
-        "name": "Emergency Dematter Cream",
-        "on_hand": 21793,
-        "dos": 313,
-        "status": "HEALTHY",
-        "note": "HEALTHY \u2014 21,793 on-hand \u00b7 313 DoS (data as of 2026-07-22)"
-      },
-      {
-        "asin": "B0FQF2VTMJ",
-        "name": "Rake Brush",
-        "on_hand": 502,
-        "dos": 23,
-        "status": "LOW_STOCK",
-        "note": "LOW STOCK \u2014 502 on-hand \u00b7 23 DoS \u00b7 1,650 inbound shipped"
-      },
-      {
-        "asin": "B0GV5ZFLC2",
-        "name": "Detangling Treatment",
-        "on_hand": 8324,
-        "dos": 365,
-        "status": "EXCESS",
-        "note": "EXCESS \u2014 7,536 est. excess units"
-      },
-      {
-        "asin": "B0FQL16GH4",
-        "name": "4-in-1 Shampoo",
-        "on_hand": 4030,
-        "dos": 365,
-        "status": "EXCESS",
-        "note": "EXCESS \u2014 3,523 est. excess units"
-      },
-      {
-        "asin": "B0FQDHXSZ5",
-        "name": "Pin Brush",
-        "on_hand": 2022,
-        "dos": 365,
-        "status": "EXCESS",
-        "note": "EXCESS \u2014 1,843 est. excess units"
-      },
-      {
-        "asin": "B0FQ628KCH",
-        "name": "Slicker Brush",
-        "on_hand": 2580,
-        "dos": 365,
-        "status": "LIQUIDATION",
-        "note": "EXCESS \u2014 liquidation \u00b7 2,462 est. excess"
-      },
-      {
-        "asin": "B0FQ4PY573",
-        "name": "Detangling Spray",
-        "on_hand": 323,
-        "dos": 194,
-        "status": "HEALTHY",
-        "note": "HEALTHY \u2014 0 velocity \u00b7 verify listing SELLABLE"
-      },
-      {
-        "asin": "B0FQFP2S9F",
-        "name": "FurFix De-Shed Brush",
-        "on_hand": 62,
-        "dos": null,
-        "status": "STRANDED",
-        "note": "STRANDED \u2014 fix listing in SC"
-      }
-    ],
-    "summary": {
-      "total": 8,
-      "healthy": 2,
-      "low_stock": 1,
-      "excess": 4,
-      "stranded": 1,
-      "closed": 0,
-      "data_staleness_days": 1
-    },
-    "note": "Manually updated Jul 22 2026 from SC FBA Inventory page."
   }
 }
