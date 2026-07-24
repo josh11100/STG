@@ -572,3 +572,17 @@
     }
   ]
 }
+{
+  "_comment": "PATCH — add 'cogs' field to each entry in the skus[] array. All values from supply_chain.json as_of 2026-07-14, confirmed by Patrick. Update cogs when a new production run has a different landed cost.",
+
+  "_cogs_per_sku": {
+    "B0FQL56V99": { "name": "Emergency Dematter Cream",   "cogs": 3.36 },
+    "B0FQF2VTMJ": { "name": "Rake Brush",                "cogs": 1.82 },
+    "B0GV5ZFLC2": { "name": "Detangling Treatment",      "cogs": 3.30 },
+    "B0FQL16GH4": { "name": "4-in-1 Shampoo",            "cogs": 5.17 },
+    "B0FQDHXSZ5": { "name": "Pin Brush",                 "cogs": 3.19 },
+    "B0FQ628KCH": { "name": "Slicker Brush",             "cogs": 4.97 }
+  },
+
+  "_instruction": "For each object in roas_bands.json skus[], add the matching 'cogs' value as a new field. Example — Emergency Dematter entry becomes: { 'asin': 'B0FQL56V99', 'sku': 'Emergency Dematter...', 'cogs': 3.36, 'price': 22.99, ... }. Place 'cogs' immediately after 'asin' and 'sku' for readability. Do not change any other field."
+}
