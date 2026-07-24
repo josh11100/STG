@@ -1,32 +1,17 @@
 {
-  "generated_by": "JARVIS COLLECT v10.19",
-  "generated_at": "2026-07-24 PT",
-  "data_date": "2026-07-23",
-  "status": "DRAFT — no Slack posting until human replies 'approved'",
-  "drafts": [
-    {
-      "id": "draft_A",
-      "channel": "#finance-alerts",
-      "status": "DRAFT",
-      "message": "*JARVIS COLLECT v10.19 — Finance Alert | Jul 24, 2026 | Data: Jul 23*\n\n*Cash Position (QB Balance Sheet):*\n• Total: $484,001.80 (Checking $24,951.25 | Money Market $459,050.55)\n• Runway Est: ~31 weeks / 7.3 months\n\n*H10 Daily Profits (Jul 23):*\n• Gross: $1,257.58 | Expenses: $870.34 | Net: $316.88 | Units: 63\n• B0FQF2VTMJ (Rake Brush): Net -$18.07 :yellow_circle:\n• B0GV5ZFLC2 (Detangling): Gross $0.00 / Net -$52.31 :red_circle:\n\n*QB MTD Jul 1-23 (sync lag Day 13+):*\n• Revenue: $24,553.71 | COGS: $11,061.04 | Gross Profit: $13,492.67\n• Expenses: $39,960.80 | Net Income: -$26,468.13\n• :warning: QB MTD frozen (L-2026-07-14-002 — H10 authoritative for revenue)\n\n*Live Cash in FBA Inventory (COGS x on-hand, Jul 23):* $141,441.79"
-    },
-    {
-      "id": "draft_B",
-      "channel": "#morning-brief",
-      "status": "DRAFT",
-      "message": "*JARVIS COLLECT v10.19 — Morning Brief | Jul 24, 2026 | Data: Jul 23*\n\n:rotating_light: *CRITICAL ACTIONS REQUIRED*\n• B0GT1H84JM (Save the Shave Bundle): $123.86 spend / $0 sales — KILL-BREACH\n• B0FQ628KCH (Slicker Brush): $1.87 spend Day 33+ — LIQUIDATION VIOLATION\n• B0FQ4PY573 (Detangling Spray): LIF <= 0 Days — STOCKOUT IMMINENT\n• B0FQFP2S9F (FurFix): LIF <= 0 Days + LTSF >= 181 Days — STOCKOUT + STRANDED\n\n*Amazon Ads (Supermetrics Jul 23):*\n• Account ROAS: 1.7856 YELLOW | Spend: $350.40\n• Dematter (B0FQL56V99): ROAS 1.879 YELLOW | TACOS 101.5% :red_circle:\n• Detangling (B0GV5ZFLC2): TACOS 395.1% :red_circle:\n\n*Meta Ads L30D:*\n• Account: $523.31 spend / ROAS 0.610 KILL\n• Save the Shave UGC Bill: $447.17 / ROAS 0.714 KILL — Day 33+\n\n*Klaviyo (7d):* $0 revenue | 6 total recipients | all click_rates 0% :red_circle: (DEAD Day 13+)\n\n*Shopify Jul 23:* 1 comped order / $0 net revenue\n\n*H10 Keyword Drops (Jul 23):*\n• 'dematting comb for dogs': r19->r27 (-8 spots) :red_circle:\n• 'slicker brush for dogs': r177->r191 (-14 spots) :red_circle:\n\n*Cash:* $484,001.80 | H10 Net: $316.88 | FBA Cash in Inventory: $141,441.79\n\n:information_source: routine_triggers.json missing — JARVIS Report webhook not fired"
-    },
-    {
-      "id": "draft_C",
-      "channel": "#ads-watchdog",
-      "status": "DRAFT",
-      "message": "*JARVIS ADS WATCHDOG | Jul 24, 2026 | Data: Jul 23*\n\n:rotating_light: *KILL-BREACH: B0GT1H84JM (Save the Shave Bundle)*\n• Yesterday: $123.86 spend / $0 attributed sales\n• 7d: $1,172.47 spend / $0 sales\n• Attribution-window guard: cost >= $75 with $0 sales = KILL-BREACH\n• REQUIRED: Pause ALL campaigns targeting B0GT1H84JM in Ad Console immediately\n\n:rotating_light: *LIQUIDATION VIOLATION Day 33+: B0FQ628KCH (Slicker Brush)*\n• $1.87 spend yesterday — any spend > $0 is breach (liquidate=true)\n• Organic rank: r177 -> r191 (-14 spots Jul 23) — ad spend actively damaging organic rank\n• REQUIRED: Pause ALL campaigns targeting B0FQ628KCH immediately\n\n:red_circle: *META KILL BAND*\n• Account L30D: $523.31 / ROAS 0.610 KILL\n• Save the Shave UGC Bill: L30D $447.17 / ROAS 0.714 KILL — Day 33+, no action taken\n• Yesterday Meta spend: $19.27\n\n:yellow_circle: *AMAZON ACCOUNT: ROAS 1.7856 YELLOW*\n• Dematter (B0FQL56V99): ROAS 1.879 YELLOW | TACOS 101.5% :red_circle: (target 35%)\n• Detangling (B0GV5ZFLC2): $75.03 spend / $18.99 sales | TACOS 395.1% :red_circle:"
-    },
-    {
-      "id": "draft_D",
-      "channel": "#content-alerts",
-      "status": "DRAFT",
-      "message": "*JARVIS CONTENT ALERTS | Jul 24, 2026 | Data: Jul 23*\n\n:red_circle: *Keyword Rank Drops (H10 KT Jul 23):*\n• B0FQL56V99 'dematting comb for dogs': r19 -> r27 (-8 spots) :red_circle:\n• B0FQ628KCH 'slicker brush for dogs': r177 -> r191 (-14 spots) :red_circle:\n• B0FQL56V99 'dog detangler': r18 -> r17 (+1) :green_circle: minor improvement\n\n:red_circle: *Klaviyo — Channel DEAD (Day 13+)*\n• 7d recipients: 6 total (Welcome 2 | Abandoned Cart 2 | Warranty 2)\n• 7d revenue: $0.00 | All click rates: 0%\n• Browse Abandonment: still DRAFT — activation overdue\n• Action: Will/Angelo must audit Klaviyo list health and pixel integration\n\n:white_check_mark: *Shopify Jul 23:* 1 comped order / $0 net revenue (D2C inactive)\n\n:rotating_light: *Inventory Alerts (H10 Inventory Insights Jul 23):*\n• B0FQ4PY573 (Detangling Spray): LIF <= 0 Days — STOCKOUT IMMINENT\n• B0FQFP2S9F (FurFix): LIF <= 0 Days + LTSF >= 181 Days — STOCKOUT + STRANDED 4+ weeks\n• Action required: check SC stranded inventory root cause for B0FQFP2S9F"
-    }
-  ]
+  "generated_at": "2026-07-23 PT",
+  "routine_version": "v10.16",
+  "webhook_status": "BLOCKED — routine_triggers.json not found; manual Slack post required",
+  "stg-finance-alerts": {
+    "text": "*🏦 STG Finance Brief — Jul 23 2026 · JARVIS COLLECT v10.16*\n\n*Cash:* $484,001.80 (checking + MM combined) · ⚠️ checking split unconfirmed — verify with bookkeeper\n*Weekly burn:* ~$12,159 · *Runway:* ~39.8 weeks\n\n*QB MTD Jul 1–23:*\n• Revenue: $24,553.71 ⚠️ (sync lag Day 12 — frozen since ~Jul 11; not reliable for decisions)\n• COGS: $11,061.04 · Gross profit: $13,492.67 (55%)\n• Expenses: $39,960.80 · Net income: −$26,468.13 (−107.8%)\n• Expense leaders: Amazon Ads $13,109 · Legal/Prof $10,070 · Marketing $5,705 · Software $3,802\n\n*Actual revenue yesterday (QB lag excluded):*\n• Amazon (H10 Jul 22): $1,894.42 gross / $799.62 net / 92 units / +252% vs prior day\n• Shopify Jul 22: $74.96 / 4 orders / AOV $18.74\n\n_Per L-2026-07-14-002: QB revenue is structurally lagged 10–12 days — use H10 + Shopify for revenue decisions. Use QB for cash balance and expenses only._"
+  },
+  "stg-morning-brief": {
+    "text": "*🌅 STG Morning Brief — Jul 23 2026 · JARVIS COLLECT v10.16*\n\n*Amazon Jul 22 (H10 Daily):*\n↑ $1,894.42 gross · $799.62 net (42.2%) · 92 units · +252% vs prior day\n\n*Keyword Ranks (Jul 22 vs prior):*\n• Dematter B0FQL56V99: \"detangler for dogs\" r18 ↓4 ⚠️ · \"dematting comb\" r19 ↓2\n• Slicker B0FQ628KCH: \"slicker brush for dogs\" r177 ↓11 🔴 (liquidation SKU — ad spend damage)\n\n*Meta L30D:* $504.04 spend · ROAS 0.634 🔴 · $22.25 yesterday\n• Save the Shave UGC Bill: $447.17 / ROAS 0.714 — Day 32+ no action ‼️\n• BLZ-20260717-002 Shampoo: $37.89 ACTIVE · BLZ-20260721-001 Detangle TOF: $18.98 ACTIVE\n\n*Shopify Jul 22:* $74.96 / 4 orders / AOV $18.74\n*Klaviyo (7d):* 4 recipients total · $0 revenue · 3 live flows · Browse Abandonment still DRAFT\n\n*Cash:* $484K combined · ~39.8 weeks runway\n\n⚠️ *Webhook not fired* — routine_triggers.json missing · manual post required"
+  },
+  "stg-ads-watchdog": {
+    "text": "*🔍 STG Ads Watchdog — Jul 23 2026 · JARVIS COLLECT v10.16*\n\n*AMAZON ADS — VIOLATIONS (Day 32+):*\n🚨 *B0GT1H84JM (Save the Shave Bundle):* KILL-BREACH · spending at RED ROAS for 32+ days · zero action recorded · @Will: kill or revise campaign immediately\n🚨 *B0FQ628KCH (Slicker Brush):* LIQUIDATION-VIOLATION · any ad spend = policy breach · campaign was never paused · H10 Jul 22: organic rank r177 ↓11 (ad spend actively damaging liquidation rank) · @Will: pause ALL Slicker campaigns in Ad Console now\n\n*META ADS — KILL-THRESHOLD BREACH (Day 32+):*\n🚨 *Save the Shave UGC Bill:* L30D spend $447.17 / ROAS 0.714 · 32+ days above $75 kill threshold with ROAS < 1.0 · @Will: pause this campaign · FIRST confirm 'Save the Shave UGC Bill - Copy' has a budget or the product goes dark on Meta\n\n*Active Meta campaigns (monitoring only):*\n• BLZ-20260717-002 Shampoo: $37.89 L30D · ACTIVE\n• BLZ-20260721-001 Detangle TOF: $18.98 L30D · LINK_CLICKS · ACTIVE\n\n*Account L30D:* $504.04 spend · ROAS 0.634 · $319.35 purchase value"
+  },
+  "stg-content-alerts": {
+    "text": "*📊 STG Content & Reviews — Jul 23 2026 · JARVIS COLLECT v10.16*\n\n*Amazon Reviews (last 15 · through Jul 9):*\n🔴 Avg: 3.8★ · 4 low-star reviews (1★ or 2★) — threshold is 3 → RED flag\n\n*Negative themes identified:*\n• Glue-like consistency — Dematter (Jun 24 · 1★)\n• Made mats worse — Dematter (Jun 24 · 1★)\n• Didn't work on poodle/goldendoodle — Dematter (Jul 6 · 2★)\n• Defective — Rake Brush (Jun 30 · 1★)\n\n*Most recent review:* Jul 9 — 12oz Detangling Treatment · 3★\n*Review sheet last modified:* Jul 16 (7 days ago · 🟢 GREEN — STALE threshold is 8+ days)\n\n*Klaviyo flows (7d):*\n• Abandoned Cart: 2 recipients · 0 conversions\n• Welcome Series: 1 recipient · 0 conversions\n• Warranty: 1 recipient · 0 conversions\n• Browse Abandonment: still DRAFT — needs activation"
+  }
 }

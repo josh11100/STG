@@ -1,8 +1,8 @@
 {
   "available": true,
-  "last_updated": "2026-07-24",
-  "report_date": "2026-07-24",
-  "patched_by": "JARVIS COLLECT v10.19 session Jul 24 — Query G Jul 23 (Supermetrics unchanged) + inventory_data Jul 23",
+  "last_updated": "2026-07-23",
+  "report_date": "2026-07-23",
+  "patched_by": "JARVIS session Jul 23 — Query G Jul 23 + supply_chain Jul 14 + S&S Jul 23",
 
   "kpis": {
     "lifetime_revenue":       312314.36,
@@ -187,7 +187,7 @@
   ],
 
   "_meta": {
-    "last_patched": "2026-07-24",
+    "last_patched": "2026-07-23",
     "query_g_date": "2026-07-23",
     "field_freshness": {
       "lifetime_revenue":    { "last_updated": "2026-07-23", "source": "supermetrics_query_g", "auto": true  },
